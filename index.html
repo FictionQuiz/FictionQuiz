@@ -1,1 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>FictionQuiz | Fun Quizzes for Book & Fiction Lovers</title>
+
+<meta name="description" content="Discover fun quizzes for book lovers and fiction fans. Find your fictional character, test your novel knowledge and explore exciting quizzes.">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Georgia, "Times New Roman", serif;
+    background:#fff8fc;
+    color:#352536;
+}
+
+header{
+    background:#fff;
+    padding:18px 7%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid #f0dce8;
+    position:sticky;
+    top:0;
+    z-index:10;
+}
+
+.logo{
+    font-size:25px;
+    font-weight:bold;
+    color:#8b3d69;
+}
+
+.logo span{
+    color:#d59aaf;
+}
+
+nav a{
+    text-decoration:none;
+    color:#5d4353;
+    margin-left:22px;
+    font-family:Arial,sans-serif;
+    font-size:14px;
+}
+
+nav a:hover{
+    color:#a84f7d;
+}
+
+.hero{
+    text-align:center;
+    padding:85px 20px 75px;
+    background:
+    radial-gradient(circle at top left,#f9dce9,transparent 35%),
+    radial-gradient(circle at bottom right,#eadcf8,transparent 35%),
+    #fff8fc;
+}
+
+.hero .small{
+    color:#a84f7d;
+    font-family:Arial,sans-serif;
+    font-size:14px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin-bottom:18px;
+}
+
+.hero h1{
+    font-size:52px;
+    line-height:1.1;
+    max-width:800px;
+    margin:auto;
+    color:#392335;
+}
+
+.hero h1 span{
+    color:#a84f7d;
+}
+
+.hero p{
+    max-width:620px;
+    margin:22px auto 30px;
+    font-family:Arial,sans-serif;
+    color:#765f6d;
+    line-height:1.7;
+}
+
+.btn{
+    display:inline-block;
+    background:#9c4d76;
+    color:white;
+    text-decoration:none;
+    padding:14px 27px;
+    border-radius:30px;
+    font-family:Arial,sans-serif;
+    font-weight:bold;
+    box-shadow:0 8px 20px rgba(156,77,118,.2);
+}
+
+.btn:hover{
+    background:#7e385d;
+}
+
+.section{
+    padding:65px 7%;
+}
+
+.heading{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.heading h2{
+    font-size:32px;
+    color:#3b2635;
+}
+
+.heading p{
+    font-family:Arial,sans-serif;
+    color:#806b77;
+    margin-top:8px;
+}
+
+.categories{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+}
+
+.category{
+    background:white;
+    border:1px solid #f0dce8;
+    border-radius:20px;
+    padding:28px 20px;
+    text-align:center;
+    transition:.25s;
+}
+
+.category:hover{
+    transform:translateY(-5px);
+    box-shadow:0 12px 25px rgba(100,50,80,.1);
+}
+
+.icon{
+    font-size:34px;
+    margin-bottom:13px;
+}
+
+.category h3{
+    font-size:18px;
+    margin-bottom:8px;
+}
+
+.category p{
+    font-family:Arial,sans-serif;
+    color:#806b77;
+    font-size:13px;
+    line-height:1.5;
+}
+
+.quiz-section{
+    background:#fff;
+}
+
+.quizzes{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.quiz{
+    background:#fff8fc;
+    border:1px solid #efdbe7;
+    border-radius:20px;
+    padding:25px;
+}
+
+.quiz .tag{
+    color:#a84f7d;
+    font-family:Arial,sans-serif;
+    font-size:12px;
+    font-weight:bold;
+    text-transform:uppercase;
+    letter-spacing:1px;
+}
+
+.quiz h3{
+    font-size:21px;
+    margin:12px 0;
+}
+
+.quiz p{
+    font-family:Arial,sans-serif;
+    color:#806b77;
+    font-size:14px;
+    line-height:1.6;
+    margin-bottom:20px;
+}
+
+.quiz button{
+    border:0;
+    background:#ead1df;
+    color:#63394f;
+    padding:10px 18px;
+    border-radius:20px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.quiz button:hover{
+    background:#d9b5ca;
+}
+
+.about{
+    text-align:center;
+    max-width:760px;
+    margin:auto;
+}
+
+.about p{
+    font-family:Arial,sans-serif;
+    color:#725f6a;
+    line-height:1.8;
+}
+
+footer{
+    background:#30212c;
+    color:#eee;
+    text-align:center;
+    padding:30px 20px;
+    font-family:Arial,sans-serif;
+}
+
+footer p{
+    font-size:13px;
+    color:#cbbdc6;
+}
+
+@media(max-width:800px){
+    .categories{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .quizzes{
+        grid-template-columns:1fr;
+    }
+
+    .hero h1{
+        font-size:39px;
+    }
+
+    nav a{
+        margin-left:10px;
+        font-size:12px;
+    }
+}
+
+@media(max-width:500px){
+    header{
+        padding:15px 5%;
+    }
+
+    .logo{
+        font-size:21px;
+    }
+
+    nav a{
+        display:none;
+    }
+
+    .hero{
+        padding:65px 18px;
+    }
+
+    .hero h1{
+        font-size:35px;
+    }
+
+    .categories{
+        grid-template-columns:1fr 1fr;
+        gap:12px;
+    }
+
+    .category{
+        padding:22px 10px;
+    }
+
+    .section{
+        padding:50px 5%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">Fiction<span>Quiz</span> ✦</div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#categories">Categories</a>
+        <a href="#quizzes">Quizzes</a>
+        <a href="#about">About</a>
+    </nav>
+</header>
+
+<section class="hero" id="home">
+
+    <div class="small">For Book Lovers & Fiction Fans</div>
+
+    <h1>
+        Discover Your
+        <span>Fictional World</span> ✨
+    </h1>
+
+    <p>
+        Take fun quizzes, discover your fictional personality,
+        test your novel knowledge and find the character that
+        matches you.
+    </p>
+
+    <a href="#quizzes" class="btn">Explore Quizzes →</a>
+
+</section>
+
+<section class="section" id="categories">
+
+    <div class="heading">
+        <h2>Explore Categories</h2>
+        <p>Choose your favourite fictional world.</p>
+    </div>
+
+    <div class="categories">
+
+        <div class="category">
+            <div class="icon">📚</div>
+            <h3>Urdu Novels</h3>
+            <p>Test how well you know your favourite novels.</p>
+        </div>
+
+        <div class="category">
+            <div class="icon">👑</div>
+            <h3>Fictional Characters</h3>
+            <p>Discover which character matches your personality.</p>
+        </div>
+
+        <div class="category">
+            <div class="icon">💕</div>
+            <h3>Love & Personality</h3>
+            <p>Fun personality and fiction-based quizzes.</p>
+        </div>
+
+        <div class="category">
+            <div class="icon">🕵️</div>
+            <h3>Mystery & Thriller</h3>
+            <p>Challenge your detective side.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="section quiz-section" id="quizzes">
+
+    <div class="heading">
+        <h2>🔥 Popular Quizzes</h2>
+        <p>More exciting quizzes are coming soon.</p>
+    </div>
+
+    <div class="quizzes">
+
+        <div class="quiz">
+            <div class="tag">Personality</div>
+            <h3>Which Fictional Character Are You?</h3>
+            <p>
+                Answer a few questions and discover
+                your fictional personality.
+            </p>
+            <button onclick="comingSoon()">Start Quiz →</button>
+        </div>
+
+        <div class="quiz">
+            <div class="tag">Urdu Novels</div>
+            <h3>How Well Do You Know Urdu Novels?</h3>
+            <p>
+                Put your novel knowledge to the test.
+            </p>
+            <button onclick="comingSoon()">Start Quiz →</button>
+        </div>
+
+        <div class="quiz">
+            <div class="tag">Mystery</div>
+            <h3>Can You Solve The Mystery?</h3>
+            <p>
+                Test your observation and detective skills.
+            </p>
+            <button onclick="comingSoon()">Start Quiz →</button>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="section" id="about">
+
+    <div class="about">
+
+        <div class="heading">
+            <h2>Welcome to FictionQuiz ✨</h2>
+        </div>
+
+        <p>
+            FictionQuiz is a fun quiz space created for readers,
+            book lovers and fiction fans. Explore characters,
+            stories, personalities and exciting challenges —
+            and discover something new about yourself.
+        </p>
+
+    </div>
+
+</section>
+
+<footer>
+    <p>© 2026 FictionQuiz. All rights reserved.</p>
+    <p>Made for readers who love fictional worlds. ✨</p>
+</footer>
+
+<script>
+function comingSoon(){
+    alert("This quiz is coming soon! ✨");
+}
+</script>
+
+</body>
+</html>
