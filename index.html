@@ -541,9 +541,302 @@ footer p{
 </footer>
 
 <script>
-function comingSoon(){
-    alert("This quiz is coming soon! ✨");
+
+const quizQuestions = [
+
+    {
+        question: "Agar koi tumhein underestimate kare, tum kya karogi?",
+        image: "images/quiz/question-1.jpg",
+        options: [
+            { text: "Khamoshi se prove karungi", type: 0, image: "images/quiz/q1-intelligent.jpg" },
+            { text: "Direct jawab dungi", type: 2, image: "images/quiz/q1-bold.jpg" },
+            { text: "Strategy banaungi", type: 1, image: "images/quiz/q1-strategy.jpg" },
+            { text: "Apne logon ko protect karungi", type: 3, image: "images/quiz/q1-protector.jpg" }
+        ]
+    },
+
+    {
+        question: "Hero mein tumhein sabse attractive quality kya lagti hai?",
+        image: "images/quiz/question-2.jpg",
+        options: [
+            { text: "Intelligence", type: 0, image: "images/quiz/q2-intelligence.jpg" },
+            { text: "Confidence", type: 2, image: "images/quiz/q2-confidence.jpg" },
+            { text: "Mystery", type: 4, image: "images/quiz/q2-mystery.jpg" },
+            { text: "Loyalty", type: 3, image: "images/quiz/q2-loyalty.jpg" }
+        ]
+    },
+
+    {
+        question: "Tumhein koi important secret pata chale to?",
+        image: "images/quiz/question-3.jpg",
+        options: [
+            { text: "Investigate karungi", type: 0, image: "images/quiz/q3-investigate.jpg" },
+            { text: "Kisi ko nahi bataungi", type: 4, image: "images/quiz/q3-secret.jpg" },
+            { text: "Information carefully use karungi", type: 1, image: "images/quiz/q3-strategy.jpg" },
+            { text: "Trusted person ko bataungi", type: 3, image: "images/quiz/q3-trust.jpg" }
+        ]
+    },
+
+    {
+        question: "Story mein tumhara role kya hota?",
+        image: "images/quiz/question-4.jpg",
+        options: [
+            { text: "Intelligent observer", type: 0, image: "images/quiz/q4-observer.jpg" },
+            { text: "Strong decision-maker", type: 2, image: "images/quiz/q4-leader.jpg" },
+            { text: "Mystery solver", type: 4, image: "images/quiz/q4-mystery.jpg" },
+            { text: "Loyal protector", type: 3, image: "images/quiz/q4-protector.jpg" }
+        ]
+    },
+
+    {
+        question: "Tumhari strongest quality kya hai?",
+        image: "images/quiz/question-5.jpg",
+        options: [
+            { text: "Intelligence", type: 0, image: "images/quiz/q5-intelligence.jpg" },
+            { text: "Determination", type: 1, image: "images/quiz/q5-determination.jpg" },
+            { text: "Emotional depth", type: 3, image: "images/quiz/q5-depth.jpg" },
+            { text: "Strategic thinking", type: 5, image: "images/quiz/q5-strategy.jpg" }
+        ]
+    },
+
+    {
+        question: "Difficult situation mein tum kya karti ho?",
+        image: "images/quiz/question-6.jpg",
+        options: [
+            { text: "Pehle observe karti hoon", type: 0, image: "images/quiz/q6-observe.jpg" },
+            { text: "Phir action leti hoon", type: 2, image: "images/quiz/q6-action.jpg" },
+            { text: "Plan bana kar move karti hoon", type: 1, image: "images/quiz/q6-plan.jpg" },
+            { text: "Apne people ko safe rakhti hoon", type: 3, image: "images/quiz/q6-protect.jpg" }
+        ]
+    },
+
+    {
+        question: "Tumhari personality ka vibe kya hai?",
+        image: "images/quiz/question-7.jpg",
+        options: [
+            { text: "Calm & Intelligent", type: 0, image: "images/quiz/q7-calm.jpg" },
+            { text: "Powerful & Confident", type: 2, image: "images/quiz/q7-power.jpg" },
+            { text: "Mysterious & Deep", type: 4, image: "images/quiz/q7-mystery.jpg" },
+            { text: "Bold & Strategic", type: 5, image: "images/quiz/q7-bold.jpg" }
+        ]
+    }
+
+];
+
+const quizResults = [
+
+    {
+        name: "Jihan Sikandar Energy",
+        title: "The Intelligent Observer 🧠",
+        description: "Tum situations ko deeply observe karti ho aur bina unnecessary noise ke smart decisions leti ho. Tumhari strength tumhari intelligence aur calm nature hai.",
+        emoji: "🧠"
+    },
+
+    {
+        name: "Salar Sikandar Energy",
+        title: "The Strategic Mind ♟️",
+        description: "Tumhara mind naturally plans aur possibilities ko analyze karta hai. Tum impulsive moves ke bajaye calculated decisions ko prefer karti ho.",
+        emoji: "♟️"
+    },
+
+    {
+        name: "Faris Ghazi Energy",
+        title: "The Fearless Protector 🔥",
+        description: "Confidence, courage aur loyalty tumhari personality ka strong part hain. Jab tum kisi cheez ke liye stand leti ho to easily back down nahi karti.",
+        emoji: "🔥"
+    },
+
+    {
+        name: "Wajdan Mustafa Energy",
+        title: "The Deep Thinker 🌙",
+        description: "Tum cheezon ko surface level par nahi dekhti. Emotions, people aur situations ko samajhne ki tumhari ability tumhari special quality hai.",
+        emoji: "🌙"
+    },
+
+    {
+        name: "Wali Ahmed Energy",
+        title: "The Calm Mystery 🖤",
+        description: "Tumhari personality mein ek quiet mysterious vibe hai. Tum har baat sabko explain nahi karti aur apni world ko carefully protect karti ho.",
+        emoji: "🖤"
+    },
+
+    {
+        name: "Faris Wajgan Energy",
+        title: "The Powerful Strategist 👑",
+        description: "Boldness aur strategy ka combination tumhari biggest strength hai. Tum difficult situations mein bhi control maintain karna jaanti ho.",
+        emoji: "👑"
+    }
+
+];
+
+let currentQuestion = 0;
+let scores = [0, 0, 0, 0, 0, 0];
+let finalResult = null;
+
+
+/* START QUIZ */
+
+function startCharacterQuiz() {
+
+    currentQuestion = 0;
+    scores = [0, 0, 0, 0, 0, 0];
+
+    document.getElementById("quizArea").style.display = "block";
+    document.getElementById("resultBox").style.display = "none";
+
+    document.getElementById("quizArea").scrollIntoView({
+        behavior: "smooth"
+    });
+
+    showQuestion();
 }
+
+
+/* SHOW QUESTION */
+
+function showQuestion() {
+
+    const q = quizQuestions[currentQuestion];
+
+    document.getElementById("questionNumber").textContent =
+        `Question ${currentQuestion + 1} / ${quizQuestions.length}`;
+
+    document.getElementById("progressBar").style.width =
+        `${((currentQuestion + 1) / quizQuestions.length) * 100}%`;
+
+    document.getElementById("questionText").textContent = q.question;
+
+    const questionImage = document.getElementById("questionImage");
+
+    if (questionImage) {
+        questionImage.src = q.image;
+    }
+
+    const optionsBox = document.getElementById("options");
+
+    optionsBox.innerHTML = "";
+
+    q.options.forEach((option) => {
+
+        const button = document.createElement("button");
+
+        button.className = "quiz-option";
+
+        button.innerHTML = `
+            <img src="${option.image}" alt="">
+            <span>${option.text}</span>
+        `;
+
+        button.onclick = function () {
+            selectAnswer(option.type);
+        };
+
+        optionsBox.appendChild(button);
+
+    });
+}
+
+
+/* SELECT ANSWER */
+
+function selectAnswer(type) {
+
+    scores[type]++;
+
+    currentQuestion++;
+
+    if (currentQuestion < quizQuestions.length) {
+
+        showQuestion();
+
+    } else {
+
+        showResult();
+
+    }
+}
+
+
+/* SHOW RESULT */
+
+function showResult() {
+
+    let highestScore = Math.max(...scores);
+
+    let resultIndex = scores.indexOf(highestScore);
+
+    finalResult = quizResults[resultIndex];
+
+    document.getElementById("quizArea").style.display = "none";
+
+    document.getElementById("resultBox").style.display = "block";
+
+    document.getElementById("resultTitle").textContent =
+        finalResult.name;
+
+    document.getElementById("resultText").innerHTML = `
+        <strong>${finalResult.title}</strong><br><br>
+        ${finalResult.description}
+    `;
+
+    document.getElementById("resultBox").scrollIntoView({
+        behavior: "smooth"
+    });
+
+}
+
+
+/* PLAY AGAIN */
+
+function restartQuiz() {
+
+    document.getElementById("resultBox").style.display = "none";
+
+    startCharacterQuiz();
+
+}
+
+
+/* SHARE RESULT */
+
+function shareResult() {
+
+    if (!finalResult) return;
+
+    const shareText =
+        `I got "${finalResult.name}" on FictionQuiz ✨\n\nCan you beat my result?`;
+
+    const shareUrl = window.location.href;
+
+    if (navigator.share) {
+
+        navigator.share({
+            title: "My FictionQuiz Result ✨",
+            text: shareText,
+            url: shareUrl
+        });
+
+    } else {
+
+        navigator.clipboard.writeText(
+            shareText + "\n" + shareUrl
+        );
+
+        alert("Result link copied! ✨");
+
+    }
+
+}
+
+
+/* COMING SOON */
+
+function comingSoon() {
+
+    alert("This quiz is coming soon! ✨");
+
+}
+
 </script>
 
 </body>
