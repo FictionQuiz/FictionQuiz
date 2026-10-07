@@ -11,7 +11,6 @@
 
 <meta name="theme-color" content="#9c4d76">
 
-<!-- FAVICON -->
 <link rel="icon" type="image/png" href="images/favicon.png">
 <link rel="apple-touch-icon" href="images/favicon.png">
 
@@ -251,9 +250,63 @@ nav a:hover{
     margin:50px auto 0;
 }
 
+/* NAME SCREEN */
+
+#nameBox{
+    background:white;
+    border:1px solid #efdbe7;
+    border-radius:20px;
+    padding:40px 30px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(80,40,70,.06);
+}
+
+#nameBox .name-icon{
+    font-size:45px;
+    margin-bottom:12px;
+}
+
+#nameBox h3{
+    font-size:28px;
+    color:#3b2635;
+    margin-bottom:10px;
+}
+
+#nameBox p{
+    font-family:Arial,sans-serif;
+    color:#806b77;
+    margin-bottom:22px;
+}
+
+#playerName{
+    width:100%;
+    max-width:430px;
+    padding:14px 18px;
+    border:1px solid #e6cbd9;
+    border-radius:14px;
+    outline:none;
+    font-family:Arial,sans-serif;
+    font-size:15px;
+    text-align:center;
+    color:#4b3343;
+    background:#fffafd;
+}
+
+#playerName:focus{
+    border-color:#b96d91;
+    box-shadow:0 0 0 3px rgba(156,77,118,.08);
+}
+
+#startQuizButton{
+    margin-top:16px;
+}
+
+/* QUESTION */
+
 #questionBox{
     background:white;
     padding:30px;
+    border-radius:20px;
 }
 
 #questionNumber{
@@ -309,6 +362,7 @@ nav a:hover{
     transition:.2s;
     box-shadow:0 4px 12px rgba(80,40,70,.05);
     color:#4b3343 !important;
+    cursor:pointer;
 }
 
 .quiz-option:hover{
@@ -319,17 +373,18 @@ nav a:hover{
 
 .quiz-option img{
     width:100%;
-    height:180px;
+    height:170px;
     object-fit:cover;
     display:block;
 }
 
 .quiz-option span{
     display:block;
-    padding:13px 15px;
+    padding:11px 13px;
     font-family:Arial,sans-serif;
     font-size:14px;
     font-weight:bold;
+    line-height:1.35;
 }
 
 /* RESULT */
@@ -337,6 +392,7 @@ nav a:hover{
 #resultBox{
     background:white;
     padding:35px;
+    border-radius:20px;
 }
 
 #resultImage{
@@ -417,7 +473,7 @@ footer p{
     margin:5px 0;
 }
 
-/* MOBILE */
+/* TABLET / MOBILE */
 
 @media(max-width:800px){
 
@@ -438,8 +494,20 @@ footer p{
         font-size:12px;
     }
 
+    /* 2 x 2 ANSWER GRID */
     #options{
-        grid-template-columns:1fr;
+        grid-template-columns:repeat(2,1fr);
+        gap:10px;
+        margin-top:20px;
+    }
+
+    .quiz-option img{
+        height:135px;
+    }
+
+    .quiz-option span{
+        padding:9px 10px;
+        font-size:12px;
     }
 
     #questionText{
@@ -486,17 +554,48 @@ footer p{
         padding:50px 5%;
     }
 
+    #quizArea{
+        margin-top:35px;
+    }
+
     #questionBox,
     #resultBox{
-        padding:20px;
+        padding:18px;
+    }
+
+    #nameBox{
+        padding:32px 18px;
+    }
+
+    #nameBox h3{
+        font-size:24px;
     }
 
     #questionImage{
-        max-height:330px;
+        max-height:280px;
+        margin-bottom:18px;
+    }
+
+    /* MOBILE 2 x 2 OPTIONS */
+    #options{
+        grid-template-columns:repeat(2,1fr);
+        gap:9px;
+    }
+
+    .quiz-option{
+        border-radius:13px !important;
     }
 
     .quiz-option img{
-        height:200px;
+        height:115px;
+    }
+
+    .quiz-option span{
+        padding:9px 8px;
+        font-size:11px;
+        min-height:43px;
+        display:flex;
+        align-items:center;
     }
 
     #resultImage{
@@ -506,6 +605,15 @@ footer p{
     #resultTitle{
         font-size:25px;
     }
+
+    .result-buttons{
+        flex-direction:column;
+    }
+
+    .result-buttons button{
+        width:100%;
+    }
+
 }
 
 </style>
@@ -697,7 +805,54 @@ footer p{
 
     <div id="quizArea" style="display:none;">
 
-        <div class="quiz" id="questionBox">
+        <!-- NAME SCREEN -->
+
+        <div id="nameBox">
+
+            <div class="name-icon">
+                ✨
+            </div>
+
+            <div class="tag">
+                Before We Start
+            </div>
+
+            <h3>
+                What's your name?
+            </h3>
+
+            <p>
+                Enter your name and discover your fictional character energy.
+            </p>
+
+            <input
+                type="text"
+                id="playerName"
+                placeholder="Enter your name"
+                maxlength="30"
+                autocomplete="off"
+            >
+
+            <br>
+
+            <button
+                id="startQuizButton"
+                class="btn"
+                onclick="beginCharacterQuiz()"
+            >
+                Start Quiz ✨
+            </button>
+
+        </div>
+
+
+        <!-- QUESTION -->
+
+        <div
+            class="quiz"
+            id="questionBox"
+            style="display:none;"
+        >
 
             <div class="tag" id="questionNumber">
                 Question 1 / 7
@@ -710,22 +865,15 @@ footer p{
 
             </div>
 
-
-            <!-- QUESTION IMAGE -->
-
             <img
                 id="questionImage"
                 src=""
                 alt="Quiz Question"
             >
 
-
             <h3 id="questionText">
                 Question will appear here
             </h3>
-
-
-            <!-- ANSWERS -->
 
             <div id="options">
             </div>
@@ -741,36 +889,27 @@ footer p{
             style="display:none;"
         >
 
-            <!-- RESULT IMAGE -->
-
             <img
                 id="resultImage"
                 src=""
                 alt="Quiz Result"
             >
 
-
             <div class="icon">
                 ✨
             </div>
-
 
             <div class="tag">
                 Your Result
             </div>
 
-
             <h3 id="resultTitle">
                 Your Character
             </h3>
 
-
             <p id="resultText">
                 Your result will appear here.
             </p>
-
-
-            <!-- RESULT BUTTONS -->
 
             <div class="result-buttons">
 
@@ -781,14 +920,12 @@ footer p{
                     🔗 Share Result
                 </button>
 
-
                 <button
                     class="challenge-btn"
                     onclick="challengeFriends()"
                 >
                     👯 Challenge Friends
                 </button>
-
 
                 <button
                     class="copy-btn"
@@ -797,10 +934,7 @@ footer p{
                     📋 Copy Challenge Link
                 </button>
 
-
-                <button
-                    onclick="restartQuiz()"
-                >
+                <button onclick="restartQuiz()">
                     ↻ Try Again
                 </button>
 
@@ -889,7 +1023,6 @@ const quizQuestions = [
         ]
     },
 
-
     {
         question: "Hero mein tumhein sabse attractive quality kya lagti hai?",
         image: "images/quiz/question-2.jpg",
@@ -916,7 +1049,6 @@ const quizQuestions = [
             }
         ]
     },
-
 
     {
         question: "Tumhein koi important secret pata chale to?",
@@ -945,7 +1077,6 @@ const quizQuestions = [
         ]
     },
 
-
     {
         question: "Story mein tumhara role kya hota?",
         image: "images/quiz/question-4.jpg",
@@ -972,7 +1103,6 @@ const quizQuestions = [
             }
         ]
     },
-
 
     {
         question: "Tumhari strongest quality kya hai?",
@@ -1001,7 +1131,6 @@ const quizQuestions = [
         ]
     },
 
-
     {
         question: "Difficult situation mein tum kya karti ho?",
         image: "images/quiz/question-6.jpg",
@@ -1028,7 +1157,6 @@ const quizQuestions = [
             }
         ]
     },
-
 
     {
         question: "Tumhari personality ka vibe kya hai?",
@@ -1073,14 +1201,12 @@ const quizResults = [
         emoji: "🧠"
     },
 
-
     {
         name: "Salar Sikandar Energy",
         title: "The Strategic Mind ♟️",
         description: "Tumhara mind naturally plans aur possibilities ko analyze karta hai. Tum impulsive moves ke bajaye calculated decisions ko prefer karti ho.",
         emoji: "♟️"
     },
-
 
     {
         name: "Faris Ghazi Energy",
@@ -1089,7 +1215,6 @@ const quizResults = [
         emoji: "🔥"
     },
 
-
     {
         name: "Wajdan Mustafa Energy",
         title: "The Deep Thinker 🌙",
@@ -1097,14 +1222,12 @@ const quizResults = [
         emoji: "🌙"
     },
 
-
     {
         name: "Wali Ahmed Energy",
         title: "The Calm Mystery 🖤",
         description: "Tumhari personality mein ek quiet mysterious vibe hai. Tum har baat sabko explain nahi karti aur apni world ko carefully protect karti ho.",
         emoji: "🖤"
     },
-
 
     {
         name: "Faris Wajgan Energy",
@@ -1117,39 +1240,84 @@ const quizResults = [
 
 
 let currentQuestion = 0;
-
 let scores = [0,0,0,0,0,0];
-
 let finalResult = null;
-
 let finalResultIndex = null;
+let playerName = "";
 
 
 /* =========================================
-   START QUIZ
+   START QUIZ — NAME SCREEN
 ========================================= */
 
 function startCharacterQuiz(){
 
     currentQuestion = 0;
-
     scores = [0,0,0,0,0,0];
-
     finalResult = null;
-
     finalResultIndex = null;
+    playerName = "";
 
     document.getElementById("quizArea").style.display = "block";
 
-    document.getElementById("questionBox").style.display = "block";
-
+    document.getElementById("nameBox").style.display = "block";
+    document.getElementById("questionBox").style.display = "none";
     document.getElementById("resultBox").style.display = "none";
+
+    document.getElementById("playerName").value = "";
 
     document.getElementById("quizArea").scrollIntoView({
         behavior:"smooth"
     });
 
+    setTimeout(function(){
+
+        document.getElementById("playerName").focus();
+
+    },500);
+
+}
+
+
+/* =========================================
+   BEGIN QUIZ AFTER NAME
+========================================= */
+
+function beginCharacterQuiz(){
+
+    const nameInput =
+        document.getElementById("playerName");
+
+    const enteredName =
+        nameInput.value.trim();
+
+    if(!enteredName){
+
+        alert("Please enter your name ✨");
+
+        nameInput.focus();
+
+        return;
+
+    }
+
+    playerName = enteredName;
+
+    currentQuestion = 0;
+    scores = [0,0,0,0,0,0];
+    finalResult = null;
+    finalResultIndex = null;
+
+    document.getElementById("nameBox").style.display = "none";
+    document.getElementById("questionBox").style.display = "block";
+    document.getElementById("resultBox").style.display = "none";
+
     showQuestion();
+
+    document.getElementById("questionBox").scrollIntoView({
+        behavior:"smooth"
+    });
+
 }
 
 
@@ -1170,18 +1338,13 @@ function showQuestion(){
     document.getElementById("questionText").textContent =
         q.question;
 
-
-    const questionImage =
-        document.getElementById("questionImage");
-
-    questionImage.src = q.image;
-
+    document.getElementById("questionImage").src =
+        q.image;
 
     const optionsBox =
         document.getElementById("options");
 
     optionsBox.innerHTML = "";
-
 
     q.options.forEach(function(option){
 
@@ -1190,19 +1353,16 @@ function showQuestion(){
 
         button.className = "quiz-option";
 
-
         button.innerHTML = `
             <img src="${option.image}" alt="">
             <span>${option.text}</span>
         `;
-
 
         button.onclick = function(){
 
             selectAnswer(option.type);
 
         };
-
 
         optionsBox.appendChild(button);
 
@@ -1221,10 +1381,14 @@ function selectAnswer(type){
 
     currentQuestion++;
 
-
     if(currentQuestion < quizQuestions.length){
 
         showQuestion();
+
+        document.getElementById("questionBox").scrollIntoView({
+            behavior:"smooth",
+            block:"start"
+        });
 
     }else{
 
@@ -1247,24 +1411,19 @@ function showResult(){
     let resultIndex =
         scores.indexOf(highestScore);
 
-
     finalResultIndex = resultIndex;
 
     finalResult =
         quizResults[resultIndex];
 
-
     document.getElementById("questionBox").style.display =
         "none";
-
 
     document.getElementById("resultBox").style.display =
         "block";
 
-
     document.getElementById("resultTitle").textContent =
-        finalResult.name;
-
+        `${playerName}, ${finalResult.name}`;
 
     document.getElementById("resultText").innerHTML = `
         <strong>${finalResult.title}</strong>
@@ -1272,15 +1431,8 @@ function showResult(){
         ${finalResult.description}
     `;
 
-
-    /* RESULT IMAGE */
-
-    const resultImage =
-        document.getElementById("resultImage");
-
-    resultImage.src =
+    document.getElementById("resultImage").src =
         `images/quiz/result-${resultIndex + 1}.jpg`;
-
 
     document.getElementById("resultBox").scrollIntoView({
         behavior:"smooth"
@@ -1299,9 +1451,17 @@ function restartQuiz(){
         "none";
 
     document.getElementById("questionBox").style.display =
+        "none";
+
+    document.getElementById("nameBox").style.display =
         "block";
 
-    startCharacterQuiz();
+    document.getElementById("playerName").value =
+        playerName;
+
+    document.getElementById("nameBox").scrollIntoView({
+        behavior:"smooth"
+    });
 
 }
 
@@ -1314,24 +1474,20 @@ function shareResult(){
 
     if(finalResultIndex === null) return;
 
-
     const result =
         quizResults[finalResultIndex];
 
-
     const shareText =
-        `I got "${result.name}" on FictionQuiz ✨
+        `${playerName} got "${result.name}" on FictionQuiz ✨
 
 ${result.title}
 
 Can you discover your fictional character energy?`;
 
-
     const shareUrl =
         window.location.origin +
         window.location.pathname +
         `?result=${finalResultIndex + 1}`;
-
 
     if(navigator.share){
 
@@ -1376,7 +1532,6 @@ function challengeFriends(){
         window.location.origin +
         window.location.pathname;
 
-
     const challengeText =
         `I just took a FictionQuiz challenge! ✨
 
@@ -1386,7 +1541,6 @@ Can you discover which fictional character energy matches you? 👀
 
 Take the quiz:
 ${challengeUrl}`;
-
 
     if(navigator.share){
 
@@ -1427,9 +1581,7 @@ function copyChallengeLink(){
         window.location.origin +
         window.location.pathname;
 
-
     copyText(challengeUrl);
-
 
     alert(
         "Challenge link copied! ✨"
@@ -1480,7 +1632,6 @@ function openSharedResult(){
     const resultNumber =
         parseInt(params.get("result"));
 
-
     if(
         resultNumber >= 1 &&
         resultNumber <= quizResults.length
@@ -1489,30 +1640,26 @@ function openSharedResult(){
         const resultIndex =
             resultNumber - 1;
 
-
         finalResultIndex =
             resultIndex;
-
 
         finalResult =
             quizResults[resultIndex];
 
-
         document.getElementById("quizArea").style.display =
             "block";
 
+        document.getElementById("nameBox").style.display =
+            "none";
 
         document.getElementById("questionBox").style.display =
             "none";
 
-
         document.getElementById("resultBox").style.display =
             "block";
 
-
         document.getElementById("resultTitle").textContent =
             finalResult.name;
-
 
         document.getElementById("resultText").innerHTML = `
             <strong>${finalResult.title}</strong>
@@ -1520,10 +1667,8 @@ function openSharedResult(){
             ${finalResult.description}
         `;
 
-
         document.getElementById("resultImage").src =
             `images/quiz/result-${resultIndex + 1}.jpg`;
-
 
         setTimeout(function(){
 
