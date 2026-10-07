@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -8,18 +9,31 @@
 
 <meta name="description" content="Discover fun quizzes for book lovers and fiction fans. Find your fictional character, test your novel knowledge and explore exciting quizzes.">
 
+<meta name="theme-color" content="#9c4d76">
+
+<!-- FAVICON -->
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="apple-touch-icon" href="images/favicon.png">
+
 <style>
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
-    font-family:Georgia, "Times New Roman", serif;
+    font-family:Georgia,"Times New Roman",serif;
     background:#fff8fc;
     color:#352536;
 }
+
+/* HEADER */
 
 header{
     background:#fff;
@@ -30,7 +44,7 @@ header{
     border-bottom:1px solid #f0dce8;
     position:sticky;
     top:0;
-    z-index:10;
+    z-index:100;
 }
 
 .logo{
@@ -54,6 +68,8 @@ nav a{
 nav a:hover{
     color:#a84f7d;
 }
+
+/* HERO */
 
 .hero{
     text-align:center;
@@ -102,12 +118,16 @@ nav a:hover{
     border-radius:30px;
     font-family:Arial,sans-serif;
     font-weight:bold;
+    border:0;
+    cursor:pointer;
     box-shadow:0 8px 20px rgba(156,77,118,.2);
 }
 
 .btn:hover{
     background:#7e385d;
 }
+
+/* SECTIONS */
 
 .section{
     padding:65px 7%;
@@ -128,6 +148,8 @@ nav a:hover{
     color:#806b77;
     margin-top:8px;
 }
+
+/* CATEGORIES */
 
 .categories{
     display:grid;
@@ -165,6 +187,8 @@ nav a:hover{
     font-size:13px;
     line-height:1.5;
 }
+
+/* QUIZZES */
 
 .quiz-section{
     background:#fff;
@@ -209,15 +233,161 @@ nav a:hover{
     border:0;
     background:#ead1df;
     color:#63394f;
-    padding:10px 18px;
+    padding:11px 18px;
     border-radius:20px;
     cursor:pointer;
     font-weight:bold;
+    margin-top:5px;
 }
 
 .quiz button:hover{
     background:#d9b5ca;
 }
+
+/* WORKING QUIZ */
+
+#quizArea{
+    max-width:850px;
+    margin:50px auto 0;
+}
+
+#questionBox{
+    background:white;
+    padding:30px;
+}
+
+#questionNumber{
+    font-family:Arial,sans-serif;
+}
+
+#questionImage{
+    width:100%;
+    max-height:430px;
+    object-fit:cover;
+    border-radius:18px;
+    margin:10px 0 25px;
+    display:block;
+}
+
+#questionText{
+    font-size:26px;
+    line-height:1.4;
+}
+
+#progressContainer{
+    background:#eadbe4;
+    height:8px;
+    border-radius:20px;
+    margin:18px 0 25px;
+    overflow:hidden;
+}
+
+#progressBar{
+    width:14%;
+    height:100%;
+    background:#9c4d76;
+    border-radius:20px;
+    transition:width .3s ease;
+}
+
+/* ANSWER OPTIONS */
+
+#options{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+    margin-top:25px;
+}
+
+.quiz-option{
+    background:white !important;
+    border:1px solid #efd5e3 !important;
+    border-radius:16px !important;
+    padding:0 !important;
+    overflow:hidden;
+    text-align:left;
+    transition:.2s;
+    box-shadow:0 4px 12px rgba(80,40,70,.05);
+    color:#4b3343 !important;
+}
+
+.quiz-option:hover{
+    transform:translateY(-3px);
+    border-color:#c88bab !important;
+    box-shadow:0 10px 20px rgba(100,50,80,.12);
+}
+
+.quiz-option img{
+    width:100%;
+    height:180px;
+    object-fit:cover;
+    display:block;
+}
+
+.quiz-option span{
+    display:block;
+    padding:13px 15px;
+    font-family:Arial,sans-serif;
+    font-size:14px;
+    font-weight:bold;
+}
+
+/* RESULT */
+
+#resultBox{
+    background:white;
+    padding:35px;
+}
+
+#resultImage{
+    width:100%;
+    max-width:500px;
+    height:500px;
+    object-fit:cover;
+    border-radius:22px;
+    display:block;
+    margin:0 auto 25px;
+    box-shadow:0 12px 30px rgba(70,30,60,.12);
+}
+
+#resultTitle{
+    font-size:30px;
+    color:#3b2635;
+}
+
+#resultText{
+    max-width:650px;
+    margin:15px auto 25px;
+    line-height:1.7;
+}
+
+.result-buttons{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:20px;
+}
+
+.result-buttons button{
+    margin:0 !important;
+    padding:12px 19px;
+}
+
+.share-main{
+    background:#9c4d76 !important;
+    color:white !important;
+}
+
+.challenge-btn{
+    background:#ead1df !important;
+}
+
+.copy-btn{
+    background:#eee4ea !important;
+}
+
+/* ABOUT */
 
 .about{
     text-align:center;
@@ -231,6 +401,8 @@ nav a:hover{
     line-height:1.8;
 }
 
+/* FOOTER */
+
 footer{
     background:#30212c;
     color:#eee;
@@ -242,9 +414,13 @@ footer{
 footer p{
     font-size:13px;
     color:#cbbdc6;
+    margin:5px 0;
 }
 
+/* MOBILE */
+
 @media(max-width:800px){
+
     .categories{
         grid-template-columns:repeat(2,1fr);
     }
@@ -261,9 +437,22 @@ footer p{
         margin-left:10px;
         font-size:12px;
     }
+
+    #options{
+        grid-template-columns:1fr;
+    }
+
+    #questionText{
+        font-size:23px;
+    }
+
+    #resultImage{
+        height:420px;
+    }
 }
 
 @media(max-width:500px){
+
     header{
         padding:15px 5%;
     }
@@ -296,14 +485,41 @@ footer p{
     .section{
         padding:50px 5%;
     }
+
+    #questionBox,
+    #resultBox{
+        padding:20px;
+    }
+
+    #questionImage{
+        max-height:330px;
+    }
+
+    .quiz-option img{
+        height:200px;
+    }
+
+    #resultImage{
+        height:360px;
+    }
+
+    #resultTitle{
+        font-size:25px;
+    }
 }
+
 </style>
 </head>
 
 <body>
 
+<!-- HEADER -->
+
 <header>
-    <div class="logo">Fiction<span>Quiz</span> ✦</div>
+
+    <div class="logo">
+        Fiction<span>Quiz</span> ✦
+    </div>
 
     <nav>
         <a href="#home">Home</a>
@@ -311,11 +527,17 @@ footer p{
         <a href="#quizzes">Quizzes</a>
         <a href="#about">About</a>
     </nav>
+
 </header>
+
+
+<!-- HERO -->
 
 <section class="hero" id="home">
 
-    <div class="small">For Book Lovers & Fiction Fans</div>
+    <div class="small">
+        For Book Lovers & Fiction Fans
+    </div>
 
     <h1>
         Discover Your
@@ -328,15 +550,25 @@ footer p{
         matches you.
     </p>
 
-    <a href="#quizzes" class="btn">Explore Quizzes →</a>
+    <a href="#quizzes" class="btn">
+        Explore Quizzes →
+    </a>
 
 </section>
+
+
+<!-- CATEGORIES -->
 
 <section class="section" id="categories">
 
     <div class="heading">
+
         <h2>Explore Categories</h2>
-        <p>Choose your favourite fictional world.</p>
+
+        <p>
+            Choose your favourite fictional world.
+        </p>
+
     </div>
 
     <div class="categories">
@@ -344,59 +576,87 @@ footer p{
         <div class="category">
             <div class="icon">📚</div>
             <h3>Urdu Novels</h3>
-            <p>Test how well you know your favourite novels.</p>
+            <p>
+                Test how well you know your favourite novels.
+            </p>
         </div>
 
         <div class="category">
             <div class="icon">👑</div>
             <h3>Fictional Characters</h3>
-            <p>Discover which character matches your personality.</p>
+            <p>
+                Discover which character matches your personality.
+            </p>
         </div>
 
         <div class="category">
             <div class="icon">💕</div>
             <h3>Love & Personality</h3>
-            <p>Fun personality and fiction-based quizzes.</p>
+            <p>
+                Fun personality and fiction-based quizzes.
+            </p>
         </div>
 
         <div class="category">
             <div class="icon">🕵️</div>
             <h3>Mystery & Thriller</h3>
-            <p>Challenge your detective side.</p>
+            <p>
+                Challenge your detective side.
+            </p>
         </div>
 
     </div>
 
 </section>
 
+
+<!-- QUIZZES -->
+
 <section class="section quiz-section" id="quizzes">
 
     <div class="heading">
+
         <h2>🔥 Popular Quizzes</h2>
-        <p>Discover your fictional personality.</p>
+
+        <p>
+            Discover your fictional personality.
+        </p>
+
     </div>
 
     <div class="quizzes">
 
         <div class="quiz">
-            <div class="tag">Personality</div>
 
-            <h3>Which Fictional Character Are You?</h3>
+            <div class="tag">
+                Personality
+            </div>
+
+            <h3>
+                Which Fictional Character Are You?
+            </h3>
 
             <p>
-                Answer 5 questions and discover
+                Answer 7 questions and discover
                 your fictional personality.
             </p>
 
             <button onclick="startCharacterQuiz()">
                 Start Quiz →
             </button>
+
         </div>
 
-        <div class="quiz">
-            <div class="tag">Urdu Novels</div>
 
-            <h3>How Well Do You Know Urdu Novels?</h3>
+        <div class="quiz">
+
+            <div class="tag">
+                Urdu Novels
+            </div>
+
+            <h3>
+                How Well Do You Know Urdu Novels?
+            </h3>
 
             <p>
                 Test your knowledge of your favourite
@@ -406,12 +666,19 @@ footer p{
             <button onclick="comingSoon()">
                 Coming Soon
             </button>
+
         </div>
 
-        <div class="quiz">
-            <div class="tag">Mystery</div>
 
-            <h3>Can You Solve The Mystery?</h3>
+        <div class="quiz">
+
+            <div class="tag">
+                Mystery
+            </div>
+
+            <h3>
+                Can You Solve The Mystery?
+            </h3>
 
             <p>
                 Test your observation and detective skills.
@@ -420,6 +687,7 @@ footer p{
             <button onclick="comingSoon()">
                 Coming Soon
             </button>
+
         </div>
 
     </div>
@@ -427,37 +695,39 @@ footer p{
 
     <!-- WORKING QUIZ -->
 
-    <div id="quizArea" style="display:none; margin-top:50px;">
+    <div id="quizArea" style="display:none;">
 
         <div class="quiz" id="questionBox">
 
             <div class="tag" id="questionNumber">
-                Question 1 of 5
+                Question 1 / 7
             </div>
 
-            <div id="progressContainer"
-                 style="background:#eadbe4;
-                        height:8px;
-                        border-radius:20px;
-                        margin:18px 0;">
+            <div id="progressContainer">
 
-                <div id="progressBar"
-                     style="width:20%;
-                            height:100%;
-                            background:#9c4d76;
-                            border-radius:20px;">
+                <div id="progressBar">
                 </div>
 
             </div>
+
+
+            <!-- QUESTION IMAGE -->
+
+            <img
+                id="questionImage"
+                src=""
+                alt="Quiz Question"
+            >
+
 
             <h3 id="questionText">
                 Question will appear here
             </h3>
 
-            <div id="options"
-                 style="display:grid;
-                        gap:12px;
-                        margin-top:25px;">
+
+            <!-- ANSWERS -->
+
+            <div id="options">
             </div>
 
         </div>
@@ -465,32 +735,76 @@ footer p{
 
         <!-- RESULT -->
 
-        <div class="quiz"
-             id="resultBox"
-             style="display:none; text-align:center;">
+        <div
+            class="quiz"
+            id="resultBox"
+            style="display:none;"
+        >
 
-            <div class="icon">✨</div>
+            <!-- RESULT IMAGE -->
+
+            <img
+                id="resultImage"
+                src=""
+                alt="Quiz Result"
+            >
+
+
+            <div class="icon">
+                ✨
+            </div>
+
 
             <div class="tag">
                 Your Result
             </div>
 
+
             <h3 id="resultTitle">
                 Your Character
             </h3>
+
 
             <p id="resultText">
                 Your result will appear here.
             </p>
 
-            <button onclick="shareResult()">
-                🔗 Share Result
-            </button>
 
-            <button onclick="restartQuiz()"
-                    style="margin-left:8px;">
-                ↻ Try Again
-            </button>
+            <!-- RESULT BUTTONS -->
+
+            <div class="result-buttons">
+
+                <button
+                    class="share-main"
+                    onclick="shareResult()"
+                >
+                    🔗 Share Result
+                </button>
+
+
+                <button
+                    class="challenge-btn"
+                    onclick="challengeFriends()"
+                >
+                    👯 Challenge Friends
+                </button>
+
+
+                <button
+                    class="copy-btn"
+                    onclick="copyChallengeLink()"
+                >
+                    📋 Copy Challenge Link
+                </button>
+
+
+                <button
+                    onclick="restartQuiz()"
+                >
+                    ↻ Try Again
+                </button>
+
+            </div>
 
         </div>
 
@@ -498,12 +812,19 @@ footer p{
 
 </section>
 
+
+<!-- ABOUT -->
+
 <section class="section" id="about">
 
     <div class="about">
 
         <div class="heading">
-            <h2>Welcome to FictionQuiz ✨</h2>
+
+            <h2>
+                Welcome to FictionQuiz ✨
+            </h2>
+
         </div>
 
         <p>
@@ -516,31 +837,28 @@ footer p{
     </div>
 
 </section>
-<section class="section" id="about">
 
-    <div class="about">
 
-        <div class="heading">
-            <h2>Welcome to FictionQuiz ✨</h2>
-        </div>
-
-        <p>
-            FictionQuiz is a fun quiz space created for readers,
-            book lovers and fiction fans. Explore characters,
-            stories, personalities and exciting challenges —
-            and discover something new about yourself.
-        </p>
-
-    </div>
-
-</section>
+<!-- FOOTER -->
 
 <footer>
-    <p>© 2026 FictionQuiz. All rights reserved.</p>
-    <p>Made for readers who love fictional worlds. ✨</p>
+
+    <p>
+        © 2026 FictionQuiz. All rights reserved.
+    </p>
+
+    <p>
+        Made for readers who love fictional worlds. ✨
+    </p>
+
 </footer>
 
+
 <script>
+
+/* =========================================
+   QUIZ QUESTIONS
+========================================= */
 
 const quizQuestions = [
 
@@ -548,80 +866,203 @@ const quizQuestions = [
         question: "Agar koi tumhein underestimate kare, tum kya karogi?",
         image: "images/quiz/question-1.jpg",
         options: [
-            { text: "Khamoshi se prove karungi", type: 0, image: "images/quiz/q1-intelligent.jpg" },
-            { text: "Direct jawab dungi", type: 2, image: "images/quiz/q1-bold.jpg" },
-            { text: "Strategy banaungi", type: 1, image: "images/quiz/q1-strategy.jpg" },
-            { text: "Apne logon ko protect karungi", type: 3, image: "images/quiz/q1-protector.jpg" }
+            {
+                text: "Khamoshi se prove karungi",
+                type: 0,
+                image: "images/quiz/q1-answer-1.jpg"
+            },
+            {
+                text: "Direct jawab dungi",
+                type: 2,
+                image: "images/quiz/q1-answer-2.jpg"
+            },
+            {
+                text: "Strategy banaungi",
+                type: 1,
+                image: "images/quiz/q1-answer-3.jpg"
+            },
+            {
+                text: "Apne logon ko protect karungi",
+                type: 3,
+                image: "images/quiz/q1-answer-4.jpg"
+            }
         ]
     },
+
 
     {
         question: "Hero mein tumhein sabse attractive quality kya lagti hai?",
         image: "images/quiz/question-2.jpg",
         options: [
-            { text: "Intelligence", type: 0, image: "images/quiz/q2-intelligence.jpg" },
-            { text: "Confidence", type: 2, image: "images/quiz/q2-confidence.jpg" },
-            { text: "Mystery", type: 4, image: "images/quiz/q2-mystery.jpg" },
-            { text: "Loyalty", type: 3, image: "images/quiz/q2-loyalty.jpg" }
+            {
+                text: "Intelligence",
+                type: 0,
+                image: "images/quiz/q2-answer-1.jpg"
+            },
+            {
+                text: "Confidence",
+                type: 2,
+                image: "images/quiz/q2-answer-2.jpg"
+            },
+            {
+                text: "Mystery",
+                type: 4,
+                image: "images/quiz/q2-answer-3.jpg"
+            },
+            {
+                text: "Loyalty",
+                type: 3,
+                image: "images/quiz/q2-answer-4.jpg"
+            }
         ]
     },
+
 
     {
         question: "Tumhein koi important secret pata chale to?",
         image: "images/quiz/question-3.jpg",
         options: [
-            { text: "Investigate karungi", type: 0, image: "images/quiz/q3-investigate.jpg" },
-            { text: "Kisi ko nahi bataungi", type: 4, image: "images/quiz/q3-secret.jpg" },
-            { text: "Information carefully use karungi", type: 1, image: "images/quiz/q3-strategy.jpg" },
-            { text: "Trusted person ko bataungi", type: 3, image: "images/quiz/q3-trust.jpg" }
+            {
+                text: "Investigate karungi",
+                type: 0,
+                image: "images/quiz/q3-answer-1.jpg"
+            },
+            {
+                text: "Kisi ko nahi bataungi",
+                type: 4,
+                image: "images/quiz/q3-answer-2.jpg"
+            },
+            {
+                text: "Information carefully use karungi",
+                type: 1,
+                image: "images/quiz/q3-answer-3.jpg"
+            },
+            {
+                text: "Trusted person ko bataungi",
+                type: 3,
+                image: "images/quiz/q3-answer-4.jpg"
+            }
         ]
     },
+
 
     {
         question: "Story mein tumhara role kya hota?",
         image: "images/quiz/question-4.jpg",
         options: [
-            { text: "Intelligent observer", type: 0, image: "images/quiz/q4-observer.jpg" },
-            { text: "Strong decision-maker", type: 2, image: "images/quiz/q4-leader.jpg" },
-            { text: "Mystery solver", type: 4, image: "images/quiz/q4-mystery.jpg" },
-            { text: "Loyal protector", type: 3, image: "images/quiz/q4-protector.jpg" }
+            {
+                text: "Intelligent observer",
+                type: 0,
+                image: "images/quiz/q4-answer-1.jpg"
+            },
+            {
+                text: "Strong decision-maker",
+                type: 2,
+                image: "images/quiz/q4-answer-2.jpg"
+            },
+            {
+                text: "Mystery solver",
+                type: 4,
+                image: "images/quiz/q4-answer-3.jpg"
+            },
+            {
+                text: "Loyal protector",
+                type: 3,
+                image: "images/quiz/q4-answer-4.jpg"
+            }
         ]
     },
+
 
     {
         question: "Tumhari strongest quality kya hai?",
         image: "images/quiz/question-5.jpg",
         options: [
-            { text: "Intelligence", type: 0, image: "images/quiz/q5-intelligence.jpg" },
-            { text: "Determination", type: 1, image: "images/quiz/q5-determination.jpg" },
-            { text: "Emotional depth", type: 3, image: "images/quiz/q5-depth.jpg" },
-            { text: "Strategic thinking", type: 5, image: "images/quiz/q5-strategy.jpg" }
+            {
+                text: "Intelligence",
+                type: 0,
+                image: "images/quiz/q5-answer-1.jpg"
+            },
+            {
+                text: "Determination",
+                type: 1,
+                image: "images/quiz/q5-answer-2.jpg"
+            },
+            {
+                text: "Emotional depth",
+                type: 3,
+                image: "images/quiz/q5-answer-3.jpg"
+            },
+            {
+                text: "Strategic thinking",
+                type: 5,
+                image: "images/quiz/q5-answer-4.jpg"
+            }
         ]
     },
+
 
     {
         question: "Difficult situation mein tum kya karti ho?",
         image: "images/quiz/question-6.jpg",
         options: [
-            { text: "Pehle observe karti hoon", type: 0, image: "images/quiz/q6-observe.jpg" },
-            { text: "Phir action leti hoon", type: 2, image: "images/quiz/q6-action.jpg" },
-            { text: "Plan bana kar move karti hoon", type: 1, image: "images/quiz/q6-plan.jpg" },
-            { text: "Apne people ko safe rakhti hoon", type: 3, image: "images/quiz/q6-protect.jpg" }
+            {
+                text: "Pehle observe karti hoon",
+                type: 0,
+                image: "images/quiz/q6-answer-1.jpg"
+            },
+            {
+                text: "Phir action leti hoon",
+                type: 2,
+                image: "images/quiz/q6-answer-2.jpg"
+            },
+            {
+                text: "Plan bana kar move karti hoon",
+                type: 1,
+                image: "images/quiz/q6-answer-3.jpg"
+            },
+            {
+                text: "Apne people ko safe rakhti hoon",
+                type: 3,
+                image: "images/quiz/q6-answer-4.jpg"
+            }
         ]
     },
+
 
     {
         question: "Tumhari personality ka vibe kya hai?",
         image: "images/quiz/question-7.jpg",
         options: [
-            { text: "Calm & Intelligent", type: 0, image: "images/quiz/q7-calm.jpg" },
-            { text: "Powerful & Confident", type: 2, image: "images/quiz/q7-power.jpg" },
-            { text: "Mysterious & Deep", type: 4, image: "images/quiz/q7-mystery.jpg" },
-            { text: "Bold & Strategic", type: 5, image: "images/quiz/q7-bold.jpg" }
+            {
+                text: "Calm & Intelligent",
+                type: 0,
+                image: "images/quiz/q7-answer-1.jpg"
+            },
+            {
+                text: "Powerful & Confident",
+                type: 2,
+                image: "images/quiz/q7-answer-2.jpg"
+            },
+            {
+                text: "Mysterious & Deep",
+                type: 4,
+                image: "images/quiz/q7-answer-3.jpg"
+            },
+            {
+                text: "Bold & Strategic",
+                type: 5,
+                image: "images/quiz/q7-answer-4.jpg"
+            }
         ]
     }
 
 ];
+
+
+/* =========================================
+   QUIZ RESULTS
+========================================= */
 
 const quizResults = [
 
@@ -632,12 +1073,14 @@ const quizResults = [
         emoji: "🧠"
     },
 
+
     {
         name: "Salar Sikandar Energy",
         title: "The Strategic Mind ♟️",
         description: "Tumhara mind naturally plans aur possibilities ko analyze karta hai. Tum impulsive moves ke bajaye calculated decisions ko prefer karti ho.",
         emoji: "♟️"
     },
+
 
     {
         name: "Faris Ghazi Energy",
@@ -646,6 +1089,7 @@ const quizResults = [
         emoji: "🔥"
     },
 
+
     {
         name: "Wajdan Mustafa Energy",
         title: "The Deep Thinker 🌙",
@@ -653,12 +1097,14 @@ const quizResults = [
         emoji: "🌙"
     },
 
+
     {
         name: "Wali Ahmed Energy",
         title: "The Calm Mystery 🖤",
         description: "Tumhari personality mein ek quiet mysterious vibe hai. Tum har baat sabko explain nahi karti aur apni world ko carefully protect karti ho.",
         emoji: "🖤"
     },
+
 
     {
         name: "Faris Wajgan Energy",
@@ -669,32 +1115,49 @@ const quizResults = [
 
 ];
 
+
 let currentQuestion = 0;
-let scores = [0, 0, 0, 0, 0, 0];
+
+let scores = [0,0,0,0,0,0];
+
 let finalResult = null;
 
+let finalResultIndex = null;
 
-/* START QUIZ */
 
-function startCharacterQuiz() {
+/* =========================================
+   START QUIZ
+========================================= */
+
+function startCharacterQuiz(){
 
     currentQuestion = 0;
-    scores = [0, 0, 0, 0, 0, 0];
+
+    scores = [0,0,0,0,0,0];
+
+    finalResult = null;
+
+    finalResultIndex = null;
 
     document.getElementById("quizArea").style.display = "block";
+
+    document.getElementById("questionBox").style.display = "block";
+
     document.getElementById("resultBox").style.display = "none";
 
     document.getElementById("quizArea").scrollIntoView({
-        behavior: "smooth"
+        behavior:"smooth"
     });
 
     showQuestion();
 }
 
 
-/* SHOW QUESTION */
+/* =========================================
+   SHOW QUESTION
+========================================= */
 
-function showQuestion() {
+function showQuestion(){
 
     const q = quizQuestions[currentQuestion];
 
@@ -704,138 +1167,402 @@ function showQuestion() {
     document.getElementById("progressBar").style.width =
         `${((currentQuestion + 1) / quizQuestions.length) * 100}%`;
 
-    document.getElementById("questionText").textContent = q.question;
+    document.getElementById("questionText").textContent =
+        q.question;
 
-    const questionImage = document.getElementById("questionImage");
 
-    if (questionImage) {
-        questionImage.src = q.image;
-    }
+    const questionImage =
+        document.getElementById("questionImage");
 
-    const optionsBox = document.getElementById("options");
+    questionImage.src = q.image;
+
+
+    const optionsBox =
+        document.getElementById("options");
 
     optionsBox.innerHTML = "";
 
-    q.options.forEach((option) => {
 
-        const button = document.createElement("button");
+    q.options.forEach(function(option){
+
+        const button =
+            document.createElement("button");
 
         button.className = "quiz-option";
+
 
         button.innerHTML = `
             <img src="${option.image}" alt="">
             <span>${option.text}</span>
         `;
 
-        button.onclick = function () {
+
+        button.onclick = function(){
+
             selectAnswer(option.type);
+
         };
+
 
         optionsBox.appendChild(button);
 
     });
+
 }
 
 
-/* SELECT ANSWER */
+/* =========================================
+   SELECT ANSWER
+========================================= */
 
-function selectAnswer(type) {
+function selectAnswer(type){
 
     scores[type]++;
 
     currentQuestion++;
 
-    if (currentQuestion < quizQuestions.length) {
+
+    if(currentQuestion < quizQuestions.length){
 
         showQuestion();
 
-    } else {
+    }else{
 
         showResult();
 
     }
+
 }
 
 
-/* SHOW RESULT */
+/* =========================================
+   SHOW RESULT
+========================================= */
 
-function showResult() {
+function showResult(){
 
-    let highestScore = Math.max(...scores);
+    let highestScore =
+        Math.max(...scores);
 
-    let resultIndex = scores.indexOf(highestScore);
+    let resultIndex =
+        scores.indexOf(highestScore);
 
-    finalResult = quizResults[resultIndex];
 
-    document.getElementById("quizArea").style.display = "none";
+    finalResultIndex = resultIndex;
 
-    document.getElementById("resultBox").style.display = "block";
+    finalResult =
+        quizResults[resultIndex];
+
+
+    document.getElementById("questionBox").style.display =
+        "none";
+
+
+    document.getElementById("resultBox").style.display =
+        "block";
+
 
     document.getElementById("resultTitle").textContent =
         finalResult.name;
 
+
     document.getElementById("resultText").innerHTML = `
-        <strong>${finalResult.title}</strong><br><br>
+        <strong>${finalResult.title}</strong>
+        <br><br>
         ${finalResult.description}
     `;
 
+
+    /* RESULT IMAGE */
+
+    const resultImage =
+        document.getElementById("resultImage");
+
+    resultImage.src =
+        `images/quiz/result-${resultIndex + 1}.jpg`;
+
+
     document.getElementById("resultBox").scrollIntoView({
-        behavior: "smooth"
+        behavior:"smooth"
     });
 
 }
 
 
-/* PLAY AGAIN */
+/* =========================================
+   PLAY AGAIN
+========================================= */
 
-function restartQuiz() {
+function restartQuiz(){
 
-    document.getElementById("resultBox").style.display = "none";
+    document.getElementById("resultBox").style.display =
+        "none";
+
+    document.getElementById("questionBox").style.display =
+        "block";
 
     startCharacterQuiz();
 
 }
 
 
-/* SHARE RESULT */
+/* =========================================
+   SHARE RESULT
+========================================= */
 
-function shareResult() {
+function shareResult(){
 
-    if (!finalResult) return;
+    if(finalResultIndex === null) return;
+
+
+    const result =
+        quizResults[finalResultIndex];
+
 
     const shareText =
-        `I got "${finalResult.name}" on FictionQuiz ✨\n\nCan you beat my result?`;
+        `I got "${result.name}" on FictionQuiz ✨
 
-    const shareUrl = window.location.href;
+${result.title}
 
-    if (navigator.share) {
+Can you discover your fictional character energy?`;
+
+
+    const shareUrl =
+        window.location.origin +
+        window.location.pathname +
+        `?result=${finalResultIndex + 1}`;
+
+
+    if(navigator.share){
 
         navigator.share({
-            title: "My FictionQuiz Result ✨",
-            text: shareText,
-            url: shareUrl
+
+            title:"My FictionQuiz Result ✨",
+
+            text:shareText,
+
+            url:shareUrl
+
+        }).catch(function(){
+
+            /* User cancelled share */
+
         });
 
-    } else {
+    }else{
 
-        navigator.clipboard.writeText(
-            shareText + "\n" + shareUrl
+        copyText(
+            shareText +
+            "\n\n" +
+            shareUrl
         );
 
-        alert("Result link copied! ✨");
+        alert(
+            "Your result link has been copied! ✨"
+        );
 
     }
 
 }
 
 
-/* COMING SOON */
+/* =========================================
+   CHALLENGE FRIENDS
+========================================= */
 
-function comingSoon() {
+function challengeFriends(){
 
-    alert("This quiz is coming soon! ✨");
+    const challengeUrl =
+        window.location.origin +
+        window.location.pathname;
+
+
+    const challengeText =
+        `I just took a FictionQuiz challenge! ✨
+
+Now it's your turn.
+
+Can you discover which fictional character energy matches you? 👀
+
+Take the quiz:
+${challengeUrl}`;
+
+
+    if(navigator.share){
+
+        navigator.share({
+
+            title:"FictionQuiz Challenge ✨",
+
+            text:challengeText,
+
+            url:challengeUrl
+
+        }).catch(function(){
+
+            /* User cancelled share */
+
+        });
+
+    }else{
+
+        copyText(challengeText);
+
+        alert(
+            "Challenge link copied! Send it to your friends ✨"
+        );
+
+    }
 
 }
+
+
+/* =========================================
+   COPY CHALLENGE LINK
+========================================= */
+
+function copyChallengeLink(){
+
+    const challengeUrl =
+        window.location.origin +
+        window.location.pathname;
+
+
+    copyText(challengeUrl);
+
+
+    alert(
+        "Challenge link copied! ✨"
+    );
+
+}
+
+
+/* =========================================
+   COPY TEXT
+========================================= */
+
+function copyText(text){
+
+    if(navigator.clipboard){
+
+        navigator.clipboard.writeText(text);
+
+    }else{
+
+        const textarea =
+            document.createElement("textarea");
+
+        textarea.value = text;
+
+        document.body.appendChild(textarea);
+
+        textarea.select();
+
+        document.execCommand("copy");
+
+        textarea.remove();
+
+    }
+
+}
+
+
+/* =========================================
+   OPEN SHARED RESULT
+========================================= */
+
+function openSharedResult(){
+
+    const params =
+        new URLSearchParams(window.location.search);
+
+    const resultNumber =
+        parseInt(params.get("result"));
+
+
+    if(
+        resultNumber >= 1 &&
+        resultNumber <= quizResults.length
+    ){
+
+        const resultIndex =
+            resultNumber - 1;
+
+
+        finalResultIndex =
+            resultIndex;
+
+
+        finalResult =
+            quizResults[resultIndex];
+
+
+        document.getElementById("quizArea").style.display =
+            "block";
+
+
+        document.getElementById("questionBox").style.display =
+            "none";
+
+
+        document.getElementById("resultBox").style.display =
+            "block";
+
+
+        document.getElementById("resultTitle").textContent =
+            finalResult.name;
+
+
+        document.getElementById("resultText").innerHTML = `
+            <strong>${finalResult.title}</strong>
+            <br><br>
+            ${finalResult.description}
+        `;
+
+
+        document.getElementById("resultImage").src =
+            `images/quiz/result-${resultIndex + 1}.jpg`;
+
+
+        setTimeout(function(){
+
+            document.getElementById("resultBox").scrollIntoView({
+                behavior:"smooth"
+            });
+
+        },300);
+
+    }
+
+}
+
+
+/* =========================================
+   COMING SOON
+========================================= */
+
+function comingSoon(){
+
+    alert(
+        "This quiz is coming soon! ✨"
+    );
+
+}
+
+
+/* =========================================
+   LOAD SHARED RESULT
+========================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        openSharedResult();
+
+    }
+);
 
 </script>
 
