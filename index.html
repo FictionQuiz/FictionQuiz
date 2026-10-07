@@ -373,43 +373,149 @@ footer p{
 
     <div class="heading">
         <h2>🔥 Popular Quizzes</h2>
-        <p>More exciting quizzes are coming soon.</p>
+        <p>Discover your fictional personality.</p>
     </div>
 
     <div class="quizzes">
 
         <div class="quiz">
             <div class="tag">Personality</div>
+
             <h3>Which Fictional Character Are You?</h3>
+
             <p>
-                Answer a few questions and discover
+                Answer 5 questions and discover
                 your fictional personality.
             </p>
-            <button onclick="comingSoon()">Start Quiz →</button>
+
+            <button onclick="startCharacterQuiz()">
+                Start Quiz →
+            </button>
         </div>
 
         <div class="quiz">
             <div class="tag">Urdu Novels</div>
+
             <h3>How Well Do You Know Urdu Novels?</h3>
+
             <p>
-                Put your novel knowledge to the test.
+                Test your knowledge of your favourite
+                fictional worlds.
             </p>
-            <button onclick="comingSoon()">Start Quiz →</button>
+
+            <button onclick="comingSoon()">
+                Coming Soon
+            </button>
         </div>
 
         <div class="quiz">
             <div class="tag">Mystery</div>
+
             <h3>Can You Solve The Mystery?</h3>
+
             <p>
                 Test your observation and detective skills.
             </p>
-            <button onclick="comingSoon()">Start Quiz →</button>
+
+            <button onclick="comingSoon()">
+                Coming Soon
+            </button>
+        </div>
+
+    </div>
+
+
+    <!-- WORKING QUIZ -->
+
+    <div id="quizArea" style="display:none; margin-top:50px;">
+
+        <div class="quiz" id="questionBox">
+
+            <div class="tag" id="questionNumber">
+                Question 1 of 5
+            </div>
+
+            <div id="progressContainer"
+                 style="background:#eadbe4;
+                        height:8px;
+                        border-radius:20px;
+                        margin:18px 0;">
+
+                <div id="progressBar"
+                     style="width:20%;
+                            height:100%;
+                            background:#9c4d76;
+                            border-radius:20px;">
+                </div>
+
+            </div>
+
+            <h3 id="questionText">
+                Question will appear here
+            </h3>
+
+            <div id="options"
+                 style="display:grid;
+                        gap:12px;
+                        margin-top:25px;">
+            </div>
+
+        </div>
+
+
+        <!-- RESULT -->
+
+        <div class="quiz"
+             id="resultBox"
+             style="display:none; text-align:center;">
+
+            <div class="icon">✨</div>
+
+            <div class="tag">
+                Your Result
+            </div>
+
+            <h3 id="resultTitle">
+                Your Character
+            </h3>
+
+            <p id="resultText">
+                Your result will appear here.
+            </p>
+
+            <button onclick="shareResult()">
+                🔗 Share Result
+            </button>
+
+            <button onclick="restartQuiz()"
+                    style="margin-left:8px;">
+                ↻ Try Again
+            </button>
+
         </div>
 
     </div>
 
 </section>
 
+<section class="section" id="about">
+
+    <div class="about">
+
+        <div class="heading">
+            <h2>Welcome to FictionQuiz ✨</h2>
+        </div>
+
+        <p>
+            FictionQuiz is a fun quiz space created for readers,
+            book lovers and fiction fans. Explore characters,
+            stories, personalities and exciting challenges —
+            and discover something new about yourself.
+        </p>
+
+    </div>
+
+</section>
 <section class="section" id="about">
 
     <div class="about">
