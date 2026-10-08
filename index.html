@@ -5,41 +5,38 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>FictionQuiz | Personality, Relationship & Fiction Quizzes</title>
+<title>FictionQuiz | Fun Personality, Novel & Fiction Quizzes</title>
 
-<meta name="description" content="Play fun personality, relationship, friendship, fictional character and Urdu novel quizzes. Discover your personality, explore your relationship vibe, get your result and challenge your friends.">
+<meta name="description" content="Play fun personality, relationship, fictional character and Urdu novel quizzes. Discover your personality, test your novel knowledge, get your result and challenge your friends.">
 
-<meta name="keywords" content="fiction quiz, personality quiz, relationship quiz, friendship quiz, Urdu novel quiz, fictional character quiz, book quiz, fun quizzes">
+<meta name="keywords" content="fiction quiz, personality quiz, relationship quiz, Urdu novel quiz, novel lover quiz, novel knowledge quiz, fictional character quiz, book quiz, fun quizzes">
 
 <meta name="author" content="FictionQuiz">
-
 <meta name="robots" content="index, follow">
 
 <link rel="canonical" href="https://fictionquiz.github.io/FictionQuiz/">
 
 <meta name="theme-color" content="#9c4d76">
 
-<!-- FAVICON -->
 <link rel="icon" type="image/png" href="images/favicon.png">
 <link rel="apple-touch-icon" href="images/favicon.png">
 
-<!-- OPEN GRAPH -->
-<meta property="og:title" content="FictionQuiz | Personality, Relationship & Fiction Quizzes">
-<meta property="og:description" content="Play fun personality, relationship, friendship, fictional character and Urdu novel quizzes. Discover your result and challenge your friends.">
+<!-- Open Graph -->
+<meta property="og:title" content="FictionQuiz | Fun Personality, Novel & Fiction Quizzes">
+<meta property="og:description" content="Discover your personality, test your novel knowledge and challenge your friends with fun FictionQuiz games.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://fictionquiz.github.io/FictionQuiz/">
 <meta property="og:image" content="https://fictionquiz.github.io/FictionQuiz/images/favicon.png">
 <meta property="og:site_name" content="FictionQuiz">
 
-<!-- TWITTER -->
+<!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="FictionQuiz | Personality, Relationship & Fiction Quizzes">
-<meta name="twitter:description" content="Play fun personality, relationship, friendship, fictional character and Urdu novel quizzes.">
+<meta name="twitter:title" content="FictionQuiz | Fun Personality, Novel & Fiction Quizzes">
+<meta name="twitter:description" content="Play fun personality, relationship, fictional character and novel quizzes.">
 <meta name="twitter:image" content="https://fictionquiz.github.io/FictionQuiz/images/favicon.png">
 
-<!-- GOOGLE ANALYTICS -->
+<!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-5KSCSN8Z5M"></script>
-
 <script>
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
@@ -47,1450 +44,2549 @@ gtag('js', new Date());
 gtag('config', 'G-5KSCSN8Z5M');
 </script>
 
+<!-- Website Schema -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebSite",
+  "name":"FictionQuiz",
+  "url":"https://fictionquiz.github.io/FictionQuiz/",
+  "description":"Fun personality, relationship, fictional character and Urdu novel quizzes."
+}
+</script>
+
 <style>
 
+:root{
+  --pink:#b85c89;
+  --pink-dark:#873d67;
+  --pink-light:#f8e7f0;
+  --purple:#70558e;
+  --lavender:#eee8f7;
+  --cream:#fffaf7;
+  --text:#302535;
+  --muted:#756a78;
+  --green:#2eaf68;
+  --green-light:#eafaf1;
+  --red:#e95767;
+  --red-light:#fff0f2;
+  --gold:#d9a83f;
+  --white:#ffffff;
+  --shadow:0 18px 50px rgba(90,55,86,.12);
+  --radius:24px;
+}
+
 *{
-    box-sizing:border-box;
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
 
 html{
-    scroll-behavior:smooth;
+  scroll-behavior:smooth;
 }
 
 body{
-    margin:0;
-    font-family:Arial, Helvetica, sans-serif;
-    background:
-        radial-gradient(circle at top left,#fff1f7 0%,transparent 35%),
-        radial-gradient(circle at top right,#eee6ff 0%,transparent 35%),
-        #fffafc;
-    color:#3b2940;
+  font-family:Arial,Helvetica,sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(circle at 10% 10%,rgba(255,210,231,.55),transparent 28%),
+    radial-gradient(circle at 90% 20%,rgba(218,207,246,.55),transparent 30%),
+    linear-gradient(135deg,#fff9fc,#f7f2fb 55%,#fffaf7);
+  min-height:100vh;
+  overflow-x:hidden;
 }
+
+button,
+input{
+  font-family:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+/* =========================
+   HEADER
+========================= */
 
 header{
-    position:sticky;
-    top:0;
-    z-index:1000;
-    background:rgba(255,250,252,.96);
-    backdrop-filter:blur(12px);
-    border-bottom:1px solid #ead8e2;
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(255,255,255,.84);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(135,61,103,.08);
 }
 
-.nav{
-    max-width:1150px;
-    margin:auto;
-    padding:16px 20px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+.navbar{
+  max-width:1180px;
+  margin:auto;
+  padding:16px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
 }
 
 .logo{
-    font-size:24px;
-    font-weight:800;
-    color:#9c4d76;
-    text-decoration:none;
+  text-decoration:none;
+  color:var(--pink-dark);
+  font-size:25px;
+  font-weight:900;
+  letter-spacing:-1px;
+}
+
+.logo span{
+  color:var(--gold);
 }
 
 .nav-links{
-    display:flex;
-    gap:22px;
+  display:flex;
+  align-items:center;
+  gap:8px;
 }
 
 .nav-links a{
-    text-decoration:none;
-    color:#65465a;
-    font-weight:600;
-    font-size:14px;
+  text-decoration:none;
+  color:#554957;
+  font-size:14px;
+  font-weight:700;
+  padding:10px 14px;
+  border-radius:999px;
+  transition:.25s;
 }
 
 .nav-links a:hover{
-    color:#9c4d76;
+  background:var(--pink-light);
+  color:var(--pink-dark);
 }
+
+/* =========================
+   HERO
+========================= */
 
 .hero{
-    max-width:1150px;
-    margin:auto;
-    padding:85px 20px 70px;
-    text-align:center;
+  position:relative;
+  max-width:1180px;
+  margin:auto;
+  padding:80px 20px 55px;
+  text-align:center;
+  overflow:hidden;
 }
 
-.badge{
-    display:inline-block;
-    background:#f5e3ed;
-    color:#9c4d76;
-    padding:8px 15px;
-    border-radius:30px;
-    font-size:13px;
-    font-weight:bold;
-    margin-bottom:18px;
+.hero::before,
+.hero::after{
+  content:"";
+  position:absolute;
+  border-radius:50%;
+  filter:blur(2px);
+  pointer-events:none;
+}
+
+.hero::before{
+  width:170px;
+  height:170px;
+  background:rgba(255,180,211,.25);
+  left:-70px;
+  top:60px;
+}
+
+.hero::after{
+  width:220px;
+  height:220px;
+  background:rgba(197,182,238,.22);
+  right:-100px;
+  top:10px;
+}
+
+.hero-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:rgba(255,255,255,.8);
+  border:1px solid rgba(184,92,137,.16);
+  padding:9px 16px;
+  border-radius:999px;
+  color:var(--pink-dark);
+  font-size:13px;
+  font-weight:800;
+  box-shadow:0 8px 25px rgba(90,55,86,.07);
+  margin-bottom:20px;
 }
 
 .hero h1{
-    font-size:48px;
-    line-height:1.1;
-    margin:0 auto 18px;
-    max-width:800px;
-    color:#4b2943;
+  position:relative;
+  z-index:1;
+  font-size:clamp(42px,7vw,76px);
+  line-height:.98;
+  letter-spacing:-3px;
+  max-width:850px;
+  margin:auto;
+  background:linear-gradient(135deg,#79375f,#b85c89,#71558d);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
 }
 
 .hero p{
-    max-width:680px;
-    margin:auto;
-    font-size:18px;
-    line-height:1.7;
-    color:#735d6e;
+  max-width:690px;
+  margin:24px auto;
+  font-size:17px;
+  line-height:1.7;
+  color:var(--muted);
 }
+
+.hero-actions{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:28px;
+}
+
+.primary-btn,
+.secondary-btn{
+  border:0;
+  padding:14px 23px;
+  border-radius:999px;
+  font-size:15px;
+  font-weight:800;
+  transition:.25s;
+}
+
+.primary-btn{
+  color:white;
+  background:linear-gradient(135deg,var(--pink-dark),var(--pink));
+  box-shadow:0 12px 28px rgba(184,92,137,.25);
+}
+
+.primary-btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 16px 35px rgba(184,92,137,.3);
+}
+
+.secondary-btn{
+  color:var(--pink-dark);
+  background:white;
+  border:1px solid rgba(184,92,137,.15);
+}
+
+.secondary-btn:hover{
+  transform:translateY(-3px);
+  background:var(--pink-light);
+}
+
+.hero-stats{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:35px;
+}
+
+.stat-pill{
+  background:rgba(255,255,255,.75);
+  border:1px solid rgba(184,92,137,.12);
+  border-radius:999px;
+  padding:10px 15px;
+  color:#65576a;
+  font-size:13px;
+  font-weight:700;
+}
+
+/* =========================
+   SECTIONS
+========================= */
 
 .section{
-    max-width:1150px;
-    margin:auto;
-    padding:60px 20px;
+  max-width:1180px;
+  margin:auto;
+  padding:45px 20px 80px;
 }
 
-.section-title{
-    text-align:center;
-    margin-bottom:35px;
+.section-heading{
+  text-align:center;
+  margin-bottom:32px;
 }
 
-.section-title h2{
-    font-size:32px;
-    margin:0 0 10px;
-    color:#4b2943;
+.section-heading .mini{
+  color:var(--pink);
+  font-size:12px;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  margin-bottom:8px;
 }
 
-.section-title p{
-    color:#806b7a;
-    margin:0;
+.section-heading h2{
+  font-size:clamp(30px,5vw,44px);
+  letter-spacing:-1.5px;
+  margin-bottom:10px;
 }
+
+.section-heading p{
+  color:var(--muted);
+  max-width:620px;
+  margin:auto;
+  line-height:1.6;
+}
+
+/* =========================
+   QUIZ GRID
+========================= */
 
 .quiz-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:22px;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:22px;
 }
 
 .quiz-card{
-    background:white;
-    border:1px solid #ead8e2;
-    border-radius:24px;
-    padding:25px;
-    box-shadow:0 12px 35px rgba(100,50,90,.08);
-    transition:.25s;
+  position:relative;
+  overflow:hidden;
+  background:rgba(255,255,255,.91);
+  border:1px solid rgba(120,80,120,.1);
+  border-radius:28px;
+  padding:28px;
+  box-shadow:var(--shadow);
+  transition:.3s ease;
 }
 
 .quiz-card:hover{
-    transform:translateY(-5px);
-    box-shadow:0 18px 40px rgba(100,50,90,.13);
+  transform:translateY(-7px);
+  box-shadow:0 25px 65px rgba(90,55,86,.17);
+}
+
+.quiz-card.featured{
+  border:1px solid rgba(184,92,137,.25);
+  background:
+    radial-gradient(circle at 100% 0%,rgba(255,206,226,.45),transparent 38%),
+    white;
+}
+
+.quiz-card::after{
+  content:"✦";
+  position:absolute;
+  right:22px;
+  top:18px;
+  color:rgba(184,92,137,.16);
+  font-size:50px;
 }
 
 .quiz-icon{
-    width:65px;
-    height:65px;
-    border-radius:18px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:#f8e8f0;
-    font-size:32px;
-    margin-bottom:18px;
+  width:65px;
+  height:65px;
+  border-radius:20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:31px;
+  background:linear-gradient(135deg,#f9e4ef,#eee7f8);
+  margin-bottom:18px;
+}
+
+.quiz-tag{
+  display:inline-block;
+  padding:6px 10px;
+  background:var(--pink-light);
+  color:var(--pink-dark);
+  border-radius:999px;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  margin-bottom:11px;
 }
 
 .quiz-card h3{
-    margin:0 0 10px;
-    color:#4b2943;
-    font-size:21px;
+  font-size:24px;
+  margin-bottom:9px;
+  line-height:1.2;
 }
 
 .quiz-card p{
-    color:#786676;
-    line-height:1.6;
-    min-height:70px;
+  color:var(--muted);
+  line-height:1.6;
+  font-size:14px;
+  min-height:45px;
 }
 
-.btn{
-    border:0;
-    border-radius:14px;
-    padding:13px 19px;
-    background:#9c4d76;
-    color:white;
-    font-weight:bold;
-    cursor:pointer;
-    font-size:15px;
-    transition:.2s;
+.quiz-meta{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin:17px 0;
 }
 
-.btn:hover{
-    background:#7f3d60;
-    transform:translateY(-1px);
+.quiz-meta span{
+  background:#faf7fa;
+  border:1px solid #eee5ed;
+  padding:7px 10px;
+  border-radius:999px;
+  color:#716474;
+  font-size:11px;
+  font-weight:700;
 }
 
-.btn.secondary{
-    background:#f1dce7;
-    color:#7e3e60;
+.quiz-start{
+  width:100%;
+  border:0;
+  border-radius:15px;
+  padding:13px 16px;
+  background:#302535;
+  color:white;
+  font-weight:800;
+  transition:.25s;
 }
 
-.btn.light{
-    background:#fff;
-    color:#9c4d76;
-    border:1px solid #e5cad8;
+.quiz-start:hover{
+  background:var(--pink-dark);
+  transform:translateY(-2px);
 }
 
-.about{
-    background:#fff;
-    border-top:1px solid #ead8e2;
-    border-bottom:1px solid #ead8e2;
+.featured .quiz-start{
+  background:linear-gradient(135deg,var(--pink-dark),var(--pink));
 }
 
-.about-box{
-    max-width:850px;
-    margin:auto;
-    text-align:center;
-}
-
-.about-box p{
-    color:#715f6d;
-    line-height:1.8;
-}
-
-footer{
-    background:#432d3d;
-    color:#f7edf3;
-    text-align:center;
-    padding:35px 20px;
-}
-
-footer p{
-    margin:7px 0;
-    font-size:14px;
-}
-
-footer a{
-    color:#f1cfe0;
-    text-decoration:none;
-    margin:0 8px;
-}
-
-footer a:hover{
-    text-decoration:underline;
-}
-
-/* QUIZ AREA */
+/* =========================
+   QUIZ SCREEN
+========================= */
 
 .quiz-screen{
-    display:none;
-    max-width:900px;
-    margin:40px auto 80px;
-    padding:0 20px;
+  display:none;
+  min-height:70vh;
+  padding:45px 20px 80px;
 }
 
 .quiz-box{
-    background:white;
-    border:1px solid #ead8e2;
-    border-radius:28px;
-    padding:30px;
-    box-shadow:0 18px 55px rgba(80,40,70,.12);
+  max-width:800px;
+  margin:auto;
+  background:rgba(255,255,255,.96);
+  border:1px solid rgba(120,80,120,.1);
+  border-radius:30px;
+  padding:30px;
+  box-shadow:0 25px 70px rgba(70,40,70,.13);
 }
 
 .quiz-top{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:15px;
-    margin-bottom:20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  margin-bottom:15px;
 }
 
-.quiz-number{
-    color:#9c4d76;
-    font-weight:bold;
+.quiz-label{
+  color:var(--pink-dark);
+  font-size:13px;
+  font-weight:900;
+}
+
+.question-count{
+  color:#766979;
+  font-size:13px;
+  font-weight:800;
 }
 
 .progress-wrap{
-    width:100%;
-    height:9px;
-    background:#f1e4eb;
-    border-radius:20px;
-    overflow:hidden;
-    margin-bottom:30px;
+  width:100%;
+  height:9px;
+  background:#f0eaf1;
+  border-radius:999px;
+  overflow:hidden;
+  margin-bottom:32px;
 }
 
-.progress{
-    height:100%;
-    width:0%;
-    background:#9c4d76;
-    transition:.3s;
+.progress-bar{
+  height:100%;
+  width:0%;
+  background:linear-gradient(90deg,var(--pink-dark),var(--pink),#d9a4bd);
+  border-radius:999px;
+  transition:width .45s ease;
 }
 
 .question{
-    font-size:28px;
-    line-height:1.4;
-    text-align:center;
-    margin:20px auto 30px;
-    color:#4b2943;
+  font-size:clamp(23px,4vw,32px);
+  line-height:1.3;
+  text-align:center;
+  margin-bottom:25px;
+  letter-spacing:-.5px;
 }
 
 .answer-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:18px;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
 }
 
 .answer-card{
-    border:2px solid #ead8e2;
-    background:#fff;
-    border-radius:20px;
-    padding:0;
-    overflow:hidden;
-    cursor:pointer;
-    transition:.25s;
-    text-align:left;
+  position:relative;
+  border:2px solid #eee7ed;
+  border-radius:22px;
+  overflow:hidden;
+  background:white;
+  padding:0;
+  text-align:left;
+  transition:.25s;
 }
 
 .answer-card:hover{
-    border-color:#c783a4;
-    transform:translateY(-3px);
-    box-shadow:0 10px 25px rgba(100,50,90,.12);
+  transform:translateY(-3px);
+  border-color:#d9b4c8;
+  box-shadow:0 12px 28px rgba(80,50,80,.09);
 }
 
 .answer-card img{
-    width:100%;
-    aspect-ratio:1/1;
-    object-fit:cover;
-    display:block;
+  width:100%;
+  aspect-ratio:1/1;
+  object-fit:cover;
+  display:block;
 }
 
 .answer-text{
-    padding:15px;
-    text-align:center;
-    font-weight:bold;
-    color:#543b4e;
+  display:block;
+  padding:14px;
+  font-size:14px;
+  line-height:1.4;
+  font-weight:800;
+  color:#423747;
 }
 
+.answer-number{
+  position:absolute;
+  top:10px;
+  left:10px;
+  width:30px;
+  height:30px;
+  border-radius:50%;
+  background:rgba(255,255,255,.94);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:12px;
+  font-weight:900;
+  color:var(--pink-dark);
+  box-shadow:0 4px 12px rgba(0,0,0,.12);
+}
+
+/* Correct / Wrong */
+
+.answer-card.correct{
+  border-color:var(--green);
+  background:var(--green-light);
+  animation:correctFlash .65s ease;
+}
+
+.answer-card.wrong{
+  border-color:var(--red);
+  background:var(--red-light);
+  animation:wrongFlash .65s ease;
+}
+
+@keyframes correctFlash{
+  0%,100%{transform:scale(1)}
+  35%{transform:scale(1.035)}
+  70%{transform:scale(.99)}
+}
+
+@keyframes wrongFlash{
+  0%,100%{transform:translateX(0)}
+  20%{transform:translateX(-7px)}
+  40%{transform:translateX(7px)}
+  60%{transform:translateX(-5px)}
+  80%{transform:translateX(5px)}
+}
+
+/* =========================
+   NAME SCREEN
+========================= */
+
 .name-screen{
-    max-width:600px;
-    margin:55px auto 80px;
-    padding:0 20px;
+  display:none;
+  min-height:70vh;
+  padding:55px 20px 80px;
 }
 
 .name-box{
-    background:white;
-    border:1px solid #ead8e2;
-    border-radius:28px;
-    padding:35px;
-    text-align:center;
-    box-shadow:0 18px 50px rgba(80,40,70,.1);
+  max-width:600px;
+  margin:auto;
+  background:white;
+  border-radius:30px;
+  padding:45px 30px;
+  text-align:center;
+  box-shadow:var(--shadow);
+}
+
+.name-icon{
+  width:78px;
+  height:78px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto 20px;
+  border-radius:25px;
+  font-size:38px;
+  background:linear-gradient(135deg,#f9e2ee,#eee8f8);
 }
 
 .name-box h2{
-    color:#4b2943;
-    margin-top:0;
+  font-size:31px;
+  margin-bottom:10px;
 }
 
 .name-box p{
-    color:#776474;
-    line-height:1.6;
+  color:var(--muted);
+  line-height:1.6;
+  margin-bottom:25px;
 }
 
-.name-input{
-    width:100%;
-    padding:15px 17px;
-    border:1px solid #dcc5d1;
-    border-radius:13px;
-    font-size:16px;
-    outline:none;
-    margin:15px 0;
+.name-box input{
+  width:100%;
+  padding:15px 17px;
+  border:2px solid #eee6ed;
+  border-radius:15px;
+  outline:none;
+  font-size:16px;
+  text-align:center;
+  transition:.2s;
 }
 
-.name-input:focus{
-    border-color:#9c4d76;
+.name-box input:focus{
+  border-color:var(--pink);
+  box-shadow:0 0 0 4px rgba(184,92,137,.09);
 }
+
+.start-name-btn{
+  width:100%;
+  border:0;
+  margin-top:13px;
+  padding:15px;
+  border-radius:15px;
+  background:linear-gradient(135deg,var(--pink-dark),var(--pink));
+  color:white;
+  font-size:15px;
+  font-weight:900;
+}
+
+/* =========================
+   RESULT
+========================= */
 
 .result-screen{
-    display:none;
-    max-width:700px;
-    margin:50px auto 90px;
-    padding:0 20px;
+  display:none;
+  min-height:70vh;
+  padding:50px 20px 90px;
 }
 
 .result-box{
-    background:white;
-    border:1px solid #ead8e2;
-    border-radius:30px;
-    padding:35px;
-    text-align:center;
-    box-shadow:0 20px 60px rgba(80,40,70,.13);
+  position:relative;
+  overflow:hidden;
+  max-width:760px;
+  margin:auto;
+  padding:42px 30px;
+  text-align:center;
+  background:
+    radial-gradient(circle at 50% -20%,rgba(255,206,225,.55),transparent 38%),
+    white;
+  border:1px solid rgba(120,80,120,.1);
+  border-radius:32px;
+  box-shadow:0 30px 80px rgba(70,40,70,.15);
 }
 
-.result-image{
-    width:100%;
-    max-width:430px;
-    aspect-ratio:1/1;
-    object-fit:cover;
-    border-radius:24px;
-    margin:0 auto 25px;
-    display:block;
+.result-sparkle{
+  font-size:35px;
+  margin-bottom:7px;
+  animation:sparkleFloat 1.8s infinite ease-in-out;
+}
+
+@keyframes sparkleFloat{
+  0%,100%{transform:translateY(0) rotate(0)}
+  50%{transform:translateY(-7px) rotate(8deg)}
+}
+
+.result-box img{
+  width:210px;
+  height:210px;
+  border-radius:28px;
+  object-fit:cover;
+  margin:10px auto 22px;
+  display:block;
+  box-shadow:0 18px 45px rgba(70,40,70,.18);
 }
 
 .result-box h2{
-    color:#9c4d76;
-    font-size:30px;
-    margin:10px 0;
+  font-size:clamp(28px,5vw,42px);
+  margin-bottom:8px;
 }
 
-.result-box h3{
-    color:#4b2943;
-    font-size:24px;
-    margin:10px 0 18px;
+.result-name{
+  color:var(--pink-dark);
+  font-size:20px;
+  font-weight:900;
+  margin-bottom:12px;
 }
 
-.result-box p{
-    color:#735f6e;
-    line-height:1.7;
+.result-description{
+  max-width:600px;
+  margin:0 auto 22px;
+  color:var(--muted);
+  line-height:1.7;
 }
 
-.result-buttons{
-    display:flex;
+.score-panel{
+  display:none;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+  margin:20px 0;
+}
+
+.score-item{
+  min-width:130px;
+  background:#faf7fa;
+  border:1px solid #eee4ec;
+  border-radius:18px;
+  padding:15px;
+}
+
+.score-number{
+  font-size:27px;
+  font-weight:900;
+  color:var(--pink-dark);
+}
+
+.score-label{
+  font-size:11px;
+  color:var(--muted);
+  font-weight:800;
+  margin-top:3px;
+}
+
+.result-badge{
+  display:none;
+  width:max-content;
+  max-width:100%;
+  margin:12px auto 18px;
+  padding:10px 16px;
+  border-radius:999px;
+  background:linear-gradient(135deg,#fff4cf,#fff9e8);
+  color:#8b681a;
+  font-size:14px;
+  font-weight:900;
+  border:1px solid #f2dfa2;
+}
+
+.result-actions{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:25px;
+}
+
+.result-actions button{
+  border:0;
+  padding:13px 18px;
+  border-radius:13px;
+  font-weight:900;
+  transition:.25s;
+}
+
+.share-btn{
+  background:linear-gradient(135deg,var(--pink-dark),var(--pink));
+  color:white;
+}
+
+.challenge-btn{
+  background:#302535;
+  color:white;
+}
+
+.again-btn{
+  background:var(--pink-light);
+  color:var(--pink-dark);
+}
+
+.home-btn{
+  background:#f4f1f5;
+  color:#56495a;
+}
+
+.result-actions button:hover{
+  transform:translateY(-3px);
+}
+
+/* =========================
+   ABOUT
+========================= */
+
+.about{
+  max-width:850px;
+  margin:auto;
+  padding:30px 20px 85px;
+  text-align:center;
+}
+
+.about-card{
+  background:rgba(255,255,255,.78);
+  border:1px solid rgba(120,80,120,.09);
+  border-radius:28px;
+  padding:35px 25px;
+  box-shadow:var(--shadow);
+}
+
+.about-card h2{
+  margin-bottom:13px;
+  font-size:31px;
+}
+
+.about-card p{
+  color:var(--muted);
+  line-height:1.8;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+  background:#302535;
+  color:#ddd2df;
+  text-align:center;
+  padding:32px 20px;
+}
+
+footer p{
+  font-size:13px;
+  line-height:1.8;
+}
+
+footer a{
+  color:#f3c4da;
+  text-decoration:none;
+  margin:0 8px;
+}
+
+footer a:hover{
+  text-decoration:underline;
+}
+
+/* =========================
+   CONFETTI
+========================= */
+
+.confetti-container{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:9999;
+  overflow:hidden;
+}
+
+.confetti{
+  position:absolute;
+  top:-20px;
+  width:9px;
+  height:14px;
+  border-radius:2px;
+  animation:fall 2.8s linear forwards;
+}
+
+@keyframes fall{
+  0%{
+    transform:translateY(0) rotate(0deg);
+    opacity:1;
+  }
+  100%{
+    transform:translateY(110vh) rotate(720deg);
+    opacity:0;
+  }
+}
+
+/* =========================
+   TOAST
+========================= */
+
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:25px;
+  transform:translate(-50%,20px);
+  opacity:0;
+  z-index:10000;
+  background:#302535;
+  color:white;
+  padding:12px 18px;
+  border-radius:999px;
+  font-size:13px;
+  font-weight:800;
+  pointer-events:none;
+  transition:.3s;
+}
+
+.toast.show{
+  opacity:1;
+  transform:translate(-50%,0);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:760px){
+
+  .navbar{
+    padding:13px 15px;
+  }
+
+  .logo{
+    font-size:21px;
+  }
+
+  .nav-links{
+    gap:2px;
+  }
+
+  .nav-links a{
+    padding:8px 7px;
+    font-size:11px;
+  }
+
+  .hero{
+    padding:60px 18px 40px;
+  }
+
+  .hero h1{
+    letter-spacing:-2px;
+  }
+
+  .hero p{
+    font-size:15px;
+  }
+
+  .section{
+    padding:35px 15px 65px;
+  }
+
+  .quiz-grid{
+    grid-template-columns:1fr;
+  }
+
+  .quiz-card{
+    padding:23px;
+  }
+
+  .quiz-box,
+  .name-box,
+  .result-box{
+    padding:25px 18px;
+    border-radius:25px;
+  }
+
+  .answer-grid{
+    gap:10px;
+  }
+
+  .answer-card{
+    border-radius:17px;
+  }
+
+  .answer-text{
+    padding:11px;
+    font-size:12px;
+  }
+
+  .question{
+    font-size:22px;
+  }
+
+  .result-box img{
+    width:180px;
+    height:180px;
+  }
+
+  .result-actions{
     flex-direction:column;
-    gap:12px;
-    margin-top:25px;
+  }
+
+  .result-actions button{
+    width:100%;
+  }
 }
 
-.hidden{
-    display:none !important;
-}
+@media(max-width:430px){
 
-@media(max-width:850px){
+  .nav-links a:nth-child(2){
+    display:none;
+  }
 
-    .quiz-grid{
-        grid-template-columns:1fr 1fr;
-    }
+  .hero h1{
+    font-size:42px;
+  }
 
-    .hero h1{
-        font-size:40px;
-    }
+  .answer-grid{
+    grid-template-columns:1fr 1fr;
+  }
 
-}
-
-@media(max-width:600px){
-
-    .nav{
-        padding:14px 15px;
-    }
-
-    .nav-links{
-        gap:10px;
-    }
-
-    .nav-links a{
-        font-size:12px;
-    }
-
-    .logo{
-        font-size:20px;
-    }
-
-    .hero{
-        padding:65px 18px 50px;
-    }
-
-    .hero h1{
-        font-size:34px;
-    }
-
-    .hero p{
-        font-size:16px;
-    }
-
-    .section{
-        padding:45px 15px;
-    }
-
-    .section-title h2{
-        font-size:27px;
-    }
-
-    .quiz-grid{
-        grid-template-columns:1fr;
-    }
-
-    .quiz-box{
-        padding:20px 15px;
-    }
-
-    .question{
-        font-size:23px;
-    }
-
-    .answer-grid{
-        grid-template-columns:repeat(2,1fr);
-        gap:10px;
-    }
-
-    .answer-text{
-        padding:10px 5px;
-        font-size:13px;
-    }
-
-    .name-box,
-    .result-box{
-        padding:25px 18px;
-    }
-
+  .answer-text{
+    min-height:52px;
+  }
 }
 
 </style>
-
 </head>
 
 <body>
 
 <header>
+  <nav class="navbar">
 
-<div class="nav">
+    <a href="#" class="logo">
+      Fiction<span>Quiz</span> ✦
+    </a>
 
-<a href="#" class="logo">FictionQuiz ✦</a>
+    <div class="nav-links">
+      <a href="#quizzes">Quizzes</a>
+      <a href="#about">About</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+    </div>
 
-<div class="nav-links">
-<a href="#quizzes">Quizzes</a>
-<a href="#about">About</a>
-<a href="privacy.html">Privacy</a>
-<a href="terms.html">Terms</a>
-</div>
-
-</div>
-
+  </nav>
 </header>
 
 
+<!-- =========================
+     HERO
+========================= -->
+
 <section class="hero">
 
-<div class="badge">✨ Fun quizzes for fiction lovers</div>
+  <div class="hero-badge">
+    ✨ Fun • Fiction • Personality • Novel
+  </div>
 
-<h1>Discover Your Fictional World</h1>
+  <h1>Discover Your Fictional World</h1>
 
-<p>
-Play personality, relationship and fictional character quizzes,
-discover your result and challenge your friends.
-</p>
+  <p>
+    Test your personality, discover your fictional character,
+    explore your relationship vibe and prove how much you really
+    know about the world of novels.
+  </p>
+
+  <div class="hero-actions">
+    <button class="primary-btn" onclick="scrollToQuizzes()">
+      🎮 Start Playing
+    </button>
+
+    <button class="secondary-btn" onclick="scrollToQuizzes()">
+      📚 Explore Quizzes
+    </button>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat-pill">💗 Personality</div>
+    <div class="stat-pill">📖 Novel Knowledge</div>
+    <div class="stat-pill">✨ Fiction</div>
+    <div class="stat-pill">👥 Challenge Friends</div>
+  </div>
 
 </section>
 
+
+<!-- =========================
+     QUIZZES
+========================= -->
 
 <section class="section" id="quizzes">
 
-<div class="section-title">
-
-<h2>Explore Our Quizzes</h2>
-
-<p>Choose a quiz and discover something new about yourself.</p>
-
-</div>
-
-
-<div class="quiz-grid">
+  <div class="section-heading">
+    <div class="mini">Choose your game</div>
+    <h2>What Are You Playing Today? 🎀</h2>
+    <p>
+      Pick a quiz, answer honestly and discover something fun about yourself.
+    </p>
+  </div>
 
 
-<div class="quiz-card">
+  <div class="quiz-grid">
 
-<div class="quiz-icon">📖</div>
+    <!-- CHARACTER -->
 
-<h3>Which Fictional Character Are You?</h3>
+    <article class="quiz-card">
 
-<p>
-Answer 7 questions and discover which fictional-character energy matches your personality.
-</p>
+      <div class="quiz-icon">🧠</div>
 
-<button class="btn" onclick="startQuiz('character')">
-Play Quiz
-</button>
+      <span class="quiz-tag">Fiction</span>
 
-</div>
+      <h3>Which Fictional Character Are You?</h3>
 
+      <p>
+        Discover which iconic fictional personality matches
+        your choices, thinking style and energy.
+      </p>
 
-<div class="quiz-card">
+      <div class="quiz-meta">
+        <span>7 Questions</span>
+        <span>Image Quiz</span>
+        <span>Fun</span>
+      </div>
 
-<div class="quiz-icon">✨</div>
+      <button class="quiz-start" onclick="startQuiz('character')">
+        Start Quiz →
+      </button>
 
-<h3>Which Personality Are You?</h3>
-
-<p>
-Answer 10 fun questions and discover your personality style.
-</p>
-
-<button class="btn" onclick="startQuiz('personality')">
-Play Quiz
-</button>
-
-</div>
+    </article>
 
 
-<div class="quiz-card">
+    <!-- PERSONALITY -->
 
-<div class="quiz-icon">💗</div>
+    <article class="quiz-card">
 
-<h3>What's Your Relationship Vibe?</h3>
+      <div class="quiz-icon">✨</div>
 
-<p>
-Discover your relationship personality through 10 simple choices.
-</p>
+      <span class="quiz-tag">Personality</span>
 
-<button class="btn" onclick="startQuiz('relationship')">
-Play Quiz
-</button>
+      <h3>Which Personality Are You?</h3>
 
-</div>
+      <p>
+        Are you a quiet thinker or a social spark?
+        Find your personality vibe through your choices.
+      </p>
+
+      <div class="quiz-meta">
+        <span>10 Questions</span>
+        <span>2 Choices</span>
+        <span>Personality</span>
+      </div>
+
+      <button class="quiz-start" onclick="startQuiz('personality')">
+        Start Quiz →
+      </button>
+
+    </article>
 
 
-</div>
+    <!-- RELATIONSHIP -->
+
+    <article class="quiz-card">
+
+      <div class="quiz-icon">💗</div>
+
+      <span class="quiz-tag">Vibe Check</span>
+
+      <h3>What's Your Relationship Vibe?</h3>
+
+      <p>
+        Find out whether your relationship style is more
+        loyal and peaceful or playful and energetic.
+      </p>
+
+      <div class="quiz-meta">
+        <span>10 Questions</span>
+        <span>2 Choices</span>
+        <span>Vibe</span>
+      </div>
+
+      <button class="quiz-start" onclick="startQuiz('relationship')">
+        Start Quiz →
+      </button>
+
+    </article>
+
+
+    <!-- NOVEL LOVER -->
+
+    <article class="quiz-card featured">
+
+      <div class="quiz-icon">📚</div>
+
+      <span class="quiz-tag">NEW • Novel Battle</span>
+
+      <h3>Let's See How Big a Novel Lover You Are?</h3>
+
+      <p>
+        Think you know the novel world? Test your memory,
+        characters and iconic moments in this ultimate novel challenge.
+      </p>
+
+      <div class="quiz-meta">
+        <span>10 Questions</span>
+        <span>20 Images</span>
+        <span>Knowledge</span>
+      </div>
+
+      <button class="quiz-start" onclick="startQuiz('novel')">
+        Take the Challenge →
+      </button>
+
+    </article>
+
+  </div>
 
 </section>
 
 
-<!-- NAME SCREEN -->
+<!-- =========================
+     NAME SCREEN
+========================= -->
 
 <section class="name-screen" id="nameScreen">
 
-<div class="name-box">
+  <div class="name-box">
 
-<h2 id="nameHeading">Ready for your quiz? ✨</h2>
+    <div class="name-icon">🎀</div>
 
-<p>
-Enter your name first. Your name will appear on your final result.
-</p>
+    <h2>Before We Start...</h2>
 
-<input
-type="text"
-id="playerName"
-class="name-input"
-placeholder="Enter your name"
-maxlength="30"
->
+    <p>
+      Enter your name so we can show your personalized result.
+    </p>
 
-<button class="btn" onclick="beginQuiz()">
-Start Quiz ✨
-</button>
+    <input
+      type="text"
+      id="playerName"
+      placeholder="Enter your name"
+      maxlength="30"
+      autocomplete="name"
+    >
 
-</div>
+    <button class="start-name-btn" onclick="beginQuiz()">
+      Let's Go ✨
+    </button>
+
+  </div>
 
 </section>
 
 
-<!-- QUIZ SCREEN -->
+<!-- =========================
+     QUIZ SCREEN
+========================= -->
 
 <section class="quiz-screen" id="quizScreen">
 
-<div class="quiz-box">
+  <div class="quiz-box">
 
-<div class="quiz-top">
+    <div class="quiz-top">
+      <div class="quiz-label" id="quizLabel">
+        FictionQuiz
+      </div>
 
-<span class="quiz-number" id="quizNumber">
-Question 1
-</span>
+      <div class="question-count" id="questionCount">
+        1 / 10
+      </div>
+    </div>
 
-<span id="quizTotal">
-1 / 7
-</span>
+    <div class="progress-wrap">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
 
-</div>
+    <div class="question" id="questionText"></div>
 
-<div class="progress-wrap">
+    <div class="answer-grid" id="answerGrid"></div>
 
-<div class="progress" id="progress"></div>
-
-</div>
-
-<div class="question" id="question">
-Question
-</div>
-
-<div class="answer-grid" id="answerGrid">
-</div>
-
-</div>
+  </div>
 
 </section>
 
 
-<!-- RESULT -->
+<!-- =========================
+     RESULT SCREEN
+========================= -->
 
 <section class="result-screen" id="resultScreen">
 
-<div class="result-box">
+  <div class="result-box">
 
-<img
-id="resultImage"
-class="result-image"
-src=""
-alt="Quiz result"
->
+    <div class="result-sparkle">✨ 🏆 ✨</div>
 
-<h2 id="resultTitle">
-Your Result
-</h2>
+    <img id="resultImage" src="" alt="Quiz result">
 
-<h3 id="resultName">
-</h3>
+    <h2 id="resultTitle">
+      Your Result
+    </h2>
 
-<p id="resultDescription">
-</p>
+    <div class="result-name" id="resultName"></div>
 
-<div class="result-buttons">
+    <div class="result-badge" id="resultBadge"></div>
 
-<button class="btn" onclick="shareResult()">
-Share My Result
-</button>
+    <div class="score-panel" id="scorePanel">
 
-<button class="btn secondary" onclick="copyChallenge()">
-Copy Challenge Link
-</button>
+      <div class="score-item">
+        <div class="score-number" id="scoreNumber">0/10</div>
+        <div class="score-label">YOUR SCORE</div>
+      </div>
 
-<button class="btn light" onclick="restartQuiz()">
-Play Again
-</button>
+      <div class="score-item">
+        <div class="score-number" id="percentageNumber">0%</div>
+        <div class="score-label">PERCENTAGE</div>
+      </div>
 
-</div>
+    </div>
 
-</div>
+    <p class="result-description" id="resultDescription"></p>
+
+    <div class="result-actions">
+
+      <button class="share-btn" onclick="shareResult()">
+        📤 Share My Result
+      </button>
+
+      <button class="challenge-btn" onclick="challengeQuiz()">
+        👥 Challenge Your Friends
+      </button>
+
+      <button class="again-btn" onclick="restartQuiz()">
+        🔄 Play Again
+      </button>
+
+      <button class="home-btn" onclick="backToQuizzes()">
+        🏠 More Quizzes
+      </button>
+
+    </div>
+
+  </div>
 
 </section>
 
+
+<!-- =========================
+     ABOUT
+========================= -->
 
 <section class="about" id="about">
 
-<div class="section about-box">
+  <div class="about-card">
 
-<div class="section-title">
+    <h2>About FictionQuiz ✦</h2>
 
-<h2>About FictionQuiz</h2>
+    <p>
+      FictionQuiz is made for people who love fictional worlds,
+      books, characters, personality games and fun challenges.
+      Take a quiz, discover your result and share it with your friends.
+      New quizzes and challenges can be added over time, so there is
+      always something new to play.
+    </p>
 
-</div>
-
-<p>
-FictionQuiz is made for readers, fiction lovers and quiz fans.
-Our goal is to create fun, shareable quizzes about fictional
-characters, personality, relationships, friendship, Urdu novels
-and the stories readers love.
-</p>
-
-<p>
-Take a quiz, discover your result and challenge your friends.
-More quizzes and new fictional worlds are coming soon.
-</p>
-
-</div>
+  </div>
 
 </section>
 
 
-<!-- FOOTER -->
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
-<p>
-© 2026 FictionQuiz. All rights reserved.
-</p>
+  <p>© 2026 FictionQuiz. All rights reserved.</p>
 
-<p>
-Made for readers who love fictional worlds. ✨
-</p>
+  <p>Made for readers who love fictional worlds. ✨</p>
 
-<p>
-<a href="privacy.html">Privacy Policy</a>
-<a href="terms.html">Terms & Conditions</a>
-<a href="#about">About</a>
-</p>
+  <p>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms & Conditions</a>
+    <a href="#about">About</a>
+  </p>
 
 </footer>
 
 
+<div class="confetti-container" id="confettiContainer"></div>
+<div class="toast" id="toast"></div>
+
+
 <script>
 
-/* =========================================
+/* =========================================================
    QUIZ DATA
-========================================= */
+========================================================= */
 
 const quizzes = {
 
-character: {
+  /* =========================
+     CHARACTER QUIZ
+  ========================= */
 
-title:"Which Fictional Character Are You?",
+  character: {
 
-questions:[
+    title:"Which Fictional Character Are You?",
 
-{
-q:"Agar koi tumhein underestimate kare, tum kya karogi?",
-options:[
-["Khamoshi se prove karungi","images/quiz/q1-answer-1.jpg",0],
-["Direct jawab dungi","images/quiz/q1-answer-2.jpg",2],
-["Strategy banaungi","images/quiz/q1-answer-3.jpg",1],
-["Apne logon ko protect karungi","images/quiz/q1-answer-4.jpg",3]
-]
-},
+    label:"Fictional Character",
 
-{
-q:"Hero mein tumhein sabse attractive quality kya lagti hai?",
-options:[
-["Intelligence","images/quiz/q2-answer-1.jpg",0],
-["Confidence","images/quiz/q2-answer-2.jpg",2],
-["Mystery","images/quiz/q2-answer-3.jpg",4],
-["Loyalty","images/quiz/q2-answer-4.jpg",3]
-]
-},
+    questions:[
 
-{
-q:"Tumhein koi important secret pata chale to?",
-options:[
-["Investigate karungi","images/quiz/q3-answer-1.jpg",0],
-["Kisi ko nahi bataungi","images/quiz/q3-answer-2.jpg",4],
-["Information carefully use karungi","images/quiz/q3-answer-3.jpg",1],
-["Trusted person ko bataungi","images/quiz/q3-answer-4.jpg",3]
-]
-},
+      {
+        q:"When something unexpected happens, what do you usually do?",
+        options:[
+          ["Stay calm and observe first","images/quiz/q1-answer-1.jpg",0],
+          ["Think about every possible outcome","images/quiz/q1-answer-2.jpg",1],
+          ["Protect the people around you","images/quiz/q1-answer-3.jpg",2],
+          ["Keep your thoughts to yourself","images/quiz/q1-answer-4.jpg",3]
+        ]
+      },
 
-{
-q:"Story mein tumhara role kya hota?",
-options:[
-["Intelligent observer","images/quiz/q4-answer-1.jpg",0],
-["Strong decision-maker","images/quiz/q4-answer-2.jpg",2],
-["Mystery solver","images/quiz/q4-answer-3.jpg",4],
-["Loyal protector","images/quiz/q4-answer-4.jpg",3]
-]
-},
+      {
+        q:"Which quality describes you best?",
+        options:[
+          ["Intelligence","images/quiz/q2-answer-1.jpg",0],
+          ["Strategy","images/quiz/q2-answer-2.jpg",1],
+          ["Courage","images/quiz/q2-answer-3.jpg",2],
+          ["Depth","images/quiz/q2-answer-4.jpg",3]
+        ]
+      },
 
-{
-q:"Tumhari strongest quality kya hai?",
-options:[
-["Intelligence","images/quiz/q5-answer-1.jpg",0],
-["Determination","images/quiz/q5-answer-2.jpg",1],
-["Emotional depth","images/quiz/q5-answer-3.jpg",3],
-["Strategic thinking","images/quiz/q5-answer-4.jpg",5]
-]
-},
+      {
+        q:"Your biggest strength is...",
+        options:[
+          ["Reading people","images/quiz/q3-answer-1.jpg",0],
+          ["Planning ahead","images/quiz/q3-answer-2.jpg",1],
+          ["Standing up for others","images/quiz/q3-answer-3.jpg",2],
+          ["Understanding hidden things","images/quiz/q3-answer-4.jpg",3]
+        ]
+      },
 
-{
-q:"Difficult situation mein tum kya karti ho?",
-options:[
-["Pehle observe karti hoon","images/quiz/q6-answer-1.jpg",0],
-["Phir action leti hoon","images/quiz/q6-answer-2.jpg",2],
-["Plan bana kar move karti hoon","images/quiz/q6-answer-3.jpg",1],
-["Apne people ko safe rakhti hoon","images/quiz/q6-answer-4.jpg",3]
-]
-},
+      {
+        q:"What kind of energy do you naturally have?",
+        options:[
+          ["Quiet and intelligent","images/quiz/q4-answer-1.jpg",0],
+          ["Focused and strategic","images/quiz/q4-answer-2.jpg",1],
+          ["Strong and fearless","images/quiz/q4-answer-3.jpg",2],
+          ["Mysterious and thoughtful","images/quiz/q4-answer-4.jpg",3]
+        ]
+      },
 
-{
-q:"Tumhari personality ka vibe kya hai?",
-options:[
-["Calm & Intelligent","images/quiz/q7-answer-1.jpg",0],
-["Powerful & Confident","images/quiz/q7-answer-2.jpg",2],
-["Mysterious & Deep","images/quiz/q7-answer-3.jpg",4],
-["Bold & Strategic","images/quiz/q7-answer-4.jpg",5]
-]
-}
+      {
+        q:"If someone underestimates you...",
+        options:[
+          ["Let your intelligence speak","images/quiz/q5-answer-1.jpg",0],
+          ["Use it to your advantage","images/quiz/q5-answer-2.jpg",1],
+          ["Prove them wrong directly","images/quiz/q5-answer-3.jpg",2],
+          ["Say nothing and observe","images/quiz/q5-answer-4.jpg",3]
+        ]
+      },
 
-],
+      {
+        q:"What attracts you most in a fictional character?",
+        options:[
+          ["Sharp mind","images/quiz/q6-answer-1.jpg",0],
+          ["Strategic thinking","images/quiz/q6-answer-2.jpg",1],
+          ["Fearless personality","images/quiz/q6-answer-3.jpg",2],
+          ["Hidden emotions","images/quiz/q6-answer-4.jpg",3]
+        ]
+      },
 
-results:[
+      {
+        q:"Choose the vibe that feels closest to you.",
+        options:[
+          ["Intelligent observer","images/quiz/q7-answer-1.jpg",0],
+          ["Strategic mind","images/quiz/q7-answer-2.jpg",1],
+          ["Fearless protector","images/quiz/q7-answer-3.jpg",2],
+          ["Deep thinker","images/quiz/q7-answer-4.jpg",3]
+        ]
+      }
 
-{
-name:"Jihan Sikandar Energy",
-title:"The Intelligent Observer 🧠",
-description:"Tum observant, intelligent aur thoughtful ho. Tum bina unnecessary noise ke situations ko samajhna pasand karti ho.",
-image:"images/quiz/result-1.jpg"
-},
+    ],
 
-{
-name:"Salar Sikandar Energy",
-title:"The Strategic Mind ♟️",
-description:"Tum planning aur strategy mein strong ho. Tum emotional decisions ke bajaye situation ko samajh kar move karna pasand karti ho.",
-image:"images/quiz/result-2.jpg"
-},
+    results:[
 
-{
-name:"Faris Ghazi Energy",
-title:"The Fearless Protector 🔥",
-description:"Tum bold, loyal aur protective ho. Jin logon ko apna samajhti ho unke liye strongly stand karti ho.",
-image:"images/quiz/result-3.jpg"
-},
+      {
+        name:"Jihan Sikandar Energy — The Intelligent Observer 🧠",
+        image:"images/quiz/result-1.jpg",
+        description:"You notice details, understand people and prefer thinking before reacting."
+      },
 
-{
-name:"Wajdan Mustafa Energy",
-title:"The Deep Thinker 🌙",
-description:"Tumhari personality deep aur emotionally aware hai. Tum cheezon ke hidden meanings notice karti ho.",
-image:"images/quiz/result-4.jpg"
-},
+      {
+        name:"Salar Sikandar Energy — The Strategic Mind ♟️",
+        image:"images/quiz/result-2.jpg",
+        description:"You think several steps ahead and rarely make decisions without a reason."
+      },
 
-{
-name:"Wali Ahmed Energy",
-title:"The Calm Mystery 🖤",
-description:"Tum calm, private aur mysterious vibe rakhti ho. Har kisi ko apni complete personality easily show nahi karti.",
-image:"images/quiz/result-5.jpg"
-},
+      {
+        name:"Faris Ghazi Energy — The Fearless Protector 🔥",
+        image:"images/quiz/result-3.jpg",
+        description:"Strong, courageous and protective — you do not easily back down."
+      },
 
-{
-name:"Faris Wajgan Energy",
-title:"The Powerful Strategist 👑",
-description:"Tum confidence aur strategy dono ko balance karti ho. Tum difficult situations mein strong decisions le sakti ho.",
-image:"images/quiz/result-6.jpg"
-}
+      {
+        name:"Wajdan Mustafa Energy — The Deep Thinker 🌙",
+        image:"images/quiz/result-4.jpg",
+        description:"You have a thoughtful side and often see meanings others overlook."
+      },
 
-]
+      {
+        name:"Wali Ahmed Energy — The Calm Mystery 🖤",
+        image:"images/quiz/result-5.jpg",
+        description:"You stay composed, keep some things private and let your actions speak."
+      },
 
-},
+      {
+        name:"Faris Wajgan Energy — The Powerful Strategist 👑",
+        image:"images/quiz/result-6.jpg",
+        description:"You combine confidence, intelligence and strong strategic instincts."
+      }
 
+    ]
 
-/* =========================================
-   PERSONALITY QUIZ
-========================================= */
-
-personality: {
-
-title:"Which Personality Are You?",
-
-questions:[
-
-{
-q:"Free time mile to tum kya prefer karogi?",
-options:[
-["Akele peaceful time","images/quiz/personality-q1-a.jpg",0],
-["Friends ke saath fun","images/quiz/personality-q1-b.jpg",1]
-]
-},
-
-{
-q:"Decision lete waqt tum kis cheez ko zyada importance deti ho?",
-options:[
-["Logic aur facts","images/quiz/personality-q2-a.jpg",0],
-["Feelings aur people","images/quiz/personality-q2-b.jpg",1]
-]
-},
-
-{
-q:"Unexpected plan ban jaye to?",
-options:[
-["Excited ho jaungi","images/quiz/personality-q3-a.jpg",1],
-["Pehle sochungi phir decide karungi","images/quiz/personality-q3-b.jpg",0]
-]
-},
-
-{
-q:"Tumhara ideal weekend?",
-options:[
-["Cozy room, books aur movies","images/quiz/personality-q4-a.jpg",0],
-["Friends, outing aur adventure","images/quiz/personality-q4-b.jpg",1]
-]
-},
-
-{
-q:"Koi problem aaye to tum?",
-options:[
-["Pehle analyze karti hoon","images/quiz/personality-q5-a.jpg",0],
-["Immediately action leti hoon","images/quiz/personality-q5-b.jpg",1]
-]
-},
-
-{
-q:"Tumhari communication style?",
-options:[
-["Kam words, meaningful baat","images/quiz/personality-q6-a.jpg",0],
-["Open aur expressive","images/quiz/personality-q6-b.jpg",1]
-]
-},
-
-{
-q:"Tumhein kis type ki stories zyada pasand hain?",
-options:[
-["Mystery aur deep stories","images/quiz/personality-q7-a.jpg",0],
-["Romantic aur emotional stories","images/quiz/personality-q7-b.jpg",1]
-]
-},
-
-{
-q:"Tum apne plans kaise rakhti ho?",
-options:[
-["Mostly planned","images/quiz/personality-q8-a.jpg",0],
-["Mood ke according","images/quiz/personality-q8-b.jpg",1]
-]
-},
-
-{
-q:"Tumhare liye friendship mein kya important hai?",
-options:[
-["Trust aur loyalty","images/quiz/personality-q9-a.jpg",0],
-["Fun aur understanding","images/quiz/personality-q9-b.jpg",1]
-]
-},
-
-{
-q:"Tumhari overall vibe?",
-options:[
-["Calm, thoughtful & mysterious","images/quiz/personality-q10-a.jpg",0],
-["Fun, expressive & energetic","images/quiz/personality-q10-b.jpg",1]
-]
-}
-
-],
-
-results:[
-
-{
-name:"The Quiet Thinker 🌙",
-title:"Calm & Deep Personality",
-description:"Tum thoughtful, observant aur emotionally aware personality ho. Tum har cheez ko deeply samajhne ki koshish karti ho.",
-image:"images/quiz/personality-result-1.jpg"
-},
-
-{
-name:"The Social Spark ✨",
-title:"Fun & Energetic Personality",
-description:"Tum expressive, energetic aur people-oriented ho. Tumhare saath boring moments ka chance kam hota hai.",
-image:"images/quiz/personality-result-2.jpg"
-}
-
-]
-
-},
+  },
 
 
-/* =========================================
-   RELATIONSHIP QUIZ
-========================================= */
+  /* =========================
+     PERSONALITY QUIZ
+  ========================= */
 
-relationship: {
+  personality: {
 
-title:"What's Your Relationship Vibe?",
+    title:"Which Personality Are You?",
 
-questions:[
+    label:"Personality Quiz",
 
-{
-q:"Relationship mein tumhare liye sabse important kya hai?",
-options:[
-["Trust","images/quiz/relationship-q1-a.jpg",0],
-["Fun & connection","images/quiz/relationship-q1-b.jpg",1]
-]
-},
+    questions:[
 
-{
-q:"Agar misunderstanding ho jaye?",
-options:[
-["Calmly baat karungi","images/quiz/relationship-q2-a.jpg",0],
-["Thoda time lekar phir baat karungi","images/quiz/relationship-q2-b.jpg",1]
-]
-},
+      {
+        q:"How do you prefer spending your free time?",
+        options:[
+          ["Alone, peaceful and quiet","images/quiz/personality-q1-a.jpg",0],
+          ["With friends and having fun","images/quiz/personality-q1-b.jpg",1]
+        ]
+      },
 
-{
-q:"Tum affection kaise show karti ho?",
-options:[
-["Small thoughtful gestures","images/quiz/relationship-q3-a.jpg",0],
-["Words aur attention","images/quiz/relationship-q3-b.jpg",1]
-]
-},
+      {
+        q:"How do you usually make decisions?",
+        options:[
+          ["Logic and facts","images/quiz/personality-q2-a.jpg",0],
+          ["Feelings and people","images/quiz/personality-q2-b.jpg",1]
+        ]
+      },
 
-{
-q:"Tum relationship mein kya prefer karti ho?",
-options:[
-["Deep conversations","images/quiz/relationship-q4-a.jpg",0],
-["Fun moments together","images/quiz/relationship-q4-b.jpg",1]
-]
-},
+      {
+        q:"An unexpected plan appears. You...",
+        options:[
+          ["Get excited immediately","images/quiz/personality-q3-a.jpg",1],
+          ["Think about it first","images/quiz/personality-q3-b.jpg",0]
+        ]
+      },
 
-{
-q:"Agar saamne wala busy ho?",
-options:[
-["Space aur understanding dungi","images/quiz/relationship-q5-a.jpg",0],
-["Check karungi ke sab okay hai","images/quiz/relationship-q5-b.jpg",1]
-]
-},
+      {
+        q:"Your ideal weekend?",
+        options:[
+          ["Cozy room, books and movies","images/quiz/personality-q4-a.jpg",0],
+          ["Friends, outing and adventure","images/quiz/personality-q4-b.jpg",1]
+        ]
+      },
 
-{
-q:"Tumhare liye loyalty ka matlab?",
-options:[
-["Consistency aur honesty","images/quiz/relationship-q6-a.jpg",0],
-["Har situation mein support","images/quiz/relationship-q6-b.jpg",1]
-]
-},
+      {
+        q:"When facing a problem, you...",
+        options:[
+          ["Analyze everything","images/quiz/personality-q5-a.jpg",0],
+          ["Take action immediately","images/quiz/personality-q5-b.jpg",1]
+        ]
+      },
 
-{
-q:"Ideal conversation?",
-options:[
-["Late-night deep talks","images/quiz/relationship-q7-a.jpg",0],
-["Random funny conversations","images/quiz/relationship-q7-b.jpg",1]
-]
-},
+      {
+        q:"Your communication style?",
+        options:[
+          ["Few meaningful words","images/quiz/personality-q6-a.jpg",0],
+          ["Open and expressive","images/quiz/personality-q6-b.jpg",1]
+        ]
+      },
 
-{
-q:"Tum conflict ko kaise handle karti ho?",
-options:[
-["Solution find karti hoon","images/quiz/relationship-q8-a.jpg",0],
-["Pehle emotions settle karti hoon","images/quiz/relationship-q8-b.jpg",1]
-]
-},
+      {
+        q:"Which stories attract you more?",
+        options:[
+          ["Mystery and deep stories","images/quiz/personality-q7-a.jpg",0],
+          ["Romantic and emotional stories","images/quiz/personality-q7-b.jpg",1]
+        ]
+      },
 
-{
-q:"Tumhein relationship mein kya feel hona chahiye?",
-options:[
-["Safe & understood","images/quiz/relationship-q9-a.jpg",0],
-["Excited & happy","images/quiz/relationship-q9-b.jpg",1]
-]
-},
+      {
+        q:"How do you handle plans?",
+        options:[
+          ["I like everything planned","images/quiz/personality-q8-a.jpg",0],
+          ["I go with my mood","images/quiz/personality-q8-b.jpg",1]
+        ]
+      },
 
-{
-q:"Tumhari relationship vibe?",
-options:[
-["Loyal & peaceful","images/quiz/relationship-q10-a.jpg",0],
-["Playful & passionate","images/quiz/relationship-q10-b.jpg",1]
-]
-}
+      {
+        q:"What matters most in friendship?",
+        options:[
+          ["Trust and loyalty","images/quiz/personality-q9-a.jpg",0],
+          ["Fun and understanding","images/quiz/personality-q9-b.jpg",1]
+        ]
+      },
 
-],
+      {
+        q:"Which vibe sounds more like you?",
+        options:[
+          ["Calm, thoughtful and mysterious","images/quiz/personality-q10-a.jpg",0],
+          ["Fun, expressive and energetic","images/quiz/personality-q10-b.jpg",1]
+        ]
+      }
 
-results:[
+    ],
 
-{
-name:"The Loyal Heart 💗",
-title:"Deep & Loyal Relationship Vibe",
-description:"Tum trust, honesty aur emotional understanding ko importance deti ho. Tumhare liye strong connection slowly build hota hai.",
-image:"images/quiz/relationship-result-1.jpg"
-},
+    results:[
 
-{
-name:"The Playful Heart ✨",
-title:"Fun & Warm Relationship Vibe",
-description:"Tum connection mein happiness, fun aur memorable moments ko value karti ho. Tum relationship ko lively rakhna pasand karti ho.",
-image:"images/quiz/relationship-result-2.jpg"
-}
+      {
+        name:"The Quiet Thinker 🌙",
+        image:"images/quiz/personality-result-1.jpg",
+        description:"You are thoughtful, observant and comfortable in your own world. You notice details and prefer meaningful connections."
+      },
 
-]
+      {
+        name:"The Social Spark ✨",
+        image:"images/quiz/personality-result-2.jpg",
+        description:"You bring energy wherever you go. You enjoy people, experiences and making ordinary moments more exciting."
+      }
 
-}
+    ]
+
+  },
+
+
+  /* =========================
+     RELATIONSHIP QUIZ
+  ========================= */
+
+  relationship: {
+
+    title:"What's Your Relationship Vibe?",
+
+    label:"Relationship Vibe",
+
+    questions:[
+
+      {
+        q:"What matters more to you?",
+        options:[
+          ["Trust","images/quiz/relationship-q1-a.jpg",0],
+          ["Fun and connection","images/quiz/relationship-q1-b.jpg",1]
+        ]
+      },
+
+      {
+        q:"During a disagreement, you prefer to...",
+        options:[
+          ["Talk calmly","images/quiz/relationship-q2-a.jpg",0],
+          ["Take some time, then talk","images/quiz/relationship-q2-b.jpg",1]
+        ]
+      },
+
+      {
+        q:"What means more?",
+        options:[
+          ["Small thoughtful gestures","images/quiz/relationship-q3-a.jpg",0],
+          ["Words and attention","images/quiz/relationship-q3-b.jpg",1]
+        ]
+      },
+
+      {
+        q:"You enjoy...",
+        options:[
+          ["Deep conversations","images/quiz/relationship-q4-a.jpg",0],
+          ["Fun moments","images/quiz/relationship-q4-b.jpg",1]
+        ]
+      },
+
+      {
+        q:"When someone needs space...",
+        options:[
+          ["Give them space and understanding","images/quiz/relationship-q5-a.jpg",0],
+          ["Check if everything is okay","images/quiz/relationship-q5-b.jpg",1]
+        ]
+      },
+
+      {
+        q:"What feels more important?",
+        options:[
+          ["Consistency and honesty","images/quiz/relationship-q6-a.jpg",0],
+          ["Support in every situation","images/quiz/relationship-q6-b.jpg",1]
+        ]
+      },
+
+      {
+        q:"Your favorite conversations?",
+        options:[
+          ["Late-night deep talks","images/quiz/relationship-q7-a.jpg",0],
+          ["Random funny conversations","images/quiz/relationship-q7-b.jpg",1]
+        ]
+      },
+
+      {
+        q:"After an argument, you prefer to...",
+        options:[
+          ["Find a solution","images/quiz/relationship-q8-a.jpg",0],
+          ["Settle emotions first","images/quiz/relationship-q8-b.jpg",1]
+        ]
+      },
+
+      {
+        q:"A good connection should make you feel...",
+        options:[
+          ["Safe and understood","images/quiz/relationship-q9-a.jpg",0],
+          ["Excited and happy","images/quiz/relationship-q9-b.jpg",1]
+        ]
+      },
+
+      {
+        q:"Your ideal relationship vibe?",
+        options:[
+          ["Loyal and peaceful","images/quiz/relationship-q10-a.jpg",0],
+          ["Playful and passionate","images/quiz/relationship-q10-b.jpg",1]
+        ]
+      }
+
+    ],
+
+    results:[
+
+      {
+        name:"The Loyal Heart 💗",
+        image:"images/quiz/relationship-result-1.jpg",
+        description:"You value trust, loyalty, consistency and emotional safety. A strong connection matters more to you than temporary excitement."
+      },
+
+      {
+        name:"The Playful Heart ✨",
+        image:"images/quiz/relationship-result-2.jpg",
+        description:"You bring fun, excitement and positive energy into connections. You love moments that make people smile."
+      }
+
+    ]
+
+  },
+
+
+  /* =========================
+     NOVEL LOVER QUIZ
+  ========================= */
+
+  novel: {
+
+    title:"Let's See How Big a Novel Lover You Are?",
+
+    label:"Novel Lover Challenge",
+
+    mode:"knowledge",
+
+    questions:[
+
+      {
+        q:"Woh konsa character h jo mayait pr bhi perfume laga kr jata tha?",
+        options:[
+          ["Qais Qambeer","images/quiz/f4d4ad3eb57b4033c7795a7b99f541d7.jpg"],
+          ["Hashim Kardar","images/quiz/9775f80d06dabba53fc41ba3a939b518.jpg"]
+        ]
+      },
+
+      {
+        q:"Imama ko Salar ny jo ring di thi uski actual price kia thi?",
+        options:[
+          ["1.37 million","images/quiz/8295d20cbc6fffa2df4a9c49735ab08c.jpg"],
+          ["13.7 million","images/quiz/58344dbf894a3ec26f806e82340ec0cc.jpg"]
+        ]
+      },
+
+      {
+        q:"Halim novel me dusry konsy novel ky character ki entry hoi thi?",
+        options:[
+          ["Salar Sikandar","images/quiz/ff9d769e43c06af0c58d4bfdcd730d84.jpg"],
+          ["Jihan Sikandar","images/quiz/3443b8ab84d2176aafa31159989e49c0.jpg"]
+        ]
+      },
+
+      {
+        q:"Novel ki duniya me kahani kis k marny sy ruk gai?",
+        options:[
+          ["Raees Aurangzeb","images/quiz/edc4cb52d0066dd318ded78e80fb9623.jpg"],
+          ["Qais Kambeer","images/quiz/af66e9d7a997eda8d85ef6bbd7b9ad1f.jpg"]
+        ]
+      },
+
+      {
+        q:"Adam ka dil kahan tota tha?",
+        options:[
+          ["Qadeem Malacca","images/quiz/1e09dc162cf7a7b7b69ab82f4a54060c.jpg"],
+          ["Jadeed Malacca","images/quiz/96e940d7c6109e642f141e481e40122c.jpg"]
+        ]
+      },
+
+      {
+        q:"Salar ny Imama ko konsi ring di thi?",
+        options:[
+          ["Tiffany","images/quiz/19a2323dfc19dd3466c8544b7a0a8697.jpg"],
+          ["Dior","images/quiz/fe83bd3eb8ab5e1102870826ca5e27fa.jpg"]
+        ]
+      },
+
+      {
+        q:"Wo kon sa villain hai jis ki do mangetar thi phr bh wo kuwara he raha?",
+        options:[
+          ["Raees Aurangzeb","images/quiz/d69882ec496a015ccbc25ba75d9e765a.jpg"],
+          ["Qais Qambeer","images/quiz/df4a9e5072e11a2bad1122f65bc8d565.jpg"]
+        ]
+      },
+
+      {
+        q:"\"Laut aou Maliha tumhary bina jeena bhot mushkil hai\" yeh kis hero ka dialogue hai?",
+        options:[
+          ["Noor ul Huda","images/quiz/aef8dd7f9d624530ba44a9e2293402fb.jpg"],
+          ["Wajdan Mustafa","images/quiz/e7b6fce77374819ac99eec2c34ddf862.jpg"]
+        ]
+      },
+
+      {
+        q:"JKP me hero ny kitny roles kiye thy?",
+        options:[
+          ["3","images/quiz/eee9155ae407df473423d334a27886f4.jpg"],
+          ["4","images/quiz/05add3a2748ceaecd02b2b1b5c928d08.jpg"]
+        ]
+      },
+
+      {
+        q:"Taliya Murad ki Haalim me kitni dafa shadi hoi thi?",
+        options:[
+          ["2 dafa","images/quiz/fb8e525237e87d97407bf34ecddddc57.jpg"],
+          ["3 dafa","images/quiz/28db8b60be31a6bc09cab15b4a5b9f31.jpg"]
+        ]
+      }
+
+    ],
+
+    correctAnswers:[
+      0,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1
+    ]
+
+  }
 
 };
 
 
-/* =========================================
-   VARIABLES
-========================================= */
+/* =========================================================
+   STATE
+========================================================= */
 
 let currentQuiz = null;
+let currentQuizType = "";
 let currentQuestion = 0;
 let scores = [];
+let quizScore = 0;
 let playerName = "";
-let selectedQuiz = "";
+let answerLocked = false;
 
 
-/* =========================================
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const nameScreen = document.getElementById("nameScreen");
+const quizScreen = document.getElementById("quizScreen");
+const resultScreen = document.getElementById("resultScreen");
+
+const playerNameInput = document.getElementById("playerName");
+
+const quizLabel = document.getElementById("quizLabel");
+const questionCount = document.getElementById("questionCount");
+const progressBar = document.getElementById("progressBar");
+const questionText = document.getElementById("questionText");
+const answerGrid = document.getElementById("answerGrid");
+
+const resultImage = document.getElementById("resultImage");
+const resultTitle = document.getElementById("resultTitle");
+const resultName = document.getElementById("resultName");
+const resultDescription = document.getElementById("resultDescription");
+
+const scorePanel = document.getElementById("scorePanel");
+const scoreNumber = document.getElementById("scoreNumber");
+const percentageNumber = document.getElementById("percentageNumber");
+const resultBadge = document.getElementById("resultBadge");
+
+
+/* =========================================================
+   SCROLL
+========================================================= */
+
+function scrollToQuizzes(){
+
+  document.getElementById("quizzes").scrollIntoView({
+    behavior:"smooth"
+  });
+
+}
+
+
+/* =========================================================
    START QUIZ
-========================================= */
+========================================================= */
 
 function startQuiz(type){
 
-    selectedQuiz = type;
+  currentQuizType = type;
+  currentQuiz = quizzes[type];
 
-    currentQuiz = quizzes[type];
+  currentQuestion = 0;
+  quizScore = 0;
+  scores = [];
 
-    document.getElementById("nameHeading").textContent =
-        currentQuiz.title + " ✨";
+  if(currentQuiz.results){
+    scores = new Array(currentQuiz.results.length).fill(0);
+  }
 
-    document.getElementById("nameScreen").style.display = "block";
+  document.getElementById("quizzes").style.display = "none";
+  nameScreen.style.display = "block";
+  quizScreen.style.display = "none";
+  resultScreen.style.display = "none";
 
-    document.getElementById("quizScreen").style.display = "none";
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
 
-    document.getElementById("resultScreen").style.display = "none";
+  playerNameInput.value = "";
+  playerNameInput.focus();
 
-    document.getElementById("playerName").value = "";
-
-    window.scrollTo({
-        top:document.getElementById("nameScreen").offsetTop - 80,
-        behavior:"smooth"
-    });
 }
 
 
-/* =========================================
-   BEGIN
-========================================= */
+/* =========================================================
+   BEGIN QUIZ
+========================================================= */
 
 function beginQuiz(){
 
-    const input =
-        document.getElementById("playerName");
+  const name = playerNameInput.value.trim();
 
-    const name =
-        input.value.trim();
+  if(!name){
 
-    if(!name){
+    showToast("Please enter your name ✨");
 
-        alert("Please enter your name first.");
+    playerNameInput.focus();
 
-        input.focus();
+    return;
+  }
 
-        return;
-    }
+  playerName = name;
 
-    playerName = name;
+  nameScreen.style.display = "none";
+  quizScreen.style.display = "block";
+  resultScreen.style.display = "none";
 
-    currentQuestion = 0;
+  currentQuestion = 0;
+  quizScore = 0;
 
-    scores =
-        new Array(currentQuiz.results.length).fill(0);
+  showQuestion();
 
-    document.getElementById("nameScreen").style.display = "none";
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
 
-    document.getElementById("quizScreen").style.display = "block";
-
-    document.getElementById("resultScreen").style.display = "none";
-
-    showQuestion();
-
-    window.scrollTo({
-        top:document.getElementById("quizScreen").offsetTop - 70,
-        behavior:"smooth"
-    });
 }
 
 
-/* =========================================
+/* =========================================================
    SHOW QUESTION
-========================================= */
+========================================================= */
 
 function showQuestion(){
 
-    const q =
-        currentQuiz.questions[currentQuestion];
+  answerLocked = false;
 
-    const total =
-        currentQuiz.questions.length;
+  const q = currentQuiz.questions[currentQuestion];
 
-    document.getElementById("quizNumber").textContent =
-        "Question " + (currentQuestion + 1);
+  quizLabel.textContent = currentQuiz.label;
 
-    document.getElementById("quizTotal").textContent =
-        (currentQuestion + 1) + " / " + total;
+  questionCount.textContent =
+    `${currentQuestion + 1} / ${currentQuiz.questions.length}`;
 
-    document.getElementById("question").textContent =
-        q.q;
+  const progress =
+    ((currentQuestion + 1) / currentQuiz.questions.length) * 100;
 
-    document.getElementById("progress").style.width =
-        ((currentQuestion) / total * 100) + "%";
+  progressBar.style.width = progress + "%";
 
-    const grid =
-        document.getElementById("answerGrid");
+  questionText.textContent = q.q;
 
-    grid.innerHTML = "";
+  answerGrid.innerHTML = "";
 
-    q.options.forEach(function(option){
+  q.options.forEach((option,index)=>{
 
-        const card =
-            document.createElement("div");
+    const card = document.createElement("button");
 
-        card.className = "answer-card";
+    card.className = "answer-card";
 
-        card.innerHTML = `
-            <img src="${option[1]}" alt="${option[0]}">
-            <div class="answer-text">${option[0]}</div>
-        `;
+    card.type = "button";
 
-        card.onclick = function(){
+    const img = document.createElement("img");
 
-            chooseAnswer(option[2]);
+    img.src = option[1];
 
-        };
+    img.alt = option[0];
 
-        grid.appendChild(card);
+    img.loading = "lazy";
+
+    const number = document.createElement("span");
+
+    number.className = "answer-number";
+
+    number.textContent = index === 0 ? "A" : "B";
+
+    const text = document.createElement("span");
+
+    text.className = "answer-text";
+
+    text.textContent = option[0];
+
+    card.appendChild(img);
+    card.appendChild(number);
+    card.appendChild(text);
+
+    card.addEventListener("click",()=>{
+
+      chooseAnswer(index,card);
 
     });
+
+    answerGrid.appendChild(card);
+
+  });
 
 }
 
 
-/* =========================================
+/* =========================================================
    ANSWER
-========================================= */
+========================================================= */
 
-function chooseAnswer(type){
+function chooseAnswer(selectedIndex,selectedCard){
 
-    if(scores[type] !== undefined){
+  if(answerLocked){
+    return;
+  }
 
-        scores[type]++;
+  answerLocked = true;
+
+  const cards =
+    Array.from(answerGrid.querySelectorAll(".answer-card"));
+
+  if(currentQuiz.mode === "knowledge"){
+
+    const correctIndex =
+      currentQuiz.correctAnswers[currentQuestion];
+
+    if(selectedIndex === correctIndex){
+
+      quizScore++;
+
+      selectedCard.classList.add("correct");
+
+    }else{
+
+      selectedCard.classList.add("wrong");
+
+      if(cards[correctIndex]){
+        cards[correctIndex].classList.add("correct");
+      }
 
     }
+
+  }else{
+
+    const selectedOption =
+      currentQuiz.questions[currentQuestion].options[selectedIndex];
+
+    const resultIndex = selectedOption[2];
+
+    scores[resultIndex]++;
+
+    selectedCard.classList.add("correct");
+
+  }
+
+  setTimeout(()=>{
 
     currentQuestion++;
 
-    if(currentQuestion >= currentQuiz.questions.length){
+    if(currentQuestion < currentQuiz.questions.length){
 
-        showResult();
+      showQuestion();
 
     }else{
 
-        showQuestion();
-
-        window.scrollTo({
-            top:document.getElementById("quizScreen").offsetTop - 70,
-            behavior:"smooth"
-        });
+      showResult();
 
     }
+
+  },750);
 
 }
 
 
-/* =========================================
+/* =========================================================
    RESULT
-========================================= */
+========================================================= */
 
 function showResult(){
 
-    document.getElementById("quizScreen").style.display = "none";
+  quizScreen.style.display = "none";
+  nameScreen.style.display = "none";
+  resultScreen.style.display = "block";
 
-    document.getElementById("resultScreen").style.display = "block";
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
 
-    let highest = 0;
+  /* Knowledge Quiz */
 
-    for(let i = 1; i < scores.length; i++){
+  if(currentQuiz.mode === "knowledge"){
 
-        if(scores[i] > scores[highest]){
+    const total = currentQuiz.questions.length;
 
-            highest = i;
+    const percentage =
+      Math.round((quizScore / total) * 100);
 
-        }
+    scorePanel.style.display = "flex";
 
-    }
+    scoreNumber.textContent =
+      `${quizScore}/${total}`;
 
-    const result =
-        currentQuiz.results[highest];
+    percentageNumber.textContent =
+      `${percentage}%`;
 
-    document.getElementById("resultImage").src =
-        result.image;
+    resultImage.style.display = "none";
 
-    document.getElementById("resultTitle").textContent =
-        playerName + ", " + result.name;
+    resultName.textContent =
+      `${playerName}, you scored ${quizScore}/${total}`;
 
-    document.getElementById("resultName").textContent =
-        result.title;
+    let badge = "";
+    let title = "";
+    let description = "";
 
-    document.getElementById("resultDescription").textContent =
-        result.description;
+    if(quizScore >= 9){
 
-    document.getElementById("progress").style.width =
-        "100%";
+      badge = "🏆 Ultimate Novel Lover";
+      title = "You Really Know the Novel World! 📚";
+      description =
+        "Your novel knowledge is seriously impressive. You remembered the characters, details and iconic moments like a true novel lover.";
 
-    window.scrollTo({
-        top:document.getElementById("resultScreen").offsetTop - 70,
-        behavior:"smooth"
-    });
+    }else if(quizScore >= 7){
 
-}
+      badge = "🥇 Serious Novel Reader";
+      title = "That's a Strong Novel Score! ✨";
+      description =
+        "You clearly know your way around the novel world. A few details may have escaped you, but your memory is strong.";
 
+    }else if(quizScore >= 5){
 
-/* =========================================
-   SHARE RESULT
-========================================= */
+      badge = "🥈 Story Explorer";
+      title = "Not Bad, Novel Lover! 📖";
+      description =
+        "You know quite a lot, but there are still some hidden novel details waiting to challenge you.";
 
-function shareResult(){
+    }else if(quizScore >= 3){
 
-    const text =
-        playerName +
-        " just took a FictionQuiz! ✨ " +
-        currentQuiz.title +
-        " — Try it yourself!";
-
-    const url =
-        window.location.href.split("?")[0];
-
-    if(navigator.share){
-
-        navigator.share({
-
-            title:"FictionQuiz",
-            text:text,
-            url:url
-
-        }).catch(function(){});
+      badge = "📚 Casual Reader";
+      title = "The Novel World Has More Secrets! 👀";
+      description =
+        "You know some memorable details, but a serious novel re-read might be your next mission.";
 
     }else{
 
-        navigator.clipboard.writeText(
-            text + "\n" + url
-        );
-
-        alert("Result link copied!");
+      badge = "🌱 Novel Lover in Training";
+      title = "Your Novel Journey Is Just Beginning!";
+      description =
+        "Looks like the novel world still has plenty of secrets for you to discover. Try again and beat your score.";
 
     }
 
+    resultTitle.textContent = title;
+    resultBadge.textContent = badge;
+    resultBadge.style.display = "block";
+    resultDescription.textContent = description;
+
+    createConfetti();
+
+    return;
+
+  }
+
+
+  /* Result-based quizzes */
+
+  scorePanel.style.display = "none";
+  resultBadge.style.display = "none";
+  resultImage.style.display = "block";
+
+  let bestIndex = 0;
+  let bestScore = scores[0] || 0;
+
+  for(let i=1;i<scores.length;i++){
+
+    if(scores[i] > bestScore){
+
+      bestScore = scores[i];
+      bestIndex = i;
+
+    }
+
+  }
+
+  const result = currentQuiz.results[bestIndex];
+
+  resultImage.src = result.image;
+
+  resultTitle.textContent =
+    `✨ ${playerName}, this is your result!`;
+
+  resultName.textContent =
+    result.name;
+
+  resultDescription.textContent =
+    result.description;
+
+  createConfetti();
+
 }
 
 
-/* =========================================
-   COPY CHALLENGE
-========================================= */
+/* =========================================================
+   SHARE RESULT
+========================================================= */
 
-function copyChallenge(){
+async function shareResult(){
 
-    const url =
-        window.location.href.split("?")[0];
+  let text = "";
 
-    const text =
-        "I just played a FictionQuiz! ✨\n\n" +
-        "Can you beat my result?\n\n" +
-        url;
+  if(currentQuiz.mode === "knowledge"){
 
-    navigator.clipboard.writeText(text)
+    const total = currentQuiz.questions.length;
+    const percentage =
+      Math.round((quizScore / total) * 100);
 
-    .then(function(){
+    text =
+`📚 I just took the “Let's See How Big a Novel Lover You Are?” quiz!
 
-        alert("Challenge link copied! Send it to your friends. ✨");
+My score: ${quizScore}/${total} (${percentage}%)
 
-    })
+Think you know novels better than me? 👀🏆
 
-    .catch(function(){
+Take the quiz and challenge me!`;
 
-        prompt(
-            "Copy this challenge link:",
-            url
-        );
+  }else{
 
-    });
+    text =
+`✨ I just took a FictionQuiz!
+
+My result: ${resultName.textContent}
+
+Can you get a better result than me? 👀
+
+Take the quiz and find out!`;
+
+  }
+
+  const shareData = {
+    title:"FictionQuiz",
+    text:text,
+    url:window.location.href
+  };
+
+  try{
+
+    if(navigator.share){
+
+      await navigator.share(shareData);
+
+    }else{
+
+      await copyText(text + "\n\n" + window.location.href);
+
+      showToast("Result copied! 📋");
+
+    }
+
+  }catch(error){
+
+    if(error.name !== "AbortError"){
+
+      await copyText(text + "\n\n" + window.location.href);
+
+      showToast("Result copied! 📋");
+
+    }
+
+  }
 
 }
 
 
-/* =========================================
+/* =========================================================
+   CHALLENGE FRIENDS
+========================================================= */
+
+async function challengeQuiz(){
+
+  let message = "";
+
+  if(currentQuizType === "novel"){
+
+    message =
+`Think you're a bigger novel lover than me? 👀📚
+
+Take the “Let's See How Big a Novel Lover You Are?” quiz and let's see who really knows the novel world better! 🏆
+
+${window.location.href}`;
+
+  }else{
+
+    message =
+`👀 I just took this FictionQuiz!
+
+Think you can beat my result?
+
+Take the quiz and let's see who gets the better result! 🏆
+
+${window.location.href}`;
+
+  }
+
+  try{
+
+    if(navigator.share){
+
+      await navigator.share({
+        title:"Challenge Your Friends — FictionQuiz",
+        text:message
+      });
+
+    }else{
+
+      await copyText(message);
+
+      showToast("Challenge copied! Send it to your friends 👥");
+
+    }
+
+  }catch(error){
+
+    if(error.name !== "AbortError"){
+
+      await copyText(message);
+
+      showToast("Challenge copied! 👥");
+
+    }
+
+  }
+
+}
+
+
+/* =========================================================
+   COPY
+========================================================= */
+
+async function copyText(text){
+
+  if(navigator.clipboard){
+
+    await navigator.clipboard.writeText(text);
+
+    return;
+
+  }
+
+  const textarea = document.createElement("textarea");
+
+  textarea.value = text;
+
+  document.body.appendChild(textarea);
+
+  textarea.select();
+
+  document.execCommand("copy");
+
+  textarea.remove();
+
+}
+
+
+/* =========================================================
    RESTART
-========================================= */
+========================================================= */
 
 function restartQuiz(){
 
-    document.getElementById("resultScreen").style.display = "none";
+  if(!currentQuiz){
+    return;
+  }
 
-    document.getElementById("nameScreen").style.display = "block";
+  currentQuestion = 0;
+  quizScore = 0;
 
-    document.getElementById("playerName").value =
-        playerName;
+  if(currentQuiz.results){
 
-    window.scrollTo({
-        top:document.getElementById("nameScreen").offsetTop - 70,
-        behavior:"smooth"
-    });
+    scores = new Array(currentQuiz.results.length).fill(0);
+
+  }else{
+
+    scores = [];
+
+  }
+
+  resultScreen.style.display = "none";
+  nameScreen.style.display = "block";
+
+  playerNameInput.value = playerName;
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
 
 }
 
 
-/* =========================================
+/* =========================================================
+   BACK TO QUIZZES
+========================================================= */
+
+function backToQuizzes(){
+
+  resultScreen.style.display = "none";
+  nameScreen.style.display = "none";
+  quizScreen.style.display = "none";
+
+  document.getElementById("quizzes").style.display = "block";
+
+  window.scrollTo({
+    top:document.getElementById("quizzes").offsetTop - 70,
+    behavior:"smooth"
+  });
+
+}
+
+
+/* =========================================================
+   CONFETTI
+========================================================= */
+
+function createConfetti(){
+
+  const container =
+    document.getElementById("confettiContainer");
+
+  container.innerHTML = "";
+
+  const symbols = [
+    "✦",
+    "✧",
+    "•",
+    "◆",
+    "★"
+  ];
+
+  for(let i=0;i<55;i++){
+
+    const piece =
+      document.createElement("span");
+
+    piece.className = "confetti";
+
+    piece.textContent =
+      symbols[Math.floor(Math.random()*symbols.length)];
+
+    piece.style.left =
+      Math.random()*100 + "%";
+
+    piece.style.fontSize =
+      (8 + Math.random()*10) + "px";
+
+    piece.style.animationDelay =
+      (Math.random()*0.8) + "s";
+
+    piece.style.animationDuration =
+      (2 + Math.random()*2) + "s";
+
+    container.appendChild(piece);
+
+  }
+
+  setTimeout(()=>{
+
+    container.innerHTML = "";
+
+  },4500);
+
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+let toastTimer;
+
+function showToast(message){
+
+  const toast =
+    document.getElementById("toast");
+
+  toast.textContent = message;
+
+  toast.classList.add("show");
+
+  clearTimeout(toastTimer);
+
+  toastTimer = setTimeout(()=>{
+
+    toast.classList.remove("show");
+
+  },2600);
+
+}
+
+
+/* =========================================================
    ENTER KEY
-========================================= */
+========================================================= */
 
-document.getElementById("playerName").addEventListener(
-    "keydown",
-    function(event){
+playerNameInput.addEventListener("keydown",(event)=>{
 
-        if(event.key === "Enter"){
+  if(event.key === "Enter"){
 
-            beginQuiz();
+    event.preventDefault();
 
-        }
+    beginQuiz();
 
-    }
-);
+  }
+
+});
+
+
+/* =========================================================
+   START WITH QUIZZES
+========================================================= */
+
+window.startQuiz = startQuiz;
+window.beginQuiz = beginQuiz;
+window.shareResult = shareResult;
+window.challengeQuiz = challengeQuiz;
+window.restartQuiz = restartQuiz;
+window.backToQuizzes = backToQuizzes;
+window.scrollToQuizzes = scrollToQuizzes;
 
 </script>
 
