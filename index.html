@@ -49,6 +49,27 @@ button,input,textarea,select{font:inherit}button{cursor:pointer;border:0}button:
   </div>
   <section class="section" id="categories"><div class="sectionHead"><div><h2>🎨 Quiz Categories</h2><p>Pick a mood and find your next quiz.</p></div><button class="textbtn" onclick="showAllQuizzes()">View all →</button></div><div class="grid" id="categoryGrid"></div></section>
   <section class="section" id="featured"><div class="sectionHead"><div><h2>✨ Featured Quizzes</h2><p>Play, discover your result, and earn XP.</p></div><button class="textbtn" onclick="showAllQuizzes()">All quizzes →</button></div><div class="quizgrid" id="quizGrid"></div></section>
+  <!-- FICTIONQUIZ EVENTS & GIFT BOX -->
+<section class="section">
+  <div class="twocol">
+    <div class="panel">
+      <h3>🎁 Mystery Gift Box</h3>
+      <p class="muted small">Open your daily gift and collect bonus XP!</p>
+      <button class="btn" onclick="alert('🎉 Your mystery gift: +50 Bonus XP!')">
+        🎁 Open Gift Box
+      </button>
+    </div>
+
+    <div class="panel">
+      <h3>🎉 Special Events</h3>
+      <p class="muted small">Take part in FictionQuiz events and challenge your friends.</p>
+      <button class="btn" onclick="alert('✨ New quiz event coming soon!')">
+        Explore Events
+      </button>
+    </div>
+  </div>
+</section>
+<!-- END EVENTS & GIFT BOX -->
   <section class="section"><div class="twocol">
     <div class="panel"><h3>🌞 Daily Quiz</h3><p class="muted small">A new pick each day. One daily bonus per date.</p><div id="dailyCard"></div></div>
     <div class="panel"><h3>💫 Weekly Challenge</h3><p class="muted small">Mixed trivia challenge. Best score wins bragging rights on this device.</p><div id="weeklyCard"></div></div>
