@@ -54,17 +54,18 @@ button,input,textarea,select{font:inherit}button{cursor:pointer;border:0}button:
   <div class="twocol">
     <div class="panel">
       <h3>🎁 Mystery Gift Box</h3>
-      <p class="muted small">Open your daily gift and collect bonus XP!</p>
-      <button class="btn" onclick="alert('🎉 Your mystery gift: +50 Bonus XP!')">
+      <p class="muted small">Open your daily mystery gift!</p>
+      <button class="primary" onclick="openMysteryGift()">
         🎁 Open Gift Box
       </button>
+      <p id="giftStatus" class="muted small"></p>
     </div>
 
     <div class="panel">
       <h3>🎉 Special Events</h3>
-      <p class="muted small">Take part in FictionQuiz events and challenge your friends.</p>
-      <button class="btn" onclick="alert('✨ New quiz event coming soon!')">
-        Explore Events
+      <p class="muted small">Join quiz events and collect rewards.</p>
+      <button class="primary" onclick="openEvents()">
+        Explore Events ✨
       </button>
     </div>
   </div>
@@ -205,6 +206,46 @@ function openModal(html){$("modalRoot").innerHTML=`<div class="modalBack" onclic
 function closeModal(){$("modalRoot").innerHTML=""}
 function openProfile(){openModal(`<h2>👤 Your profile</h2><label class="small muted">Display name</label><input class="field" id="editName" maxlength="24" value="${escapeHtml(data.name)}"><label class="small muted">Choose an avatar</label><div style="display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 18px">${["🦋","🐼","🐱","🦊","🐰","🐸","🌸","⭐","🦄","🐨"].map(a=>`<button class="secondary" onclick="selectAvatar('${a}')" style="font-size:24px">${a}</button>`).join("")}</div><p class="muted small">Your profile is stored locally in this browser. No account is required.</p><button class="primary" onclick="saveProfile()">Save profile</button> <button class="secondary" onclick="closeModal()">Cancel</button>`)}
 let chosenAvatar=data.avatar;function selectAvatar(a){chosenAvatar=a;document.querySelectorAll(".modal button.secondary").forEach(b=>b.style.outline="");event.currentTarget.style.outline="2px solid var(--purple)"}function saveProfile(){let name=$("editName").value.trim().slice(0,24);if(name)data.name=name;data.avatar=chosenAvatar;closeModal();render();toast("Profile saved!")}
+  function openMysteryGift(){
+  const today = new Date().toDateString();
+
+  if(data.mysteryGiftDate === today){
+    toast("Aaj ka gift already open ho chuka! Kal wapas aana 🎁");
+    return;
+  }
+
+  const gifts = [
+    {type:"xp", amount:10, label:"🎉 +10 XP"},
+    {type:"xp", amount:25, label:"🌟 +25 XP"},
+    {type:"xp", amount:50, label:"💎 +50 XP"},
+    {type:"item", id:"frame-pink", label:"🌸 Pink Aura Frame"},
+    {type:"item", id:"frame-star", label:"⭐ Starry Frame"},
+    {type:"item", id:"avatar-unicorn", label:"🦄 Unicorn Avatar"},
+    {type:"item", id:"theme-night", label:"🌙 Midnight Theme"}
+  ];
+
+  const gift = gifts[Math.floor(Math.random()*gifts.length)];
+
+  if(!data.owned) data.owned = [];
+
+  if(gift.type === "item" && data.owned.includes(gift.id)){
+    data.xp += 25;
+    gift.label = "🎉 Already owned! Bonus +25 XP";
+  } else if(gift.type === "item"){
+    data.owned.push(gift.id);
+  } else {
+    data.xp += gift.amount;
+  }
+
+  data.mysteryGiftDate = today;
+  save();
+  render();
+  alert("Your Mystery Gift: " + gift.label);
+}
+
+function openEvents(){
+  alert("🎉 FictionQuiz Events\n\n✨ Weekly Quiz Challenge\n📚 Novel Lover Challenge\n🏆 Earn XP and unlock rewards!");
+}
 function claimDailyReward(){resetMissions();if(data.missions.reward){toast("Daily reward already claimed. Come back tomorrow!");return}data.missions.reward=true;award(10);render();toast("Daily reward claimed! +10 XP")}
 function openRewards(){let items=[{id:"frame-pink",e:"🌸",name:"Pink Aura Frame",cost:50},{id:"frame-star",e:"🌟",name:"Starry Frame",cost:100},{id:"theme-night",e:"🌙",name:"Midnight Theme",cost:150},{id:"avatar-unicorn",e:"🦄",name:"Unicorn Avatar",cost:200}];openModal(`<h2>🎁 Rewards & Closet</h2><p class="muted small">Unlock items with XP. Purchases are saved on this device.</p>${items.map(x=>`<div class="rewardRow"><span style="font-size:30px">${x.e}</span><div style="flex:1"><strong>${x.name}</strong><div class="small muted">${x.cost} XP</div></div>${data.owned.includes(x.id)?'<span class="xpReward">Owned ✓</span>':`<button class="primary" onclick="buyItem('${x.id}',${x.cost})">Unlock</button>`}</div>`).join("")}<button class="secondary" onclick="closeModal()" style="margin-top:15px">Close</button>`)}
 function buyItem(id,cost){if(data.owned.includes(id)){toast("Already unlocked!");return}if(data.xp<cost){toast("You need "+(cost-data.xp)+" more XP.");return}data.xp-=cost;data.owned.push(id);save();closeModal();render();toast("Item unlocked! ✨")}
