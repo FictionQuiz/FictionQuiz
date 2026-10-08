@@ -7,84 +7,73 @@
 
 <title>FictionQuiz | Fun Personality, Novel & Fiction Quizzes</title>
 
-<meta name="description" content="Play fun personality, relationship, Urdu novel, fictional character and friendship quizzes. Discover your result, earn XP, challenge friends and climb the FictionQuiz leaderboard.">
+<meta name="description" content="Play fun personality, friendship, novel, food, K-drama, K-pop and knowledge quizzes. Challenge your friends, earn XP, unlock rewards and climb the leaderboard.">
 
-<meta name="keywords" content="fiction quiz, personality quiz, relationship quiz, Urdu novel quiz, novel lover quiz, friendship quiz, fictional character quiz, book quiz, fun quizzes">
+<meta name="theme-color" content="#8b5cf6">
 
-<meta name="author" content="FictionQuiz">
-<meta name="robots" content="index, follow">
-
-<link rel="canonical" href="https://fictionquiz.github.io/FictionQuiz/">
-
-<meta name="theme-color" content="#9c4d76">
-
-<link rel="icon" type="image/png" href="images/favicon.png">
-<link rel="apple-touch-icon" href="images/favicon.png">
-
-<!-- SOCIAL SHARE -->
-<meta property="og:title" content="FictionQuiz ✨">
-<meta property="og:description" content="Take fun fiction, personality and novel quizzes. Discover your result and challenge your friends!">
+<meta property="og:title" content="FictionQuiz — Play. Challenge. Discover.">
+<meta property="og:description" content="Fun quizzes, challenges, XP, rewards and more.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://fictionquiz.github.io/FictionQuiz/">
 <meta property="og:image" content="https://fictionquiz.github.io/FictionQuiz/images/quiz/result-1.jpg">
-<meta property="og:site_name" content="FictionQuiz">
 
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="FictionQuiz ✨">
-<meta name="twitter:description" content="Discover your personality, test your novel knowledge and challenge your friends.">
-<meta name="twitter:image" content="https://fictionquiz.github.io/FictionQuiz/images/quiz/result-1.jpg">
+<link rel="icon" href="favicon.png">
 
-<!-- GOOGLE ANALYTICS -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-5KSCSN8Z5M"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<script>
-window.dataLayer = window.dataLayer || [];
-
-function gtag(){
-  dataLayer.push(arguments);
-}
-
-gtag('js', new Date());
-gtag('config', 'G-5KSCSN8Z5M');
-</script>
-
-<!-- STRUCTURED DATA -->
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"WebSite",
-  "name":"FictionQuiz",
-  "url":"https://fictionquiz.github.io/FictionQuiz/",
-  "description":"Fun personality, relationship, fictional character, friendship and Urdu novel quizzes."
-}
-</script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
 
 <style>
 
-/* =========================
-   GLOBAL
-========================= */
+/* =========================================================
+   FICTIONQUIZ V3
+   CLEAN DESIGN SYSTEM
+========================================================= */
 
 :root{
-  --pink:#b85c89;
-  --pink-dark:#873d67;
-  --pink-light:#f8e7f0;
-  --purple:#70558e;
-  --purple-dark:#4f3a69;
-  --lavender:#eee8f7;
-  --cream:#fffaf7;
-  --white:#ffffff;
-  --text:#302535;
-  --muted:#756a78;
-  --green:#2eaf68;
-  --green-light:#eafaf1;
-  --red:#e95767;
-  --red-light:#fff0f2;
-  --gold:#d9a83f;
-  --blue:#6a78d8;
-  --shadow:0 14px 40px rgba(71,39,68,.10);
-  --shadow-big:0 24px 70px rgba(71,39,68,.16);
-  --radius:24px;
+  --bg:#fff8fc;
+  --surface:#ffffff;
+  --surface2:#fff0f8;
+  --text:#251c2b;
+  --muted:#746a78;
+  --primary:#8b5cf6;
+  --primary2:#ec4899;
+  --accent:#f59e0b;
+  --success:#22c55e;
+  --danger:#ef4444;
+  --border:rgba(75,45,90,.10);
+  --shadow:0 12px 35px rgba(70,35,90,.10);
+  --radius:22px;
+  --header:rgba(255,255,255,.88);
+}
+
+html[data-theme="dark"]{
+  --bg:#15111b;
+  --surface:#211a29;
+  --surface2:#2a2034;
+  --text:#faf5ff;
+  --muted:#b7aabd;
+  --primary:#a78bfa;
+  --primary2:#f472b6;
+  --accent:#fbbf24;
+  --border:rgba(255,255,255,.09);
+  --shadow:0 14px 40px rgba(0,0,0,.30);
+  --header:rgba(21,17,27,.90);
+}
+
+html[data-theme="night"]{
+  --bg:#080d18;
+  --surface:#101827;
+  --surface2:#162033;
+  --text:#f1f5ff;
+  --muted:#9ba8bd;
+  --primary:#7dd3fc;
+  --primary2:#c084fc;
+  --accent:#facc15;
+  --border:rgba(255,255,255,.08);
+  --shadow:0 15px 45px rgba(0,0,0,.40);
+  --header:rgba(8,13,24,.92);
 }
 
 *{
@@ -98,23 +87,22 @@ html{
 }
 
 body{
-  font-family:
-    Inter,
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    sans-serif;
+  min-height:100vh;
+  font-family:"DM Sans",sans-serif;
   background:
-    radial-gradient(circle at 10% 5%,rgba(248,231,240,.8),transparent 28%),
-    radial-gradient(circle at 90% 15%,rgba(238,232,247,.9),transparent 30%),
-    var(--cream);
+    radial-gradient(circle at 10% 5%,rgba(236,72,153,.10),transparent 25%),
+    radial-gradient(circle at 90% 15%,rgba(139,92,246,.10),transparent 25%),
+    var(--bg);
   color:var(--text);
-  overflow-x:hidden;
+  transition:
+    background .35s ease,
+    color .35s ease;
 }
 
 button,
-a{
+input,
+select,
+textarea{
   font:inherit;
 }
 
@@ -127,543 +115,406 @@ a{
   text-decoration:none;
 }
 
-/* =========================
-   BACKGROUND DECOR
-========================= */
-
-.bg-orb{
-  position:fixed;
-  border-radius:50%;
-  pointer-events:none;
-  filter:blur(2px);
-  opacity:.45;
-  z-index:-1;
+img{
+  max-width:100%;
+  display:block;
 }
 
-.orb-one{
-  width:240px;
-  height:240px;
-  background:#f3cde0;
-  top:110px;
-  left:-130px;
+.hidden{
+  display:none!important;
 }
 
-.orb-two{
-  width:300px;
-  height:300px;
-  background:#ded4ef;
-  top:600px;
-  right:-170px;
-}
-
-.orb-three{
-  width:180px;
-  height:180px;
-  background:#f8dfb5;
-  top:1300px;
-  left:-80px;
-}
-
-/* =========================
-   TICKER
-========================= */
+/* =========================================================
+   TOP TICKER
+========================================================= */
 
 .top-ticker{
-  background:
-    linear-gradient(90deg,var(--purple-dark),var(--pink-dark),var(--purple-dark));
-  color:white;
-  height:38px;
-  display:flex;
-  align-items:center;
+  width:100%;
   overflow:hidden;
+  background:linear-gradient(90deg,var(--primary),var(--primary2));
+  color:white;
   font-size:13px;
   font-weight:700;
+  white-space:nowrap;
 }
 
 .ticker-track{
+  width:max-content;
   display:flex;
-  white-space:nowrap;
-  animation:tickerMove 22s linear infinite;
-}
-
-.ticker-item{
-  padding:0 35px;
+  gap:55px;
+  padding:9px 0;
+  animation:tickerMove 24s linear infinite;
 }
 
 @keyframes tickerMove{
-  from{
-    transform:translateX(0);
-  }
-  to{
-    transform:translateX(-50%);
-  }
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
 }
 
-/* =========================
+/* =========================================================
    HEADER
-========================= */
+========================================================= */
 
-header{
+.site-header{
   position:sticky;
   top:0;
-  z-index:100;
-  background:rgba(255,250,247,.88);
+  z-index:1000;
   backdrop-filter:blur(18px);
-  border-bottom:1px solid rgba(135,61,103,.08);
+  -webkit-backdrop-filter:blur(18px);
+  background:var(--header);
+  border-bottom:1px solid var(--border);
 }
 
-.navbar{
-  max-width:1200px;
+.header-inner{
+  max-width:1180px;
   margin:auto;
-  min-height:74px;
-  padding:12px 22px;
+  min-height:72px;
+  padding:12px 20px;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:20px;
+  gap:18px;
 }
 
-.logo{
+.brand{
   display:flex;
   align-items:center;
   gap:10px;
-  font-size:22px;
-  font-weight:900;
-  letter-spacing:-.5px;
+  flex-shrink:0;
 }
 
-.logo-icon{
+.brand-icon{
   width:42px;
   height:42px;
   border-radius:14px;
   display:grid;
   place-items:center;
   color:white;
-  background:linear-gradient(135deg,var(--pink),var(--purple));
-  box-shadow:0 8px 22px rgba(184,92,137,.25);
+  font-size:21px;
+  background:linear-gradient(135deg,var(--primary),var(--primary2));
+  box-shadow:0 8px 20px rgba(139,92,246,.25);
 }
 
-.logo span{
-  background:linear-gradient(90deg,var(--pink-dark),var(--purple));
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent;
+.brand-name{
+  font-family:"Playfair Display",serif;
+  font-size:22px;
+  font-weight:800;
 }
 
-.nav-links{
+.nav{
   display:flex;
   align-items:center;
-  gap:7px;
+  gap:5px;
 }
 
-.nav-links a{
-  padding:10px 13px;
+.nav a{
+  padding:9px 12px;
   border-radius:12px;
   color:var(--muted);
-  font-weight:700;
   font-size:14px;
+  font-weight:600;
+  transition:.2s;
 }
 
-.nav-links a:hover{
-  background:var(--pink-light);
-  color:var(--pink-dark);
-}
-
-.language-select{
-  border:1px solid rgba(112,85,142,.18);
-  background:white;
-  border-radius:13px;
-  padding:9px 11px;
+.nav a:hover{
   color:var(--text);
-  font-weight:700;
-  outline:none;
+  background:var(--surface2);
 }
 
-/* =========================
+.header-actions{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.icon-btn{
+  width:40px;
+  height:40px;
+  border:1px solid var(--border);
+  border-radius:13px;
+  background:var(--surface);
+  color:var(--text);
+  display:grid;
+  place-items:center;
+  transition:.2s;
+}
+
+.icon-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:var(--shadow);
+}
+
+.profile-mini{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:5px 9px 5px 5px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:14px;
+}
+
+.profile-avatar{
+  width:31px;
+  height:31px;
+  border-radius:10px;
+  display:grid;
+  place-items:center;
+  background:var(--surface2);
+}
+
+.profile-mini span{
+  font-size:12px;
+  font-weight:700;
+}
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+main{
+  width:100%;
+}
+
+.container{
+  width:min(1180px,calc(100% - 32px));
+  margin:auto;
+}
+
+.section{
+  padding:65px 0;
+}
+
+.section-small{
+  padding:35px 0;
+}
+
+.section-heading{
+  margin-bottom:25px;
+}
+
+.section-heading h2{
+  font-family:"Playfair Display",serif;
+  font-size:32px;
+  line-height:1.15;
+}
+
+.section-heading p{
+  color:var(--muted);
+  margin-top:8px;
+  font-size:15px;
+}
+
+/* =========================================================
    HERO
-========================= */
+========================================================= */
 
 .hero{
-  max-width:1200px;
-  margin:auto;
-  padding:75px 22px 45px;
+  padding:72px 0 45px;
+}
+
+.hero-grid{
   display:grid;
-  grid-template-columns:1.1fr .9fr;
-  gap:40px;
+  grid-template-columns:1.15fr .85fr;
+  gap:35px;
   align-items:center;
+}
+
+.hero-copy{
+  max-width:680px;
 }
 
 .hero-badge{
   display:inline-flex;
   align-items:center;
   gap:8px;
-  padding:9px 14px;
-  background:white;
-  border:1px solid rgba(184,92,137,.14);
+  padding:8px 13px;
   border-radius:999px;
-  box-shadow:var(--shadow);
-  color:var(--pink-dark);
-  font-weight:800;
+  background:var(--surface2);
+  border:1px solid var(--border);
+  color:var(--primary);
   font-size:13px;
-  margin-bottom:20px;
+  font-weight:800;
+  margin-bottom:18px;
 }
 
 .hero h1{
-  font-size:clamp(43px,6vw,76px);
+  font-family:"Playfair Display",serif;
+  font-size:clamp(42px,6vw,72px);
   line-height:.98;
-  letter-spacing:-4px;
-  max-width:750px;
-  margin-bottom:23px;
+  letter-spacing:-2px;
 }
 
 .gradient-text{
-  background:linear-gradient(100deg,var(--pink-dark),var(--purple),#a24d76);
+  background:linear-gradient(90deg,var(--primary),var(--primary2));
   -webkit-background-clip:text;
   background-clip:text;
   color:transparent;
 }
 
 .hero p{
+  max-width:600px;
+  margin-top:20px;
   color:var(--muted);
-  font-size:18px;
+  font-size:17px;
   line-height:1.7;
-  max-width:650px;
-  margin-bottom:28px;
 }
 
-.hero-buttons{
+.hero-actions{
   display:flex;
   flex-wrap:wrap;
   gap:12px;
+  margin-top:27px;
 }
 
-.primary-btn,
-.secondary-btn{
-  border:none;
-  border-radius:16px;
-  padding:15px 20px;
-  font-weight:900;
-  transition:.25s ease;
-}
-
-.primary-btn{
-  color:white;
-  background:linear-gradient(135deg,var(--pink),var(--purple));
-  box-shadow:0 12px 28px rgba(112,85,142,.22);
-}
-
-.primary-btn:hover{
-  transform:translateY(-3px);
-  box-shadow:0 18px 34px rgba(112,85,142,.28);
-}
-
-.secondary-btn{
-  background:white;
-  border:1px solid rgba(112,85,142,.14);
-  color:var(--purple-dark);
-}
-
-.secondary-btn:hover{
-  transform:translateY(-3px);
-  background:var(--lavender);
-}
-
-.hero-stats{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  margin-top:28px;
-}
-
-.stat-pill{
-  background:white;
-  border:1px solid rgba(112,85,142,.10);
+.btn{
+  border:0;
   border-radius:15px;
-  padding:10px 14px;
-  box-shadow:0 8px 25px rgba(71,39,68,.06);
+  padding:13px 20px;
+  font-weight:800;
+  transition:.22s;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
 }
 
-.stat-pill strong{
-  display:block;
-  font-size:17px;
+.btn:hover{
+  transform:translateY(-2px);
 }
 
-.stat-pill span{
-  color:var(--muted);
-  font-size:11px;
-  font-weight:700;
+.btn-primary{
+  color:white;
+  background:linear-gradient(135deg,var(--primary),var(--primary2));
+  box-shadow:0 10px 25px rgba(139,92,246,.22);
 }
 
-/* =========================
-   HERO CARD
-========================= */
+.btn-secondary{
+  color:var(--text);
+  background:var(--surface);
+  border:1px solid var(--border);
+}
+
+.btn-success{
+  color:white;
+  background:var(--success);
+}
 
 .hero-card{
-  position:relative;
-  min-height:390px;
-  border-radius:34px;
-  padding:26px;
-  overflow:hidden;
+  min-height:330px;
+  padding:25px;
+  border-radius:30px;
   background:
-    linear-gradient(145deg,#fff,#f5edf8);
-  box-shadow:var(--shadow-big);
-  border:1px solid rgba(112,85,142,.10);
+    radial-gradient(circle at 20% 15%,rgba(255,255,255,.55),transparent 25%),
+    linear-gradient(135deg,#a78bfa,#f472b6);
+  color:white;
+  position:relative;
+  overflow:hidden;
+  box-shadow:var(--shadow);
 }
 
-.hero-card::before{
-  content:"";
-  position:absolute;
-  width:220px;
-  height:220px;
-  border-radius:50%;
-  background:#f4cce0;
-  top:-80px;
-  right:-60px;
-}
-
+.hero-card::before,
 .hero-card::after{
   content:"";
   position:absolute;
-  width:170px;
-  height:170px;
   border-radius:50%;
-  background:#ddd3ef;
-  bottom:-70px;
-  left:-60px;
+  background:rgba(255,255,255,.14);
 }
 
-.mini-profile{
+.hero-card::before{
+  width:190px;
+  height:190px;
+  right:-55px;
+  top:-55px;
+}
+
+.hero-card::after{
+  width:120px;
+  height:120px;
+  left:-30px;
+  bottom:-30px;
+}
+
+.hero-card-content{
   position:relative;
   z-index:2;
-  display:flex;
-  align-items:center;
-  gap:13px;
-  margin-bottom:28px;
 }
 
-.avatar{
-  width:52px;
-  height:52px;
-  border-radius:18px;
-  display:grid;
-  place-items:center;
-  background:linear-gradient(135deg,#f4d1e2,#ddd2ee);
-  font-size:25px;
-}
-
-.mini-profile strong{
-  display:block;
-}
-
-.mini-profile small{
-  color:var(--muted);
-}
-
-.hero-score{
-  position:relative;
-  z-index:2;
-  background:white;
-  border-radius:25px;
-  padding:25px;
-  box-shadow:0 15px 35px rgba(71,39,68,.08);
-}
-
-.hero-score-label{
-  color:var(--muted);
+.hero-card-label{
   font-size:13px;
   font-weight:800;
+  opacity:.9;
 }
 
-.hero-score h2{
+.hero-card-title{
   margin-top:8px;
-  font-size:38px;
+  font-family:"Playfair Display",serif;
+  font-size:34px;
+  line-height:1.1;
 }
 
-.xp-bar{
-  height:11px;
-  background:#eeeaf1;
-  border-radius:99px;
-  overflow:hidden;
-  margin:16px 0 9px;
-}
-
-.xp-fill{
-  height:100%;
-  width:72%;
-  background:linear-gradient(90deg,var(--pink),var(--purple));
-  border-radius:99px;
-}
-
-.xp-info{
-  display:flex;
-  justify-content:space-between;
-  font-size:12px;
-  color:var(--muted);
-  font-weight:700;
-}
-
-.floating-chip{
-  position:absolute;
-  z-index:4;
-  background:white;
-  box-shadow:var(--shadow);
-  padding:11px 14px;
-  border-radius:15px;
-  font-size:13px;
-  font-weight:900;
-  animation:floatChip 3s ease-in-out infinite;
-}
-
-.chip-one{
-  top:120px;
-  right:22px;
-}
-
-.chip-two{
-  bottom:32px;
-  right:28px;
-  animation-delay:1s;
-}
-
-@keyframes floatChip{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-8px)}
-}
-
-/* =========================
-   SECTION
-========================= */
-
-.section{
-  max-width:1200px;
-  margin:auto;
-  padding:55px 22px;
-}
-
-.section-heading{
-  display:flex;
-  justify-content:space-between;
-  align-items:end;
-  gap:20px;
-  margin-bottom:24px;
-}
-
-.section-heading h2{
-  font-size:clamp(28px,4vw,42px);
-  letter-spacing:-1.5px;
-}
-
-.section-heading p{
-  color:var(--muted);
-  max-width:600px;
-  line-height:1.6;
-  margin-top:7px;
-}
-
-/* =========================
-   DAILY / WINNER
-========================= */
-
-.feature-grid{
+.hero-mini-stats{
   display:grid;
-  grid-template-columns:1.15fr .85fr;
-  gap:18px;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin-top:35px;
 }
 
-.feature-card{
-  border-radius:26px;
-  padding:25px;
-  background:white;
-  border:1px solid rgba(112,85,142,.09);
-  box-shadow:var(--shadow);
-  position:relative;
-  overflow:hidden;
+.mini-stat{
+  padding:13px 10px;
+  border-radius:16px;
+  background:rgba(255,255,255,.16);
+  backdrop-filter:blur(10px);
 }
 
-.daily-card{
-  background:
-    linear-gradient(135deg,#fff,#f5eafa);
+.mini-stat strong{
+  display:block;
+  font-size:20px;
 }
 
-.daily-card .label{
-  color:var(--pink-dark);
-  font-size:12px;
-  font-weight:900;
-  letter-spacing:.8px;
-  text-transform:uppercase;
+.mini-stat span{
+  font-size:11px;
+  opacity:.8;
 }
 
-.daily-card h3{
-  font-size:28px;
-  margin:10px 0;
-}
+/* =========================================================
+   FEATURE STRIP
+========================================================= */
 
-.daily-card p{
-  color:var(--muted);
-  line-height:1.6;
-  margin-bottom:20px;
-}
-
-.daily-bottom{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:15px;
-}
-
-.countdown{
-  font-weight:900;
-  color:var(--purple-dark);
-}
-
-.winner-card{
-  background:
-    linear-gradient(135deg,#fff9ec,#fff);
-}
-
-.winner-title{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:18px;
-}
-
-.winner-title strong{
-  font-size:18px;
-}
-
-.crown{
-  font-size:30px;
-}
-
-.winner-person{
-  display:flex;
-  align-items:center;
-  gap:14px;
-}
-
-.winner-avatar{
-  width:62px;
-  height:62px;
-  border-radius:21px;
+.feature-strip{
   display:grid;
-  place-items:center;
-  font-size:31px;
-  background:linear-gradient(135deg,#f8ddb0,#f1c8dd);
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
 }
 
-.winner-person h3{
-  margin-bottom:4px;
+.feature-box{
+  padding:18px;
+  border:1px solid var(--border);
+  border-radius:18px;
+  background:var(--surface);
+  box-shadow:0 7px 25px rgba(60,30,80,.05);
 }
 
-.winner-person p{
+.feature-icon{
+  font-size:24px;
+}
+
+.feature-box strong{
+  display:block;
+  margin-top:8px;
+  font-size:14px;
+}
+
+.feature-box span{
+  display:block;
+  margin-top:4px;
   color:var(--muted);
-  font-size:13px;
+  font-size:12px;
 }
 
-/* =========================
+/* =========================================================
    QUIZ CARDS
-========================= */
+========================================================= */
 
 .quiz-grid{
   display:grid;
@@ -672,570 +523,495 @@ header{
 }
 
 .quiz-card{
-  background:white;
-  border:1px solid rgba(112,85,142,.09);
-  border-radius:24px;
+  position:relative;
   overflow:hidden;
-  box-shadow:var(--shadow);
-  transition:.3s ease;
+  min-height:220px;
+  padding:21px;
+  border-radius:23px;
+  border:1px solid var(--border);
+  background:var(--surface);
+  box-shadow:0 8px 28px rgba(50,25,70,.06);
+  transition:.25s;
   cursor:pointer;
 }
 
 .quiz-card:hover{
-  transform:translateY(-7px) rotate(-.4deg);
-  box-shadow:0 22px 45px rgba(71,39,68,.15);
+  transform:translateY(-6px);
+  box-shadow:var(--shadow);
 }
 
-.quiz-art{
-  height:165px;
+.quiz-card-icon{
+  width:53px;
+  height:53px;
   display:grid;
   place-items:center;
-  font-size:58px;
-  position:relative;
-  overflow:hidden;
+  border-radius:17px;
+  font-size:27px;
+  background:var(--surface2);
 }
 
-.art-pink{
-  background:linear-gradient(135deg,#f8dbe8,#eed8ef);
-}
-
-.art-blue{
-  background:linear-gradient(135deg,#dce4ff,#e9dcf7);
-}
-
-.art-yellow{
-  background:linear-gradient(135deg,#fff0c9,#f9dce4);
-}
-
-.art-green{
-  background:linear-gradient(135deg,#d8f1e4,#e7e2f5);
-}
-
-.art-purple{
-  background:linear-gradient(135deg,#ded5f2,#f3d8e7);
-}
-
-.art-orange{
-  background:linear-gradient(135deg,#ffe1c8,#f5d8e6);
-}
-
-.art-cyan{
-  background:linear-gradient(135deg,#d5f0ef,#e2d9f1);
-}
-
-.art-red{
-  background:linear-gradient(135deg,#f8d6dc,#e8d7ef);
-}
-
-.quiz-info{
-  padding:17px;
-}
-
-.quiz-info .tag{
-  font-size:10px;
-  font-weight:900;
-  color:var(--pink-dark);
-  text-transform:uppercase;
-  letter-spacing:.7px;
-}
-
-.quiz-info h3{
-  margin:7px 0;
+.quiz-card h3{
+  margin-top:18px;
   font-size:18px;
-  line-height:1.25;
 }
 
-.quiz-info p{
+.quiz-card p{
+  margin-top:6px;
   color:var(--muted);
-  font-size:12px;
+  font-size:13px;
   line-height:1.5;
 }
 
-.quiz-meta{
+.quiz-card-footer{
+  position:absolute;
+  left:21px;
+  right:21px;
+  bottom:18px;
   display:flex;
-  justify-content:space-between;
   align-items:center;
-  margin-top:14px;
-  font-size:11px;
+  justify-content:space-between;
+  font-size:12px;
   color:var(--muted);
+}
+
+.quiz-pill{
+  padding:5px 9px;
+  border-radius:999px;
+  background:var(--surface2);
+  color:var(--primary);
   font-weight:800;
 }
 
-.play-mini{
-  color:var(--pink-dark);
-}
+/* =========================================================
+   DASHBOARD CARDS
+========================================================= */
 
-/* =========================
-   LEADERBOARD
-========================= */
-
-.leaderboard{
+.dashboard-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:18px;
 }
 
-.leader-card{
-  background:white;
-  border:1px solid rgba(112,85,142,.09);
-  border-radius:26px;
-  padding:23px;
-  box-shadow:var(--shadow);
+.panel{
+  padding:22px;
+  border:1px solid var(--border);
+  border-radius:23px;
+  background:var(--surface);
+  box-shadow:0 8px 28px rgba(50,25,70,.05);
 }
 
-.leader-tabs{
+.panel-title{
   display:flex;
-  gap:7px;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
   margin-bottom:18px;
 }
 
-.leader-tab{
-  border:none;
-  background:#f5f1f6;
-  color:var(--muted);
-  padding:9px 13px;
-  border-radius:12px;
+.panel-title h3{
+  font-size:18px;
+}
+
+.panel-title span{
   font-size:12px;
-  font-weight:900;
+  color:var(--muted);
 }
 
-.leader-tab.active{
-  background:var(--purple-dark);
+/* =========================================================
+   LEADERBOARD
+========================================================= */
+
+.rank-tabs{
+  display:flex;
+  gap:7px;
+  margin-bottom:15px;
+}
+
+.rank-tab{
+  border:1px solid var(--border);
+  background:var(--surface2);
+  color:var(--muted);
+  padding:8px 12px;
+  border-radius:11px;
+  font-size:12px;
+  font-weight:800;
+}
+
+.rank-tab.active{
+  background:var(--primary);
   color:white;
+  border-color:var(--primary);
 }
 
-.player-row{
+.rank-row{
   display:grid;
-  grid-template-columns:40px 1fr auto;
+  grid-template-columns:38px 1fr auto;
+  gap:10px;
   align-items:center;
-  gap:12px;
-  padding:12px 5px;
-  border-bottom:1px solid #f1edf2;
+  padding:10px 0;
+  border-bottom:1px solid var(--border);
 }
 
-.player-row:last-child{
-  border-bottom:none;
+.rank-row:last-child{
+  border-bottom:0;
 }
 
 .rank-number{
   font-weight:900;
-  color:var(--muted);
   text-align:center;
 }
 
-.player-info{
+.rank-user{
   display:flex;
   align-items:center;
-  gap:10px;
+  gap:9px;
 }
 
-.player-mini-avatar{
-  width:38px;
-  height:38px;
-  border-radius:13px;
+.rank-avatar{
+  width:36px;
+  height:36px;
+  border-radius:11px;
   display:grid;
   place-items:center;
-  background:var(--pink-light);
-  font-size:19px;
+  background:var(--surface2);
 }
 
-.player-info strong{
+.rank-user strong{
   display:block;
   font-size:13px;
 }
 
-.player-info small{
+.rank-user small{
   color:var(--muted);
-  font-size:10px;
+  font-size:11px;
 }
 
-.player-points{
-  font-weight:900;
-  font-size:13px;
-  color:var(--purple-dark);
+.rank-xp{
+  font-size:12px;
+  font-weight:800;
 }
 
-/* =========================
-   CREATE QUIZ
-========================= */
+/* =========================================================
+   MISSIONS
+========================================================= */
 
-.create-box{
-  border-radius:30px;
-  padding:34px;
-  background:
-    linear-gradient(135deg,var(--purple-dark),var(--pink-dark));
-  color:white;
-  box-shadow:var(--shadow-big);
-  display:grid;
-  grid-template-columns:1fr auto;
-  gap:25px;
+.mission{
+  display:flex;
   align-items:center;
-  overflow:hidden;
-  position:relative;
+  gap:12px;
+  padding:12px 0;
+  border-bottom:1px solid var(--border);
 }
 
-.create-box::after{
-  content:"✦  ✧  ✦  ✧";
-  position:absolute;
-  right:25px;
-  top:15px;
-  font-size:35px;
-  opacity:.13;
+.mission:last-child{
+  border-bottom:0;
 }
 
-.create-box h2{
-  font-size:32px;
-  margin-bottom:10px;
+.mission-icon{
+  width:38px;
+  height:38px;
+  display:grid;
+  place-items:center;
+  border-radius:12px;
+  background:var(--surface2);
 }
 
-.create-box p{
-  opacity:.85;
-  max-width:700px;
-  line-height:1.6;
+.mission-info{
+  flex:1;
 }
 
-.create-button{
-  border:none;
-  background:white;
-  color:var(--purple-dark);
-  border-radius:17px;
-  padding:15px 20px;
-  font-weight:900;
-  white-space:nowrap;
-}
-
-/* =========================
-   QUIZ AREA
-========================= */
-
-.quiz-area{
-  display:none;
-  max-width:900px;
-  margin:45px auto;
-  padding:0 22px;
-}
-
-.quiz-area.active{
+.mission-info strong{
   display:block;
+  font-size:13px;
 }
 
-.quiz-box{
-  background:white;
-  border-radius:30px;
-  padding:28px;
-  box-shadow:var(--shadow-big);
-  border:1px solid rgba(112,85,142,.09);
+.mission-info span{
+  display:block;
+  color:var(--muted);
+  font-size:11px;
+  margin-top:2px;
+}
+
+.mission-points{
+  color:var(--primary);
+  font-size:12px;
+  font-weight:900;
+}
+
+/* =========================================================
+   REWARDS
+========================================================= */
+
+.reward-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+}
+
+.reward-card{
+  padding:18px 12px;
+  text-align:center;
+  border:1px solid var(--border);
+  border-radius:18px;
+  background:var(--surface);
+  transition:.2s;
+}
+
+.reward-card:hover{
+  transform:translateY(-4px);
+}
+
+.reward-art{
+  font-size:35px;
+}
+
+.reward-card strong{
+  display:block;
+  margin-top:8px;
+  font-size:13px;
+}
+
+.reward-card span{
+  display:block;
+  margin-top:3px;
+  color:var(--muted);
+  font-size:11px;
+}
+
+/* =========================================================
+   QUIZ SCREEN
+========================================================= */
+
+.quiz-screen{
+  min-height:calc(100vh - 75px);
+  padding:35px 0 60px;
+}
+
+.quiz-shell{
+  max-width:780px;
+  margin:auto;
 }
 
 .quiz-top{
   display:flex;
-  justify-content:space-between;
   align-items:center;
-  gap:15px;
+  justify-content:space-between;
+  gap:12px;
   margin-bottom:15px;
 }
 
-.quiz-label{
-  color:var(--pink-dark);
+.quiz-progress{
+  height:9px;
+  overflow:hidden;
+  border-radius:999px;
+  background:var(--surface2);
+}
+
+.quiz-progress-fill{
+  height:100%;
+  width:0;
+  border-radius:inherit;
+  background:linear-gradient(90deg,var(--primary),var(--primary2));
+  transition:.35s;
+}
+
+.question-card{
+  margin-top:20px;
+  padding:28px;
+  border:1px solid var(--border);
+  border-radius:27px;
+  background:var(--surface);
+  box-shadow:var(--shadow);
+}
+
+.question-number{
+  color:var(--primary);
   font-size:12px;
   font-weight:900;
   text-transform:uppercase;
-  letter-spacing:1px;
+  letter-spacing:.8px;
 }
 
-.quiz-counter{
-  color:var(--muted);
-  font-weight:800;
-  font-size:13px;
+.question-text{
+  margin-top:10px;
+  font-family:"Playfair Display",serif;
+  font-size:32px;
+  line-height:1.2;
 }
 
-.progress{
-  height:9px;
-  background:#eeeaf0;
-  border-radius:99px;
-  overflow:hidden;
-  margin-bottom:30px;
-}
-
-.progress-bar{
-  height:100%;
-  width:0%;
-  background:linear-gradient(90deg,var(--pink),var(--purple));
-  border-radius:99px;
-  transition:.45s ease;
-}
-
-.question-box{
-  animation:questionEnter .45s ease;
-}
-
-@keyframes questionEnter{
-  from{
-    opacity:0;
-    transform:translateX(30px) scale(.98);
-  }
-  to{
-    opacity:1;
-    transform:translateX(0) scale(1);
-  }
-}
-
-.question-box h2{
-  font-size:clamp(24px,4vw,36px);
-  line-height:1.25;
-  margin-bottom:23px;
-}
-
-.answers{
+.options{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:14px;
+  gap:13px;
+  margin-top:25px;
 }
 
-.answer-card{
+.option-card{
   position:relative;
-  border:2px solid #eee9ef;
-  background:#fff;
-  border-radius:22px;
-  padding:13px;
+  min-height:125px;
+  padding:20px;
   text-align:left;
-  transition:.2s ease;
-  overflow:hidden;
+  border:2px solid var(--border);
+  border-radius:21px;
+  background:var(--surface);
+  color:var(--text);
+  transition:.2s;
 }
 
-.answer-card:hover{
-  border-color:var(--pink);
+.option-card:hover{
+  border-color:var(--primary);
   transform:translateY(-3px);
-  box-shadow:0 12px 25px rgba(184,92,137,.12);
 }
 
-.answer-card img{
-  width:100%;
-  height:175px;
-  object-fit:cover;
-  border-radius:15px;
+.option-icon{
+  font-size:28px;
+}
+
+.option-title{
   display:block;
-  margin-bottom:11px;
+  margin-top:12px;
+  font-size:16px;
+  font-weight:900;
 }
 
-.answer-content{
-  display:flex;
-  gap:10px;
-  align-items:center;
-  padding:2px 4px 5px;
-}
-
-.answer-letter{
-  min-width:30px;
-  height:30px;
-  border-radius:10px;
-  background:var(--pink-light);
-  color:var(--pink-dark);
-  display:grid;
-  place-items:center;
+.option-subtitle{
+  display:block;
+  margin-top:4px;
+  color:var(--muted);
   font-size:12px;
-  font-weight:900;
 }
 
-.answer-text{
-  font-weight:800;
-  line-height:1.35;
+.option-card.correct{
+  border-color:var(--success);
+  box-shadow:0 0 0 4px rgba(34,197,94,.10);
+  animation:correctPop .4s ease;
 }
 
-.answer-card.correct{
-  border-color:var(--green);
-  background:var(--green-light);
-  animation:correctPop .7s ease;
-}
-
-.answer-card.wrong{
-  border-color:var(--red);
-  background:var(--red-light);
-  animation:wrongShake .55s ease;
-}
-
-.answer-card.reveal{
-  border-color:var(--green);
-  background:var(--green-light);
-  box-shadow:0 0 0 5px rgba(46,175,104,.08);
-}
-
-.feedback{
-  display:none;
-  margin-top:18px;
-  border-radius:18px;
-  padding:15px;
-  font-weight:900;
-  text-align:center;
-}
-
-.feedback.show{
-  display:block;
-  animation:feedbackIn .35s ease;
-}
-
-.feedback.correct-feedback{
-  background:var(--green-light);
-  color:#19814b;
-}
-
-.feedback.wrong-feedback{
-  background:var(--red-light);
-  color:#c72f42;
+.option-card.wrong{
+  border-color:var(--danger);
+  box-shadow:0 0 0 4px rgba(239,68,68,.10);
+  animation:wrongShake .4s ease;
 }
 
 @keyframes correctPop{
-  0%{transform:scale(1)}
-  35%{transform:scale(1.045)}
-  60%{transform:scale(.98)}
+  0%{transform:scale(.97)}
+  60%{transform:scale(1.035)}
   100%{transform:scale(1)}
 }
 
 @keyframes wrongShake{
   0%,100%{transform:translateX(0)}
-  20%{transform:translateX(-8px)}
-  40%{transform:translateX(8px)}
-  60%{transform:translateX(-6px)}
-  80%{transform:translateX(5px)}
+  25%{transform:translateX(-7px)}
+  75%{transform:translateX(7px)}
 }
 
-@keyframes feedbackIn{
-  from{
-    opacity:0;
-    transform:translateY(8px);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-}
-
-/* =========================
-   NAME SCREEN
-========================= */
-
-.name-screen{
-  display:none;
-  max-width:650px;
-  margin:55px auto;
-  padding:0 22px;
-}
-
-.name-screen.active{
-  display:block;
-}
-
-.name-box{
-  background:white;
-  border-radius:30px;
-  padding:35px;
-  box-shadow:var(--shadow-big);
+.feedback{
+  min-height:30px;
+  margin-top:16px;
   text-align:center;
+  font-weight:900;
 }
 
-.name-icon{
-  width:75px;
-  height:75px;
-  border-radius:25px;
-  display:grid;
-  place-items:center;
-  margin:0 auto 18px;
-  background:linear-gradient(135deg,var(--pink-light),var(--lavender));
-  font-size:38px;
+.feedback.correct{
+  color:var(--success);
 }
 
-.name-box h2{
-  font-size:32px;
-  margin-bottom:10px;
+.feedback.wrong{
+  color:var(--danger);
 }
 
-.name-box p{
+/* =========================================================
+   NAME / AVATAR SCREEN
+========================================================= */
+
+.start-card{
+  max-width:620px;
+  margin:50px auto;
+  padding:30px;
+  text-align:center;
+  border:1px solid var(--border);
+  border-radius:28px;
+  background:var(--surface);
+  box-shadow:var(--shadow);
+}
+
+.start-card h2{
+  font-family:"Playfair Display",serif;
+  font-size:34px;
+}
+
+.start-card p{
+  margin-top:8px;
   color:var(--muted);
-  line-height:1.6;
-  margin-bottom:22px;
 }
 
 .name-input{
   width:100%;
-  border:2px solid #eee9ef;
-  border-radius:16px;
-  padding:15px;
+  margin-top:22px;
+  padding:15px 16px;
+  border:1px solid var(--border);
+  border-radius:15px;
   outline:none;
-  font-size:16px;
-  margin-bottom:12px;
+  background:var(--surface2);
+  color:var(--text);
 }
 
 .name-input:focus{
-  border-color:var(--pink);
+  border-color:var(--primary);
 }
 
-/* =========================
-   RESULT
-========================= */
-
-.result-screen{
-  display:none;
-  max-width:950px;
-  margin:50px auto;
-  padding:0 22px;
+.avatar-grid{
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  gap:9px;
+  margin-top:17px;
 }
 
-.result-screen.active{
-  display:block;
-}
-
-.result-main{
-  background:white;
-  border-radius:32px;
-  padding:28px;
-  box-shadow:var(--shadow-big);
-  text-align:center;
-}
-
-.result-image{
-  width:100%;
-  max-width:540px;
-  height:300px;
-  object-fit:cover;
-  border-radius:25px;
-  margin:auto;
-  display:block;
-}
-
-.result-kicker{
-  color:var(--pink-dark);
-  font-size:12px;
-  font-weight:900;
-  text-transform:uppercase;
-  letter-spacing:1px;
-  margin-top:23px;
-}
-
-.result-main h2{
-  font-size:clamp(30px,5vw,48px);
-  margin:8px 0;
-}
-
-.result-main p{
-  color:var(--muted);
-  line-height:1.6;
-}
-
-.score-circle{
-  width:105px;
-  height:105px;
-  border-radius:50%;
-  margin:20px auto;
+.avatar-choice{
+  aspect-ratio:1;
   display:grid;
   place-items:center;
-  background:linear-gradient(135deg,var(--pink-light),var(--lavender));
-  border:8px solid white;
-  box-shadow:0 0 0 2px #eee6ef;
+  border:2px solid var(--border);
+  border-radius:15px;
+  background:var(--surface2);
+  font-size:25px;
 }
 
-.score-circle strong{
-  font-size:27px;
-  color:var(--purple-dark);
+.avatar-choice.selected{
+  border-color:var(--primary);
+  box-shadow:0 0 0 3px rgba(139,92,246,.12);
+}
+
+/* =========================================================
+   RESULT
+========================================================= */
+
+.result-card{
+  max-width:720px;
+  margin:40px auto;
+  padding:35px;
+  text-align:center;
+  border:1px solid var(--border);
+  border-radius:30px;
+  background:var(--surface);
+  box-shadow:var(--shadow);
+}
+
+.result-icon{
+  font-size:60px;
+}
+
+.result-card h2{
+  margin-top:12px;
+  font-family:"Playfair Display",serif;
+  font-size:38px;
+}
+
+.result-score{
+  margin-top:10px;
+  color:var(--primary);
+  font-size:28px;
+  font-weight:900;
 }
 
 .result-actions{
@@ -1243,230 +1019,171 @@ header{
   justify-content:center;
   flex-wrap:wrap;
   gap:10px;
-  margin-top:22px;
-}
-
-.recommendations{
   margin-top:25px;
-  text-align:left;
 }
 
-.recommendations h3{
-  margin-bottom:14px;
-}
-
-.recommend-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-}
-
-.recommend-card{
-  border:1px solid #eee8ef;
-  border-radius:18px;
-  padding:16px;
-  background:#fff;
-  transition:.25s;
-  cursor:pointer;
-}
-
-.recommend-card:hover{
-  transform:translateY(-4px);
-  background:var(--pink-light);
-}
-
-.recommend-card .emoji{
-  font-size:29px;
-}
-
-.recommend-card h4{
-  margin-top:8px;
-  font-size:15px;
-}
-
-.recommend-card p{
-  font-size:11px;
-  margin-top:5px;
-}
-
-/* =========================
-   AVATAR
-========================= */
-
-.avatar-picker{
-  display:none;
-  max-width:700px;
-  margin:20px auto;
-  padding:0 22px;
-}
-
-.avatar-picker.active{
-  display:block;
-}
-
-.avatar-box{
-  background:white;
-  border-radius:26px;
-  padding:25px;
-  box-shadow:var(--shadow);
-  text-align:center;
-}
-
-.avatar-options{
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  gap:9px;
-  margin:15px 0;
-}
-
-.avatar-option{
-  width:48px;
-  height:48px;
-  border-radius:15px;
-  border:2px solid transparent;
-  background:var(--pink-light);
-  font-size:25px;
-}
-
-.avatar-option.selected{
-  border-color:var(--pink);
-  box-shadow:0 0 0 4px rgba(184,92,137,.10);
-}
-
-/* =========================
-   TOAST / CONFETTI
-========================= */
+/* =========================================================
+   TOAST
+========================================================= */
 
 .toast{
   position:fixed;
   left:50%;
   bottom:25px;
-  transform:translateX(-50%) translateY(30px);
-  background:#302535;
-  color:white;
-  padding:13px 17px;
-  border-radius:14px;
-  font-weight:800;
-  font-size:13px;
+  z-index:3000;
+  transform:translate(-50%,20px);
   opacity:0;
   pointer-events:none;
-  z-index:500;
-  transition:.3s;
+  max-width:calc(100% - 30px);
+  padding:13px 17px;
+  border-radius:15px;
+  background:#211a29;
+  color:white;
+  box-shadow:0 15px 35px rgba(0,0,0,.25);
+  font-size:13px;
+  font-weight:700;
+  transition:.25s;
 }
 
 .toast.show{
   opacity:1;
-  transform:translateX(-50%) translateY(0);
+  transform:translate(-50%,0);
 }
 
-.confetti{
+/* =========================================================
+   THEME PANEL
+========================================================= */
+
+.theme-panel{
   position:fixed;
-  width:8px;
-  height:12px;
-  top:-20px;
-  z-index:600;
-  animation:confettiFall 1.8s ease forwards;
+  right:18px;
+  bottom:18px;
+  z-index:1500;
 }
 
-@keyframes confettiFall{
-  to{
-    transform:translateY(110vh) rotate(720deg);
-    opacity:0;
-  }
-}
-
-/* =========================
-   ABOUT / FOOTER
-========================= */
-
-.about-box{
-  background:white;
-  border:1px solid rgba(112,85,142,.09);
+.theme-menu{
+  position:absolute;
+  right:0;
+  bottom:54px;
+  width:175px;
+  padding:8px;
+  border:1px solid var(--border);
+  border-radius:17px;
+  background:var(--surface);
   box-shadow:var(--shadow);
-  border-radius:28px;
-  padding:30px;
+  display:none;
 }
 
-.about-box p{
-  color:var(--muted);
-  line-height:1.75;
-  margin-top:10px;
+.theme-menu.open{
+  display:block;
 }
+
+.theme-option{
+  width:100%;
+  border:0;
+  padding:11px;
+  text-align:left;
+  border-radius:11px;
+  background:transparent;
+  color:var(--text);
+  font-size:13px;
+  font-weight:700;
+}
+
+.theme-option:hover{
+  background:var(--surface2);
+}
+
+.theme-main{
+  width:48px;
+  height:48px;
+  border:0;
+  border-radius:16px;
+  display:grid;
+  place-items:center;
+  background:linear-gradient(135deg,var(--primary),var(--primary2));
+  color:white;
+  box-shadow:0 10px 25px rgba(80,40,100,.22);
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
 
 footer{
-  margin-top:40px;
-  padding:35px 22px;
-  background:#302535;
-  color:white;
-  text-align:center;
+  margin-top:30px;
+  padding:35px 0 90px;
+  border-top:1px solid var(--border);
 }
 
-footer p{
-  color:#d8cfd9;
-  font-size:13px;
-  margin:7px;
+.footer-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
 }
 
-footer a{
-  color:white;
-  margin:0 7px;
+.footer-copy{
+  color:var(--muted);
+  font-size:12px;
 }
 
-footer a:hover{
-  color:#f0b9d5;
+.footer-links{
+  display:flex;
+  flex-wrap:wrap;
+  gap:13px;
 }
 
-/* =========================
+.footer-links a{
+  color:var(--muted);
+  font-size:12px;
+}
+
+.footer-links a:hover{
+  color:var(--primary);
+}
+
+/* =========================================================
    MOBILE
-========================= */
+========================================================= */
 
-@media(max-width:950px){
+@media(max-width:900px){
 
-  .hero{
-    grid-template-columns:1fr;
+  .nav{
+    display:none;
   }
 
-  .hero-card{
-    min-height:340px;
+  .hero-grid{
+    grid-template-columns:1fr;
   }
 
   .quiz-grid{
     grid-template-columns:repeat(2,1fr);
   }
 
-  .feature-grid,
-  .leaderboard{
-    grid-template-columns:1fr;
+  .feature-strip{
+    grid-template-columns:repeat(2,1fr);
   }
 
 }
 
 @media(max-width:650px){
 
-  .navbar{
-    padding:10px 14px;
+  .container{
+    width:min(100% - 22px,1180px);
   }
 
-  .nav-links a{
-    display:none;
-  }
-
-  .logo{
-    font-size:19px;
-  }
-
-  .language-select{
-    font-size:11px;
-    padding:8px;
+  .section{
+    padding:45px 0;
   }
 
   .hero{
-    padding-top:45px;
+    padding:48px 0 30px;
   }
 
   .hero h1{
-    letter-spacing:-2.5px;
+    font-size:43px;
+    letter-spacing:-1.2px;
   }
 
   .hero p{
@@ -1474,822 +1191,843 @@ footer a:hover{
   }
 
   .hero-card{
-    min-height:310px;
-  }
-
-  .section{
-    padding:38px 16px;
-  }
-
-  .section-heading{
-    display:block;
+    min-height:280px;
   }
 
   .quiz-grid{
-    grid-template-columns:1fr 1fr;
-    gap:10px;
-  }
-
-  .quiz-art{
-    height:125px;
-    font-size:43px;
-  }
-
-  .quiz-info{
-    padding:13px;
-  }
-
-  .quiz-info h3{
-    font-size:15px;
-  }
-
-  .answers{
     grid-template-columns:1fr;
   }
 
-  .answer-card img{
-    height:210px;
+  .dashboard-grid{
+    grid-template-columns:1fr;
   }
 
-  .quiz-box,
-  .name-box,
-  .result-main{
+  .reward-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .options{
+    grid-template-columns:1fr;
+  }
+
+  .question-text{
+    font-size:27px;
+  }
+
+  .question-card{
     padding:20px;
-    border-radius:23px;
   }
 
-  .recommend-grid{
-    grid-template-columns:1fr;
+  .avatar-grid{
+    grid-template-columns:repeat(4,1fr);
   }
 
-  .create-box{
-    grid-template-columns:1fr;
-    padding:25px;
+  .header-inner{
+    padding:10px 11px;
   }
 
-  .daily-bottom{
+  .brand-name{
+    font-size:18px;
+  }
+
+  .profile-mini span{
+    display:none;
+  }
+
+  .footer-inner{
+    flex-direction:column;
     align-items:flex-start;
-    flex-direction:column;
-  }
-
-  .result-image{
-    height:220px;
-  }
-
-}
-
-@media(max-width:390px){
-
-  .quiz-grid{
-    grid-template-columns:1fr;
-  }
-
-  .hero-buttons{
-    flex-direction:column;
-  }
-
-  .primary-btn,
-  .secondary-btn{
-    width:100%;
   }
 
 }
 
 </style>
 </head>
-
 <body>
 
-<div class="bg-orb orb-one"></div>
-<div class="bg-orb orb-two"></div>
-<div class="bg-orb orb-three"></div>
+<!-- BACKGROUND -->
+<div class="bg-orb orb-1"></div>
+<div class="bg-orb orb-2"></div>
+<div class="bg-orb orb-3"></div>
 
-<!-- =========================
-     TOP TICKER
-========================= -->
-
+<!-- TOP TICKER -->
 <div class="top-ticker">
   <div class="ticker-track">
-
-    <span class="ticker-item">🔥 New Quiz: How Big a Novel Lover Are You?</span>
-    <span class="ticker-item">🏆 Player of the Week: Ayesha • 2,840 XP</span>
-    <span class="ticker-item">✨ Daily Quiz is Live!</span>
-    <span class="ticker-item">👯 Challenge your friends!</span>
-
-    <span class="ticker-item">🔥 New Quiz: How Big a Novel Lover Are You?</span>
-    <span class="ticker-item">🏆 Player of the Week: Ayesha • 2,840 XP</span>
-    <span class="ticker-item">✨ Daily Quiz is Live!</span>
-    <span class="ticker-item">👯 Challenge your friends!</span>
-
+    <span>✨ New Quiz: Which Fictional Character Are You?</span>
+    <span>🏆 Player of the Week: Ayesha</span>
+    <span>🔥 Daily Quiz is Live!</span>
+    <span>💗 Challenge your friends</span>
+    <span>⭐ Earn XP & unlock badges</span>
+    <span>✨ New Quiz: Which Fictional Character Are You?</span>
   </div>
 </div>
 
-<!-- =========================
-     HEADER
-========================= -->
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
 
-<header>
-
-  <nav class="navbar">
-
-    <a href="#" class="logo">
-      <div class="logo-icon">✦</div>
-      <span>FictionQuiz</span>
+    <a href="#" class="brand" onclick="backToQuizzes();return false;">
+      <span class="brand-icon">📖</span>
+      <span>Fiction<span>Quiz</span></span>
     </a>
 
-    <div class="nav-links">
-
+    <nav class="main-nav">
+      <a href="#home">Home</a>
       <a href="#quizzes">Quizzes</a>
       <a href="#leaderboard">Leaderboard</a>
-      <a href="#create">Create</a>
-      <a href="#about">About</a>
+      <a href="#create">Create Quiz</a>
+    </nav>
 
+    <div class="header-actions">
+      <select id="languageSelect" class="language-select" onchange="changeLanguage(this.value)">
+        <option value="auto">🌐 Language</option>
+        <option value="en">English</option>
+        <option value="ur">اردو</option>
+        <option value="hi">हिन्दी</option>
+        <option value="bn">বাংলা</option>
+        <option value="tr">Türkçe</option>
+        <option value="ar">العربية</option>
+        <option value="ko">한국어</option>
+      </select>
+
+      <button class="header-play-btn" onclick="scrollToQuizzes()">
+        Play Now ✨
+      </button>
     </div>
 
-    <select class="language-select" id="languageSelect">
-      <option value="en">🌐 English</option>
-      <option value="ur">اردو</option>
-      <option value="hi">हिन्दी</option>
-      <option value="bn">বাংলা</option>
-      <option value="tr">Türkçe</option>
-      <option value="ar">العربية</option>
-      <option value="ko">한국어</option>
-    </select>
-
-  </nav>
-
+  </div>
 </header>
 
+<main id="home">
 
-<!-- =========================
-     HERO
-========================= -->
-
-<section class="hero">
-
-  <div>
+<!-- HERO -->
+<section class="hero-section">
+  <div class="hero-content">
 
     <div class="hero-badge">
-      ✨ Your Fiction. Your Quiz. Your Rank.
+      ✨ QUIZ • PLAY • COMPETE • SHARE
     </div>
 
     <h1>
-      Find out
-      <span class="gradient-text">what kind of</span>
-      fiction lover you are.
+      Find Your
+      <span>Fictional Side.</span>
     </h1>
 
     <p>
-      Play personality, relationship, Urdu novel, friendship,
-      fictional character and fun preference quizzes.
-      Get your result, earn XP and challenge your friends.
+      Discover your personality, test your friendship,
+      explore your favorite novels and challenge your friends.
     </p>
 
     <div class="hero-buttons">
-
       <button class="primary-btn" onclick="scrollToQuizzes()">
-        🎮 Start Playing
+        Start Playing <span>→</span>
       </button>
 
-      <button class="secondary-btn" onclick="openDailyQuiz()">
-        ✨ Today's Quiz
+      <button class="secondary-btn" onclick="startDailyQuiz()">
+        🔥 Daily Quiz
       </button>
-
     </div>
 
     <div class="hero-stats">
-
-      <div class="stat-pill">
-        <strong>8+</strong>
+      <div>
+        <strong id="heroQuizCount">8+</strong>
         <span>Quizzes</span>
       </div>
-
-      <div class="stat-pill">
-        <strong>XP</strong>
-        <span>Earn Points</span>
-      </div>
-
-      <div class="stat-pill">
-        <strong>🏆</strong>
-        <span>Leaderboard</span>
-      </div>
-
-      <div class="stat-pill">
-        <strong>👯</strong>
-        <span>Challenge Friends</span>
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <div class="hero-card">
-
-    <div class="mini-profile">
-
-      <div class="avatar">
-        🌸
-      </div>
-
       <div>
-        <strong>Your FictionQuiz Profile</strong>
-        <small>Reader • Quiz Lover</small>
+        <strong>∞</strong>
+        <span>Challenges</span>
       </div>
-
-    </div>
-
-
-    <div class="hero-score">
-
-      <div class="hero-score-label">
-        YOUR CURRENT RANK
+      <div>
+        <strong>🏆</strong>
+        <span>Rewards</span>
       </div>
-
-      <h2>🌙 Bookish Soul</h2>
-
-      <div class="xp-bar">
-        <div class="xp-fill"></div>
-      </div>
-
-      <div class="xp-info">
-        <span>720 XP</span>
-        <span>1,000 XP</span>
-      </div>
-
-    </div>
-
-    <div class="floating-chip chip-one">
-      🔥 7 Day Streak
-    </div>
-
-    <div class="floating-chip chip-two">
-      🏅 4 Badges
     </div>
 
   </div>
 
+  <div class="hero-visual">
+
+    <div class="floating-card card-a">
+      <span>💜</span>
+      <strong>Personality</strong>
+      <small>Discover yourself</small>
+    </div>
+
+    <div class="floating-card card-b">
+      <span>📚</span>
+      <strong>Novel Lover</strong>
+      <small>How obsessed are you?</small>
+    </div>
+
+    <div class="hero-book">
+      <div class="book-glow"></div>
+      <div class="book-cover">
+        <span class="book-star">✦</span>
+        <div class="book-title">YOUR<br>STORY</div>
+        <small>FICTIONQUIZ</small>
+      </div>
+    </div>
+
+  </div>
 </section>
 
 
-<!-- =========================
-     DAILY + WINNER
-========================= -->
+<!-- DAILY + PLAYER -->
+<section class="featured-section container">
 
-<section class="section">
+  <div class="daily-card feature-card">
+    <div class="feature-icon">🔥</div>
 
-  <div class="feature-grid">
+    <div class="feature-info">
+      <span class="mini-label">QUIZ OF THE DAY</span>
+      <h2>Can You Beat Today's Challenge?</h2>
+      <p>Complete today's quiz and earn bonus XP.</p>
 
-    <div class="feature-card daily-card">
+      <button class="small-primary-btn" onclick="startDailyQuiz()">
+        Play Daily Quiz →
+      </button>
+    </div>
 
-      <div class="label">✨ Quiz of the Day</div>
+    <div class="daily-fire">🔥</div>
+  </div>
 
-      <h3>How Well Do You Know Fiction?</h3>
 
+  <div class="player-card feature-card">
+    <div class="player-crown">👑</div>
+
+    <div class="player-avatar large-avatar" id="weeklyPlayerAvatar">
+      👩🏻‍🎓
+    </div>
+
+    <div class="feature-info">
+      <span class="mini-label">PLAYER OF THE WEEK</span>
+      <h2 id="weeklyPlayerName">Ayesha</h2>
       <p>
-        A fresh challenge every day. Play today,
-        collect XP and keep your streak alive.
+        <strong id="weeklyPlayerXP">2,450 XP</strong>
+        · #1 FictionQuiz Player
       </p>
 
-      <div class="daily-bottom">
-
-        <button class="primary-btn" onclick="openDailyQuiz()">
-          Play Daily Quiz →
-        </button>
-
-        <span class="countdown" id="countdown">
-          New quiz every day
-        </span>
-
-      </div>
-
+      <button class="small-secondary-btn" onclick="showLeaderboard()">
+        View Leaderboard →
+      </button>
     </div>
-
-
-    <div class="feature-card winner-card">
-
-      <div class="winner-title">
-
-        <strong>🏆 Player of the Week</strong>
-
-        <span class="crown">👑</span>
-
-      </div>
-
-      <div class="winner-person">
-
-        <div class="winner-avatar">
-          🌷
-        </div>
-
-        <div>
-          <h3>Ayesha</h3>
-          <p>2,840 XP • 18 quizzes • 🔥 12 day streak</p>
-        </div>
-
-      </div>
-
-    </div>
-
   </div>
 
 </section>
 
 
-<!-- =========================
-     QUIZZES
-========================= -->
-
-<section class="section" id="quizzes">
+<!-- QUIZZES -->
+<section id="quizzes" class="quiz-section container">
 
   <div class="section-heading">
-
     <div>
-      <h2>Pick your quiz 🎯</h2>
-      <p>
-        Every quiz has its own vibe. Find one that matches your mood.
-      </p>
+      <span class="section-kicker">EXPLORE & PLAY</span>
+      <h2>Pick Your <span>Quiz</span></h2>
+      <p>Every quiz has its own little world. Which one are you entering?</p>
     </div>
 
+    <button class="view-all-btn" onclick="showAllQuizzes()">
+      View All →
+    </button>
   </div>
 
 
-  <div class="quiz-grid">
+  <div class="category-pills">
+    <button class="category-pill active" onclick="filterQuizzes('all',this)">
+      ✨ All
+    </button>
 
+    <button class="category-pill" onclick="filterQuizzes('fiction',this)">
+      📚 Fiction
+    </button>
+
+    <button class="category-pill" onclick="filterQuizzes('personality',this)">
+      💜 Personality
+    </button>
+
+    <button class="category-pill" onclick="filterQuizzes('friends',this)">
+      🫶 Friends
+    </button>
+
+    <button class="category-pill" onclick="filterQuizzes('kpop',this)">
+      🎤 K-Pop
+    </button>
+
+    <button class="category-pill" onclick="filterQuizzes('kdrama',this)">
+      🎬 K-Drama
+    </button>
+  </div>
+
+
+  <div class="quiz-grid" id="quizGrid">
 
     <!-- CHARACTER -->
+    <article class="quiz-card quiz-card-purple"
+             data-category="fiction"
+             onclick="startQuiz('character')">
 
-    <div class="quiz-card" onclick="startQuiz('character')">
+      <div class="quiz-card-glow"></div>
 
-      <div class="quiz-art art-purple">
-        🪄
+      <div class="quiz-card-top">
+        <span class="quiz-tag">🔥 POPULAR</span>
+        <span class="quiz-duration">5 MIN</span>
       </div>
 
-      <div class="quiz-info">
+      <div class="quiz-art character-art">
+        <div class="art-orbit orbit-one"></div>
+        <div class="art-orbit orbit-two"></div>
+        <div class="art-center">🪄</div>
+        <span class="art-float art-float-1">✨</span>
+        <span class="art-float art-float-2">💫</span>
+        <span class="art-float art-float-3">⭐</span>
+      </div>
 
-        <span class="tag">Character</span>
+      <div class="quiz-card-body">
+        <span class="quiz-category">FICTION</span>
+        <h3>Which Fictional Character Are You?</h3>
+        <p>Discover the character hiding inside your personality.</p>
 
-        <h3>Which Fictional Character Matches You?</h3>
-
-        <p>
-          Discover your fictional personality.
-        </p>
-
-        <div class="quiz-meta">
-          <span>7 Questions</span>
-          <span class="play-mini">Play →</span>
+        <div class="quiz-card-bottom">
+          <span>🎯 10 Questions</span>
+          <span class="play-circle">→</span>
         </div>
-
       </div>
 
-    </div>
+    </article>
 
 
     <!-- PERSONALITY -->
+    <article class="quiz-card quiz-card-pink"
+             data-category="personality"
+             onclick="startQuiz('personality')">
 
-    <div class="quiz-card" onclick="startQuiz('personality')">
-
-      <div class="quiz-art art-blue">
-        🧠
+      <div class="quiz-card-top">
+        <span class="quiz-tag">💗 TRENDING</span>
+        <span class="quiz-duration">3 MIN</span>
       </div>
 
-      <div class="quiz-info">
+      <div class="quiz-art personality-art">
+        <div class="personality-face">🧠</div>
+        <span>💗</span>
+        <span>✨</span>
+        <span>🌸</span>
+      </div>
 
-        <span class="tag">Personality</span>
+      <div class="quiz-card-body">
+        <span class="quiz-category">PERSONALITY</span>
+        <h3>What Kind of Main Character Are You?</h3>
+        <p>Your choices reveal your fictional personality.</p>
 
-        <h3>What Kind of Person Are You?</h3>
-
-        <p>
-          Quiet thinker or social spark?
-        </p>
-
-        <div class="quiz-meta">
-          <span>10 Questions</span>
-          <span class="play-mini">Play →</span>
+        <div class="quiz-card-bottom">
+          <span>🎯 8 Questions</span>
+          <span class="play-circle">→</span>
         </div>
-
       </div>
 
-    </div>
+    </article>
 
 
     <!-- RELATIONSHIP -->
+    <article class="quiz-card quiz-card-blue"
+             data-category="friends"
+             onclick="startQuiz('relationship')">
 
-    <div class="quiz-card" onclick="startQuiz('relationship')">
-
-      <div class="quiz-art art-pink">
-        💗
+      <div class="quiz-card-top">
+        <span class="quiz-tag">🫶 FRIENDS</span>
+        <span class="quiz-duration">3 MIN</span>
       </div>
 
-      <div class="quiz-info">
+      <div class="quiz-art relationship-art">
+        <div class="friend-icon">🫂</div>
+        <span>💌</span>
+        <span>✨</span>
+        <span>💙</span>
+      </div>
 
-        <span class="tag">Relationship</span>
+      <div class="quiz-card-body">
+        <span class="quiz-category">RELATIONSHIP</span>
+        <h3>Who Knows You Better?</h3>
+        <p>Find out who really understands you.</p>
 
-        <h3>What's Your Relationship Style?</h3>
-
-        <p>
-          Discover your connection personality.
-        </p>
-
-        <div class="quiz-meta">
-          <span>10 Questions</span>
-          <span class="play-mini">Play →</span>
+        <div class="quiz-card-bottom">
+          <span>🎯 8 Questions</span>
+          <span class="play-circle">→</span>
         </div>
-
       </div>
 
-    </div>
+    </article>
 
 
     <!-- NOVEL -->
+    <article class="quiz-card quiz-card-gold"
+             data-category="fiction"
+             onclick="startQuiz('novel')">
 
-    <div class="quiz-card" onclick="startQuiz('novel')">
-
-      <div class="quiz-art art-yellow">
-        📖
+      <div class="quiz-card-top">
+        <span class="quiz-tag">📚 NOVEL LOVER</span>
+        <span class="quiz-duration">5 MIN</span>
       </div>
 
-      <div class="quiz-info">
+      <div class="quiz-art novel-art">
+        <div class="novel-book">📖</div>
+        <span>🌙</span>
+        <span>✨</span>
+        <span>💫</span>
+      </div>
 
-        <span class="tag">Urdu Novels</span>
+      <div class="quiz-card-body">
+        <span class="quiz-category">URDU NOVELS</span>
+        <h3>How Obsessed Are You With Novels?</h3>
+        <p>Let's see how deep you are in the fictional world.</p>
 
-        <h3>How Big a Novel Lover Are You?</h3>
-
-        <p>
-          Let's test your novel knowledge!
-        </p>
-
-        <div class="quiz-meta">
-          <span>10 Questions</span>
-          <span class="play-mini">Play →</span>
+        <div class="quiz-card-bottom">
+          <span>🎯 10 Questions</span>
+          <span class="play-circle">→</span>
         </div>
-
       </div>
 
-    </div>
+    </article>
 
 
     <!-- FRIENDSHIP -->
+    <article class="quiz-card quiz-card-mint"
+             data-category="friends"
+             onclick="startQuiz('friendship')">
 
-    <div class="quiz-card" onclick="startQuiz('friendship')">
-
-      <div class="quiz-art art-green">
-        👯
+      <div class="quiz-card-top">
+        <span class="quiz-tag">👯 FRIENDSHIP</span>
+        <span class="quiz-duration">3 MIN</span>
       </div>
 
-      <div class="quiz-info">
+      <div class="quiz-art friendship-art">
+        <div>🫶</div>
+        <span>💚</span>
+        <span>⭐</span>
+        <span>💌</span>
+      </div>
 
-        <span class="tag">Friendship</span>
-
+      <div class="quiz-card-body">
+        <span class="quiz-category">FRIENDS</span>
         <h3>Is Your Best Friend REALLY Your Best Friend?</h3>
+        <p>Put your friendship to the ultimate test.</p>
 
-        <p>
-          Test your friendship energy.
-        </p>
-
-        <div class="quiz-meta">
-          <span>8 Questions</span>
-          <span class="play-mini">Play →</span>
+        <div class="quiz-card-bottom">
+          <span>🎯 8 Questions</span>
+          <span class="play-circle">→</span>
         </div>
-
       </div>
 
-    </div>
+    </article>
 
 
     <!-- KDRAMA -->
+    <article class="quiz-card quiz-card-lilac"
+             data-category="kdrama"
+             onclick="startQuiz('kdrama')">
 
-    <div class="quiz-card" onclick="startQuiz('kdrama')">
-
-      <div class="quiz-art art-red">
-        🎬
+      <div class="quiz-card-top">
+        <span class="quiz-tag">🎬 K-DRAMA</span>
+        <span class="quiz-duration">4 MIN</span>
       </div>
 
-      <div class="quiz-info">
+      <div class="quiz-art kdrama-art">
+        <div>🎬</div>
+        <span>💫</span>
+        <span>🌸</span>
+        <span>💜</span>
+      </div>
 
-        <span class="tag">K-Drama</span>
+      <div class="quiz-card-body">
+        <span class="quiz-category">K-DRAMA</span>
+        <h3>Which K-Drama Character Is Your Vibe?</h3>
+        <p>Your personality meets the K-drama universe.</p>
 
-        <h3>Which K-Drama Vibe Are You?</h3>
-
-        <p>
-          Find your drama personality.
-        </p>
-
-        <div class="quiz-meta">
-          <span>8 Questions</span>
-          <span class="play-mini">Play →</span>
+        <div class="quiz-card-bottom">
+          <span>🎯 8 Questions</span>
+          <span class="play-circle">→</span>
         </div>
-
       </div>
 
-    </div>
+    </article>
 
 
     <!-- KPOP -->
+    <article class="quiz-card quiz-card-dark"
+             data-category="kpop"
+             onclick="startQuiz('kpop')">
 
-    <div class="quiz-card" onclick="startQuiz('kpop')">
-
-      <div class="quiz-art art-cyan">
-        🎤
+      <div class="quiz-card-top">
+        <span class="quiz-tag">🎤 K-POP</span>
+        <span class="quiz-duration">4 MIN</span>
       </div>
 
-      <div class="quiz-info">
+      <div class="quiz-art kpop-art">
+        <div>🎤</div>
+        <span>⭐</span>
+        <span>💜</span>
+        <span>✨</span>
+      </div>
 
-        <span class="tag">K-Pop</span>
-
+      <div class="quiz-card-body">
+        <span class="quiz-category">K-POP</span>
         <h3>Which K-Pop Personality Matches You?</h3>
+        <p>Find your energy, vibe and fictional idol personality.</p>
 
-        <p>
-          Discover your idol-style personality.
-        </p>
-
-        <div class="quiz-meta">
-          <span>8 Questions</span>
-          <span class="play-mini">Play →</span>
+        <div class="quiz-card-bottom">
+          <span>🎯 8 Questions</span>
+          <span class="play-circle">→</span>
         </div>
-
       </div>
 
-    </div>
+    </article>
 
 
     <!-- PREFERENCE -->
+    <article class="quiz-card quiz-card-orange"
+             data-category="personality"
+             onclick="startQuiz('preference')">
 
-    <div class="quiz-card" onclick="startQuiz('preference')">
-
-      <div class="quiz-art art-orange">
-        🎀
+      <div class="quiz-card-top">
+        <span class="quiz-tag">🍜 FUN</span>
+        <span class="quiz-duration">3 MIN</span>
       </div>
 
-      <div class="quiz-info">
+      <div class="quiz-art preference-art">
+        <div>🍜</div>
+        <span>💭</span>
+        <span>💗</span>
+        <span>✨</span>
+      </div>
 
-        <span class="tag">Fun Test</span>
+      <div class="quiz-card-body">
+        <span class="quiz-category">PREFERENCES</span>
+        <h3>What Do You Like To Eat When You're Sad?</h3>
+        <p>Your comfort food might reveal more than you think.</p>
 
-        <h3>How Well Do Your Friends Know You?</h3>
-
-        <p>
-          Test your favourite things.
-        </p>
-
-        <div class="quiz-meta">
-          <span>8 Questions</span>
-          <span class="play-mini">Play →</span>
+        <div class="quiz-card-bottom">
+          <span>🎯 6 Questions</span>
+          <span class="play-circle">→</span>
         </div>
-
       </div>
 
-    </div>
-
+    </article>
 
   </div>
-
 </section>
 
 
-<!-- =========================
-     LEADERBOARD
-========================= -->
+<!-- LEADERBOARD -->
+<section id="leaderboard" class="leaderboard-section container">
 
-<section class="section" id="leaderboard">
-
-  <div class="section-heading">
-
-    <div>
-      <h2>🏆 FictionQuiz Leaderboard</h2>
-
-      <p>
-        Play more, earn XP and climb higher.
-        Become the best player on the website.
-      </p>
-    </div>
-
+  <div class="section-heading centered-heading">
+    <span class="section-kicker">COMPETE & CLIMB</span>
+    <h2>FictionQuiz <span>Leaderboard</span></h2>
+    <p>Play more. Earn XP. Climb higher.</p>
   </div>
 
 
-  <div class="leaderboard">
-
-    <div class="leader-card">
-
-      <div class="leader-tabs">
-
-        <button class="leader-tab active" onclick="changeBoard(this)">
-          Today
-        </button>
-
-        <button class="leader-tab" onclick="changeBoard(this)">
-          Weekly
-        </button>
-
-        <button class="leader-tab" onclick="changeBoard(this)">
-          All-Time
-        </button>
-
-      </div>
-
-
-      <div class="player-row">
-
-        <div class="rank-number">🥇</div>
-
-        <div class="player-info">
-          <div class="player-mini-avatar">🌸</div>
-          <div>
-            <strong>Ayesha</strong>
-            <small>Bookish Soul</small>
-          </div>
-        </div>
-
-        <div class="player-points">2,840 XP</div>
-
-      </div>
-
-
-      <div class="player-row">
-
-        <div class="rank-number">🥈</div>
-
-        <div class="player-info">
-          <div class="player-mini-avatar">🦋</div>
-          <div>
-            <strong>Hania</strong>
-            <small>Quiz Queen</small>
-          </div>
-        </div>
-
-        <div class="player-points">2,560 XP</div>
-
-      </div>
-
-
-      <div class="player-row">
-
-        <div class="rank-number">🥉</div>
-
-        <div class="player-info">
-          <div class="player-mini-avatar">🌙</div>
-          <div>
-            <strong>Mehak</strong>
-            <small>Novel Lover</small>
-          </div>
-        </div>
-
-        <div class="player-points">2,310 XP</div>
-
-      </div>
-
-
-      <div class="player-row">
-
-        <div class="rank-number">4</div>
-
-        <div class="player-info">
-          <div class="player-mini-avatar">✨</div>
-          <div>
-            <strong>Sarah</strong>
-            <small>Fiction Fan</small>
-          </div>
-        </div>
-
-        <div class="player-points">2,090 XP</div>
-
-      </div>
-
-
-    </div>
-
-
-    <div class="leader-card">
-
-      <h3 style="margin-bottom:8px;">
-        Your Progress 🌟
-      </h3>
-
-      <p style="color:var(--muted);font-size:13px;line-height:1.6;">
-        Complete quizzes to collect XP, unlock badges
-        and improve your ranking.
-      </p>
-
-      <div style="margin-top:22px;">
-
-        <div class="xp-info">
-          <strong>Level 4</strong>
-          <span>720 / 1000 XP</span>
-        </div>
-
-        <div class="xp-bar">
-          <div class="xp-fill"></div>
-        </div>
-
-      </div>
-
-      <div style="
-        display:grid;
-        grid-template-columns:repeat(3,1fr);
-        gap:8px;
-        margin-top:22px;
-      ">
-
-        <div style="
-          background:var(--pink-light);
-          padding:14px 7px;
-          border-radius:15px;
-          text-align:center;
-        ">
-          <strong>🔥</strong>
-          <small style="display:block;color:var(--muted);margin-top:5px;">
-            Streak
-          </small>
-        </div>
-
-        <div style="
-          background:var(--lavender);
-          padding:14px 7px;
-          border-radius:15px;
-          text-align:center;
-        ">
-          <strong>🏅 4</strong>
-          <small style="display:block;color:var(--muted);margin-top:5px;">
-            Badges
-          </small>
-        </div>
-
-        <div style="
-          background:#fff2d5;
-          padding:14px 7px;
-          border-radius:15px;
-          text-align:center;
-        ">
-          <strong>720</strong>
-          <small style="display:block;color:var(--muted);margin-top:5px;">
-            XP
-          </small>
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================
-     CREATE YOUR OWN QUIZ
-========================= -->
-
-<section class="section" id="create">
-
-  <div class="create-box">
-
-    <div>
-
-      <h2>Create a quiz about YOU. 👀</h2>
-
-      <p>
-        Make your own questions, choose two options and challenge
-        your friends to see who actually knows you best.
-        Your personal challenge system is coming next.
-      </p>
-
-    </div>
-
-    <button class="create-button" onclick="showToast('Create Your Own Quiz is coming next! ✨')">
-      Create My Quiz →
+  <div class="leaderboard-tabs">
+    <button class="leader-tab active" onclick="switchLeaderboard('today',this)">
+      Today
     </button>
 
+    <button class="leader-tab" onclick="switchLeaderboard('weekly',this)">
+      This Week
+    </button>
+
+    <button class="leader-tab" onclick="switchLeaderboard('all',this)">
+      All Time
+    </button>
+  </div>
+
+
+  <div class="leaderboard-card">
+
+    <div class="leader-header">
+      <span>#</span>
+      <span>PLAYER</span>
+      <span>XP</span>
+    </div>
+
+    <div id="leaderboardRows">
+
+      <div class="leader-row rank-one">
+        <div class="rank-number">1</div>
+        <div class="leader-player">
+          <div class="leader-avatar">👩🏻‍🎓</div>
+          <div>
+            <strong>Ayesha</strong>
+            <small>🏆 Player of the Week</small>
+          </div>
+        </div>
+        <strong class="leader-xp">2,450 XP</strong>
+      </div>
+
+      <div class="leader-row">
+        <div class="rank-number">2</div>
+        <div class="leader-player">
+          <div class="leader-avatar">🧑🏻‍🎨</div>
+          <div>
+            <strong>Hania</strong>
+            <small>🔥 7 day streak</small>
+          </div>
+        </div>
+        <strong class="leader-xp">2,120 XP</strong>
+      </div>
+
+      <div class="leader-row">
+        <div class="rank-number">3</div>
+        <div class="leader-player">
+          <div class="leader-avatar">👩🏻‍💻</div>
+          <div>
+            <strong>Zoya</strong>
+            <small>⭐ Quiz Master</small>
+          </div>
+        </div>
+        <strong class="leader-xp">1,980 XP</strong>
+      </div>
+
+      <div class="leader-row">
+        <div class="rank-number">4</div>
+        <div class="leader-player">
+          <div class="leader-avatar">🧕🏻</div>
+          <div>
+            <strong>Mehak</strong>
+            <small>💜 Novel Lover</small>
+          </div>
+        </div>
+        <strong class="leader-xp">1,760 XP</strong>
+      </div>
+
+      <div class="leader-row">
+        <div class="rank-number">5</div>
+        <div class="leader-player">
+          <div class="leader-avatar">🧑🏻‍🚀</div>
+          <div>
+            <strong>Sarah</strong>
+            <small>✨ Rising Star</small>
+          </div>
+        </div>
+        <strong class="leader-xp">1,590 XP</strong>
+      </div>
+
+    </div>
+
+    <div class="your-rank">
+      <div class="your-rank-left">
+        <div class="your-rank-number">?</div>
+        <div class="leader-avatar" id="leaderboardUserAvatar">😊</div>
+        <div>
+          <strong id="leaderboardUserName">You</strong>
+          <small>Play a quiz to enter the rankings</small>
+        </div>
+      </div>
+
+      <strong id="leaderboardUserXP">0 XP</strong>
+    </div>
+
   </div>
 
 </section>
 
 
-<!-- =========================
-     NAME SCREEN
-========================= -->
+<!-- CREATE YOUR QUIZ -->
+<section id="create" class="create-section container">
 
-<section class="name-screen" id="nameScreen">
+  <div class="create-card">
 
-  <div class="name-box">
+    <div class="create-decoration create-decoration-one">✨</div>
+    <div class="create-decoration create-decoration-two">💗</div>
+    <div class="create-decoration create-decoration-three">⭐</div>
 
-    <div class="name-icon">✨</div>
+    <div class="create-content">
 
-    <h2>Before we begin...</h2>
+      <span class="section-kicker">MAKE IT PERSONAL</span>
+
+      <h2>Create Your <span>Own Quiz</span></h2>
+
+      <p>
+        Make a quiz about yourself, your favorite novels,
+        your friendship or anything your friends should know.
+      </p>
+
+      <div class="create-features">
+        <span>✓ Add your own questions</span>
+        <span>✓ Choose the answers</span>
+        <span>✓ Get a challenge link</span>
+        <span>✓ See who knows you best</span>
+      </div>
+
+      <button class="primary-btn create-btn" onclick="openCreateQuiz()">
+        Create My Quiz ✨
+      </button>
+
+    </div>
+
+    <div class="create-preview">
+
+      <div class="phone-preview">
+
+        <div class="phone-top">
+          <span>YOUR QUIZ</span>
+          <span>•••</span>
+        </div>
+
+        <div class="preview-question">
+          Which novel do I like the most?
+        </div>
+
+        <div class="preview-option selected">
+          <span>📖</span>
+          <span>My Favorite Novel</span>
+          <b>✓</b>
+        </div>
+
+        <div class="preview-option">
+          <span>🌙</span>
+          <span>Another Novel</span>
+        </div>
+
+        <div class="preview-link">
+          🔗 Challenge Your Friends
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- DAILY MISSIONS -->
+<section class="missions-section container">
+
+  <div class="section-heading">
+    <div>
+      <span class="section-kicker">LEVEL UP</span>
+      <h2>Today's <span>Missions</span></h2>
+      <p>Complete simple tasks and collect extra XP.</p>
+    </div>
+  </div>
+
+  <div class="mission-grid">
+
+    <div class="mission-card">
+      <div class="mission-icon">🎯</div>
+      <div class="mission-info">
+        <strong>Play 1 Quiz</strong>
+        <span>Complete any quiz</span>
+      </div>
+      <b>+5 XP</b>
+    </div>
+
+    <div class="mission-card">
+      <div class="mission-icon">⭐</div>
+      <div class="mission-info">
+        <strong>Score 7/10</strong>
+        <span>Get at least 7 correct</span>
+      </div>
+      <b>+5 XP</b>
+    </div>
+
+    <div class="mission-card">
+      <div class="mission-icon">🔥</div>
+      <div class="mission-info">
+        <strong>Daily Quiz</strong>
+        <span>Finish today's challenge</span>
+      </div>
+      <b>+10 XP</b>
+    </div>
+
+    <div class="mission-card">
+      <div class="mission-icon">💌</div>
+      <div class="mission-info">
+        <strong>Challenge a Friend</strong>
+        <span>Send a quiz challenge</span>
+      </div>
+      <b>+10 XP</b>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- QUIZ NAME SCREEN -->
+<section id="nameScreen" class="quiz-screen-section hidden">
+
+  <div class="quiz-entry-card">
+
+    <button class="close-quiz" onclick="backToQuizzes()">×</button>
+
+    <div class="entry-icon">✨</div>
+
+    <span class="section-kicker">READY?</span>
+
+    <h2>What's Your <span>Name?</span></h2>
 
     <p>
-      What should we call you?
-      Your name will appear on your result.
+      Enter a nickname so we can show your score and XP.
     </p>
 
     <input
-      class="name-input"
-      id="playerNameInput"
       type="text"
-      maxlength="30"
-      placeholder="Enter your name"
+      id="playerNameInput"
+      class="player-name-input"
+      maxlength="20"
+      placeholder="Enter your nickname..."
+      autocomplete="off"
     >
 
-    <button class="primary-btn" onclick="beginQuiz()">
-      Let's Go 🚀
+    <button class="primary-btn full-btn" onclick="continueFromName()">
+      Continue →
+    </button>
+
+    <small class="privacy-note">
+      🔒 No phone number or email required.
+    </small>
+
+  </div>
+
+</section>
+
+
+<!-- AVATAR SCREEN -->
+<section id="avatarScreen" class="quiz-screen-section hidden">
+
+  <div class="quiz-entry-card avatar-entry">
+
+    <button class="close-quiz" onclick="backToQuizzes()">×</button>
+
+    <div class="entry-icon">🪄</div>
+
+    <span class="section-kicker">MAKE IT YOURS</span>
+
+    <h2>Choose Your <span>Avatar</span></h2>
+
+    <p>Pick one now. You can change it later.</p>
+
+    <div class="avatar-grid">
+
+      <button class="avatar-choice" onclick="selectAvatar(this,'😊')">😊</button>
+      <button class="avatar-choice" onclick="selectAvatar(this,'🧕🏻')">🧕🏻</button>
+      <button class="avatar-choice" onclick="selectAvatar(this,'👩🏻‍🎓')">👩🏻‍🎓</button>
+      <button class="avatar-choice" onclick="selectAvatar(this,'👩🏻‍💻')">👩🏻‍💻</button>
+      <button class="avatar-choice" onclick="selectAvatar(this,'🧑🏻‍🎨')">🧑🏻‍🎨</button>
+      <button class="avatar-choice" onclick="selectAvatar(this,'🧑🏻‍🚀')">🧑🏻‍🚀</button>
+      <button class="avatar-choice" onclick="selectAvatar(this,'🦊')">🦊</button>
+      <button class="avatar-choice" onclick="selectAvatar(this,'🐰')">🐰</button>
+      <button class="avatar-choice" onclick="selectAvatar(this,'🐱')">🐱</button>
+      <button class="avatar-choice" onclick="selectAvatar(this,'🐼')">🐼</button>
+      <button class="avatar-choice" onclick="selectAvatar(this,'🦋')">🦋</button>
+      <button class="avatar-choice" onclick="selectAvatar(this,'🌸')">🌸</button>
+
+    </div>
+
+    <button class="primary-btn full-btn" onclick="continueFromAvatar()">
+      Let's Play ✨
     </button>
 
   </div>
@@ -2297,150 +2035,51 @@ footer a:hover{
 </section>
 
 
-<!-- =========================
-     AVATAR PICKER
-========================= -->
+<!-- QUIZ SCREEN -->
+<section id="quizScreen" class="quiz-screen-section hidden">
 
-<section class="avatar-picker" id="avatarPicker">
+  <div class="quiz-wrapper">
 
-  <div class="avatar-box">
+    <div class="quiz-topbar">
 
-    <strong>Choose your quiz avatar</strong>
-
-    <div class="avatar-options">
-
-      <button class="avatar-option selected" onclick="selectAvatar(this,'🌸')">🌸</button>
-      <button class="avatar-option" onclick="selectAvatar(this,'🦋')">🦋</button>
-      <button class="avatar-option" onclick="selectAvatar(this,'🌙')">🌙</button>
-      <button class="avatar-option" onclick="selectAvatar(this,'✨')">✨</button>
-      <button class="avatar-option" onclick="selectAvatar(this,'🌷')">🌷</button>
-      <button class="avatar-option" onclick="selectAvatar(this,'🪄')">🪄</button>
-      <button class="avatar-option" onclick="selectAvatar(this,'📖')">📖</button>
-      <button class="avatar-option" onclick="selectAvatar(this,'🎀')">🎀</button>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================
-     QUIZ SCREEN
-========================= -->
-
-<section class="quiz-area" id="quizArea">
-
-  <div class="quiz-box">
-
-    <div class="quiz-top">
-
-      <div class="quiz-label" id="quizLabel">
-        QUIZ
-      </div>
-
-      <div class="quiz-counter" id="quizCounter">
-        1 / 10
-      </div>
-
-    </div>
-
-    <div class="progress">
-      <div class="progress-bar" id="progressBar"></div>
-    </div>
-
-    <div id="questionContainer"></div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================
-     RESULT SCREEN
-========================= -->
-
-<section class="result-screen" id="resultScreen">
-
-  <div class="result-main">
-
-    <div class="result-kicker">
-      YOUR RESULT
-    </div>
-
-    <img
-      id="resultImage"
-      class="result-image"
-      src=""
-      alt="Quiz Result"
-    >
-
-    <h2 id="resultTitle">
-      Your Result
-    </h2>
-
-    <p id="resultDescription">
-      Amazing!
-    </p>
-
-    <div class="score-circle">
-      <strong id="scoreText">0%</strong>
-    </div>
-
-    <p id="xpEarned">
-      +50 XP earned ✨
-    </p>
-
-
-    <div class="result-actions">
-
-      <button class="primary-btn" onclick="shareResult()">
-        📤 Share My Result
+      <button class="quiz-exit" onclick="backToQuizzes()">
+        ← Exit
       </button>
 
-      <button class="secondary-btn" onclick="challengeQuiz()">
-        👯 Challenge Friends
-      </button>
+      <div class="quiz-progress-wrap">
 
-      <button class="secondary-btn" onclick="restartQuiz()">
-        🔄 Play Again
-      </button>
-
-      <button class="secondary-btn" onclick="backToQuizzes()">
-        🎮 More Quizzes
-      </button>
-
-    </div>
-
-
-    <div class="recommendations">
-
-      <h3>
-        You might also like 👀
-      </h3>
-
-      <div class="recommend-grid">
-
-        <div class="recommend-card" onclick="startQuiz('friendship')">
-          <div class="emoji">👯</div>
-          <h4>Is Your Best Friend REALLY Your Best Friend?</h4>
-          <p>Test your friendship.</p>
+        <div class="quiz-progress-text">
+          <span id="questionNumber">Question 1</span>
+          <span id="questionCount">1/10</span>
         </div>
 
-        <div class="recommend-card" onclick="startQuiz('character')">
-          <div class="emoji">🪄</div>
-          <h4>Which Fictional Character Matches You?</h4>
-          <p>Discover your character energy.</p>
-        </div>
-
-        <div class="recommend-card" onclick="startQuiz('personality')">
-          <div class="emoji">🧠</div>
-          <h4>What Kind of Person Are You?</h4>
-          <p>Find your personality vibe.</p>
+        <div class="progress-track">
+          <div class="progress-fill" id="progressFill"></div>
         </div>
 
       </div>
 
+      <div class="quiz-xp">
+        ⭐ <span id="currentXP">0</span>
+      </div>
+
+    </div>
+
+
+    <div class="question-card">
+
+      <div class="question-category" id="questionCategory">
+        FICTION
+      </div>
+
+      <h2 id="questionText">
+        Loading question...
+      </h2>
+
+      <div id="answerOptions" class="answer-options"></div>
+
+      <div id="answerFeedback" class="answer-feedback"></div>
+
     </div>
 
   </div>
@@ -2448,1704 +2087,1480 @@ footer a:hover{
 </section>
 
 
-<!-- =========================
-     ABOUT
-========================= -->
+<!-- RESULT SCREEN -->
+<section id="resultScreen" class="quiz-screen-section hidden">
 
-<section class="section" id="about">
+  <div class="result-wrapper">
 
-  <div class="about-box">
+    <div class="result-confetti"></div>
 
-    <h2>About FictionQuiz ✨</h2>
+    <div class="result-card">
 
-    <p>
-      FictionQuiz is made for readers, fiction lovers,
-      K-drama fans, K-pop fans and anyone who enjoys
-      discovering fun things about themselves.
-    </p>
+      <div class="result-badge">🎉 QUIZ COMPLETE!</div>
 
-    <p>
-      Our goal is simple:
-      Play → Discover → Share → Challenge → Compete.
-    </p>
+      <div class="result-avatar" id="resultAvatar">😊</div>
 
-    <p>
-      More quizzes, daily challenges, player profiles,
-      badges, leaderboards and user-created quizzes
-      are being added as FictionQuiz grows.
-    </p>
+      <p class="result-small">
+        Great job, <strong id="resultName">Player</strong>!
+      </p>
+
+      <h1 id="resultTitle">
+        You're Amazing!
+      </h1>
+
+      <div class="score-circle">
+
+        <div>
+          <strong id="resultScore">0</strong>
+          <span>/ <span id="resultTotal">10</span></span>
+        </div>
+
+        <small>Correct</small>
+
+      </div>
+
+
+      <div class="result-stats">
+
+        <div>
+          <strong id="resultXP">+0</strong>
+          <span>XP Earned</span>
+        </div>
+
+        <div>
+          <strong id="resultPercent">0%</strong>
+          <span>Accuracy</span>
+        </div>
+
+        <div>
+          <strong id="resultRank">—</strong>
+          <span>Your Rank</span>
+        </div>
+
+      </div>
+
+
+      <div class="result-actions">
+
+        <button class="primary-btn" onclick="shareResult()">
+          📤 Share Result
+        </button>
+
+        <button class="secondary-btn" onclick="challengeFriend()">
+          💌 Challenge Friend
+        </button>
+
+      </div>
+
+
+      <button class="text-btn" onclick="restartCurrentQuiz()">
+        ↻ Try Again
+      </button>
+
+    </div>
+
+
+    <!-- MORE QUIZZES -->
+    <div class="more-quizzes">
+
+      <div class="more-heading">
+        <span>✨ KEEP PLAYING</span>
+        <h2>You Might Also Like</h2>
+      </div>
+
+      <div class="recommendation-grid" id="recommendationGrid">
+
+        <button onclick="startQuiz('friendship')">
+          <span>🫶</span>
+          <strong>Is Your Best Friend REALLY Your Best Friend?</strong>
+          <small>Friendship Test →</small>
+        </button>
+
+        <button onclick="startQuiz('personality')">
+          <span>💜</span>
+          <strong>Which Main Character Are You?</strong>
+          <small>Personality →</small>
+        </button>
+
+        <button onclick="startQuiz('kdrama')">
+          <span>🎬</span>
+          <strong>Which K-Drama Character Is Your Vibe?</strong>
+          <small>K-Drama →</small>
+        </button>
+
+      </div>
+
+      <button class="browse-more-btn" onclick="backToQuizzes()">
+        Browse More Quizzes ✨
+      </button>
+
+    </div>
 
   </div>
 
 </section>
 
 
-<!-- =========================
-     FOOTER
-========================= -->
+<!-- ABOUT -->
+<section class="about-section container">
 
-<footer>
+  <div class="about-card">
 
-  <p>
-    © 2026 FictionQuiz. All rights reserved.
-  </p>
+    <div class="about-icon">📚</div>
 
-  <p>
-    Made for readers who love fictional worlds. ✨
-  </p>
+    <div>
+      <span class="section-kicker">WELCOME TO FICTIONQUIZ</span>
 
-  <p>
-    <a href="privacy.html">Privacy Policy</a>
-    <a href="terms.html">Terms & Conditions</a>
-    <a href="#about">About</a>
-  </p>
+      <h2>More Than Just <span>Quizzes.</span></h2>
+
+      <p>
+        FictionQuiz is a fun space for people who love stories,
+        personalities, friendships, novels, K-pop, K-dramas and
+        everything in between.
+      </p>
+
+      <p>
+        Play. Discover yourself. Challenge your friends.
+        Earn XP. Climb the leaderboard. Then come back tomorrow
+        for something new.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer class="site-footer">
+
+  <div class="footer-inner">
+
+    <div class="footer-brand">
+      <div class="brand">
+        <span class="brand-icon">📖</span>
+        <span>Fiction<span>Quiz</span></span>
+      </div>
+
+      <p>
+        Quizzes, challenges & fictional fun.
+      </p>
+    </div>
+
+    <div class="footer-links">
+
+      <a href="#quizzes">Quizzes</a>
+      <a href="#leaderboard">Leaderboard</a>
+      <a href="#create">Create Quiz</a>
+      <a href="#" onclick="showPrivacy();return false;">Privacy</a>
+      <a href="#" onclick="showTerms();return false;">Terms</a>
+
+    </div>
+
+    <div class="footer-copy">
+      © 2026 FictionQuiz. All rights reserved.
+    </div>
+
+  </div>
 
 </footer>
 
 
-<div class="toast" id="toast"></div>
+<!-- TOAST -->
+<div id="toast" class="toast"></div>
 
 
+<!-- CREATE QUIZ MODAL -->
+<div id="createQuizModal" class="modal hidden">
+
+  <div class="modal-overlay" onclick="closeCreateQuiz()"></div>
+
+  <div class="modal-card">
+
+    <button class="modal-close" onclick="closeCreateQuiz()">×</button>
+
+    <div class="modal-icon">🪄</div>
+
+    <span class="section-kicker">COMING NEXT</span>
+
+    <h2>Create Your Own <span>Challenge</span></h2>
+
+    <p>
+      Soon you'll be able to create your own questions,
+      choose the correct answers and send your personal
+      challenge link to friends.
+    </p>
+
+    <div class="modal-features">
+
+      <div>💭 Write your own questions</div>
+      <div>✅ Choose the correct answer</div>
+      <div>🔗 Get your private challenge link</div>
+      <div>🏆 See who knows you best</div>
+
+    </div>
+
+    <button class="primary-btn full-btn" onclick="closeCreateQuiz()">
+      Got It ✨
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- PRIVACY MODAL -->
+<div id="privacyModal" class="modal hidden">
+
+  <div class="modal-overlay" onclick="closeInfoModal('privacyModal')"></div>
+
+  <div class="modal-card info-modal">
+
+    <button class="modal-close"
+            onclick="closeInfoModal('privacyModal')">×</button>
+
+    <div class="modal-icon">🔒</div>
+
+    <h2>Privacy <span>Policy</span></h2>
+
+    <p>
+      FictionQuiz is designed to keep the experience simple.
+      Basic quiz play does not require a phone number or email.
+    </p>
+
+    <p>
+      Anonymous local game information such as quiz progress,
+      XP and selected preferences may be stored in your browser
+      to improve your experience.
+    </p>
+
+    <p>
+      We do not display private contact information on public
+      leaderboards.
+    </p>
+
+    <button class="primary-btn full-btn"
+            onclick="closeInfoModal('privacyModal')">
+      Close
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- TERMS MODAL -->
+<div id="termsModal" class="modal hidden">
+
+  <div class="modal-overlay" onclick="closeInfoModal('termsModal')"></div>
+
+  <div class="modal-card info-modal">
+
+    <button class="modal-close"
+            onclick="closeInfoModal('termsModal')">×</button>
+
+    <div class="modal-icon">📜</div>
+
+    <h2>Terms & <span>Conditions</span></h2>
+
+    <p>
+      FictionQuiz provides entertainment quizzes and
+      fictional/personality-based results.
+    </p>
+
+    <p>
+      Quiz results are for fun and should not be treated as
+      professional psychological, medical or other expert advice.
+    </p>
+
+    <p>
+      Users should use respectful names and content when
+      creating or sharing challenges.
+    </p>
+
+    <button class="primary-btn full-btn"
+            onclick="closeInfoModal('termsModal')">
+      Close
+    </button>
+
+  </div>
+
+</div>
 <script>
 
-/* =====================================================
-   FICTIONQUIZ V2
-===================================================== */
-
-let currentQuiz = null;
-let currentQuizType = "";
-let currentQuestion = 0;
-let scores = [];
-let quizScore = 0;
-let playerName = "";
-let answerLocked = false;
-let selectedAvatar = "🌸";
-
-
-/* =====================================================
-   QUIZ DATA
-===================================================== */
+/* =========================================================
+   FICTIONQUIZ V3 — CORE DATA
+   ========================================================= */
 
 const quizzes = {
 
-
-/* =========================
-   CHARACTER
-========================= */
-
-character:{
-
-  title:"Which Fictional Character Matches You?",
-
-  label:"Character Quiz",
-
-  questions:[
-
-    {
-      question:"When something goes wrong, what do you usually do?",
-      answers:[
-        {text:"Think deeply before reacting",image:"images/quiz/q1-answer-1.jpg"},
-        {text:"Make a bold decision",image:"images/quiz/q1-answer-2.jpg"},
-        {text:"Protect the people I care about",image:"images/quiz/q1-answer-3.jpg"},
-        {text:"Stay quiet and observe",image:"images/quiz/q1-answer-4.jpg"}
-      ],
-      correct:0
-    },
-
-    {
-      question:"Which quality sounds most like you?",
-      answers:[
-        {text:"Intelligence",image:"images/quiz/q2-answer-1.jpg"},
-        {text:"Strategy",image:"images/quiz/q2-answer-2.jpg"},
-        {text:"Courage",image:"images/quiz/q2-answer-3.jpg"},
-        {text:"Mystery",image:"images/quiz/q2-answer-4.jpg"}
-      ],
-      correct:1
-    },
-
-    {
-      question:"What do people notice about you first?",
-      answers:[
-        {text:"My calm nature",image:"images/quiz/q3-answer-1.jpg"},
-        {text:"My confidence",image:"images/quiz/q3-answer-2.jpg"},
-        {text:"My strong personality",image:"images/quiz/q3-answer-3.jpg"},
-        {text:"My mysterious vibe",image:"images/quiz/q3-answer-4.jpg"}
-      ],
-      correct:2
-    },
-
-    {
-      question:"Your biggest strength is...",
-      answers:[
-        {text:"Thinking differently",image:"images/quiz/q4-answer-1.jpg"},
-        {text:"Planning ahead",image:"images/quiz/q4-answer-2.jpg"},
-        {text:"Standing up for others",image:"images/quiz/q4-answer-3.jpg"},
-        {text:"Understanding people",image:"images/quiz/q4-answer-4.jpg"}
-      ],
-      correct:0
-    },
-
-    {
-      question:"Pick your ideal vibe.",
-      answers:[
-        {text:"Quiet and intelligent",image:"images/quiz/q5-answer-1.jpg"},
-        {text:"Powerful and strategic",image:"images/quiz/q5-answer-2.jpg"},
-        {text:"Fearless and protective",image:"images/quiz/q5-answer-3.jpg"},
-        {text:"Deep and mysterious",image:"images/quiz/q5-answer-4.jpg"}
-      ],
-      correct:3
-    },
-
-    {
-      question:"In a difficult situation, you...",
-      answers:[
-        {text:"Observe first",image:"images/quiz/q6-answer-1.jpg"},
-        {text:"Create a plan",image:"images/quiz/q6-answer-2.jpg"},
-        {text:"Take action",image:"images/quiz/q6-answer-3.jpg"},
-        {text:"Trust your instincts",image:"images/quiz/q6-answer-4.jpg"}
-      ],
-      correct:1
-    },
-
-    {
-      question:"Which word fits your fictional energy?",
-      answers:[
-        {text:"Intelligent",image:"images/quiz/q7-answer-1.jpg"},
-        {text:"Strategic",image:"images/quiz/q7-answer-2.jpg"},
-        {text:"Fearless",image:"images/quiz/q7-answer-3.jpg"},
-        {text:"Mysterious",image:"images/quiz/q7-answer-4.jpg"}
-      ],
-      correct:3
-    }
-
-  ],
-
-  results:[
-
-    {
-      image:"images/quiz/result-1.jpg",
-      title:"Jihan Sikandar Energy 🧠",
-      description:"You are intelligent, observant and always thinking deeper than people realise."
-    },
-
-    {
-      image:"images/quiz/result-2.jpg",
-      title:"Salar Sikandar Energy ♟️",
-      description:"Strategic, controlled and quietly powerful. You think several steps ahead."
-    },
-
-    {
-      image:"images/quiz/result-3.jpg",
-      title:"Faris Ghazi Energy 🔥",
-      description:"Fearless, protective and ready to stand up for the people you care about."
-    },
-
-    {
-      image:"images/quiz/result-4.jpg",
-      title:"Wajdan Mustafa Energy 🌙",
-      description:"Deep, thoughtful and emotionally complex with a powerful inner world."
-    },
-
-    {
-      image:"images/quiz/result-5.jpg",
-      title:"Wali Ahmed Energy 🖤",
-      description:"Calm, mysterious and difficult to read — but unforgettable."
-    },
-
-    {
-      image:"images/quiz/result-6.jpg",
-      title:"Faris Wajgan Energy 👑",
-      description:"Strong, strategic and naturally commanding."
-    }
-
-  ]
-
-},
-
-
-/* =========================
-   PERSONALITY
-========================= */
-
-personality:{
-
-  title:"What Kind of Person Are You?",
-
-  label:"Personality Quiz",
-
-  questions:[
-
-    {
-      question:"How do you prefer spending your free time?",
-      answers:[
-        {text:"Alone with my thoughts",image:"images/quiz/personality-q1-a.jpg"},
-        {text:"With friends",image:"images/quiz/personality-q1-b.jpg"}
-      ],
-      correct:0
-    },
-
-    {
-      question:"When making a decision, you trust...",
-      answers:[
-        {text:"Logic and facts",image:"images/quiz/personality-q2-a.jpg"},
-        {text:"Feelings and people",image:"images/quiz/personality-q2-b.jpg"}
-      ],
-      correct:0
-    },
-
-    {
-      question:"An unexpected plan makes you...",
-      answers:[
-        {text:"Excited!",image:"images/quiz/personality-q3-a.jpg"},
-        {text:"Want time to think",image:"images/quiz/personality-q3-b.jpg"}
-      ],
-      correct:0
-    },
-
-    {
-      question:"Your perfect weekend?",
-      answers:[
-        {text:"Books, movies and cozy time",image:"images/quiz/personality-q4-a.jpg"},
-        {text:"Friends, outings and adventure",image:"images/quiz/personality-q4-b.jpg"}
-      ],
-      correct:0
-    },
-
-    {
-      question:"When facing a problem...",
-      answers:[
-        {text:"I analyse it first",image:"images/quiz/personality-q5-a.jpg"},
-        {text:"I act immediately",image:"images/quiz/personality-q5-b.jpg"}
-      ],
-      correct:0
-    },
-
-    {
-      question:"Your communication style?",
-      answers:[
-        {text:"Few meaningful words",image:"images/quiz/personality-q6-a.jpg"},
-        {text:"Open and expressive",image:"images/quiz/personality-q6-b.jpg"}
-      ],
-      correct:0
-    },
-
-    {
-      question:"Which stories attract you more?",
-      answers:[
-        {text:"Mystery and deep stories",image:"images/quiz/personality-q7-a.jpg"},
-        {text:"Romantic and emotional stories",image:"images/quiz/personality-q7-b.jpg"}
-      ],
-      correct:0
-    },
-
-    {
-      question:"You usually make plans...",
-      answers:[
-        {text:"Everything should be planned",image:"images/quiz/personality-q8-a.jpg"},
-        {text:"I decide according to my mood",image:"images/quiz/personality-q8-b.jpg"}
-      ],
-      correct:0
-    },
-
-    {
-      question:"In friendship, you value...",
-      answers:[
-        {text:"Trust and loyalty",image:"images/quiz/personality-q9-a.jpg"},
-        {text:"Fun and understanding",image:"images/quiz/personality-q9-b.jpg"}
-      ],
-      correct:0
-    },
-
-    {
-      question:"Your natural vibe?",
-      answers:[
-        {text:"Calm, thoughtful and mysterious",image:"images/quiz/personality-q10-a.jpg"},
-        {text:"Fun, expressive and energetic",image:"images/quiz/personality-q10-b.jpg"}
-      ],
-      correct:0
-    }
-
-  ],
-
-  results:[
-
-    {
-      image:"images/quiz/personality-result-1.jpg",
-      title:"The Quiet Thinker 🌙",
-      description:"You notice details, think deeply and often understand things before everyone else."
-    },
-
-    {
-      image:"images/quiz/personality-result-2.jpg",
-      title:"The Social Spark ✨",
-      description:"You bring energy, expression and warmth wherever you go."
-    }
-
-  ]
-
-},
-
-
-/* =========================
-   RELATIONSHIP
-========================= */
-
-relationship:{
-
-  title:"What's Your Relationship Style?",
-
-  label:"Relationship Quiz",
-
-  questions:[
-
-    {
-      question:"What matters most in a connection?",
-      answers:[
-        {text:"Trust",image:"images/quiz/relationship-q1-a.jpg"},
-        {text:"Fun & connection",image:"images/quiz/relationship-q1-b.jpg"}
-      ],
-      correct:0
-    },
-
-    {
-      question:"During disagreement, you prefer...",
-      answers:[
-        {text:"Talking calmly",image:"images/quiz/relationship-q2-a.jpg"},
-        {text:"Taking time before talking",image:"images/quiz/relationship-q2-b.jpg"}
-      ],
-      correct:0
-    },
-
-    {
-      question:"You appreciate...",
-      answers:[
-        {text:"Small thoughtful gestures",image:"images/quiz/relationship-q3-a.jpg"},
-        {text:"Words and attention",image:"images/quiz/relationship-q3-b.jpg"}
-      ],
-      correct:0
-    },
-
-    {
-      question:"Your favourite connection moment?",
-      answers:[
-        {text:"Deep conversations",image:"images/quiz/relationship-q4-a.jpg"},
-        {text:"Funny moments",image:"images/quiz/relationship-q4-b.jpg"}
-      ],
-      correct:0
-    },
-
-    {
-      question:"You believe people need...",
-      answers:[
-        {text:"Space and understanding",image:"images/quiz/relationship-q5-a.jpg"},
-        {text:"Regular check-ins",image:"images/quiz/relationship-q5-b.jpg"}
-      ],
-      correct:0
-    },
-
-    {
-      question:"A strong relationship needs...",
-      answers:[
-        {text:"Consistency and honesty",image:"images/quiz/relationship-q6-a.jpg"},
-        {text:"Support in every situation",image:"images/quiz/relationship-q6-b.jpg"}
-      ],
-      correct:0
-    },
-
-    {
-      question:"Your favourite conversations?",
-      answers:[
-        {text:"Late-night deep talks",image:"images/quiz/relationship-q7-a.jpg"},
-        {text:"Random funny conversations",image:"images/quiz/relationship-q7-b.jpg"}
-      ],
-      correct:0
-    },
-
-    {
-      question:"During conflict...",
-      answers:[
-        {text:"Find a solution",image:"images/quiz/relationship-q8-a.jpg"},
-        {text:"Settle emotions first",image:"images/quiz/relationship-q8-b.jpg"}
-      ],
-      correct:0
-    },
-
-    {
-      question:"A healthy connection feels...",
-      answers:[
-        {text:"Safe and understood",image:"images/quiz/relationship-q9-a.jpg"},
-        {text:"Exciting and happy",image:"images/quiz/relationship-q9-b.jpg"}
-      ],
-      correct:0
-    },
-
-    {
-      question:"Your ideal connection?",
-      answers:[
-        {text:"Loyal and peaceful",image:"images/quiz/relationship-q10-a.jpg"},
-        {text:"Playful and passionate",image:"images/quiz/relationship-q10-b.jpg"}
-      ],
-      correct:0
-    }
-
-  ],
-
-  results:[
-
-    {
-      image:"images/quiz/relationship-result-1.jpg",
-      title:"The Loyal Heart 💗",
-      description:"You value trust, stability, honesty and meaningful connections."
-    },
-
-    {
-      image:"images/quiz/relationship-result-2.jpg",
-      title:"The Playful Heart ✨",
-      description:"You bring fun, energy and excitement into your connections."
-    }
-
-  ]
-
-},
-
-
-/* =========================
-   NOVEL LOVER
-========================= */
-
-novel:{
-
-  title:"Let's See How Big a Novel Lover You Are?",
-
-  label:"Urdu Novel Challenge",
-
-  questions:[
-
-    {
-      question:"Woh konsa character h jo mayait pr bhi perfume laga kr jata tha?",
-
-      answers:[
-        {
-          text:"Qais Qambeer",
-          image:"images/quiz/f4d4ad3eb57b4033c7795a7b99f541d7.jpg"
-        },
-        {
-          text:"Hashim Kardar",
-          image:"images/quiz/9775f80d06dabba53fc41ba3a939b518.jpg"
-        }
-      ],
-
-      correct:0
-    },
-
-    {
-      question:"Imama ko Salar ny jo ring di thi uski actual price kia thi?",
-
-      answers:[
-        {
-          text:"1.37 million",
-          image:"images/quiz/8295d20cbc6fffa2df4a9c49735ab08c.jpg"
-        },
-        {
-          text:"13.7 million",
-          image:"images/quiz/58344dbf894a3ec26f806e82340ec0cc.jpg"
-        }
-      ],
-
-      correct:1
-    },
-
-    {
-      question:"Halim novel me dusry konsy novel ky character ki entry hoi thi?",
-
-      answers:[
-        {
-          text:"Salar Sikandar",
-          image:"images/quiz/ff9d769e43c06af0c58d4bfdcd730d84.jpg"
-        },
-        {
-          text:"Jihan Sikandar",
-          image:"images/quiz/3443b8ab84d2176aafa31159989e49c0.jpg"
-        }
-      ],
-
-      correct:1
-    },
-
-    {
-      question:"Novel ki duniya me kahani kis k marny sy ruk gai?",
-
-      answers:[
-        {
-          text:"Raees Aurangzeb",
-          image:"images/quiz/edc4cb52d0066dd318ded78e80fb9623.jpg"
-        },
-        {
-          text:"Qais Kambeer",
-          image:"images/quiz/af66e9d7a997eda8d85ef6bbd7b9ad1f.jpg"
-        }
-      ],
-
-      correct:1
-    },
-
-    {
-      question:"Adam ka dil kahan tota tha?",
-
-      answers:[
-        {
-          text:"Qadeem Malacca",
-          image:"images/quiz/1e09dc162cf7a7b7b69ab82f4a54060c.jpg"
-        },
-        {
-          text:"Jadeed Malacca",
-          image:"images/quiz/96e940d7c6109e642f141e481e40122c.jpg"
-        }
-      ],
-
-      correct:0
-    },
-
-    {
-      question:"Salar ny Imama ko konsi ring di thi?",
-
-      answers:[
-        {
-          text:"Tiffany",
-          image:"images/quiz/19a2323dfc19dd3466c8544b7a0a8697.jpg"
-        },
-        {
-          text:"Dior",
-          image:"images/quiz/fe83bd3eb8ab5e1102870826ca5e27fa.jpg"
-        }
-      ],
-
-      correct:0
-    },
-
-    {
-      question:"Wo kon sa villain hai jis ki do mangetar thi phr bh wo kuwara he raha?",
-
-      answers:[
-        {
-          text:"Raees Aurangzeb",
-          image:"images/quiz/d69882ec496a015ccbc25ba75d9e765a.jpg"
-        },
-        {
-          text:"Qais Qambeer",
-          image:"images/quiz/df4a9e5072e11a2bad1122f65bc8d565.jpg"
-        }
-      ],
-
-      correct:0
-    },
-
-    {
-      question:"Laut aou Maliha tumhary bina jeena bhot mushkil hai — yeh kis hero ka dialogue hai?",
-
-      answers:[
-        {
-          text:"Noor ul Huda",
-          image:"images/quiz/aef8dd7f9d624530ba44a9e2293402fb.jpg"
-        },
-        {
-          text:"Wajdan Mustafa",
-          image:"images/quiz/e7b6fce77374819ac99eec2c34ddf862.jpg"
-        }
-      ],
-
-      correct:0
-    },
-
-    {
-      question:"JKP me hero ny kitny roles kiye thy?",
-
-      answers:[
-        {
-          text:"3",
-          image:"images/quiz/eee9155ae407df473423d334a27886f4.jpg"
-        },
-        {
-          text:"4",
-          image:"images/quiz/05add3a2748ceaecd02b2b1b5c928d08.jpg"
-        }
-      ],
-
-      correct:1
-    },
-
-    {
-      question:"Taliya Murad ki Haalim me kitni dafa shadi hoi thi?",
-
-      answers:[
-        {
-          text:"2 dafa",
-          image:"images/quiz/fb8e525237e87d97407bf34ecddddc57.jpg"
-        },
-        {
-          text:"3 dafa",
-          image:"images/quiz/28db8b60be31a6bc09cab15b4a5b9f31.jpg"
-        }
-      ],
-
-      correct:1
-    }
-
-  ],
-
-  results:[
-
-    {
-      image:"images/quiz/result-1.jpg",
-      title:"Novel Rookie 📖",
-      description:"You have started exploring the novel world — but there is still plenty to discover!"
-    },
-
-    {
-      image:"images/quiz/result-2.jpg",
-      title:"Serious Novel Lover 🌙",
-      description:"You know your novels well. Your memory is definitely impressive!"
-    },
-
-    {
-      image:"images/quiz/result-3.jpg",
-      title:"Novel Addict 👑",
-      description:"Okay... you REALLY know your novels. Respect!"
-    }
-
-  ]
-
-},
-
-
-/* =========================
-   FRIENDSHIP
-========================= */
-
-friendship:{
-
-  title:"Is Your Best Friend REALLY Your Best Friend?",
-
-  label:"Friendship Test",
-
-  questions:[
-
-    {
-      question:"Your best friend knows your favourite...",
-      answers:[
-        {text:"Novel / character",image:"images/quiz/personality-q1-a.jpg"},
-        {text:"Food / snack",image:"images/quiz/personality-q1-b.jpg"}
-      ],
-      correct:0
-    },
-
-    {
-      question:"When you're upset, your friend usually...",
-      answers:[
-        {text:"Knows without asking",image:"images/quiz/personality-q2-a.jpg"},
-        {text:"Waits until I tell them",image:"images/quiz/personality-q2-b.jpg"}
-      ],
-      correct:0
-    },
-
-    {
-      question:"Your friendship vibe is...",
-      answers:[
-        {text:"Deep talks",image:"images/quiz/personality-q3-a.jpg"},
-        {text:"Non-stop jokes",image:"images/quiz/personality-q3-b.jpg"}
-      ],
-      correct:0
-    },
-
-    {
-      question:"If you disappear for a day...",
-      answers:[
-        {text:"They immediately notice",image:"images/quiz/personality-q4-a.jpg"},
-        {text:"They probably won't notice",image:"images/quiz/personality-q4-b.jpg"}
-      ],
-      correct:0
-    },
-
-    {
-      question:"Your friend can recognise your mood by...",
-      answers:[
-        {text:"One message",image:"images/quiz/personality-q5-a.jpg"},
-        {text:"My voice",image:"images/quiz/personality-q5-b.jpg"}
-      ],
-      correct:0
-    },
-
-    {
-      question:"You two would rather...",
-      answers:[
-        {text:"Talk all night",image:"images/quiz/personality-q6-a.jpg"},
-        {text:"Go somewhere fun",image:"images/quiz/personality-q6-b.jpg"}
-      ],
-      correct:0
-    },
-
-    {
-      question:"Your friend knows your biggest secret?",
-      answers:[
-        {text:"Absolutely",image:"images/quiz/personality-q7-a.jpg"},
-        {text:"Maybe one or two",image:"images/quiz/personality-q7-b.jpg"}
-      ],
-      correct:0
-    },
-
-    {
-      question:"What keeps your friendship strong?",
-      answers:[
-        {text:"Trust",image:"images/quiz/personality-q8-a.jpg"},
-        {text:"Fun",image:"images/quiz/personality-q8-b.jpg"}
-      ],
-      correct:0
-    }
-
-  ],
-
-  results:[
-
-    {
-      image:"images/quiz/personality-result-1.jpg",
-      title:"Bestie Level: LEGENDARY 🏆",
-      description:"Your friendship has serious main-character energy."
-    },
-
-    {
-      image:"images/quiz/personality-result-2.jpg",
-      title:"Bestie Level: Fun Duo ✨",
-      description:"Your friendship is powered by jokes, memories and good vibes."
-    }
-
-  ]
-
-},
-
-
-/* =========================
-   KDRAMA
-========================= */
-
-kdrama:{
-
-  title:"Which K-Drama Vibe Are You?",
-
-  label:"K-Drama Quiz",
-
-  questions:[
-
-    {
-      question:"Choose your perfect K-drama scene.",
-      answers:[
-        {text:"Rainy emotional scene",image:"images/quiz/relationship-q1-a.jpg"},
-        {text:"Funny cafe scene",image:"images/quiz/relationship-q1-b.jpg"}
-      ],
-      correct:0
-    },
-
-    {
-      question:"Your character energy?",
-      answers:[
-        {text:"Mysterious",image:"images/quiz/relationship-q2-a.jpg"},
-        {text:"Chaotic sunshine",image:"images/quiz/relationship-q2-b.jpg"}
-      ],
-      correct:0
-    },
-
-    {
-      question:"Your drama soundtrack?",
-      answers:[
-        {text:"Emotional OST",image:"images/quiz/relationship-q3-a.jpg"},
-        {text:"Upbeat song",image:"images/quiz/relationship-q3-b.jpg"}
-      ],
-      correct:0
-    },
-
-    {
-      question:"Ideal episode?",
-      answers:[
-        {text:"Deep plot twist",image:"images/quiz/relationship-q4-a.jpg"},
-        {text:"Comedy overload",image:"images/quiz/relationship-q4-b.jpg"}
-      ],
-      correct:0
-    },
-
-    {
-      question:"Your main character would be...",
-      answers:[
-        {text:"Quiet and clever",image:"images/quiz/relationship-q5-a.jpg"},
-        {text:"Bold and energetic",image:"images/quiz/relationship-q5-b.jpg"}
-      ],
-      correct:0
-    },
-
-    {
-      question:"Pick a drama mood.",
-      answers:[
-        {text:"Soft & emotional",image:"images/quiz/relationship-q6-a.jpg"},
-        {text:"Fun & chaotic",image:"images/quiz/relationship-q6-b.jpg"}
-      ],
-      correct:0
-    },
-
-    {
-      question:"Your perfect ending?",
-      answers:[
-        {text:"Emotional and meaningful",image:"images/quiz/relationship-q7-a.jpg"},
-        {text:"Happy and funny",image:"images/quiz/relationship-q7-b.jpg"}
-      ],
-      correct:0
-    },
-
-    {
-      question:"What keeps you watching?",
-      answers:[
-        {text:"Story",image:"images/quiz/relationship-q8-a.jpg"},
-        {text:"Characters",image:"images/quiz/relationship-q8-b.jpg"}
-      ],
-      correct:0
-    }
-
-  ],
-
-  results:[
-
-    {
-      image:"images/quiz/relationship-result-1.jpg",
-      title:"The Mysterious Lead 🌙",
-      description:"You are calm, intriguing and secretly carrying the deepest storyline."
-    },
-
-    {
-      image:"images/quiz/relationship-result-2.jpg",
-      title:"The Sunshine Lead ✨",
-      description:"You bring warmth, humour and positive energy everywhere."
-    }
-
-  ]
-
-},
-
-
-/* =========================
-   KPOP
-========================= */
-
-kpop:{
-
-  title:"Which K-Pop Personality Matches You?",
-
-  label:"K-Pop Quiz",
-
-  questions:[
-
-    {
-      question:"Your stage energy?",
-      answers:[
-        {text:"Elegant and calm",image:"images/quiz/personality-q1-a.jpg"},
-        {text:"Powerful and energetic",image:"images/quiz/personality-q1-b.jpg"}
-      ],
-      correct:0
-    },
-
-    {
-      question:"Your ideal role in a group?",
-      answers:[
-        {text:"Leader",image:"images/quiz/personality-q2-a.jpg"},
-        {text:"Mood maker",image:"images/quiz/personality-q2-b.jpg"}
-      ],
-      correct:0
-    },
-
-    {
-      question:"Your fashion vibe?",
-      answers:[
-        {text:"Minimal & classy",image:"images/quiz/personality-q3-a.jpg"},
-        {text:"Bold & colourful",image:"images/quiz/personality-q3-b.jpg"}
-      ],
-      correct:0
-    },
-
-    {
-      question:"Choose a rehearsal mood.",
-      answers:[
-        {text:"Focused",image:"images/quiz/personality-q4-a.jpg"},
-        {text:"Chaotic fun",image:"images/quiz/personality-q4-b.jpg"}
-      ],
-      correct:0
-    },
-
-    {
-      question:"Your fan energy?",
-      answers:[
-        {text:"Quiet supporter",image:"images/quiz/personality-q5-a.jpg"},
-        {text:"LOUD supporter!",image:"images/quiz/personality-q5-b.jpg"}
-      ],
-      correct:0
-    },
-
-    {
-      question:"Your playlist?",
-      answers:[
-        {text:"Chill songs",image:"images/quiz/personality-q6-a.jpg"},
-        {text:"Dance tracks",image:"images/quiz/personality-q6-b.jpg"}
-      ],
-      correct:0
-    },
-
-    {
-      question:"Your personality?",
-      answers:[
-        {text:"Reserved",image:"images/quiz/personality-q7-a.jpg"},
-        {text:"Expressive",image:"images/quiz/personality-q7-b.jpg"}
-      ],
-      correct:0
-    },
-
-    {
-      question:"Your concert moment?",
-      answers:[
-        {text:"Emotional song",image:"images/quiz/personality-q8-a.jpg"},
-        {text:"Dance all night",image:"images/quiz/personality-q8-b.jpg"}
-      ],
-      correct:0
-    }
-
-  ],
-
-  results:[
-
-    {
-      image:"images/quiz/personality-result-1.jpg",
-      title:"The Quiet Star 🌙",
-      description:"Calm, talented and quietly magnetic."
-    },
-
-    {
-      image:"images/quiz/personality-result-2.jpg",
-      title:"The Stage Spark ✨",
-      description:"Energetic, expressive and impossible to ignore."
-    }
-
-  ]
-
-},
-
-
-/* =========================
-   PREFERENCE
-========================= */
-
-preference:{
-
-  title:"How Well Do Your Friends Know You?",
-
-  label:"Preference Quiz",
-
-  questions:[
-
-    {
-      question:"Which would you choose?",
-      answers:[
-        {text:"Reading a novel",image:"images/quiz/personality-q1-a.jpg"},
-        {text:"Watching a movie",image:"images/quiz/personality-q1-b.jpg"}
-      ],
-      correct:0
-    },
-
-    {
-      question:"Your comfort food?",
-      answers:[
-        {text:"Something spicy",image:"images/quiz/personality-q2-a.jpg"},
-        {text:"Something sweet",image:"images/quiz/personality-q2-b.jpg"}
-      ],
-      correct:0
-    },
-
-    {
-      question:"Your favourite colour vibe?",
-      answers:[
-        {text:"Dark & elegant",image:"images/quiz/personality-q3-a.jpg"},
-        {text:"Soft & cute",image:"images/quiz/personality-q3-b.jpg"}
-      ],
-      correct:0
-    },
-
-    {
-      question:"Ideal weekend?",
-      answers:[
-        {text:"Stay home",image:"images/quiz/personality-q4-a.jpg"},
-        {text:"Go out",image:"images/quiz/personality-q4-b.jpg"}
-      ],
-      correct:0
-    },
-
-    {
-      question:"When sad, you prefer...",
-      answers:[
-        {text:"Food",image:"images/quiz/personality-q5-a.jpg"},
-        {text:"A comfort movie",image:"images/quiz/personality-q5-b.jpg"}
-      ],
-      correct:0
-    },
-
-    {
-      question:"Pick your aesthetic.",
-      answers:[
-        {text:"Dark academia",image:"images/quiz/personality-q6-a.jpg"},
-        {text:"Soft aesthetic",image:"images/quiz/personality-q6-b.jpg"}
-      ],
-      correct:0
-    },
-
-    {
-      question:"What makes you happier?",
-      answers:[
-        {text:"A thoughtful message",image:"images/quiz/personality-q7-a.jpg"},
-        {text:"A surprise",image:"images/quiz/personality-q7-b.jpg"}
-      ],
-      correct:0
-    },
-
-    {
-      question:"Your perfect evening?",
-      answers:[
-        {text:"Books + music",image:"images/quiz/personality-q8-a.jpg"},
-        {text:"Friends + fun",image:"images/quiz/personality-q8-b.jpg"}
-      ],
-      correct:0
-    }
-
-  ],
-
-  results:[
-
-    {
-      image:"images/quiz/personality-result-1.jpg",
-      title:"The Cozy Soul 🌙",
-      description:"You love comfort, quiet moments and meaningful little things."
-    },
-
-    {
-      image:"images/quiz/personality-result-2.jpg",
-      title:"The Fun Soul ✨",
-      description:"You love energy, people, surprises and memorable moments."
-    }
-
-  ]
-
-}
+  character: {
+    title: "Which Fictional Character Are You?",
+    category: "FICTION",
+    type: "fiction",
+    questions: [
+      {
+        q: "Your perfect weekend sounds like...",
+        options: ["A quiet adventure 📖", "A party with friends 🎉", "Exploring somewhere new 🌍", "Staying home with snacks 🍿"],
+        correct: 0
+      },
+      {
+        q: "Someone hurts your friend. You...",
+        options: ["Defend them immediately 🛡️", "Calm everyone down 🕊️", "Plan your response carefully 🧠", "Try to make them laugh 💗"],
+        correct: 0
+      },
+      {
+        q: "Choose your main-character energy.",
+        options: ["Mysterious 🌙", "Fearless 🔥", "Soft but strong 🌸", "Chaotic ✨"],
+        correct: 1
+      },
+      {
+        q: "Your biggest strength is...",
+        options: ["Loyalty 💜", "Courage 🦋", "Intelligence 🧠", "Kindness 🌷"],
+        correct: 0
+      },
+      {
+        q: "Pick a fictional setting.",
+        options: ["Ancient palace 👑", "Modern city 🌆", "Magical academy 🪄", "Cozy village 🏡"],
+        correct: 2
+      },
+      {
+        q: "When life gets difficult, you...",
+        options: ["Keep going 💪", "Ask someone you trust 🤝", "Disappear for a while 🌙", "Turn it into a story 📚"],
+        correct: 0
+      },
+      {
+        q: "Pick a companion.",
+        options: ["A clever fox 🦊", "A loyal dog 🐕", "A magical cat 🐈", "A mysterious bird 🦅"],
+        correct: 1
+      },
+      {
+        q: "What matters most?",
+        options: ["Freedom 🕊️", "Love 💗", "Success ⭐", "Peace 🌿"],
+        correct: 3
+      },
+      {
+        q: "Your friends describe you as...",
+        options: ["Protective 🛡️", "Funny 😂", "Quiet 👀", "Confident ✨"],
+        correct: 0
+      },
+      {
+        q: "Choose your final scene.",
+        options: ["A dramatic victory 🏆", "A peaceful sunset 🌅", "A surprise adventure 🚀", "A happy reunion 💌"],
+        correct: 3
+      }
+    ]
+  },
+
+
+  personality: {
+    title: "What Kind of Main Character Are You?",
+    category: "PERSONALITY",
+    type: "personality",
+    questions: [
+      {
+        q: "Someone invites you somewhere unexpectedly. You...",
+        options: ["Say yes immediately ✨", "Think about it first 🤔"],
+        correct: 0
+      },
+      {
+        q: "Your ideal evening is...",
+        options: ["Friends + fun 💗", "Books + quiet time 📚"],
+        correct: 1
+      },
+      {
+        q: "When something goes wrong...",
+        options: ["I fix it myself 💪", "I ask for advice 🤝"],
+        correct: 0
+      },
+      {
+        q: "You usually follow...",
+        options: ["Your heart 💕", "Your logic 🧠"],
+        correct: 0
+      },
+      {
+        q: "Pick a vibe.",
+        options: ["Soft & dreamy 🌸", "Bold & powerful 🔥"],
+        correct: 0
+      },
+      {
+        q: "At a party you are...",
+        options: ["Talking to everyone 🎉", "With my favorite people 🫶"],
+        correct: 1
+      },
+      {
+        q: "When choosing something important...",
+        options: ["I trust my instinct ✨", "I compare every option 🔎"],
+        correct: 0
+      },
+      {
+        q: "Your fictional life would be...",
+        options: ["An exciting adventure 🌍", "A peaceful story 🌙"],
+        correct: 0
+      }
+    ]
+  },
+
+
+  relationship: {
+    title: "Who Knows You Better?",
+    category: "RELATIONSHIP",
+    type: "friends",
+    questions: [
+      {
+        q: "What makes you happiest?",
+        options: ["Quality time 💗", "A surprise gift 🎁"],
+        correct: 0
+      },
+      {
+        q: "When you're upset, you prefer...",
+        options: ["Someone listens 🫂", "Some alone time 🌙"],
+        correct: 0
+      },
+      {
+        q: "Your favorite type of friendship?",
+        options: ["Chaotic & funny 😂", "Calm & loyal 💜"],
+        correct: 1
+      },
+      {
+        q: "You value...",
+        options: ["Honesty 🫶", "Understanding 💕"],
+        correct: 0
+      },
+      {
+        q: "A perfect hangout is...",
+        options: ["Food + talking 🍕", "Movie + snacks 🎬"],
+        correct: 0
+      },
+      {
+        q: "If your friend is sad...",
+        options: ["I stay with them 🤝", "I give them space 🌿"],
+        correct: 0
+      },
+      {
+        q: "What makes a friendship strong?",
+        options: ["Trust 🔐", "Shared memories 📸"],
+        correct: 0
+      },
+      {
+        q: "Choose your friendship energy.",
+        options: ["Partners in crime 😈", "Comfort person 🫂"],
+        correct: 1
+      }
+    ]
+  },
+
+
+  friendship: {
+    title: "Is Your Best Friend REALLY Your Best Friend?",
+    category: "FRIENDSHIP",
+    type: "friends",
+    questions: [
+      {
+        q: "Who usually texts first?",
+        options: ["Me 📱", "My friend 💌"],
+        correct: 0
+      },
+      {
+        q: "Your friend knows your...",
+        options: ["Favorite things ⭐", "Everything 😭"],
+        correct: 1
+      },
+      {
+        q: "You two could spend hours...",
+        options: ["Talking 😂", "Doing absolutely nothing 🫶"],
+        correct: 0
+      },
+      {
+        q: "Your inside jokes are...",
+        options: ["Endless 🤣", "We barely have any 😭"],
+        correct: 0
+      },
+      {
+        q: "If you had one free day...",
+        options: ["Go somewhere together 🌍", "Stay home together 🏡"],
+        correct: 0
+      },
+      {
+        q: "Your friend can tell when you're...",
+        options: ["Actually upset 👀", "Trying to hide it 😭"],
+        correct: 0
+      },
+      {
+        q: "Your friendship needs...",
+        options: ["More adventures ✨", "More time together 💗"],
+        correct: 1
+      },
+      {
+        q: "One word for your friendship?",
+        options: ["Unbreakable 🔐", "Chaotic 😂"],
+        correct: 0
+      }
+    ]
+  },
+
+
+  kdrama: {
+    title: "Which K-Drama Character Is Your Vibe?",
+    category: "K-DRAMA",
+    type: "kdrama",
+    questions: [
+      {
+        q: "Pick your K-drama setting.",
+        options: ["Seoul at night 🌃", "A quiet seaside town 🌊"],
+        correct: 0
+      },
+      {
+        q: "Your character would be...",
+        options: ["Mysterious 😎", "Sweet 🌸"],
+        correct: 0
+      },
+      {
+        q: "Choose your iconic scene.",
+        options: ["Rainy confession ☔", "Cafe conversation ☕"],
+        correct: 0
+      },
+      {
+        q: "Your style?",
+        options: ["Elegant ✨", "Casual 🧢"],
+        correct: 0
+      },
+      {
+        q: "Pick your drama trope.",
+        options: ["Enemies to friends 🔥", "Unexpected friendship 💗"],
+        correct: 0
+      },
+      {
+        q: "Your soundtrack is...",
+        options: ["Emotional ballad 🎵", "Upbeat pop 🎤"],
+        correct: 0
+      },
+      {
+        q: "Your perfect ending?",
+        options: ["Happy ending 💕", "Open ending 🌙"],
+        correct: 0
+      },
+      {
+        q: "Your K-drama energy?",
+        options: ["Main character ⭐", "Secret scene-stealer 👀"],
+        correct: 0
+      }
+    ]
+  },
+
+
+  kpop: {
+    title: "Which K-Pop Personality Matches You?",
+    category: "K-POP",
+    type: "kpop",
+    questions: [
+      {
+        q: "On stage you would be...",
+        options: ["Confident 🔥", "Playful ✨"],
+        correct: 0
+      },
+      {
+        q: "Choose your performance style.",
+        options: ["Powerful 💥", "Elegant 🌸"],
+        correct: 0
+      },
+      {
+        q: "Your group role?",
+        options: ["Leader 👑", "Mood maker 😂"],
+        correct: 0
+      },
+      {
+        q: "Your favorite rehearsal vibe?",
+        options: ["Focused 🎯", "Fun 🎉"],
+        correct: 0
+      },
+      {
+        q: "Pick your concert moment.",
+        options: ["Big dance break 🔥", "Fan interaction 💜"],
+        correct: 0
+      },
+      {
+        q: "Your off-stage personality?",
+        options: ["Quiet & chill 🌙", "Energetic ⚡"],
+        correct: 0
+      },
+      {
+        q: "Pick a fashion vibe.",
+        options: ["Street style 🖤", "Soft aesthetic 🌸"],
+        correct: 0
+      },
+      {
+        q: "Your biggest strength?",
+        options: ["Determination 💪", "Creativity 🎨"],
+        correct: 0
+      }
+    ]
+  },
+
+
+  preference: {
+    title: "What Do You Like To Eat When You're Sad?",
+    category: "PREFERENCES",
+    type: "personality",
+    questions: [
+      {
+        q: "You're sad. What sounds best?",
+        options: ["🍕 Pizza", "🍫 Chocolate"],
+        correct: 0
+      },
+      {
+        q: "Late-night comfort food?",
+        options: ["🍜 Noodles", "🍟 Fries"],
+        correct: 0
+      },
+      {
+        q: "Pick a sweet treat.",
+        options: ["🍰 Cake", "🍦 Ice cream"],
+        correct: 1
+      },
+      {
+        q: "Your perfect cozy drink?",
+        options: ["☕ Hot chocolate", "🧋 Milk tea"],
+        correct: 0
+      },
+      {
+        q: "Movie-night snack?",
+        options: ["🍿 Popcorn", "🍪 Cookies"],
+        correct: 0
+      },
+      {
+        q: "Comfort breakfast?",
+        options: ["🥞 Pancakes", "🍳 Eggs"],
+        correct: 0
+      }
+    ]
+  },
+
+
+  novel: {
+    title: "How Obsessed Are You With Urdu Novels?",
+    category: "URDU NOVELS",
+    type: "fiction",
+    questions: [
+      {
+        q: "Which fictional world attracts you more?",
+        options: ["Dark mystery 🌙", "Soft romance 🌸"],
+        correct: 0
+      },
+      {
+        q: "Choose your favorite character energy.",
+        options: ["Cold & mysterious 🖤", "Sweet & emotional 💗"],
+        correct: 0
+      },
+      {
+        q: "A perfect novel has...",
+        options: ["Plot twists 🔥", "Beautiful romance 🌹"],
+        correct: 0
+      },
+      {
+        q: "Which ending do you prefer?",
+        options: ["Happy ending 💕", "Unexpected ending 😳"],
+        correct: 0
+      },
+      {
+        q: "Your reading time is usually...",
+        options: ["Late at night 🌙", "Whenever I get time ☀️"],
+        correct: 0
+      },
+      {
+        q: "Pick a fictional setting.",
+        options: ["University 🎓", "Luxury mansion 🏛️"],
+        correct: 0
+      },
+      {
+        q: "Your favorite chapter type?",
+        options: ["Emotional 💔", "Funny 😂"],
+        correct: 0
+      },
+      {
+        q: "A novel character should be...",
+        options: ["Memorable ⭐", "Relatable 💜"],
+        correct: 0
+      },
+      {
+        q: "Choose your reading mood.",
+        options: ["Completely obsessed 📖", "Casual reader ☕"],
+        correct: 0
+      },
+      {
+        q: "One more chapter?",
+        options: ["YES 😭📚", "Maybe tomorrow 😂"],
+        correct: 0
+      }
+    ]
+  }
 
 };
 
 
-/* =====================================================
-   START QUIZ
-===================================================== */
+/* =========================================================
+   APP STATE
+   ========================================================= */
+
+let currentQuizType = null;
+let currentQuestionIndex = 0;
+let currentScore = 0;
+let currentXP = 0;
+let selectedAvatar = localStorage.getItem("fqAvatar") || "😊";
+let playerName = localStorage.getItem("fqName") || "";
+let answered = false;
+let quizStartTime = 0;
+
+
+/* =========================================================
+   STORAGE HELPERS
+   ========================================================= */
+
+function getStoredXP(){
+  return Number(localStorage.getItem("fqXP") || 0);
+}
+
+function setStoredXP(value){
+  localStorage.setItem("fqXP", String(Math.max(0, value)));
+}
+
+function getPlayedCount(){
+  return Number(localStorage.getItem("fqPlayed") || 0);
+}
+
+function setPlayedCount(value){
+  localStorage.setItem("fqPlayed", String(value));
+}
+
+function getStreak(){
+  return Number(localStorage.getItem("fqStreak") || 0);
+}
+
+function setStreak(value){
+  localStorage.setItem("fqStreak", String(value));
+}
+
+
+/* =========================================================
+   BASIC NAVIGATION
+   ========================================================= */
+
+function scrollToQuizzes(){
+  document.getElementById("quizzes")?.scrollIntoView({
+    behavior:"smooth"
+  });
+}
+
+function showAllQuizzes(){
+  document.querySelectorAll(".quiz-card").forEach(card=>{
+    card.style.display = "";
+  });
+
+  document.querySelectorAll(".category-pill").forEach(btn=>{
+    btn.classList.remove("active");
+  });
+
+  document.querySelector(".category-pill")?.classList.add("active");
+
+  scrollToQuizzes();
+}
+
+function filterQuizzes(category, button){
+
+  document.querySelectorAll(".category-pill").forEach(btn=>{
+    btn.classList.remove("active");
+  });
+
+  button?.classList.add("active");
+
+  document.querySelectorAll(".quiz-card").forEach(card=>{
+
+    if(category === "all"){
+      card.style.display = "";
+      return;
+    }
+
+    card.style.display =
+      card.dataset.category === category ? "" : "none";
+
+  });
+}
+
+
+/* =========================================================
+   START QUIZ FLOW
+   ========================================================= */
 
 function startQuiz(type){
 
   if(!quizzes[type]){
-    showToast("Quiz not available yet.");
+    showToast("Quiz coming soon ✨");
     return;
   }
 
   currentQuizType = type;
-  currentQuiz = quizzes[type];
+  currentQuestionIndex = 0;
+  currentScore = 0;
+  currentXP = 0;
+  answered = false;
 
-  currentQuestion = 0;
-  scores = [];
-  quizScore = 0;
-  answerLocked = false;
+  hideAllScreens();
 
-  document.getElementById("resultScreen").classList.remove("active");
-  document.getElementById("quizArea").classList.remove("active");
-  document.getElementById("avatarPicker").classList.remove("active");
+  const savedName = localStorage.getItem("fqName");
 
-  document.getElementById("nameScreen").classList.add("active");
+  if(savedName){
+    playerName = savedName;
 
-  document.getElementById("playerNameInput").value =
-    localStorage.getItem("fictionQuizName") || "";
+    document.getElementById("avatarScreen")
+      .classList.remove("hidden");
 
-  document.getElementById("nameScreen").scrollIntoView({
-    behavior:"smooth",
-    block:"center"
+  }else{
+
+    document.getElementById("nameScreen")
+      .classList.remove("hidden");
+
+    setTimeout(()=>{
+      document.getElementById("playerNameInput")?.focus();
+    },150);
+
+  }
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
   });
-
 }
 
 
-/* =====================================================
-   BEGIN QUIZ
-===================================================== */
+function continueFromName(){
 
-function beginQuiz(){
+  const input = document.getElementById("playerNameInput");
+  const name = input?.value.trim();
 
-  const input =
-    document.getElementById("playerNameInput");
-
-  playerName =
-    input.value.trim() || "Quiz Lover";
-
-  localStorage.setItem(
-    "fictionQuizName",
-    playerName
-  );
-
-  document.getElementById("nameScreen")
-    .classList.remove("active");
-
-  document.getElementById("avatarPicker")
-    .classList.add("active");
-
-  setTimeout(()=>{
-
-    document.getElementById("avatarPicker")
-      .classList.remove("active");
-
-    document.getElementById("quizArea")
-      .classList.add("active");
-
-    showQuestion();
-
-    document.getElementById("quizArea")
-      .scrollIntoView({
-        behavior:"smooth",
-        block:"start"
-      });
-
-  },650);
-
-}
-
-
-/* =====================================================
-   SHOW QUESTION
-===================================================== */
-
-function showQuestion(){
-
-  answerLocked = false;
-
-  const q =
-    currentQuiz.questions[currentQuestion];
-
-  const total =
-    currentQuiz.questions.length;
-
-  document.getElementById("quizLabel")
-    .textContent =
-    currentQuiz.label;
-
-  document.getElementById("quizCounter")
-    .textContent =
-    `${currentQuestion + 1} / ${total}`;
-
-  document.getElementById("progressBar")
-    .style.width =
-    `${((currentQuestion) / total) * 100}%`;
-
-  const container =
-    document.getElementById("questionContainer");
-
-  let html = `
-    <div class="question-box">
-
-      <h2>${q.question}</h2>
-
-      <div class="answers">
-  `;
-
-  q.answers.forEach((answer,index)=>{
-
-    html += `
-
-      <button
-        class="answer-card"
-        onclick="chooseAnswer(${index},this)"
-      >
-
-        ${
-          answer.image
-          ?
-          `<img
-            src="${answer.image}"
-            alt="Option ${index + 1}"
-            loading="lazy"
-          >`
-          :
-          ""
-        }
-
-        <div class="answer-content">
-
-          <div class="answer-letter">
-            ${String.fromCharCode(65 + index)}
-          </div>
-
-          <div class="answer-text">
-            ${answer.text}
-          </div>
-
-        </div>
-
-      </button>
-
-    `;
-
-  });
-
-  html += `
-      </div>
-
-      <div
-        class="feedback"
-        id="feedback"
-      ></div>
-
-    </div>
-  `;
-
-  container.innerHTML = html;
-
-}
-
-
-/* =====================================================
-   CHOOSE ANSWER
-===================================================== */
-
-function chooseAnswer(selectedIndex,selectedCard){
-
-  if(answerLocked){
+  if(!name){
+    showToast("Please enter a nickname ✨");
+    input?.focus();
     return;
   }
 
-  answerLocked = true;
+  playerName = name.slice(0,20);
 
-  const question =
-    currentQuiz.questions[currentQuestion];
+  localStorage.setItem("fqName",playerName);
 
-  const correctIndex =
-    question.correct;
+  document.getElementById("nameScreen").classList.add("hidden");
+  document.getElementById("avatarScreen").classList.remove("hidden");
+}
 
-  const allCards =
-    document.querySelectorAll(".answer-card");
 
-  const feedback =
-    document.getElementById("feedback");
+function selectAvatar(button, avatar){
 
-  if(selectedIndex === correctIndex){
+  selectedAvatar = avatar;
 
-    quizScore++;
+  document.querySelectorAll(".avatar-choice")
+    .forEach(btn=>btn.classList.remove("selected"));
 
-    selectedCard.classList.add("correct");
+  button.classList.add("selected");
+}
 
-    feedback.className =
-      "feedback show correct-feedback";
 
-    feedback.textContent =
-      "✨ CORRECT! +10 XP";
+function continueFromAvatar(){
 
-    createConfetti();
+  localStorage.setItem("fqAvatar",selectedAvatar);
 
-  }else{
+  beginQuiz();
+}
 
-    selectedCard.classList.add("wrong");
 
-    allCards[correctIndex]
-      .classList.add("reveal");
+function beginQuiz(){
 
-    feedback.className =
-      "feedback show wrong-feedback";
+  hideAllScreens();
 
-    feedback.textContent =
-      "NOPE 😭 The correct answer is highlighted.";
+  document.getElementById("quizScreen")
+    .classList.remove("hidden");
 
+  quizStartTime = Date.now();
+
+  showQuestion();
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+}
+
+
+/* =========================================================
+   QUESTION RENDERING
+   ========================================================= */
+
+function showQuestion(){
+
+  const quiz = quizzes[currentQuizType];
+
+  if(!quiz) return;
+
+  const question = quiz.questions[currentQuestionIndex];
+
+  if(!question){
+    showResult();
+    return;
   }
 
-  scores.push(
-    selectedIndex === correctIndex
-  );
+  answered = false;
 
-  setTimeout(()=>{
+  const total = quiz.questions.length;
+  const number = currentQuestionIndex + 1;
+  const percent = (number / total) * 100;
 
-    currentQuestion++;
+  document.getElementById("questionNumber").textContent =
+    `Question ${number}`;
 
-    if(currentQuestion < currentQuiz.questions.length){
+  document.getElementById("questionCount").textContent =
+    `${number}/${total}`;
 
-      showQuestion();
+  document.getElementById("progressFill").style.width =
+    `${percent}%`;
 
-    }else{
+  document.getElementById("questionCategory").textContent =
+    quiz.category;
 
-      showResult();
+  const questionText =
+    document.getElementById("questionText");
 
-    }
+  questionText.classList.remove("question-enter");
 
-  },1050);
+  void questionText.offsetWidth;
+
+  questionText.classList.add("question-enter");
+
+  questionText.textContent = question.q;
+
+  const optionsBox =
+    document.getElementById("answerOptions");
+
+  optionsBox.innerHTML = "";
+
+  question.options.forEach((option,index)=>{
+
+    const button = document.createElement("button");
+
+    button.className = "answer-card";
+
+    button.dataset.index = index;
+
+    button.innerHTML = `
+      <span class="answer-letter">
+        ${String.fromCharCode(65 + index)}
+      </span>
+
+      <span class="answer-text">
+        ${escapeHTML(option)}
+      </span>
+
+      <span class="answer-arrow">→</span>
+    `;
+
+    button.addEventListener("click",()=>{
+      chooseAnswer(index,button);
+    });
+
+    optionsBox.appendChild(button);
+
+  });
+
+  document.getElementById("answerFeedback").innerHTML = "";
 
 }
 
 
-/* =====================================================
+/* =========================================================
+   ANSWER SYSTEM
+   ========================================================= */
+
+function chooseAnswer(index, button){
+
+  if(answered) return;
+
+  answered = true;
+
+  const quiz = quizzes[currentQuizType];
+  const question = quiz.questions[currentQuestionIndex];
+
+  const allButtons =
+    document.querySelectorAll(".answer-card");
+
+  allButtons.forEach(btn=>{
+    btn.disabled = true;
+  });
+
+  const correct = index === question.correct;
+
+  if(correct){
+
+    currentScore++;
+
+    currentXP += 5;
+
+    button.classList.add("answer-correct");
+
+    showAnswerFeedback(
+      "CORRECT! ✨",
+      "correct"
+    );
+
+    createSparkles(button);
+
+  }else{
+
+    button.classList.add("answer-wrong");
+
+    const correctButton =
+      document.querySelector(
+        `.answer-card[data-index="${question.correct}"]`
+      );
+
+    correctButton?.classList.add("answer-correct");
+
+    showAnswerFeedback(
+      "NOPE 😭",
+      "wrong"
+    );
+
+  }
+
+  updateQuizXP();
+
+  setTimeout(()=>{
+
+    currentQuestionIndex++;
+
+    if(currentQuestionIndex >= quiz.questions.length){
+      showResult();
+    }else{
+      showQuestion();
+    }
+
+  },850);
+}
+
+
+function showAnswerFeedback(text,type){
+
+  const feedback =
+    document.getElementById("answerFeedback");
+
+  feedback.className =
+    `answer-feedback ${type}`;
+
+  feedback.textContent = text;
+}
+
+
+function updateQuizXP(){
+
+  const el = document.getElementById("currentXP");
+
+  if(el){
+    el.textContent = currentXP;
+  }
+}
+
+
+/* =========================================================
    RESULT
-===================================================== */
+   ========================================================= */
 
 function showResult(){
 
-  document.getElementById("quizArea")
-    .classList.remove("active");
+  const quiz = quizzes[currentQuizType];
 
-  document.getElementById("avatarPicker")
-    .classList.remove("active");
+  if(!quiz) return;
 
-  const total =
-    currentQuiz.questions.length;
+  const total = quiz.questions.length;
+  const percent = Math.round((currentScore / total) * 100);
 
-  const percentage =
-    Math.round((quizScore / total) * 100);
+  const earnedXP =
+    currentXP +
+    (currentScore === total ? 20 : 0);
 
-  let resultIndex = 0;
+  const oldXP = getStoredXP();
+  const newXP = oldXP + earnedXP;
 
-  if(currentQuiz.results.length > 1){
+  setStoredXP(newXP);
 
-    if(percentage >= 80){
-      resultIndex =
-        Math.min(
-          currentQuiz.results.length - 1,
-          2
-        );
-    }
-    else if(percentage >= 50){
-      resultIndex =
-        Math.min(
-          currentQuiz.results.length - 1,
-          1
-        );
-    }
-    else{
-      resultIndex = 0;
-    }
+  setPlayedCount(getPlayedCount() + 1);
 
-  }
+  document.getElementById("resultAvatar").textContent =
+    selectedAvatar;
 
-  const result =
-    currentQuiz.results[resultIndex];
+  document.getElementById("resultName").textContent =
+    playerName || "Player";
 
-  document.getElementById("resultImage")
-    .src = result.image;
+  document.getElementById("resultScore").textContent =
+    currentScore;
 
-  document.getElementById("resultTitle")
-    .textContent = result.title;
+  document.getElementById("resultTotal").textContent =
+    total;
 
-  document.getElementById("resultDescription")
-    .textContent = result.description;
+  document.getElementById("resultXP").textContent =
+    `+${earnedXP}`;
 
-  document.getElementById("scoreText")
-    .textContent = percentage + "%";
+  document.getElementById("resultPercent").textContent =
+    `${percent}%`;
 
-  const xp =
-    20 + quizScore * 10;
+  document.getElementById("resultRank").textContent =
+    calculateLocalRank(newXP);
 
-  document.getElementById("xpEarned")
-    .textContent =
-    `+${xp} XP earned ✨`;
+  document.getElementById("resultTitle").textContent =
+    getResultTitle(percent);
+
+  updateLeaderboardPreview(newXP);
+
+  hideAllScreens();
 
   document.getElementById("resultScreen")
-    .classList.add("active");
+    .classList.remove("hidden");
 
-  document.getElementById("resultScreen")
-    .scrollIntoView({
-      behavior:"smooth",
-      block:"start"
-    });
+  createConfetti();
 
-  saveLocalStats(xp);
+  updateRecommendations();
 
-  setTimeout(()=>{
-    createConfetti();
-  },200);
-
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
 }
 
 
-/* =====================================================
-   SHARE RESULT
-===================================================== */
+function getResultTitle(percent){
 
-async function shareResult(){
+  if(percent === 100)
+    return "PERFECT! 👑";
 
-  const url =
-    buildQuizUrl(currentQuizType);
+  if(percent >= 80)
+    return "You're A Quiz Star! ✨";
 
-  const title =
-    `${playerName} just played a FictionQuiz! ✨`;
+  if(percent >= 60)
+    return "Pretty Impressive! 💜";
 
-  const text =
-    `${playerName} got ${document.getElementById("scoreText").textContent} on "${currentQuiz.title}"! Can you beat the score?`;
+  if(percent >= 40)
+    return "Not Bad! 🌸";
 
-  if(navigator.share){
-
-    try{
-
-      await navigator.share({
-        title:title,
-        text:text,
-        url:url
-      });
-
-      showToast("Shared successfully! ✨");
-
-    }catch(e){
-
-      if(e.name !== "AbortError"){
-        copyText(url);
-      }
-
-    }
-
-  }else{
-
-    copyText(url);
-
-  }
-
+  return "Keep Playing! 🔥";
 }
 
 
-/* =====================================================
-   CHALLENGE
-===================================================== */
+function calculateLocalRank(xp){
 
-async function challengeQuiz(){
+  if(xp >= 2500) return "#1";
+  if(xp >= 2000) return "#2";
+  if(xp >= 1500) return "#3";
+  if(xp >= 1000) return "#5";
 
-  const url =
-    buildQuizUrl(currentQuizType);
-
-  const text =
-    `👀 I challenge you to "${currentQuiz.title}" on FictionQuiz! Can you beat me?\n\n${url}`;
-
-  if(navigator.share){
-
-    try{
-
-      await navigator.share({
-        title:"FictionQuiz Challenge 👯",
-        text:text,
-        url:url
-      });
-
-      showToast("Challenge link shared! 🔥");
-
-    }catch(e){
-
-      if(e.name !== "AbortError"){
-        copyText(text);
-      }
-
-    }
-
-  }else{
-
-    copyText(text);
-
-  }
-
+  return "—";
 }
 
 
-/* =====================================================
-   QUIZ-SPECIFIC URL
-===================================================== */
+function updateLeaderboardPreview(xp){
 
-function buildQuizUrl(type){
+  const nameEl =
+    document.getElementById("leaderboardUserName");
+
+  const avatarEl =
+    document.getElementById("leaderboardUserAvatar");
+
+  const xpEl =
+    document.getElementById("leaderboardUserXP");
+
+  if(nameEl)
+    nameEl.textContent = playerName || "You";
+
+  if(avatarEl)
+    avatarEl.textContent = selectedAvatar;
+
+  if(xpEl)
+    xpEl.textContent = `${xp} XP`;
+}
+
+
+/* =========================================================
+   RESULT RECOMMENDATIONS
+   ========================================================= */
+
+function updateRecommendations(){
+
+  const current = currentQuizType;
+
+  const possible = [
+    "friendship",
+    "personality",
+    "relationship",
+    "novel",
+    "kdrama",
+    "kpop",
+    "preference",
+    "character"
+  ];
+
+  const selected =
+    possible.filter(type=>type !== current).slice(0,3);
+
+  const grid =
+    document.getElementById("recommendationGrid");
+
+  if(!grid) return;
+
+  const icons = {
+    friendship:"🫶",
+    personality:"💜",
+    relationship:"💌",
+    novel:"📚",
+    kdrama:"🎬",
+    kpop:"🎤",
+    preference:"🍜",
+    character:"🪄"
+  };
+
+  grid.innerHTML = selected.map(type=>{
+
+    const quiz = quizzes[type];
+
+    return `
+      <button onclick="startQuiz('${type}')">
+        <span>${icons[type]}</span>
+        <strong>${escapeHTML(quiz.title)}</strong>
+        <small>${quiz.category} →</small>
+      </button>
+    `;
+
+  }).join("");
+}
+
+
+/* =========================================================
+   SHARE / CHALLENGE
+   ========================================================= */
+
+function buildQuizUrl(type=currentQuizType){
 
   const base =
     window.location.origin +
     window.location.pathname;
 
-  return base +
-    "?quiz=" +
-    encodeURIComponent(type);
+  return `${base}?quiz=${encodeURIComponent(type)}`;
+}
+
+
+async function shareResult(){
+
+  const quiz = quizzes[currentQuizType];
+
+  const text =
+    `${playerName || "I"} scored ${currentScore}/${quiz.questions.length} on FictionQuiz! ✨\n\n` +
+    `Can you beat my score?`;
+
+  const url = buildQuizUrl(currentQuizType);
+
+  if(navigator.share){
+
+    try{
+
+      await navigator.share({
+        title: "My FictionQuiz Result ✨",
+        text,
+        url
+      });
+
+      return;
+
+    }catch(e){}
+
+  }
+
+  copyToClipboard(
+    `${text}\n${url}`,
+    "Result link copied! 📋"
+  );
+}
+
+
+async function challengeFriend(){
+
+  const quiz = quizzes[currentQuizType];
+
+  const url = buildQuizUrl(currentQuizType);
+
+  const text =
+    `I challenge you to beat my FictionQuiz score! 🏆\n\n` +
+    `${playerName || "I"} scored ${currentScore}/${quiz.questions.length}.\n` +
+    `Your turn 👀`;
+
+  if(navigator.share){
+
+    try{
+
+      await navigator.share({
+        title:"FictionQuiz Challenge 💌",
+        text,
+        url
+      });
+
+      return;
+
+    }catch(e){}
+
+  }
+
+  copyToClipboard(
+    `${text}\n${url}`,
+    "Challenge link copied! 💌"
+  );
+}
+
+
+/* =========================================================
+   DAILY QUIZ
+   ========================================================= */
+
+function startDailyQuiz(){
+
+  startQuiz("character");
 
 }
 
 
-/* =====================================================
-   COPY
-===================================================== */
+/* =========================================================
+   LEADERBOARD
+   ========================================================= */
 
-async function copyText(text){
+function switchLeaderboard(type,button){
 
-  try{
+  document.querySelectorAll(".leader-tab")
+    .forEach(btn=>btn.classList.remove("active"));
 
-    await navigator.clipboard.writeText(text);
+  button?.classList.add("active");
 
-    showToast("Copied! 📋");
+  const messages = {
+    today:"Today's rankings updated! 🔥",
+    weekly:"This week's top players shown! 🏆",
+    all:"All-time rankings selected! ⭐"
+  };
 
-  }catch(e){
+  showToast(messages[type] || "Leaderboard updated!");
+}
 
-    const textarea =
-      document.createElement("textarea");
 
-    textarea.value = text;
+function showLeaderboard(){
 
-    document.body.appendChild(textarea);
+  document.getElementById("leaderboard")
+    ?.scrollIntoView({
+      behavior:"smooth"
+    });
+}
 
-    textarea.select();
 
-    document.execCommand("copy");
+/* =========================================================
+   CREATE QUIZ
+   ========================================================= */
 
-    textarea.remove();
+function openCreateQuiz(){
 
-    showToast("Copied! 📋");
+  document.getElementById("createQuizModal")
+    ?.classList.remove("hidden");
 
+  document.body.classList.add("modal-open");
+}
+
+
+function closeCreateQuiz(){
+
+  document.getElementById("createQuizModal")
+    ?.classList.add("hidden");
+
+  document.body.classList.remove("modal-open");
+}
+
+
+/* =========================================================
+   PRIVACY / TERMS
+   ========================================================= */
+
+function showPrivacy(){
+
+  document.getElementById("privacyModal")
+    ?.classList.remove("hidden");
+
+  document.body.classList.add("modal-open");
+}
+
+
+function showTerms(){
+
+  document.getElementById("termsModal")
+    ?.classList.remove("hidden");
+
+  document.body.classList.add("modal-open");
+}
+
+
+function closeInfoModal(id){
+
+  document.getElementById(id)
+    ?.classList.add("hidden");
+
+  document.body.classList.remove("modal-open");
+}
+
+
+/* =========================================================
+   SCREEN HELPERS
+   ========================================================= */
+
+function hideAllScreens(){
+
+  [
+    "nameScreen",
+    "avatarScreen",
+    "quizScreen",
+    "resultScreen"
+  ].forEach(id=>{
+    document.getElementById(id)
+      ?.classList.add("hidden");
+  });
+
+}
+
+
+function backToQuizzes(){
+
+  hideAllScreens();
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+  setTimeout(()=>{
+    document.getElementById("quizzes")
+      ?.scrollIntoView({
+        behavior:"smooth"
+      });
+  },120);
+}
+
+
+function restartCurrentQuiz(){
+
+  if(currentQuizType){
+    startQuiz(currentQuizType);
   }
 
 }
 
 
-/* =====================================================
-   RESTART
-===================================================== */
-
-function restartQuiz(){
-
-  startQuiz(currentQuizType);
-
-}
-
-
-/* =====================================================
-   BACK TO QUIZZES
-===================================================== */
-
-function backToQuizzes(){
-
-  document.getElementById("resultScreen")
-    .classList.remove("active");
-
-  document.getElementById("quizArea")
-    .classList.remove("active");
-
-  document.getElementById("nameScreen")
-    .classList.remove("active");
-
-  document.getElementById("avatarPicker")
-    .classList.remove("active");
-
-  document.getElementById("quizzes")
-    .scrollIntoView({
-      behavior:"smooth"
-    });
-
-}
-
-
-/* =====================================================
-   DAILY QUIZ
-===================================================== */
-
-function openDailyQuiz(){
-
-  startQuiz("novel");
-
-}
-
-
-/* =====================================================
-   SCROLL
-===================================================== */
-
-function scrollToQuizzes(){
-
-  document.getElementById("quizzes")
-    .scrollIntoView({
-      behavior:"smooth"
-    });
-
-}
-
-
-/* =====================================================
-   AVATAR
-===================================================== */
-
-function selectAvatar(button,avatar){
-
-  selectedAvatar = avatar;
-
-  document
-    .querySelectorAll(".avatar-option")
-    .forEach(btn=>{
-      btn.classList.remove("selected");
-    });
-
-  button.classList.add("selected");
-
-  localStorage.setItem(
-    "fictionQuizAvatar",
-    avatar
-  );
-
-}
-
-
-/* =====================================================
-   LOCAL PLAYER STATS
-===================================================== */
-
-function saveLocalStats(xp){
-
-  const oldXP =
-    Number(
-      localStorage.getItem("fictionQuizXP") || 0
-    );
-
-  localStorage.setItem(
-    "fictionQuizXP",
-    oldXP + xp
-  );
-
-  const played =
-    Number(
-      localStorage.getItem("fictionQuizPlayed") || 0
-    );
-
-  localStorage.setItem(
-    "fictionQuizPlayed",
-    played + 1
-  );
-
-}
-
-
-/* =====================================================
-   LEADERBOARD TABS
-===================================================== */
-
-function changeBoard(button){
-
-  document
-    .querySelectorAll(".leader-tab")
-    .forEach(btn=>{
-      btn.classList.remove("active");
-    });
-
-  button.classList.add("active");
-
-  showToast(
-    button.textContent +
-    " leaderboard selected 🏆"
-  );
-
-}
-
-
-/* =====================================================
+/* =========================================================
    TOAST
-===================================================== */
+   ========================================================= */
 
 let toastTimer;
 
@@ -4154,198 +3569,2649 @@ function showToast(message){
   const toast =
     document.getElementById("toast");
 
+  if(!toast) return;
+
   toast.textContent = message;
 
   toast.classList.add("show");
 
   clearTimeout(toastTimer);
 
-  toastTimer =
-    setTimeout(()=>{
-      toast.classList.remove("show");
-    },2200);
-
+  toastTimer = setTimeout(()=>{
+    toast.classList.remove("show");
+  },2400);
 }
 
 
-/* =====================================================
-   CONFETTI
-===================================================== */
+/* =========================================================
+   CONFETTI / SPARKLES
+   ========================================================= */
 
 function createConfetti(){
 
-  for(let i=0;i<28;i++){
+  const container =
+    document.querySelector(".result-confetti");
+
+  if(!container) return;
+
+  container.innerHTML = "";
+
+  const symbols = [
+    "✨","⭐","💗","💜","🎉","🌸","💫","🏆"
+  ];
+
+  for(let i=0;i<24;i++){
 
     const piece =
-      document.createElement("div");
+      document.createElement("span");
 
-    piece.className = "confetti";
+    piece.textContent =
+      symbols[Math.floor(Math.random()*symbols.length)];
 
     piece.style.left =
-      Math.random() * 100 + "vw";
+      `${Math.random()*100}%`;
 
     piece.style.animationDelay =
-      Math.random() * .5 + "s";
+      `${Math.random()*1.2}s`;
 
-    piece.style.transform =
-      `rotate(${Math.random()*360}deg)`;
+    piece.style.animationDuration =
+      `${2 + Math.random()*2}s`;
 
-    piece.style.background =
-      [
-        "#b85c89",
-        "#70558e",
-        "#d9a83f",
-        "#2eaf68",
-        "#6a78d8"
-      ][
-        Math.floor(Math.random()*5)
-      ];
+    container.appendChild(piece);
+  }
+}
 
-    document.body.appendChild(piece);
+
+function createSparkles(button){
+
+  if(!button) return;
+
+  const symbols = ["✨","⭐","💫"];
+
+  for(let i=0;i<7;i++){
+
+    const sparkle =
+      document.createElement("span");
+
+    sparkle.className = "answer-sparkle";
+
+    sparkle.textContent =
+      symbols[Math.floor(Math.random()*symbols.length)];
+
+    sparkle.style.left =
+      `${20 + Math.random()*60}%`;
+
+    sparkle.style.top =
+      `${20 + Math.random()*60}%`;
+
+    button.appendChild(sparkle);
 
     setTimeout(()=>{
-      piece.remove();
-    },2200);
-
+      sparkle.remove();
+    },900);
   }
-
 }
 
 
-/* =====================================================
-   LANGUAGE DETECTION
-===================================================== */
+/* =========================================================
+   CLIPBOARD
+   ========================================================= */
 
-function detectLanguage(){
+async function copyToClipboard(text,message){
 
-  const saved =
-    localStorage.getItem("fictionQuizLanguage");
+  try{
 
-  if(saved){
+    await navigator.clipboard.writeText(text);
 
-    document.getElementById("languageSelect")
-      .value = saved;
+    showToast(message || "Copied! 📋");
 
-    return;
+  }catch(e){
+
+    showToast("Copy failed — please try again.");
 
   }
+}
+
+
+/* =========================================================
+   HTML SAFETY
+   ========================================================= */
+
+function escapeHTML(value){
+
+  return String(value)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+}
+
+
+/* =========================================================
+   LANGUAGE
+   ========================================================= */
+
+function detectBrowserLanguage(){
 
   const browser =
-    navigator.language ||
-    navigator.userLanguage ||
-    "en";
+    (navigator.language || "en")
+      .toLowerCase();
 
-  const code =
-    browser.substring(0,2);
+  if(browser.startsWith("ur")) return "ur";
+  if(browser.startsWith("hi")) return "hi";
+  if(browser.startsWith("bn")) return "bn";
+  if(browser.startsWith("tr")) return "tr";
+  if(browser.startsWith("ar")) return "ar";
+  if(browser.startsWith("ko")) return "ko";
 
-  const supported =
-    ["en","ur","hi","bn","tr","ar","ko"];
-
-  if(supported.includes(code)){
-
-    document.getElementById("languageSelect")
-      .value = code;
-
-  }
-
+  return "en";
 }
 
 
-/* =====================================================
-   LANGUAGE SELECT
-===================================================== */
+function changeLanguage(language){
 
-document
-  .getElementById("languageSelect")
-  .addEventListener("change",function(){
+  if(language === "auto"){
+    language = detectBrowserLanguage();
+  }
 
-    localStorage.setItem(
-      "fictionQuizLanguage",
-      this.value
-    );
+  localStorage.setItem("fqLanguage",language);
 
-    showToast(
-      "Language preference saved 🌐"
-    );
+  /*
+   * V3 keeps English as the main content language.
+   * The selected language is stored so the full
+   * translation system can be connected consistently.
+   */
 
-  });
+  showToast(
+    language === "en"
+      ? "English selected ✨"
+      : "Language preference saved 🌐"
+  );
+}
 
 
-/* =====================================================
-   ENTER KEY
-===================================================== */
+function initLanguage(){
 
-document
-  .getElementById("playerNameInput")
-  .addEventListener("keydown",function(event){
+  const saved =
+    localStorage.getItem("fqLanguage");
 
-    if(event.key === "Enter"){
-      beginQuiz();
+  const language =
+    saved || detectBrowserLanguage();
+
+  const select =
+    document.getElementById("languageSelect");
+
+  if(select){
+
+    const exists =
+      [...select.options]
+        .some(option=>option.value === language);
+
+    select.value = exists ? language : "auto";
+  }
+}
+
+
+/* =========================================================
+   KEYBOARD SUPPORT
+   ========================================================= */
+
+document.addEventListener("keydown",event=>{
+
+  if(event.key === "Enter"){
+
+    const nameScreen =
+      document.getElementById("nameScreen");
+
+    if(
+      nameScreen &&
+      !nameScreen.classList.contains("hidden")
+    ){
+      continueFromName();
     }
 
-  });
+  }
+
+  if(event.key === "Escape"){
+
+    closeCreateQuiz();
+
+    closeInfoModal("privacyModal");
+    closeInfoModal("termsModal");
+
+  }
+
+});
 
 
-/* =====================================================
+/* =========================================================
    DIRECT QUIZ LINKS
-===================================================== */
+   ========================================================= */
 
 function loadQuizFromUrl(){
 
   const params =
-    new URLSearchParams(
-      window.location.search
-    );
+    new URLSearchParams(window.location.search);
 
-  const quiz =
+  const quizType =
     params.get("quiz");
 
-  if(quiz && quizzes[quiz]){
+  if(
+    quizType &&
+    quizzes[quizType]
+  ){
 
     setTimeout(()=>{
-
-      startQuiz(quiz);
-
-    },500);
+      startQuiz(quizType);
+    },350);
 
   }
 
 }
 
 
-/* =====================================================
-   INITIALISE
-===================================================== */
+/* =========================================================
+   INITIAL UI
+   ========================================================= */
 
-detectLanguage();
+function initializeApp(){
 
-const savedAvatar =
-  localStorage.getItem(
-    "fictionQuizAvatar"
+  initLanguage();
+
+  const savedAvatar =
+    localStorage.getItem("fqAvatar");
+
+  if(savedAvatar){
+    selectedAvatar = savedAvatar;
+  }
+
+  const savedName =
+    localStorage.getItem("fqName");
+
+  if(savedName){
+    playerName = savedName;
+  }
+
+  const heroCount =
+    document.getElementById("heroQuizCount");
+
+  if(heroCount){
+    heroCount.textContent =
+      `${Object.keys(quizzes).length}+`;
+  }
+
+  updateLeaderboardPreview(
+    getStoredXP()
   );
 
-if(savedAvatar){
-  selectedAvatar = savedAvatar;
+  loadQuizFromUrl();
+
 }
 
-loadQuizFromUrl();
+
+/* =========================================================
+   START APP
+   ========================================================= */
+
+document.addEventListener(
+  "DOMContentLoaded",
+  initializeApp
+);
+
+</script>
+<style>
+
+/* =========================================================
+   FICTIONQUIZ V3 — FINAL POLISH CSS
+   ========================================================= */
+
+.hidden{
+  display:none !important;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body.modal-open{
+  overflow:hidden;
+}
+
+/* TOP TICKER */
+
+.top-ticker{
+  width:100%;
+  overflow:hidden;
+  background:rgba(255,255,255,.8);
+  border-bottom:1px solid rgba(150,120,180,.12);
+  backdrop-filter:blur(12px);
+  white-space:nowrap;
+}
+
+.ticker-track{
+  display:inline-flex;
+  gap:45px;
+  padding:10px 0;
+  min-width:max-content;
+  animation:tickerMove 28s linear infinite;
+  font-size:13px;
+  font-weight:700;
+}
+
+@keyframes tickerMove{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
 
 
-/* =====================================================
-   EXPOSE FUNCTIONS
-===================================================== */
+/* HEADER */
 
-window.startQuiz = startQuiz;
-window.beginQuiz = beginQuiz;
-window.chooseAnswer = chooseAnswer;
-window.shareResult = shareResult;
-window.challengeQuiz = challengeQuiz;
-window.restartQuiz = restartQuiz;
-window.backToQuizzes = backToQuizzes;
-window.scrollToQuizzes = scrollToQuizzes;
-window.openDailyQuiz = openDailyQuiz;
-window.selectAvatar = selectAvatar;
-window.changeBoard = changeBoard;
+.site-header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:rgba(255,255,255,.78);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(120,90,160,.1);
+}
+
+.header-inner{
+  width:min(1180px,92%);
+  margin:auto;
+  min-height:72px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  text-decoration:none;
+  color:#25202d;
+  font-size:22px;
+  font-weight:900;
+}
+
+.brand > span:last-child > span{
+  color:#9b62e8;
+}
+
+.brand-icon{
+  font-size:26px;
+}
+
+.main-nav{
+  display:flex;
+  gap:25px;
+}
+
+.main-nav a{
+  text-decoration:none;
+  color:#655d70;
+  font-size:14px;
+  font-weight:700;
+  transition:.2s;
+}
+
+.main-nav a:hover{
+  color:#9558df;
+}
+
+.header-actions{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.language-select{
+  border:1px solid #e7dff0;
+  background:white;
+  border-radius:12px;
+  padding:9px 10px;
+  color:#51485d;
+  font-weight:700;
+}
+
+.header-play-btn,
+.primary-btn,
+.secondary-btn,
+.small-primary-btn,
+.small-secondary-btn{
+  border:0;
+  cursor:pointer;
+  font-family:inherit;
+  font-weight:800;
+  transition:.25s;
+}
+
+.header-play-btn{
+  background:#9b62e8;
+  color:white;
+  padding:11px 17px;
+  border-radius:13px;
+  box-shadow:0 8px 22px rgba(155,98,232,.25);
+}
+
+.header-play-btn:hover,
+.primary-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 12px 28px rgba(155,98,232,.3);
+}
+
+
+/* BACKGROUND */
+
+.bg-orb{
+  position:fixed;
+  border-radius:50%;
+  filter:blur(70px);
+  opacity:.35;
+  pointer-events:none;
+  z-index:-1;
+}
+
+.orb-1{
+  width:300px;
+  height:300px;
+  background:#e8d4ff;
+  top:100px;
+  left:-100px;
+}
+
+.orb-2{
+  width:280px;
+  height:280px;
+  background:#ffd6ec;
+  top:600px;
+  right:-100px;
+}
+
+.orb-3{
+  width:250px;
+  height:250px;
+  background:#d7e8ff;
+  bottom:50px;
+  left:35%;
+}
+
+
+/* HERO */
+
+.hero-section{
+  width:min(1180px,92%);
+  margin:auto;
+  min-height:650px;
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  align-items:center;
+  gap:50px;
+  padding:70px 0;
+}
+
+.hero-badge,
+.section-kicker,
+.mini-label{
+  display:inline-block;
+  color:#9560d8;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:1.5px;
+}
+
+.hero-content h1{
+  margin:16px 0;
+  font-size:clamp(48px,7vw,82px);
+  line-height:.98;
+  letter-spacing:-3px;
+  color:#29232f;
+}
+
+.hero-content h1 span{
+  display:block;
+  background:linear-gradient(90deg,#995fe2,#dc75b3);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.hero-content > p{
+  max-width:570px;
+  color:#756c80;
+  font-size:18px;
+  line-height:1.7;
+}
+
+.hero-buttons{
+  display:flex;
+  gap:12px;
+  margin:30px 0;
+  flex-wrap:wrap;
+}
+
+.primary-btn{
+  padding:14px 23px;
+  border-radius:15px;
+  color:white;
+  background:linear-gradient(135deg,#9961e4,#c26fb8);
+  box-shadow:0 10px 25px rgba(155,98,232,.22);
+}
+
+.secondary-btn{
+  padding:14px 23px;
+  border-radius:15px;
+  background:white;
+  color:#75538f;
+  border:1px solid #eadff1;
+}
+
+.hero-stats{
+  display:flex;
+  gap:35px;
+}
+
+.hero-stats div{
+  display:flex;
+  flex-direction:column;
+}
+
+.hero-stats strong{
+  font-size:22px;
+  color:#332b3c;
+}
+
+.hero-stats span{
+  font-size:12px;
+  color:#958b9f;
+}
+
+
+/* HERO VISUAL */
+
+.hero-visual{
+  min-height:470px;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.hero-book{
+  width:250px;
+  height:320px;
+  perspective:800px;
+  position:relative;
+}
+
+.book-cover{
+  width:100%;
+  height:100%;
+  border-radius:12px 20px 20px 12px;
+  background:linear-gradient(145deg,#372449,#9b5da7 55%,#e49ac4);
+  color:white;
+  box-shadow:
+    20px 30px 60px rgba(70,40,90,.3),
+    inset 8px 0 0 rgba(255,255,255,.08);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  transform:rotate(-5deg);
+}
+
+.book-star{
+  font-size:28px;
+}
+
+.book-title{
+  margin-top:25px;
+  text-align:center;
+  font-size:30px;
+  font-weight:900;
+  letter-spacing:3px;
+}
+
+.book-cover small{
+  margin-top:25px;
+  letter-spacing:3px;
+  opacity:.75;
+}
+
+.book-glow{
+  position:absolute;
+  inset:-30px;
+  background:#d6a9ff;
+  filter:blur(70px);
+  opacity:.35;
+}
+
+.floating-card{
+  position:absolute;
+  z-index:2;
+  background:rgba(255,255,255,.88);
+  backdrop-filter:blur(15px);
+  padding:15px 18px;
+  border-radius:17px;
+  box-shadow:0 15px 40px rgba(60,40,80,.12);
+  display:flex;
+  flex-direction:column;
+}
+
+.floating-card span{
+  font-size:25px;
+}
+
+.floating-card strong{
+  color:#39303f;
+}
+
+.floating-card small{
+  color:#93899c;
+  margin-top:3px;
+}
+
+.card-a{
+  top:50px;
+  left:0;
+  animation:floatA 4s ease-in-out infinite;
+}
+
+.card-b{
+  right:0;
+  bottom:65px;
+  animation:floatB 4.5s ease-in-out infinite;
+}
+
+@keyframes floatA{
+  50%{transform:translateY(-10px) rotate(2deg)}
+}
+
+@keyframes floatB{
+  50%{transform:translateY(10px) rotate(-2deg)}
+}
+
+
+/* GENERAL */
+
+.container{
+  width:min(1180px,92%);
+  margin:auto;
+}
+
+.featured-section{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+  margin-bottom:100px;
+}
+
+.feature-card{
+  min-height:190px;
+  border-radius:25px;
+  padding:28px;
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  gap:20px;
+}
+
+.daily-card{
+  background:linear-gradient(135deg,#fff1c9,#ffe4ef);
+}
+
+.player-card{
+  background:linear-gradient(135deg,#eee1ff,#e1ecff);
+}
+
+.feature-icon{
+  font-size:40px;
+}
+
+.feature-info{
+  position:relative;
+  z-index:2;
+}
+
+.feature-info h2{
+  margin:7px 0;
+  font-size:22px;
+  color:#302838;
+}
+
+.feature-info p{
+  margin:0 0 15px;
+  color:#776e80;
+  font-size:14px;
+}
+
+.small-primary-btn,
+.small-secondary-btn{
+  padding:10px 14px;
+  border-radius:11px;
+}
+
+.small-primary-btn{
+  background:#8f58d8;
+  color:white;
+}
+
+.small-secondary-btn{
+  background:white;
+  color:#76529a;
+}
+
+.daily-fire{
+  position:absolute;
+  right:20px;
+  bottom:-20px;
+  font-size:100px;
+  opacity:.14;
+}
+
+.player-crown{
+  position:absolute;
+  top:15px;
+  right:20px;
+  font-size:27px;
+}
+
+.large-avatar{
+  width:75px;
+  height:75px;
+  flex-shrink:0;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:38px;
+  background:white;
+  box-shadow:0 8px 20px rgba(70,50,100,.12);
+}
+
+
+/* SECTION HEADING */
+
+.section-heading{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:20px;
+  margin-bottom:30px;
+}
+
+.centered-heading{
+  display:block;
+  text-align:center;
+}
+
+.section-heading h2{
+  margin:7px 0;
+  font-size:42px;
+  color:#302938;
+}
+
+.section-heading h2 span{
+  color:#9a60df;
+}
+
+.section-heading p{
+  color:#817789;
+  margin:0;
+}
+
+.view-all-btn{
+  border:0;
+  background:white;
+  border:1px solid #e8deef;
+  border-radius:12px;
+  padding:11px 15px;
+  color:#7954a0;
+  font-weight:800;
+  cursor:pointer;
+}
+
+
+/* CATEGORY */
+
+.category-pills{
+  display:flex;
+  gap:9px;
+  overflow:auto;
+  padding-bottom:12px;
+  margin-bottom:24px;
+}
+
+.category-pill{
+  flex:0 0 auto;
+  border:1px solid #e8deef;
+  background:white;
+  border-radius:30px;
+  padding:10px 17px;
+  color:#776d81;
+  font-weight:800;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.category-pill.active,
+.category-pill:hover{
+  background:#9b62e8;
+  color:white;
+  border-color:#9b62e8;
+}
+
+
+/* QUIZ GRID */
+
+.quiz-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+
+.quiz-card{
+  min-width:0;
+  overflow:hidden;
+  border-radius:25px;
+  background:white;
+  box-shadow:0 10px 35px rgba(50,35,70,.08);
+  border:1px solid rgba(130,100,160,.08);
+  cursor:pointer;
+  transition:.3s;
+}
+
+.quiz-card:hover{
+  transform:translateY(-7px);
+  box-shadow:0 20px 45px rgba(50,35,70,.14);
+}
+
+.quiz-card-top{
+  position:absolute;
+  z-index:2;
+  top:13px;
+  left:13px;
+  right:13px;
+  display:flex;
+  justify-content:space-between;
+}
+
+.quiz-card{
+  position:relative;
+}
+
+.quiz-tag,
+.quiz-duration{
+  font-size:9px;
+  font-weight:900;
+  padding:6px 8px;
+  border-radius:8px;
+  background:rgba(255,255,255,.84);
+  backdrop-filter:blur(7px);
+}
+
+.quiz-duration{
+  color:#817788;
+}
+
+.quiz-art{
+  height:205px;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+
+.quiz-card-purple .quiz-art{
+  background:linear-gradient(135deg,#eadcff,#d5baff);
+}
+
+.quiz-card-pink .quiz-art{
+  background:linear-gradient(135deg,#ffd9e8,#f3c8ff);
+}
+
+.quiz-card-blue .quiz-art{
+  background:linear-gradient(135deg,#d5eaff,#c9d7ff);
+}
+
+.quiz-card-gold .quiz-art{
+  background:linear-gradient(135deg,#fff0c9,#f7d89b);
+}
+
+.quiz-card-mint .quiz-art{
+  background:linear-gradient(135deg,#d7f7e9,#c5eadc);
+}
+
+.quiz-card-lilac .quiz-art{
+  background:linear-gradient(135deg,#eadcff,#d7ccff);
+}
+
+.quiz-card-dark .quiz-art{
+  background:linear-gradient(135deg,#3c3154,#74618e);
+}
+
+.quiz-card-orange .quiz-art{
+  background:linear-gradient(135deg,#ffe0c2,#ffc8d8);
+}
+
+.quiz-art > span{
+  position:absolute;
+  font-size:25px;
+  animation:tinyFloat 3s ease-in-out infinite;
+}
+
+.quiz-art > span:nth-child(2){
+  top:50px;
+  left:25px;
+}
+
+.quiz-art > span:nth-child(3){
+  right:30px;
+  top:85px;
+}
+
+.quiz-art > span:nth-child(4){
+  left:45%;
+  bottom:25px;
+}
+
+@keyframes tinyFloat{
+  50%{transform:translateY(-8px)}
+}
+
+.art-center,
+.personality-face,
+.friend-icon,
+.novel-book,
+.kdrama-art > div,
+.kpop-art > div,
+.preference-art > div{
+  font-size:70px;
+  filter:drop-shadow(0 12px 15px rgba(50,30,70,.15));
+  z-index:1;
+}
+
+.art-orbit{
+  position:absolute;
+  border:2px solid rgba(255,255,255,.5);
+  border-radius:50%;
+}
+
+.orbit-one{
+  width:145px;
+  height:145px;
+}
+
+.orbit-two{
+  width:200px;
+  height:200px;
+  border-style:dashed;
+}
+
+.quiz-card-body{
+  padding:20px;
+}
+
+.quiz-category{
+  font-size:9px;
+  letter-spacing:1.2px;
+  font-weight:900;
+  color:#9b61d8;
+}
+
+.quiz-card-body h3{
+  margin:7px 0;
+  color:#312a38;
+  font-size:18px;
+  line-height:1.25;
+}
+
+.quiz-card-body p{
+  margin:0;
+  color:#8b8290;
+  font-size:12px;
+  line-height:1.55;
+  min-height:38px;
+}
+
+.quiz-card-bottom{
+  margin-top:17px;
+  padding-top:13px;
+  border-top:1px solid #f0eaf3;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  color:#928898;
+  font-size:11px;
+  font-weight:700;
+}
+
+.play-circle{
+  width:31px;
+  height:31px;
+  border-radius:50%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#f2e9fb;
+  color:#8f58d8;
+  font-size:17px;
+}
+
+
+/* LEADERBOARD */
+
+.leaderboard-section{
+  padding:120px 0 100px;
+}
+
+.leaderboard-tabs{
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  margin-bottom:20px;
+}
+
+.leader-tab{
+  border:1px solid #e8deef;
+  background:white;
+  border-radius:12px;
+  padding:10px 18px;
+  color:#817589;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.leader-tab.active{
+  background:#9b62e8;
+  color:white;
+  border-color:#9b62e8;
+}
+
+.leaderboard-card{
+  max-width:760px;
+  margin:auto;
+  background:white;
+  border-radius:25px;
+  padding:20px;
+  box-shadow:0 15px 45px rgba(50,35,70,.08);
+}
+
+.leader-header{
+  display:grid;
+  grid-template-columns:55px 1fr 100px;
+  color:#a197aa;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:1px;
+  padding:8px 13px;
+}
+
+.leader-row{
+  display:grid;
+  grid-template-columns:55px 1fr 100px;
+  align-items:center;
+  padding:14px 13px;
+  border-top:1px solid #f1edf4;
+}
+
+.rank-number{
+  font-size:20px;
+  font-weight:900;
+  color:#9b91a0;
+}
+
+.rank-one .rank-number{
+  color:#d69b25;
+}
+
+.leader-player{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.leader-avatar{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#f3eafb;
+  font-size:22px;
+}
+
+.leader-player strong{
+  display:block;
+  color:#39313f;
+}
+
+.leader-player small{
+  display:block;
+  color:#a097a7;
+  font-size:10px;
+  margin-top:2px;
+}
+
+.leader-xp{
+  text-align:right;
+  color:#8f58d8;
+}
+
+.your-rank{
+  margin-top:15px;
+  padding:14px;
+  border-radius:16px;
+  background:#faf6fd;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  color:#8d56d5;
+}
+
+.your-rank-left{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.your-rank-number{
+  font-weight:900;
+}
+
+
+/* CREATE */
+
+.create-section{
+  padding:50px 0 110px;
+}
+
+.create-card{
+  border-radius:32px;
+  padding:55px;
+  background:linear-gradient(135deg,#f0e3ff,#ffe5f0);
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  align-items:center;
+  position:relative;
+  overflow:hidden;
+}
+
+.create-content{
+  position:relative;
+  z-index:2;
+}
+
+.create-content h2{
+  margin:10px 0;
+  font-size:45px;
+  color:#322a39;
+}
+
+.create-content h2 span{
+  color:#a15dde;
+}
+
+.create-content p{
+  max-width:560px;
+  color:#786d80;
+  line-height:1.7;
+}
+
+.create-features{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin:22px 0;
+  color:#685c72;
+  font-size:13px;
+  font-weight:700;
+}
+
+.create-btn{
+  margin-top:5px;
+}
+
+.create-preview{
+  display:flex;
+  justify-content:center;
+  position:relative;
+  z-index:2;
+}
+
+.phone-preview{
+  width:235px;
+  border-radius:28px;
+  background:#2d2635;
+  padding:18px;
+  box-shadow:0 25px 50px rgba(50,30,70,.25);
+  transform:rotate(5deg);
+}
+
+.phone-top{
+  color:white;
+  font-size:9px;
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:25px;
+}
+
+.preview-question{
+  background:white;
+  border-radius:15px;
+  padding:15px;
+  font-size:13px;
+  font-weight:900;
+  color:#3d3346;
+  margin-bottom:10px;
+}
+
+.preview-option{
+  background:#f8f3fb;
+  border-radius:12px;
+  padding:11px;
+  display:flex;
+  align-items:center;
+  gap:7px;
+  color:#62576b;
+  font-size:10px;
+  margin:7px 0;
+}
+
+.preview-option.selected{
+  background:#eadcff;
+  color:#7952a0;
+}
+
+.preview-option b{
+  margin-left:auto;
+}
+
+.preview-link{
+  margin-top:20px;
+  padding:11px;
+  border-radius:11px;
+  text-align:center;
+  background:#9b62e8;
+  color:white;
+  font-size:10px;
+  font-weight:800;
+}
+
+.create-decoration{
+  position:absolute;
+  font-size:40px;
+  opacity:.4;
+}
+
+.create-decoration-one{
+  top:20px;
+  right:40%;
+}
+
+.create-decoration-two{
+  bottom:20px;
+  left:30%;
+}
+
+.create-decoration-three{
+  top:50%;
+  right:15px;
+}
+
+
+/* MISSIONS */
+
+.missions-section{
+  padding-bottom:110px;
+}
+
+.mission-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+}
+
+.mission-card{
+  background:white;
+  border:1px solid #eee6f2;
+  border-radius:19px;
+  padding:18px;
+  display:flex;
+  align-items:center;
+  gap:11px;
+  box-shadow:0 8px 25px rgba(50,35,70,.05);
+}
+
+.mission-icon{
+  width:43px;
+  height:43px;
+  flex-shrink:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:13px;
+  background:#f3eafb;
+  font-size:21px;
+}
+
+.mission-info{
+  min-width:0;
+  flex:1;
+}
+
+.mission-info strong{
+  display:block;
+  font-size:12px;
+  color:#3c3442;
+}
+
+.mission-info span{
+  display:block;
+  margin-top:3px;
+  color:#9a91a1;
+  font-size:9px;
+}
+
+.mission-card > b{
+  color:#9259d9;
+  font-size:11px;
+}
+
+
+/* QUIZ ENTRY */
+
+.quiz-screen-section{
+  min-height:calc(100vh - 100px);
+  padding:60px 15px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.quiz-entry-card{
+  width:min(520px,100%);
+  background:white;
+  border-radius:30px;
+  padding:40px;
+  text-align:center;
+  box-shadow:0 25px 70px rgba(50,35,70,.13);
+  position:relative;
+}
+
+.close-quiz{
+  position:absolute;
+  top:16px;
+  right:18px;
+  border:0;
+  background:#f5eff8;
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  font-size:22px;
+  cursor:pointer;
+  color:#71677a;
+}
+
+.entry-icon{
+  font-size:48px;
+  margin-bottom:8px;
+}
+
+.quiz-entry-card h2{
+  font-size:35px;
+  color:#342c3b;
+  margin:7px 0;
+}
+
+.quiz-entry-card h2 span{
+  color:#9b62e8;
+}
+
+.quiz-entry-card p{
+  color:#887d90;
+  line-height:1.6;
+}
+
+.player-name-input{
+  width:100%;
+  box-sizing:border-box;
+  border:2px solid #eee5f3;
+  border-radius:15px;
+  padding:15px;
+  margin:17px 0;
+  outline:0;
+  font-family:inherit;
+  font-size:15px;
+  text-align:center;
+}
+
+.player-name-input:focus{
+  border-color:#b583e7;
+}
+
+.full-btn{
+  width:100%;
+}
+
+.privacy-note{
+  display:block;
+  margin-top:14px;
+  color:#a098a7;
+  font-size:10px;
+}
+
+
+/* AVATAR */
+
+.avatar-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+  margin:25px 0;
+}
+
+.avatar-choice{
+  aspect-ratio:1;
+  border:2px solid #eee5f3;
+  background:#faf7fc;
+  border-radius:17px;
+  font-size:30px;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.avatar-choice:hover,
+.avatar-choice.selected{
+  border-color:#9b62e8;
+  background:#f1e5fc;
+  transform:translateY(-3px);
+}
+
+
+/* QUIZ */
+
+.quiz-wrapper{
+  width:min(780px,100%);
+}
+
+.quiz-topbar{
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  gap:18px;
+  align-items:center;
+  margin-bottom:30px;
+}
+
+.quiz-exit{
+  border:0;
+  background:white;
+  border-radius:12px;
+  padding:10px 13px;
+  cursor:pointer;
+  color:#756b7d;
+  font-weight:800;
+}
+
+.quiz-progress-text{
+  display:flex;
+  justify-content:space-between;
+  color:#8f8596;
+  font-size:11px;
+  margin-bottom:7px;
+}
+
+.progress-track{
+  height:8px;
+  border-radius:20px;
+  background:#ece6f0;
+  overflow:hidden;
+}
+
+.progress-fill{
+  height:100%;
+  width:0;
+  border-radius:20px;
+  background:linear-gradient(90deg,#9860df,#d26bb5);
+  transition:.4s;
+}
+
+.quiz-xp{
+  padding:9px 12px;
+  background:white;
+  border-radius:12px;
+  color:#8b58d2;
+  font-weight:900;
+}
+
+.question-card{
+  background:white;
+  border-radius:30px;
+  padding:40px;
+  box-shadow:0 25px 70px rgba(50,35,70,.1);
+}
+
+.question-category{
+  display:inline-block;
+  padding:7px 10px;
+  border-radius:8px;
+  background:#f1e6fb;
+  color:#8d58d2;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:1px;
+}
+
+.question-card h2{
+  font-size:32px;
+  line-height:1.25;
+  color:#342d3b;
+  margin:20px 0 25px;
+}
+
+.question-enter{
+  animation:questionEnter .4s ease;
+}
+
+@keyframes questionEnter{
+  from{
+    opacity:0;
+    transform:translateX(25px);
+  }
+  to{
+    opacity:1;
+    transform:translateX(0);
+  }
+}
+
+.answer-options{
+  display:grid;
+  gap:12px;
+}
+
+.answer-card{
+  position:relative;
+  width:100%;
+  min-height:65px;
+  border:2px solid #eee8f2;
+  border-radius:17px;
+  background:white;
+  display:flex;
+  align-items:center;
+  gap:13px;
+  padding:13px 15px;
+  cursor:pointer;
+  font-family:inherit;
+  text-align:left;
+  transition:.2s;
+  overflow:hidden;
+}
+
+.answer-card:hover:not(:disabled){
+  border-color:#b27be4;
+  background:#fbf7fd;
+  transform:translateX(4px);
+}
+
+.answer-letter{
+  width:34px;
+  height:34px;
+  flex-shrink:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:10px;
+  background:#f3ebf8;
+  color:#8e59d3;
+  font-weight:900;
+}
+
+.answer-text{
+  color:#4c4354;
+  font-size:14px;
+  font-weight:700;
+  flex:1;
+}
+
+.answer-arrow{
+  color:#aaa0b1;
+  font-size:18px;
+}
+
+.answer-card.answer-correct{
+  border-color:#63c98b;
+  background:#edfff4;
+  animation:correctPop .45s ease;
+}
+
+.answer-card.answer-correct .answer-letter{
+  background:#65c98c;
+  color:white;
+}
+
+.answer-card.answer-wrong{
+  border-color:#ef7c91;
+  background:#fff0f3;
+  animation:wrongShake .45s ease;
+}
+
+.answer-card.answer-wrong .answer-letter{
+  background:#ef7c91;
+  color:white;
+}
+
+@keyframes correctPop{
+  0%{transform:scale(.97)}
+  55%{transform:scale(1.025)}
+  100%{transform:scale(1)}
+}
+
+@keyframes wrongShake{
+  0%,100%{transform:translateX(0)}
+  25%{transform:translateX(-8px)}
+  50%{transform:translateX(8px)}
+  75%{transform:translateX(-5px)}
+}
+
+.answer-feedback{
+  min-height:25px;
+  text-align:center;
+  margin-top:15px;
+  font-size:16px;
+  font-weight:900;
+}
+
+.answer-feedback.correct{
+  color:#42ad70;
+  animation:feedbackPop .35s ease;
+}
+
+.answer-feedback.wrong{
+  color:#df667b;
+  animation:feedbackPop .35s ease;
+}
+
+@keyframes feedbackPop{
+  from{
+    opacity:0;
+    transform:scale(.7);
+  }
+  to{
+    opacity:1;
+    transform:scale(1);
+  }
+}
+
+.answer-sparkle{
+  position:absolute;
+  pointer-events:none;
+  animation:sparkleOut .8s ease forwards;
+  font-size:18px;
+}
+
+@keyframes sparkleOut{
+  from{
+    opacity:1;
+    transform:translate(0,0) scale(.5);
+  }
+  to{
+    opacity:0;
+    transform:translate(
+      calc((var(--random-x,1)) * 20px),
+      -40px
+    ) scale(1.3);
+  }
+}
+
+
+/* RESULT */
+
+.result-wrapper{
+  width:min(900px,100%);
+}
+
+.result-card{
+  position:relative;
+  overflow:hidden;
+  background:white;
+  border-radius:32px;
+  padding:45px;
+  text-align:center;
+  box-shadow:0 25px 80px rgba(50,35,70,.13);
+}
+
+.result-badge{
+  display:inline-block;
+  padding:8px 13px;
+  border-radius:20px;
+  background:#f1e5fb;
+  color:#8c58d1;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:1px;
+}
+
+.result-avatar{
+  width:82px;
+  height:82px;
+  margin:22px auto 10px;
+  border-radius:50%;
+  background:#f3e9fa;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:42px;
+}
+
+.result-small{
+  color:#938a9c;
+}
+
+.result-card h1{
+  font-size:40px;
+  color:#342c3b;
+  margin:8px 0 22px;
+}
+
+.score-circle{
+  width:155px;
+  height:155px;
+  border-radius:50%;
+  margin:auto;
+  background:linear-gradient(145deg,#f1e3ff,#ffe7f2);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+
+.score-circle > div{
+  color:#3b3044;
+}
+
+.score-circle strong{
+  font-size:48px;
+}
+
+.score-circle span{
+  font-weight:800;
+  color:#817587;
+}
+
+.score-circle small{
+  color:#9a90a1;
+  margin-top:2px;
+}
+
+.result-stats{
+  max-width:500px;
+  margin:25px auto;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
+
+.result-stats div{
+  background:#faf7fc;
+  border-radius:15px;
+  padding:13px;
+}
+
+.result-stats strong{
+  display:block;
+  color:#8d57d2;
+  font-size:18px;
+}
+
+.result-stats span{
+  color:#9a91a1;
+  font-size:9px;
+}
+
+.result-actions{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.text-btn{
+  border:0;
+  background:transparent;
+  margin-top:15px;
+  color:#8e7b99;
+  cursor:pointer;
+  font-weight:800;
+}
+
+
+/* RECOMMENDATIONS */
+
+.more-quizzes{
+  margin-top:45px;
+}
+
+.more-heading{
+  text-align:center;
+}
+
+.more-heading span{
+  color:#9a60d9;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:1px;
+}
+
+.more-heading h2{
+  color:#342c3b;
+  margin:7px 0 20px;
+}
+
+.recommendation-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+}
+
+.recommendation-grid button{
+  border:1px solid #eee6f2;
+  background:white;
+  border-radius:19px;
+  padding:20px;
+  text-align:left;
+  cursor:pointer;
+  box-shadow:0 8px 25px rgba(50,35,70,.05);
+  transition:.25s;
+}
+
+.recommendation-grid button:hover{
+  transform:translateY(-4px);
+}
+
+.recommendation-grid span{
+  font-size:28px;
+}
+
+.recommendation-grid strong{
+  display:block;
+  color:#423849;
+  font-size:13px;
+  margin:8px 0;
+  line-height:1.35;
+}
+
+.recommendation-grid small{
+  color:#9a58d6;
+  font-weight:800;
+}
+
+.browse-more-btn{
+  display:block;
+  margin:18px auto 0;
+  border:0;
+  background:#f0e6f7;
+  color:#8051a4;
+  padding:11px 17px;
+  border-radius:12px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+
+/* CONFETTI */
+
+.result-confetti{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  overflow:hidden;
+}
+
+.result-confetti span{
+  position:absolute;
+  top:-30px;
+  font-size:18px;
+  animation:confettiFall 3s ease-in forwards;
+}
+
+@keyframes confettiFall{
+  to{
+    transform:translateY(650px) rotate(360deg);
+    opacity:0;
+  }
+}
+
+
+/* ABOUT */
+
+.about-section{
+  padding-bottom:100px;
+}
+
+.about-card{
+  display:grid;
+  grid-template-columns:100px 1fr;
+  gap:25px;
+  padding:35px;
+  border-radius:25px;
+  background:#f8f2fb;
+}
+
+.about-icon{
+  width:80px;
+  height:80px;
+  border-radius:22px;
+  background:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:38px;
+  box-shadow:0 10px 25px rgba(50,35,70,.06);
+}
+
+.about-card h2{
+  color:#342d3b;
+  font-size:32px;
+  margin:7px 0 12px;
+}
+
+.about-card h2 span{
+  color:#9b60db;
+}
+
+.about-card p{
+  color:#7f7488;
+  line-height:1.7;
+  max-width:800px;
+}
+
+
+/* FOOTER */
+
+.site-footer{
+  background:#292331;
+  color:white;
+  padding:45px 0;
+}
+
+.footer-inner{
+  width:min(1180px,92%);
+  margin:auto;
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:30px;
+  align-items:center;
+}
+
+.footer-brand .brand{
+  color:white;
+}
+
+.footer-brand p{
+  color:#aaa0b1;
+  font-size:12px;
+}
+
+.footer-links{
+  display:flex;
+  gap:20px;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+}
+
+.footer-links a{
+  color:#c9c0ce;
+  text-decoration:none;
+  font-size:12px;
+}
+
+.footer-copy{
+  grid-column:1/-1;
+  border-top:1px solid rgba(255,255,255,.1);
+  padding-top:20px;
+  color:#8e8594;
+  font-size:11px;
+}
+
+
+/* MODALS */
+
+.modal{
+  position:fixed;
+  inset:0;
+  z-index:999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.modal.hidden{
+  display:none !important;
+}
+
+.modal-overlay{
+  position:absolute;
+  inset:0;
+  background:rgba(25,18,31,.58);
+  backdrop-filter:blur(6px);
+}
+
+.modal-card{
+  position:relative;
+  z-index:2;
+  width:min(500px,100%);
+  max-height:90vh;
+  overflow:auto;
+  background:white;
+  border-radius:28px;
+  padding:35px;
+  text-align:center;
+  box-shadow:0 30px 90px rgba(0,0,0,.2);
+}
+
+.modal-close{
+  position:absolute;
+  right:15px;
+  top:15px;
+  width:34px;
+  height:34px;
+  border:0;
+  border-radius:50%;
+  background:#f5eff8;
+  color:#766b7c;
+  font-size:21px;
+  cursor:pointer;
+}
+
+.modal-icon{
+  font-size:45px;
+  margin-bottom:10px;
+}
+
+.modal-card h2{
+  color:#352d3d;
+  font-size:30px;
+}
+
+.modal-card h2 span{
+  color:#995ddd;
+}
+
+.modal-card p{
+  color:#817688;
+  line-height:1.65;
+}
+
+.modal-features{
+  text-align:left;
+  background:#faf6fc;
+  border-radius:17px;
+  padding:15px;
+  margin:20px 0;
+}
+
+.modal-features div{
+  padding:7px;
+  color:#665b70;
+  font-size:13px;
+  font-weight:700;
+}
+
+
+/* TOAST */
+
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:25px;
+  transform:translate(-50%,30px);
+  opacity:0;
+  pointer-events:none;
+  z-index:1200;
+  background:#302735;
+  color:white;
+  padding:12px 18px;
+  border-radius:14px;
+  box-shadow:0 12px 30px rgba(0,0,0,.2);
+  font-size:13px;
+  font-weight:700;
+  transition:.25s;
+}
+
+.toast.show{
+  opacity:1;
+  transform:translate(-50%,0);
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media(max-width:1000px){
+
+  .main-nav{
+    display:none;
+  }
+
+  .quiz-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .mission-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .hero-section{
+    grid-template-columns:1fr;
+    text-align:center;
+  }
+
+  .hero-content > p{
+    margin-left:auto;
+    margin-right:auto;
+  }
+
+  .hero-buttons,
+  .hero-stats{
+    justify-content:center;
+  }
+
+  .hero-visual{
+    min-height:390px;
+  }
+
+  .featured-section{
+    grid-template-columns:1fr;
+  }
+
+  .create-card{
+    grid-template-columns:1fr;
+    gap:40px;
+  }
+
+}
+
+@media(max-width:650px){
+
+  .header-inner{
+    min-height:62px;
+  }
+
+  .header-play-btn{
+    display:none;
+  }
+
+  .language-select{
+    max-width:105px;
+  }
+
+  .hero-section{
+    padding:45px 0;
+  }
+
+  .hero-content h1{
+    font-size:47px;
+    letter-spacing:-2px;
+  }
+
+  .hero-content > p{
+    font-size:15px;
+  }
+
+  .hero-visual{
+    min-height:330px;
+  }
+
+  .hero-book{
+    width:190px;
+    height:250px;
+  }
+
+  .book-title{
+    font-size:22px;
+  }
+
+  .floating-card{
+    transform:scale(.78);
+  }
+
+  .card-a{
+    left:-15px;
+  }
+
+  .card-b{
+    right:-15px;
+  }
+
+  .section-heading{
+    display:block;
+  }
+
+  .section-heading h2{
+    font-size:32px;
+  }
+
+  .view-all-btn{
+    margin-top:15px;
+  }
+
+  .quiz-grid{
+    grid-template-columns:1fr;
+  }
+
+  .quiz-art{
+    height:190px;
+  }
+
+  .featured-section{
+    margin-bottom:65px;
+  }
+
+  .feature-card{
+    min-height:160px;
+    padding:22px;
+  }
+
+  .daily-fire{
+    font-size:70px;
+  }
+
+  .leaderboard-section{
+    padding:80px 0;
+  }
+
+  .leader-header,
+  .leader-row{
+    grid-template-columns:35px 1fr 75px;
+  }
+
+  .leader-xp{
+    font-size:11px;
+  }
+
+  .create-card{
+    padding:30px 22px;
+  }
+
+  .create-content h2{
+    font-size:33px;
+  }
+
+  .create-features{
+    grid-template-columns:1fr;
+  }
+
+  .mission-grid{
+    grid-template-columns:1fr;
+  }
+
+  .quiz-screen-section{
+    padding:30px 10px;
+  }
+
+  .quiz-entry-card,
+  .question-card,
+  .result-card{
+    padding:27px 18px;
+    border-radius:24px;
+  }
+
+  .quiz-entry-card h2{
+    font-size:29px;
+  }
+
+  .question-card h2{
+    font-size:25px;
+  }
+
+  .quiz-topbar{
+    grid-template-columns:auto 1fr;
+  }
+
+  .quiz-xp{
+    display:none;
+  }
+
+  .quiz-progress-wrap{
+    min-width:0;
+  }
+
+  .answer-card{
+    min-height:62px;
+  }
+
+  .answer-text{
+    font-size:13px;
+  }
+
+  .result-card h1{
+    font-size:31px;
+  }
+
+  .result-stats{
+    gap:6px;
+  }
+
+  .result-stats div{
+    padding:10px 5px;
+  }
+
+  .result-stats strong{
+    font-size:15px;
+  }
+
+  .recommendation-grid{
+    grid-template-columns:1fr;
+  }
+
+  .about-card{
+    grid-template-columns:1fr;
+    padding:25px;
+  }
+
+  .footer-inner{
+    grid-template-columns:1fr;
+  }
+
+  .footer-links{
+    justify-content:flex-start;
+  }
+
+  .footer-copy{
+    grid-column:auto;
+  }
+
+}
+
+@media(max-width:420px){
+
+  .hero-stats{
+    gap:18px;
+  }
+
+  .hero-stats strong{
+    font-size:18px;
+  }
+
+  .hero-buttons{
+    flex-direction:column;
+  }
+
+  .hero-buttons button{
+    width:100%;
+  }
+
+  .avatar-grid{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .result-actions{
+    flex-direction:column;
+  }
+
+  .result-actions button{
+    width:100%;
+  }
+
+}
+
+</style>
+
+
+<script>
+
+/* =========================================================
+   FICTIONQUIZ V3 — FINAL HELPERS
+   ========================================================= */
+
+function showInfoMessage(message){
+  showToast(message);
+}
+
+
+/* Improve URL behavior when a quiz is opened from a link */
+const originalStartQuiz = startQuiz;
+
+startQuiz = function(type){
+
+  if(!quizzes[type]){
+    showToast("Quiz coming soon ✨");
+    return;
+  }
+
+  try{
+    history.pushState(
+      {quiz:type},
+      "",
+      `?quiz=${encodeURIComponent(type)}`
+    );
+  }catch(e){}
+
+  originalStartQuiz(type);
+};
+
+
+/* Keep browser back button useful */
+window.addEventListener("popstate",function(){
+
+  const params =
+    new URLSearchParams(window.location.search);
+
+  const type = params.get("quiz");
+
+  if(type && quizzes[type]){
+    return;
+  }
+
+  hideAllScreens();
+
+});
+
+
+/* Clear quiz URL when returning to homepage */
+const originalBackToQuizzes = backToQuizzes;
+
+backToQuizzes = function(){
+
+  try{
+    history.pushState(
+      {},
+      "",
+      window.location.pathname
+    );
+  }catch(e){}
+
+  originalBackToQuizzes();
+
+};
+
+
+/* Better result sharing fallback */
+function shareQuizDirectly(type){
+
+  if(!quizzes[type]) return;
+
+  const url = buildQuizUrl(type);
+
+  copyToClipboard(
+    url,
+    "Quiz link copied! 🔗"
+  );
+}
+
+
+/* Mission feedback */
+function updateMissionProgress(){
+
+  const played =
+    getPlayedCount();
+
+  if(played > 0){
+
+    const firstMission =
+      document.querySelector(".mission-card");
+
+    if(firstMission){
+      firstMission.classList.add("mission-complete");
+    }
+
+  }
+
+}
+
+
+/* Refresh visible personal data */
+function refreshPersonalUI(){
+
+  const xp =
+    getStoredXP();
+
+  const avatar =
+    localStorage.getItem("fqAvatar") || "😊";
+
+  const name =
+    localStorage.getItem("fqName") || "You";
+
+  const avatarElements = [
+    document.getElementById("leaderboardUserAvatar"),
+    document.getElementById("resultAvatar")
+  ];
+
+  avatarElements.forEach(el=>{
+    if(el) el.textContent = avatar;
+  });
+
+  const nameElement =
+    document.getElementById("leaderboardUserName");
+
+  if(nameElement)
+    nameElement.textContent = name;
+
+  const xpElement =
+    document.getElementById("leaderboardUserXP");
+
+  if(xpElement)
+    xpElement.textContent = `${xp} XP`;
+
+  updateMissionProgress();
+
+}
+
+
+/* Recalculate homepage values after loading */
+document.addEventListener(
+  "DOMContentLoaded",
+  refreshPersonalUI
+);
+
+
+/* =========================================================
+   SIMPLE DAILY STREAK
+   ========================================================= */
+
+function updateDailyStreak(){
+
+  const today =
+    new Date().toISOString().slice(0,10);
+
+  const last =
+    localStorage.getItem("fqLastPlayDate");
+
+  let streak =
+    getStreak();
+
+  if(last === today){
+    return;
+  }
+
+  if(last){
+
+    const previous =
+      new Date(last);
+
+    const current =
+      new Date(today);
+
+    const difference =
+      Math.round(
+        (current - previous) /
+        (1000*60*60*24)
+      );
+
+    if(difference === 1){
+      streak++;
+    }else{
+      streak = 1;
+    }
+
+  }else{
+    streak = 1;
+  }
+
+  setStreak(streak);
+
+  localStorage.setItem(
+    "fqLastPlayDate",
+    today
+  );
+
+}
+
+
+/* Run when a result is reached */
+const originalShowResult = showResult;
+
+showResult = function(){
+
+  updateDailyStreak();
+
+  originalShowResult();
+
+  refreshPersonalUI();
+
+};
+
+
+/* =========================================================
+   PREVENT EMPTY HASH JUMPS
+   ========================================================= */
+
+document.addEventListener("click",function(event){
+
+  const link =
+    event.target.closest('a[href="#"]');
+
+  if(link){
+    event.preventDefault();
+  }
+
+});
+
+
+/* =========================================================
+   FINAL INITIALIZATION
+   ========================================================= */
+
+setTimeout(()=>{
+
+  const count =
+    Object.keys(quizzes).length;
+
+  const heroCount =
+    document.getElementById("heroQuizCount");
+
+  if(heroCount){
+    heroCount.textContent =
+      `${count}+`;
+  }
+
+},300);
 
 </script>
 
