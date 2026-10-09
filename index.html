@@ -1,539 +1,1015 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#10082d">
-<meta name="description" content="Play quizzes, collect fictional character cards, earn coins and unlock magical rewards on FictionQuiz.">
+<meta name="theme-color" content="#17122f">
+<meta name="description" content="Play personality, friendship, knowledge, fantasy and culture quizzes on FictionQuiz. Earn XP, collect cards and unlock rewards.">
 <title>FictionQuiz — Play, Collect & Unlock</title>
+
 <style>
-:root{--bg:#09051e;--panel:#171039;--panel2:#241752;--purple:#9c4dff;--pink:#ed54d9;--gold:#ffc857;--text:#fff;--muted:#bcb6e5;--border:#44318a;--green:#46e3a0}
+:root{
+  --bg:#100d20;--panel:#1c1733;--panel2:#251d40;
+  --pink:#ff73c8;--purple:#a88aff;--gold:#ffd477;
+  --text:#fff8ff;--muted:#c4bad7;--green:#68f0a2;--red:#ff7589;
+  --line:#ffffff16;--radius:20px
+}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:80px}
-body{margin:0;background:radial-gradient(ellipse at top,#25105b,var(--bg) 58%);color:var(--text);font-family:Arial,sans-serif;min-height:100vh}
+body{margin:0;background:radial-gradient(ellipse at top,#30204d 0,#100d20 52%,#0c0a16 100%);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,sans-serif;min-height:100vh}
 button,input,select{font:inherit}
 button{cursor:pointer}
-button:disabled{opacity:.5;cursor:not-allowed}
-button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
-.topbar{position:sticky;top:0;z-index:20;background:#10092af5;backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
-.nav{max-width:1120px;margin:auto;padding:12px 16px;display:flex;align-items:center;gap:12px}
-.brand{color:white;text-decoration:none;font-size:23px;font-weight:900;letter-spacing:-1px}
-.brand span{color:#d47bff}
-.navright{margin-left:auto;display:flex;gap:7px}
-.wrap{max-width:1120px;margin:auto;padding:18px 15px 100px}
-.hero{position:relative;overflow:hidden;background:linear-gradient(120deg,#321078,#741ec4 55%,#251050);border:1px solid #a05bff;border-radius:24px;padding:28px 22px;margin-bottom:16px;box-shadow:0 0 32px #7729ce30}
-.hero:after{content:"✦";position:absolute;right:22px;top:12px;font-size:80px;color:#ffffff20;pointer-events:none}
-.eyebrow{color:#ffda83;font-size:11px;font-weight:bold;letter-spacing:2px;text-transform:uppercase}
-h1{font-size:clamp(30px,6vw,46px);margin:10px 0}
-h2{font-size:21px;margin:0 0 14px}
-h3{font-size:16px;margin:0 0 8px}
-p{line-height:1.5}
-.muted{color:var(--muted)}
-.small{font-size:12px}
-.btn,.tab,.iconbtn,.smallbtn{border:1px solid var(--border);border-radius:13px;padding:11px 14px;color:white;font-weight:bold}
-.btn{background:linear-gradient(110deg,var(--purple),var(--pink));border:0;box-shadow:0 5px 18px #9c4dff25}
-.btn.secondary,.smallbtn,.iconbtn{background:#211747;box-shadow:none}
-.btn.gold{background:linear-gradient(110deg,#f5a623,#ffda72);color:#29143c}
-.full{width:100%}
-.panel{background:linear-gradient(145deg,#19123d,#100c2b);border:1px solid var(--border);border-radius:19px;padding:16px;min-width:0}
-.profile{display:flex;align-items:center;gap:12px;background:#120d31;border:1px solid var(--border);padding:13px;border-radius:16px;margin-bottom:13px}
-.avatar{width:50px;height:50px;display:grid;place-items:center;border-radius:15px;background:linear-gradient(135deg,#963cff,#ed54d9);font-size:27px;flex-shrink:0}
-.profileinfo{flex:1;min-width:0}
-.profileinfo strong{display:block;overflow-wrap:anywhere}
-.levelbar{height:7px;background:#332653;border-radius:10px;margin-top:8px;overflow:hidden}
-.levelbar span{display:block;height:100%;width:0;background:linear-gradient(90deg,#9c4dff,#ff70d9)}
-.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-bottom:13px}
-.stat{background:#17103b;border:1px solid var(--border);border-radius:14px;padding:12px 5px;text-align:center}
-.num{display:block;font-size:20px;font-weight:900;margin:5px 0}
-.label{font-size:11px;color:var(--muted)}
-.quickgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
-.quick{background:#1a1240;color:white;border:1px solid var(--border);border-radius:14px;padding:12px 3px;font-size:11px;font-weight:bold}
-.quick span{display:block;font-size:24px;margin-bottom:5px}
-.section{margin-top:25px;scroll-margin-top:78px}
-.sectionhead{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px}
-.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
-.card{background:linear-gradient(155deg,#20164d,#100b2b);border:1px solid var(--border);border-radius:16px;padding:12px;min-width:0;overflow:hidden}
-.art{min-height:90px;display:grid;place-items:center;position:relative;border-radius:12px;margin-bottom:10px;background:radial-gradient(circle at 50% 25%,#6c32a9,#1a103e 72%);font-size:39px}
-.rarity{position:absolute;top:6px;right:6px;background:#08051ddd;border:1px solid #7357ae;border-radius:20px;padding:4px 6px;font-size:9px}
-.cardtitle{font-size:13px;font-weight:bold;margin-bottom:6px}
-.desc{font-size:11px;color:var(--muted);line-height:1.45}
-.tag{display:inline-block;border:1px solid var(--border);color:#dfcaff;background:#24164a;border-radius:20px;font-size:10px;padding:5px 8px;margin:3px 2px 3px 0}
-.tabs{display:flex;gap:7px;overflow-x:auto;padding:2px 0 9px;margin-bottom:7px}
-.tab{white-space:nowrap;background:#130d31;color:#d8ccef;padding:9px 12px;font-size:12px}
-.tab.active{background:linear-gradient(110deg,#8f3bff,#d744db);border-color:transparent;color:white}
-.notice{border:1px solid #6d4aa3;background:#24164b;border-radius:13px;padding:12px;color:#e8dfff;font-size:12px}
-input,select{width:100%;background:#0d0825;color:white;border:1px solid var(--border);border-radius:11px;padding:12px;margin:6px 0 12px}
-label{font-size:12px;color:var(--muted)}
-.bottomnav{position:fixed;z-index:30;bottom:0;left:0;right:0;background:#10092af5;border-top:1px solid var(--border);display:flex;justify-content:space-around;padding:8px 4px max(8px,env(safe-area-inset-bottom));backdrop-filter:blur(14px)}
-.bottomnav button{background:none;border:0;color:#bdb3e7;font-size:10px;min-width:0;padding:4px}
-.bottomnav button span{display:block;font-size:21px;margin-bottom:3px}
-.bottomnav button.active{color:#f0a4ff}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+button:disabled{opacity:.45;cursor:not-allowed}
+.top-strip{text-align:center;padding:8px 12px;background:#a84b9d22;color:#f8d9ff;font-size:12px;border-bottom:1px solid var(--line)}
+header{position:sticky;top:0;z-index:20;background:#100d20eF;backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{max-width:1100px;margin:auto;padding:13px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.brand{font-size:21px;font-weight:900;letter-spacing:-.7px;color:white}
+.brand span{color:var(--pink)}
+.nav-right{display:flex;gap:8px;align-items:center}
+button,.btn{border:0;border-radius:12px;padding:10px 14px;background:var(--panel2);color:white;font-weight:750}
+.primary{background:linear-gradient(120deg,#e85db5,#8764f4);box-shadow:0 5px 20px #b84dd42a}
+.gold-btn{background:linear-gradient(120deg,#ffe7a0,#e5ad4a);color:#30203c}
+.ghost{border:1px solid var(--line);background:#ffffff08}
+.small{font-size:12px;padding:7px 10px}
+main{max-width:1100px;margin:auto;padding:18px 15px 100px}
+section{scroll-margin-top:90px}
+.hero{position:relative;overflow:hidden;border:1px solid #ffffff1c;border-radius:26px;padding:27px 22px;background:linear-gradient(120deg,#382151,#211a3b 65%,#30204a);margin-bottom:17px}
+.hero:after{content:"✦";position:absolute;right:18px;top:0;font-size:130px;color:#ffffff0a;pointer-events:none}
+.eyebrow{color:var(--gold);font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:2px}
+h1{font-size:clamp(29px,6vw,48px);line-height:1.08;margin:10px 0}
+h2{font-size:21px;margin:0 0 13px}
+h3{font-size:16px;margin:0 0 7px}
+p{color:var(--muted);line-height:1.55}
+.hero p{max-width:550px;margin:10px 0 18px}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin:15px 0}
+.stat,.panel,.quiz-card,.category-card,.collect-card,.achievement,.gift-card{background:linear-gradient(145deg,#241c3d,#19142c);border:1px solid var(--line);border-radius:var(--radius)}
+.stat{padding:13px 8px;text-align:center;min-width:0}
+.stat strong{display:block;font-size:21px;color:var(--gold)}
+.stat span{display:block;color:var(--muted);font-size:11px}
+.panel{padding:17px;margin:15px 0}
+.section-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px}
+.section-head h2{margin:0}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}
+.category-card,.quiz-card,.collect-card,.achievement,.gift-card{padding:14px;min-width:0}
+.category-card .emoji,.gift-emoji{font-size:29px;display:block;margin-bottom:7px}
+.category-card p,.quiz-card p,.collect-card p,.gift-card p{font-size:12px;margin:5px 0 12px}
+.card-actions{display:flex;gap:7px;flex-wrap:wrap}
+.card-actions button{flex:1}
+.muted{color:var(--muted);font-size:12px}
+.row{display:flex;gap:9px;align-items:center;flex-wrap:wrap}
+.row>*{min-width:0}
+.progress{height:8px;border-radius:30px;background:#ffffff12;overflow:hidden;margin:8px 0}
+.progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--pink),var(--purple));transition:width .3s}
+.profile-row{display:flex;gap:14px;align-items:center}
+.avatar{width:66px;height:66px;border-radius:50%;display:grid;place-items:center;flex-shrink:0;font-size:32px;background:linear-gradient(135deg,#553c79,#a94d9e);border:3px solid var(--gold);box-shadow:0 0 18px #bd74ff35}
+.avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.ring{padding:4px;border-radius:50%;background:conic-gradient(var(--gold),var(--pink),var(--purple),var(--gold))}
+.pill{display:inline-block;border:1px solid var(--line);padding:5px 9px;border-radius:99px;font-size:11px;color:var(--muted);margin:2px}
+input,select{background:#110d20;border:1px solid #ffffff24;border-radius:11px;padding:11px 12px;color:white;width:100%;min-width:0}
+label{display:block;font-size:12px;color:var(--muted);margin:10px 0 5px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.form-grid .full{grid-column:1/-1}
 .hidden{display:none!important}
-.empty{text-align:center;padding:20px 8px;color:var(--muted);font-size:13px}
-#toast{position:fixed;z-index:90;left:50%;bottom:85px;transform:translateX(-50%);background:#281752;border:1px solid #a45aff;border-radius:13px;padding:12px 17px;max-width:90%;text-align:center;box-shadow:0 8px 30px #0008}
-#modalRoot{position:fixed;inset:0;z-index:80;overflow:auto;background:#08041df2;padding:15px;display:grid;place-items:center}
-.modalbox{width:min(520px,100%);max-height:92vh;overflow:auto;background:linear-gradient(145deg,#19123d,#100c2b);border:1px solid #7650c9;border-radius:20px;padding:18px;animation:pop .25s ease-out}
-@keyframes pop{from{transform:scale(.88);opacity:0}to{transform:scale(1);opacity:1}}
-@keyframes bounce{to{transform:translateY(-8px)}}
-@media(min-width:760px){.wrap{padding-top:24px}.dashboard{display:grid;grid-template-columns:1fr 1fr;gap:16px}.dashboard>.section{margin-top:0}.grid{grid-template-columns:repeat(4,minmax(0,1fr))}.hero{padding:36px}}
-@media(max-width:430px){.wrap{padding:13px 10px 95px}.hero{padding:22px 15px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.card{padding:10px}.stats{gap:5px}.num{font-size:17px}.quick{font-size:10px}.quick span{font-size:22px}.brand{font-size:20px}}
+.quiz-shell{max-width:680px;margin:auto}
+.quiz-top{display:flex;justify-content:space-between;gap:8px;align-items:center}
+.question{font-size:22px;font-weight:850;line-height:1.35;margin:22px 0}
+.answers{display:grid;gap:9px}
+.answer{padding:13px;text-align:left;border:1px solid #ffffff20;background:#ffffff07;border-radius:13px;color:white;transition:transform .15s}
+.answer:hover{transform:translateY(-1px);border-color:var(--purple)}
+.answer.correct{background:#174b37;border-color:var(--green);animation:good .35s}
+.answer.wrong{background:#542333;border-color:var(--red);animation:bad .35s}
+@keyframes good{50%{box-shadow:0 0 22px #68f0a277}}
+@keyframes bad{25%,75%{transform:translateX(-3px)}50%{transform:translateX(3px)}}
+.result{text-align:center;padding:15px 0}
+.result .big{font-size:54px}
+.reward-line{color:var(--gold);font-weight:800}
+.gift-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.gift-card{text-align:center}
+.gift-card button{width:100%}
+.collection-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}
+.collect-card{text-align:center;padding:12px 6px}
+.collect-card .emoji{font-size:30px}
+.collect-card.locked{opacity:.52;filter:saturate(.4)}
+.achievement{display:flex;align-items:center;gap:10px}
+.achievement .emoji{font-size:25px}
+.achievement p{margin:2px 0;font-size:11px}
+.event-banner{background:linear-gradient(115deg,#49306b,#873f85);padding:17px;border-radius:18px;border:1px solid #ffffff24}
+.bottom-nav{position:fixed;z-index:25;bottom:0;left:0;right:0;background:#110d20f2;backdrop-filter:blur(15px);border-top:1px solid var(--line);display:flex;justify-content:center;gap:4px;padding:8px 5px calc(8px + env(safe-area-inset-bottom))}
+.bottom-nav button{flex:1;max-width:120px;padding:9px 4px;background:transparent;font-size:11px;color:var(--muted)}
+.bottom-nav button span{display:block;font-size:18px;margin-bottom:2px}
+.bottom-nav button.active{color:var(--pink);background:#ffffff08}
+.toast{position:fixed;z-index:60;bottom:85px;left:50%;transform:translateX(-50%);background:#302447;border:1px solid #ffffff2a;padding:12px 17px;border-radius:14px;box-shadow:0 10px 30px #0008;max-width:90vw;text-align:center}
+.overlay{position:fixed;z-index:50;inset:0;background:#080610d9;display:grid;place-items:center;padding:16px}
+.modal{width:min(520px,100%);max-height:88vh;overflow:auto;background:#201832;border:1px solid #ffffff25;border-radius:23px;padding:20px;text-align:center}
+.modal .big{font-size:65px}
+.burst{position:fixed;z-index:55;inset:0;pointer-events:none;overflow:hidden}
+.burst span{position:absolute;top:-40px;font-size:25px;animation:fall 2.5s linear forwards}
+@keyframes fall{to{transform:translateY(115vh) rotate(600deg);opacity:.2}}
+.footer{text-align:center;color:#8d82a7;font-size:11px;padding:18px}
+[dir="rtl"] body{text-align:right}
+[dir="rtl"] .answer{text-align:right}
+@media(max-width:700px){
+ .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .collection-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .hero{padding:23px 17px}
+ .panel{padding:14px}
+ .nav{padding:11px 12px}
+ .brand{font-size:19px}
+ .nav-right button{padding:8px 9px}
+}
+@media(max-width:390px){
+ .grid,.gift-grid{grid-template-columns:1fr 1fr}
+ .collection-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .form-grid{grid-template-columns:1fr}
+ .form-grid .full{grid-column:auto}
+}
 </style>
 </head>
+
 <body>
-<header class="topbar">
-<nav class="nav">
-<a class="brand" href="#home">Fiction<span>Quiz</span> ✦</a>
-<div class="navright">
-<button class="iconbtn" onclick="go('notifications')" aria-label="Notifications">🔔</button>
-<button class="iconbtn" onclick="go('profile')" aria-label="Profile">👤</button>
-</div>
-</nav>
+<div class="top-strip" id="welcomeStrip">✨ Welcome to FictionQuiz — Play • Collect • Unlock</div>
+<header>
+  <div class="nav">
+    <div class="brand">Fiction<span>Quiz</span> ✦</div>
+    <div class="nav-right">
+      <button class="ghost small" id="languageBtn" type="button">اردو</button>
+      <button class="ghost small" id="soundBtn" type="button" aria-pressed="false">🔊 Sound</button>
+    </div>
+  </div>
 </header>
 
-<main class="wrap" id="home">
-<section class="hero">
-<div class="eyebrow">✦ Your fictional universe ✦</div>
-<h1>Play. Collect.<br>Unlock Magic.</h1>
-<p>Take quizzes, earn coins, collect character cards and build your legendary collection.</p>
-<button class="btn" onclick="go('quizzes')">Start a Quiz ✨</button>
-<button class="btn secondary" onclick="go('collection')">My Collection 🃏</button>
-</section>
+<main>
+  <section class="hero" id="home">
+    <div class="eyebrow" data-i18n="tagline">YOUR NEXT FAVOURITE QUIZ</div>
+    <h1 data-i18n="heroTitle">Play. Discover.<br>Become Legendary.</h1>
+    <p data-i18n="heroDesc">Test your knowledge, discover your personality, challenge friends and collect magical rewards.</p>
+    <div class="row">
+      <button class="primary" onclick="goTo('quizzes')" data-i18n="playNow">▶ Play a Quiz</button>
+      <button class="ghost" onclick="goTo('collection')" data-i18n="myCollection">✦ My Collection</button>
+    </div>
+  </section>
 
-<div class="dashboard">
-<section class="panel">
-<div class="profile">
-<div class="avatar" id="avatar">🦋</div>
-<div class="profileinfo"><strong id="playerName">Quiz Player</strong><span class="muted small" id="levelText">Level 1 • Beginner</span><div class="levelbar"><span id="levelBar"></span></div></div>
-<button class="smallbtn" onclick="go('profile')">Edit</button>
-</div>
-<div class="stats">
-<div class="stat">⭐<span class="num" id="xp">0</span><span class="label">XP</span></div>
-<div class="stat">🪙<span class="num" id="coins">100</span><span class="label">Coins</span></div>
-<div class="stat">🔥<span class="num" id="streak">0</span><span class="label">Day Streak</span></div>
-</div>
-<div class="quickgrid">
-<button class="quick" onclick="go('quizzes')"><span>🧠</span>Quizzes</button>
-<button class="quick" onclick="go('collection')"><span>🃏</span>Cards</button>
-<button class="quick" onclick="go('rewards')"><span>🎁</span>Gifts</button>
-<button class="quick" onclick="go('shop')"><span>🛍️</span>Shop</button>
-</div>
-</section>
-<section class="panel">
-<h2>🌟 Daily Check-in</h2>
-<p class="muted small">Come back each day to keep your streak going.</p>
-<div class="notice" id="dailyStatus">Your daily challenge is ready.</div>
-<button class="btn full" style="margin-top:12px" onclick="startDaily()">Play Daily Challenge</button>
-<button class="btn gold full" style="margin-top:8px" onclick="openDailyGift()">🎁 Open Daily Gift</button>
-</section>
-</div>
+  <section class="panel" id="playerPanel">
+    <div class="profile-row">
+      <div class="ring"><div class="avatar" id="avatarView">🌙</div></div>
+      <div style="flex:1">
+        <div class="eyebrow" data-i18n="playerProfile">PLAYER PROFILE</div>
+        <h2 id="playerName" style="margin:4px 0">Quiz Lover</h2>
+        <div><span class="pill" id="rankPill">🌱 Novice</span><span class="pill" id="levelPill">Level 1</span></div>
+      </div>
+      <button class="ghost small" onclick="goTo('profile')" data-i18n="edit">Edit</button>
+    </div>
+    <div class="stats">
+      <div class="stat"><strong id="xpStat">0</strong><span>⭐ XP</span></div>
+      <div class="stat"><strong id="coinStat">100</strong><span>🪙 Coins</span></div>
+      <div class="stat"><strong id="quizStat">0</strong><span data-i18n="quizzesDone">Quizzes</span></div>
+      <div class="stat"><strong id="cardStat">0</strong><span data-i18n="cardsOwned">Cards</span></div>
+    </div>
+    <div class="row" style="justify-content:space-between"><span class="muted" id="levelProgressLabel">Level progress</span><span class="muted" id="progressText">0/100 XP</span></div>
+    <div class="progress"><span id="levelProgress"></span></div>
+  </section>
 
-<section class="section" id="quizzes">
-<div class="sectionhead"><h2>🧠 Play & Earn</h2><span class="tag">5 topics</span></div>
-<div class="panel">
-<div class="tabs" id="quizTabs">
-<button class="tab active" onclick="filterQuiz('All',this)">All</button>
-<button class="tab" onclick="filterQuiz('Knowledge',this)">Knowledge</button>
-<button class="tab" onclick="filterQuiz('Science',this)">Science</button>
-<button class="tab" onclick="filterQuiz('History',this)">History</button>
-<button class="tab" onclick="filterQuiz('Fantasy',this)">Fantasy</button>
-<button class="tab" onclick="filterQuiz('Literature',this)">Literature</button>
-</div>
-<div class="grid" id="quizGrid"></div>
-</div>
-</section>
+  <section class="panel" id="daily">
+    <div class="section-head"><h2 data-i18n="dailyTitle">🎁 Daily Check-in</h2><span class="pill" id="dailyStatus">Available</span></div>
+    <p data-i18n="dailyDesc">Come back each day to claim a small reward.</p>
+    <div class="row"><button class="gold-btn" id="dailyBtn" onclick="claimDaily()" data-i18n="claimDaily">Claim Daily Gift</button><span class="muted" id="streakText">Your streak starts today!</span></div>
+  </section>
 
-<section class="section" id="collection">
-<div class="sectionhead"><h2>🃏 My Collection</h2><span class="tag" id="cardCount">0 cards</span></div>
-<div class="panel">
-<div class="tabs" id="typeTabs">
-<button class="tab active" onclick="filterType('All',this)">All</button>
-<button class="tab" onclick="filterType('Character',this)">Characters</button>
-<button class="tab" onclick="filterType('Theme',this)">Themes</button>
-<button class="tab" onclick="filterType('Sticker',this)">Stickers</button>
-</div>
-<div class="tabs" id="rarityTabs">
-<button class="tab active" onclick="filterRarity('All',this)">All Rarities</button>
-<button class="tab" onclick="filterRarity('Common',this)">Common</button>
-<button class="tab" onclick="filterRarity('Rare',this)">Rare</button>
-<button class="tab" onclick="filterRarity('Epic',this)">Epic</button>
-<button class="tab" onclick="filterRarity('Legendary',this)">Legendary</button>
-</div>
-<div class="grid" id="collectionGrid"></div>
-</div>
-</section>
+  <section class="panel" id="quizzes">
+    <div class="section-head"><h2 data-i18n="quizTitle">🧠 Explore Quizzes</h2><span class="pill" id="questionPoolLabel">Fresh questions</span></div>
+    <div class="grid" id="categoryGrid"></div>
+  </section>
 
-<section class="section" id="rewards">
-<div class="sectionhead"><h2>🎁 Gifts & Rewards</h2></div>
-<div class="panel">
-<div class="stats">
-<div class="stat">⭐<span class="num" id="rewardXP">0</span><span class="label">Total XP</span></div>
-<div class="stat">🪙<span class="num" id="rewardCoins">100</span><span class="label">Coins</span></div>
-<div class="stat">🎴<span class="num" id="rewardCards">0</span><span class="label">Cards</span></div>
-</div>
-<div class="grid">
-<div class="card"><div class="art">🎁</div><div class="cardtitle">Daily Mystery Box</div><p class="desc">One free mystery reward each day.</p><button class="btn full" onclick="openDailyGift()">Open Gift</button></div>
-<div class="card"><div class="art">💎</div><div class="cardtitle">Rare Gift Box</div><p class="desc">A chance to unlock a rare card.</p><button class="btn full" onclick="buyBox('rare')">300 🪙</button></div>
-<div class="card"><div class="art">🌟</div><div class="cardtitle">Epic Gift Box</div><p class="desc">A chance to unlock an epic card.</p><button class="btn full" onclick="buyBox('epic')">600 🪙</button></div>
-<div class="card"><div class="art">💌</div><div class="cardtitle">Sticker Pack</div><p class="desc">Add a sticker to your collection.</p><button class="btn full" onclick="buySticker()">150 🪙</button></div>
-</div>
-<div class="section"><h3>🎒 My Unlocked Gifts</h3><div class="grid" id="giftInventory"></div></div>
-</div>
-</section>
+  <section class="panel" id="friendship">
+    <div class="section-head"><h2 data-i18n="friendTitle">💞 Friends & Compatibility</h2></div>
+    <p data-i18n="friendDesc">Make a fun quiz for a friend, sibling or someone special. Answer honestly and compare your results.</p>
+    <div class="grid">
+      <article class="category-card"><span class="emoji">🫶</span><h3 data-i18n="bestFriend">Best Friend</h3><p data-i18n="bestFriendDesc">How well do you know each other?</p><button class="primary" onclick="startFriendQuiz('friend')" data-i18n="start">Start</button></article>
+      <article class="category-card"><span class="emoji">👫</span><h3 data-i18n="siblings">Sibling Quiz</h3><p data-i18n="siblingsDesc">Compare your sibling knowledge.</p><button class="primary" onclick="startFriendQuiz('sibling')" data-i18n="start">Start</button></article>
+      <article class="category-card"><span class="emoji">💗</span><h3 data-i18n="compatibility">Compatibility</h3><p data-i18n="compatDesc">A light-hearted personality match.</p><button class="primary" onclick="startFriendQuiz('compat')" data-i18n="start">Start</button></article>
+    </div>
+  </section>
 
-<section class="section" id="shop">
-<div class="sectionhead"><h2>🛍️ Coin Shop</h2></div>
-<div class="panel"><p class="muted small">Use coins to unlock characters, themes and stickers.</p><div class="grid" id="shopGrid"></div></div>
-</section>
+  <section class="panel" id="collection">
+    <div class="section-head"><h2 data-i18n="collectionTitle">✦ Card Collection</h2><span class="pill" id="collectionCount">0 collected</span></div>
+    <p data-i18n="collectionDesc">Unlock character, theme and sticker cards through quizzes and gifts.</p>
+    <div class="collection-grid" id="collectionGrid"></div>
+  </section>
 
-<section class="section" id="events">
-<div class="sectionhead"><h2>🎉 Special Event</h2><span class="tag">Fantasy Hunt</span></div>
-<div class="panel">
-<div class="card"><div class="art">🌌</div><h3>Fantasy Card Hunt</h3><p class="desc">Complete three fantasy quizzes to earn an event card.</p><div class="notice" id="eventProgress">Progress: 0 / 3</div><button class="btn full" style="margin-top:12px" onclick="startEvent()">Play Event Quiz</button></div>
-<div class="section"><h3>🏆 Achievements</h3><div class="grid" id="achievementGrid"></div></div>
-</div>
-</section>
+  <section class="panel" id="gifts">
+    <div class="section-head"><h2 data-i18n="giftsTitle">🎁 Mystery Gift Boxes</h2></div>
+    <p data-i18n="giftsDesc">Open a box to win coins, XP or collectible cards. Rewards are random and not guaranteed.</p>
+    <div class="gift-grid" id="giftGrid"></div>
+  </section>
 
-<section class="section" id="leaderboard">
-<div class="sectionhead"><h2>🌍 Global Leaderboard</h2><button class="smallbtn" onclick="loadLeaderboard()">Refresh</button></div>
-<div class="panel">
-<p class="muted small">Sign in to sync progress and appear on the leaderboard. Scores are client-reported in this basic version.</p>
-<div id="leaderboardStatus" class="notice">Firebase is connecting…</div>
-<div id="leaderboardList" class="section"></div>
-</div>
-</section>
+  <section class="panel" id="shop">
+    <div class="section-head"><h2 data-i18n="shopTitle">🛍️ Coin Shop</h2><span class="pill">🪙 <span id="shopCoins">100</span></span></div>
+    <div class="grid" id="shopGrid"></div>
+  </section>
 
-<section class="section" id="profile">
-<div class="sectionhead"><h2>👤 Player Profile</h2></div>
-<div class="panel">
-<label for="nameInput">Player name</label><input id="nameInput" maxlength="24" placeholder="Enter your name">
-<label for="languageInput">Language / زبان</label>
-<select id="languageInput"><option value="en">English</option><option value="ur">اردو (Urdu)</option></select>
-<label for="emailInput">Email address (for account sync)</label><input id="emailInput" type="email" autocomplete="email" placeholder="you@example.com">
-<label for="passwordInput">Password (at least 6 characters)</label><input id="passwordInput" type="password" autocomplete="current-password" placeholder="Password">
-<button class="btn full" onclick="saveProfile()">Save Local Profile</button>
-<button class="btn full" style="margin-top:8px" onclick="createAccount()">Create Account & Sync</button>
-<button class="btn secondary full" style="margin-top:8px" onclick="loginAccount()">Sign In & Sync</button>
-<button class="btn secondary full" style="margin-top:8px" onclick="logoutAccount()">Sign Out</button>
-<div class="notice" style="margin-top:12px" id="authStatus">Local play is available. Sign in to sync across devices.</div>
-<p class="muted small">Keep your password private. This page never needs a Firebase private key.</p>
-</div>
-</section>
+  <section class="panel" id="event">
+    <div class="event-banner">
+      <div class="eyebrow">LIMITED-THEME CHALLENGE</div>
+      <h2 data-i18n="eventTitle">🌌 Fantasy Hunt</h2>
+      <p data-i18n="eventDesc">Complete quizzes to earn event progress and collect a fantasy reward.</p>
+      <div class="row" style="justify-content:space-between"><span class="pill" id="eventProgressText">0 / 3 quizzes</span><button class="gold-btn" onclick="startQuiz('fantasy')" data-i18n="joinEvent">Join Event</button></div>
+      <div class="progress"><span id="eventProgress"></span></div>
+      <button id="eventRewardBtn" class="ghost small" onclick="claimEvent()" data-i18n="eventReward">Claim Event Reward</button>
+    </div>
+  </section>
 
-<section class="section" id="notifications">
-<div class="sectionhead"><h2>🔔 Notifications</h2></div>
-<div class="panel"><p class="muted small">Enable browser notifications where supported. This does not schedule automatic daily push reminders.</p><button class="btn" onclick="enableNotifications()">Enable Notifications</button><p class="muted small" id="notificationStatus"></p></div>
-</section>
+  <section class="panel" id="achievements">
+    <div class="section-head"><h2 data-i18n="achievementTitle">🏆 Achievements</h2></div>
+    <div class="grid" id="achievementGrid"></div>
+  </section>
+
+  <section class="panel" id="leaderboard">
+    <div class="section-head"><h2 data-i18n="leaderboardTitle">🌍 Global Leaderboard</h2><button class="ghost small" onclick="loadLeaderboard()" data-i18n="refresh">Refresh</button></div>
+    <p class="muted" id="leaderboardNote">Leaderboard data is read-only here. Verified scores require server-side validation.</p>
+    <div id="leaderboardList"><p class="muted">Sign in to connect your profile. Public leaderboard may be empty until trusted score submission is configured.</p></div>
+  </section>
+
+  <section class="panel" id="profile">
+    <div class="section-head"><h2 data-i18n="profileTitle">⚙️ Profile & Settings</h2></div>
+    <div class="form-grid">
+      <div class="full"><label for="nameInput" data-i18n="displayName">Display name</label><input id="nameInput" maxlength="24" placeholder="Quiz Lover" autocomplete="nickname"></div>
+      <div><label for="avatarInput" data-i18n="avatarEmoji">Avatar emoji</label><select id="avatarInput"><option>🌙</option><option>🦋</option><option>🐱</option><option>🦊</option><option>🐼</option><option>🐉</option><option>⭐</option><option>🌸</option><option>🦄</option><option>🪄</option></select></div>
+      <div><label for="photoInput" data-i18n="profilePhoto">Optional profile photo</label><input type="file" id="photoInput" accept="image/png,image/jpeg,image/webp"></div>
+      <div class="full"><button class="primary" onclick="saveProfile()" data-i18n="saveProfile">Save Profile</button><button class="ghost" onclick="removePhoto()" data-i18n="removePhoto">Remove photo</button></div>
+      <div class="full"><label for="emailInput">Email (Firebase account)</label><input id="emailInput" type="email" autocomplete="email" placeholder="you@example.com"></div>
+      <div class="full"><label for="passwordInput" data-i18n="password">Password</label><input id="passwordInput" type="password" autocomplete="current-password" placeholder="At least 6 characters"></div>
+      <div><button class="primary" onclick="signUp()" data-i18n="createAccount">Create Account</button></div>
+      <div><button class="ghost" onclick="signIn()" data-i18n="signIn">Sign In</button></div>
+      <div class="full row"><button class="ghost" onclick="signOutUser()" data-i18n="signOut">Sign Out</button><span class="muted" id="authStatus">Playing locally</span></div>
+    </div>
+    <p class="muted" data-i18n="photoNote">Your optional photo is stored only on this device. Do not upload private or sensitive images.</p>
+    <div class="row" style="margin-top:10px"><button class="ghost" onclick="toggleSetting('sound')">🔊 Sound effects: <span id="soundState">On</span></button><button class="ghost" onclick="toggleSetting('music')">🎵 Ambient tone: <span id="musicState">Off</span></button></div>
+    <p class="muted" data-i18n="settingsNote">Sound is optional. Ambient audio starts only after you turn it on.</p>
+    <div class="row" style="margin-top:10px"><button class="ghost small" onclick="resetQuestionHistory()" data-i18n="resetQuestions">Reset question history</button><button class="ghost small" onclick="exportSave()" data-i18n="exportSave">Export local save</button></div>
+  </section>
+
+  <div class="footer">FictionQuiz ✦ Play fairly • Be kind • Have fun</div>
 </main>
 
-<nav class="bottomnav">
-<button class="active" onclick="go('home')"><span>🏠</span>Home</button>
-<button onclick="go('quizzes')"><span>🧠</span>Quiz</button>
-<button onclick="go('collection')"><span>🃏</span>Cards</button>
-<button onclick="go('shop')"><span>🛍️</span>Shop</button>
-<button onclick="go('events')"><span>🎉</span>Events</button>
+<nav class="bottom-nav" aria-label="Main navigation">
+  <button class="active" onclick="goTo('home',this)"><span>🏠</span><b data-i18n="navHome">Home</b></button>
+  <button onclick="goTo('quizzes',this)"><span>🧠</span><b data-i18n="navQuizzes">Quizzes</b></button>
+  <button onclick="goTo('collection',this)"><span>✦</span><b data-i18n="navCards">Cards</b></button>
+  <button onclick="goTo('gifts',this)"><span>🎁</span><b data-i18n="navGifts">Gifts</b></button>
+  <button onclick="goTo('profile',this)"><span>⚙️</span><b data-i18n="navProfile">Profile</b></button>
 </nav>
-<div id="toast" class="hidden" role="status"></div>
-<div id="modalRoot" class="hidden"></div>
 
+<div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+<div id="modalRoot"></div>
+<div id="burstRoot" class="burst"></div>
+
+<!-- Firebase Authentication + Firestore. Firebase configuration is public client configuration, not a server secret. -->
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
 <script>
 "use strict";
-const $=id=>document.getElementById(id);
-const today=()=>{const d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")};
-const yesterday=()=>{const d=new Date();d.setDate(d.getDate()-1);return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")};
-const DEFAULT={name:"Quiz Player",avatar:"🦋",xp:0,coins:100,streak:0,lastDay:"",completed:[],owned:[],gifts:[],giftDate:"",dailyDate:"",dailyDone:false,eventCount:0,eventClaimed:false,achievements:[],language:"en"};
-let game;
-try{game={...DEFAULT,...JSON.parse(localStorage.getItem("fictionQuizSave")||"{}")}}catch(e){game={...DEFAULT}}
-["completed","owned","gifts","achievements"].forEach(k=>{if(!Array.isArray(game[k]))game[k]=[]});
-let currentCategory="All",currentType="All",currentRarity="All";
-let activeQuiz=null,questions=[],qi=0,score=0,answered=false,quizMode="normal",dailyRewardGiven=false;
-let auth=null,db=null,currentUser=null,cloudReady=false,saving=false,saveTimer=null;
 
-const cards=[
-{id:"moon-prince",name:"Moon Prince",type:"Character",rarity:"Common",art:"🌙",price:100,desc:"A mysterious moonlit hero."},
-{id:"star-witch",name:"Star Witch",type:"Character",rarity:"Rare",art:"🧙‍♀️",price:250,desc:"A keeper of celestial magic."},
-{id:"shadow-hero",name:"Shadow Hero",type:"Character",rarity:"Epic",art:"🦸",price:500,desc:"Guardian of the night."},
-{id:"golden-queen",name:"Golden Queen",type:"Character",rarity:"Legendary",art:"👑",price:1000,desc:"The rarest royal character."},
-{id:"fantasy-world",name:"Fantasy World",type:"Theme",rarity:"Common",art:"🏰",price:120,desc:"A magical fantasy theme."},
-{id:"royal-dream",name:"Royal Dreams",type:"Theme",rarity:"Rare",art:"💎",price:280,desc:"A luxurious royal theme."},
-{id:"dark-academia",name:"Dark Academia",type:"Theme",rarity:"Epic",art:"📚",price:550,desc:"A mysterious academic aesthetic."},
-{id:"moonlight",name:"Moonlight",type:"Theme",rarity:"Legendary",art:"🌌",price:900,desc:"A celestial theme."},
-{id:"sparkle-sticker",name:"Magic Sparkle",type:"Sticker",rarity:"Common",art:"✨",price:50,desc:"A sparkling sticker."},
-{id:"heart-sticker",name:"Friendship Heart",type:"Sticker",rarity:"Rare",art:"💖",price:120,desc:"A friendship sticker."},
-{id:"crown-sticker",name:"Royal Crown",type:"Sticker",rarity:"Epic",art:"👑",price:300,desc:"A premium royal sticker."},
-{id:"legend-sticker",name:"Legend Badge",type:"Sticker",rarity:"Legendary",art:"🏆",price:600,desc:"A legendary badge."}
+/* =========================
+   FICTIONQUIZ MASTER ENGINE
+   ========================= */
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAlUjsq-N0lk2fBa8SQSsJ-AM_xsWofBKo",
+  authDomain: "fictionquiz-fa0bb.firebaseapp.com",
+  projectId: "fictionquiz-fa0bb",
+  storageBucket: "fictionquiz-fa0bb.firebasestorage.app",
+  messagingSenderId: "342330435715",
+  appId: "1:342330435715:web:715ee35961a1b6267653b6",
+  measurementId: "G-6JEHBF74BE"
+};
+
+const SAVE_KEY = "fictionQuizSave";
+const $ = id => document.getElementById(id);
+const safeText = (v, max=100) => String(v ?? "").replace(/[<>]/g,"").trim().slice(0,max);
+const todayKey = () => {
+  const d = new Date();
+  return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+};
+const defaultGame = () => ({
+  name:"Quiz Lover", avatar:"🌙", photo:"", language:"en",
+  xp:0, coins:100, quizzesDone:0, bestScore:0,
+  completed:[], seenQuestions:[], ownedCards:["moon-sticker"],
+  openedBoxes:0, dailyDate:"", dailyStreak:0, lastDailyDate:"",
+  eventCount:0, eventClaimed:false, achievements:[],
+  sound:true, music:false, lastLogin:"", friendPlays:0
+});
+let game = loadSave();
+let currentQuiz = null;
+let audioContext = null;
+let musicOscillator = null;
+let musicGain = null;
+let auth = null, db = null, currentUser = null;
+let quizAnswerLock = false;
+
+function loadSave(){
+  try{
+    const raw = localStorage.getItem(SAVE_KEY);
+    if(!raw) return defaultGame();
+    const parsed = JSON.parse(raw);
+    const base = defaultGame();
+    const merged = {...base,...parsed};
+    ["completed","seenQuestions","ownedCards","achievements"].forEach(k=>{
+      if(!Array.isArray(merged[k])) merged[k]=[];
+    });
+    merged.xp = Math.max(0,Number(merged.xp)||0);
+    merged.coins = Math.max(0,Number(merged.coins)||0);
+    return merged;
+  }catch(e){return defaultGame();}
+}
+function saveGame(){
+  try{localStorage.setItem(SAVE_KEY,JSON.stringify(game));}
+  catch(e){toast("Your device storage is full. Remove a large photo or export your save.");}
+  renderAll();
+}
+function toast(message){
+  const el=$("toast");
+  el.textContent=message;el.classList.remove("hidden");
+  clearTimeout(toast.timer);
+  toast.timer=setTimeout(()=>el.classList.add("hidden"),2600);
+}
+function goTo(id,button){
+  const el=$(id);if(el)el.scrollIntoView({behavior:"smooth",block:"start"});
+  document.querySelectorAll(".bottom-nav button").forEach(b=>b.classList.remove("active"));
+  if(button)button.classList.add("active");
+}
+function level(){return Math.floor(game.xp/100)+1;}
+function levelXP(){return game.xp%100;}
+function rank(){
+  const l=level();
+  if(l>=30)return "🌌 Mythic";
+  if(l>=20)return "👑 Legend";
+  if(l>=12)return "💎 Elite";
+  if(l>=7)return "✨ Expert";
+  if(l>=3)return "🔮 Explorer";
+  return "🌱 Novice";
+}
+
+/* Translated interface text. Quiz questions also carry English and Urdu versions. */
+const I18N={
+  en:{
+    tagline:"YOUR NEXT FAVOURITE QUIZ",heroTitle:"Play. Discover.<br>Become Legendary.",
+    heroDesc:"Test your knowledge, discover your personality, challenge friends and collect magical rewards.",
+    playNow:"▶ Play a Quiz",myCollection:"✦ My Collection",playerProfile:"PLAYER PROFILE",edit:"Edit",
+    quizzesDone:"Quizzes",cardsOwned:"Cards",dailyTitle:"🎁 Daily Check-in",dailyDesc:"Come back each day to claim a small reward.",
+    claimDaily:"Claim Daily Gift",quizTitle:"🧠 Explore Quizzes",friendTitle:"💞 Friends & Compatibility",
+    friendDesc:"Make a fun quiz for a friend, sibling or someone special. Answer honestly and compare your results.",
+    bestFriend:"Best Friend",bestFriendDesc:"How well do you know each other?",siblings:"Sibling Quiz",
+    siblingsDesc:"Compare your sibling knowledge.",compatibility:"Compatibility",
+    compatDesc:"A light-hearted personality match.",start:"Start",collectionTitle:"✦ Card Collection",
+    collectionDesc:"Unlock character, theme and sticker cards through quizzes and gifts.",
+    giftsTitle:"🎁 Mystery Gift Boxes",giftsDesc:"Open a box to win coins, XP or collectible cards. Rewards are random and not guaranteed.",
+    shopTitle:"🛍️ Coin Shop",eventTitle:"🌌 Fantasy Hunt",
+    eventDesc:"Complete quizzes to earn event progress and collect a fantasy reward.",
+    joinEvent:"Join Event",eventReward:"Claim Event Reward",achievementTitle:"🏆 Achievements",
+    leaderboardTitle:"🌍 Global Leaderboard",refresh:"Refresh",profileTitle:"⚙️ Profile & Settings",
+    displayName:"Display name",avatarEmoji:"Avatar emoji",profilePhoto:"Optional profile photo",
+    saveProfile:"Save Profile",removePhoto:"Remove photo",password:"Password",createAccount:"Create Account",
+    signIn:"Sign In",signOut:"Sign Out",photoNote:"Your optional photo is stored only on this device. Do not upload private or sensitive images.",
+    settingsNote:"Sound is optional. Ambient audio starts only after you turn it on.",
+    resetQuestions:"Reset question history",exportSave:"Export local save",navHome:"Home",navQuizzes:"Quizzes",
+    navCards:"Cards",navGifts:"Gifts",navProfile:"Profile",fresh:"Fresh questions",collected:"collected",
+    available:"Available",claimed:"Claimed today",soundOn:"On",soundOff:"Off",levelProgress:"Level progress",
+    friendResult:"Friendship quiz finished!",yourScore:"Your score",playAgain:"Play Again",close:"Close",
+    next:"Next Question",finish:"Finish Quiz",correct:"Correct!",incorrect:"Not quite!",noQuestions:"You've answered all questions in this category. Try another category or reset your question history.",
+    notEnough:"Not enough coins!",alreadyOwned:"Already collected!",bought:"Added to your collection!",
+    dailyReward:"Daily reward claimed!",eventDone:"Event reward claimed!",eventLocked:"Complete 3 quizzes to unlock this reward.",
+    chooseName:"Enter a player name first.",photoLarge:"Choose a photo smaller than 1 MB.",saveExport:"Your save file is ready.",
+    quizComplete:"Quiz complete!",xpEarned:"XP earned",coinsEarned:"Coins earned",perfect:"Perfect score!",
+    noLeaderboard:"No public scores yet. Verified leaderboard submission must be configured separately.",
+    accountCreated:"Account created.",signedIn:"Signed in.",signedOut:"Signed out.",firebaseUnavailable:"Firebase connection is not available. Local play still works.",
+    historyReset:"Question history reset.",profileSaved:"Profile saved.",quiz:"Quiz",questions:"questions",
+    languageChanged:"Language changed.",eventClaimed:"Claimed",locked:"Locked",owned:"Owned",openBox:"Open Box",
+    price:"Price",buy:"Buy",unlocked:"Unlocked",soundEffects:"Sound effects",ambient:"Ambient tone",
+    levelUp:"Level up!",cardReward:"New card unlocked!"
+  },
+  ur:{
+    tagline:"اپنا پسندیدہ کوئز کھیلیں",heroTitle:"کھیلیں۔ دریافت کریں۔<br>لیجنڈ بنیں۔",
+    heroDesc:"اپنا علم آزمائیں، شخصیت دریافت کریں، دوستوں کو چیلنج کریں اور انعامات جمع کریں۔",
+    playNow:"▶ کوئز کھیلیں",myCollection:"✦ میرے کارڈز",playerProfile:"کھلاڑی کی پروفائل",edit:"ترمیم",
+    quizzesDone:"کوئز",cardsOwned:"کارڈز",dailyTitle:"🎁 روزانہ انعام",dailyDesc:"ہر روز واپس آئیں اور انعام حاصل کریں۔",
+    claimDaily:"روزانہ انعام لیں",quizTitle:"🧠 کوئز منتخب کریں",friendTitle:"💞 دوستی اور مطابقت",
+    friendDesc:"دوست یا بہن بھائی کے ساتھ دلچسپ کوئز کھیلیں اور نتائج دیکھیں۔",
+    bestFriend:"بہترین دوست",bestFriendDesc:"آپ ایک دوسرے کو کتنا جانتے ہیں؟",siblings:"بہن بھائی کوئز",
+    siblingsDesc:"ایک دوسرے کے بارے میں جانچیں۔",compatibility:"شخصیتی مطابقت",
+    compatDesc:"مزے دار شخصیتی میچ۔",start:"شروع کریں",collectionTitle:"✦ کارڈ کلیکشن",
+    collectionDesc:"کوئز اور گفٹس سے کردار، تھیم اور اسٹیکر کارڈز حاصل کریں۔",
+    giftsTitle:"🎁 سرپرائز گفٹ باکس",giftsDesc:"باکس سے کوائنز، XP یا کلیکٹیبل کارڈز مل سکتے ہیں۔ انعام یقینی نہیں۔",
+    shopTitle:"🛍️ کوائن شاپ",eventTitle:"🌌 فینٹسی ہنٹ",
+    eventDesc:"کوئز مکمل کریں اور فینٹسی انعام حاصل کریں۔",joinEvent:"ایونٹ میں شامل ہوں",
+    eventReward:"ایونٹ انعام لیں",achievementTitle:"🏆 کامیابیاں",leaderboardTitle:"🌍 عالمی لیڈر بورڈ",
+    refresh:"تازہ کریں",profileTitle:"⚙️ پروفائل اور سیٹنگز",displayName:"پروفائل نام",
+    avatarEmoji:"اوتار ایموجی",profilePhoto:"اختیاری پروفائل تصویر",saveProfile:"پروفائل محفوظ کریں",
+    removePhoto:"تصویر ہٹائیں",password:"پاس ورڈ",createAccount:"اکاؤنٹ بنائیں",signIn:"سائن اِن",
+    signOut:"سائن آؤٹ",photoNote:"تصویر صرف اسی ڈیوائس پر محفوظ ہوتی ہے۔ نجی تصویر اپ لوڈ نہ کریں۔",
+    settingsNote:"آواز اختیاری ہے۔ میوزک آن کرنے پر ہی چلے گا۔",resetQuestions:"سوالوں کی ہسٹری ری سیٹ کریں",
+    exportSave:"سیو فائل ایکسپورٹ کریں",navHome:"ہوم",navQuizzes:"کوئز",navCards:"کارڈز",
+    navGifts:"گفٹس",navProfile:"پروفائل",fresh:"نئے سوالات",collected:"جمع شدہ",
+    available:"دستیاب",claimed:"آج حاصل ہو چکا",soundOn:"آن",soundOff:"آف",
+    levelProgress:"لیول کی پیش رفت",friendResult:"دوستی کوئز مکمل!",yourScore:"آپ کا اسکور",
+    playAgain:"دوبارہ کھیلیں",close:"بند کریں",next:"اگلا سوال",finish:"کوئز ختم کریں",
+    correct:"درست!",incorrect:"دوبارہ کوشش کریں!",noQuestions:"اس کیٹیگری کے تمام سوالات ہو چکے ہیں۔ دوسری کیٹیگری کھیلیں یا ہسٹری ری سیٹ کریں۔",
+    notEnough:"کوائنز کم ہیں!",alreadyOwned:"یہ پہلے سے موجود ہے!",bought:"کلیکشن میں شامل ہو گیا!",
+    dailyReward:"روزانہ انعام مل گیا!",eventDone:"ایونٹ انعام مل گیا!",eventLocked:"انعام کے لیے 3 کوئز مکمل کریں۔",
+    chooseName:"پہلے کھلاڑی کا نام لکھیں۔",photoLarge:"1 MB سے چھوٹی تصویر منتخب کریں۔",
+    saveExport:"سیو فائل تیار ہے۔",quizComplete:"کوئز مکمل!",xpEarned:"حاصل شدہ XP",
+    coinsEarned:"حاصل شدہ کوائنز",perfect:"زبردست اسکور!",noLeaderboard:"ابھی عوامی اسکور موجود نہیں۔",
+    accountCreated:"اکاؤنٹ بن گیا۔",signedIn:"سائن اِن ہو گیا۔",signedOut:"سائن آؤٹ ہو گیا۔",
+    firebaseUnavailable:"Firebase دستیاب نہیں؛ لوکل گیم چل سکتی ہے۔",historyReset:"سوالوں کی ہسٹری ری سیٹ ہو گئی۔",
+    profileSaved:"پروفائل محفوظ ہو گئی۔",quiz:"کوئز",questions:"سوالات",languageChanged:"زبان تبدیل ہو گئی۔",
+    eventClaimed:"حاصل شدہ",locked:"بند",owned:"موجود",openBox:"باکس کھولیں",price:"قیمت",
+    buy:"خریدیں",unlocked:"ان لاک",soundEffects:"آوازیں",ambient:"ہلکا میوزک",levelUp:"نیا لیول!",
+    cardReward:"نیا کارڈ ان لاک!"
+  }
+};
+function t(key){return (I18N[game.language]||I18N.en)[key]||I18N.en[key]||key;}
+function applyLanguage(){
+  document.documentElement.lang=game.language==="ur"?"ur":"en";
+  document.documentElement.dir=game.language==="ur"?"rtl":"ltr";
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    const key=el.getAttribute("data-i18n");
+    if(I18N[game.language][key])el.innerHTML=I18N[game.language][key];
+  });
+  $("languageBtn").textContent=game.language==="en"?"اردو":"English";
+  $("soundBtn").textContent=(game.sound?"🔊 ":"🔇 ")+t(game.sound?"soundOn":"soundOff");
+  $("soundBtn").setAttribute("aria-pressed",String(game.sound));
+  $("soundState").textContent=t(game.sound?"soundOn":"soundOff");
+  $("musicState").textContent=t(game.music?"soundOn":"soundOff");
+}
+
+/* Question bank. Seen question IDs are saved so questions are not repeated until the user resets history. */
+const Q=(id,category,en,ur,answers,correct)=>({id,category,en,ur,answers,correct});
+const QUESTIONS=[
+Q("k1","knowledge","Which planet is known as the Red Planet?","کس سیارے کو سرخ سیارہ کہا جاتا ہے؟",["Mars / مریخ","Venus / زہرہ","Jupiter / مشتری","Mercury / عطارد"],0),
+Q("k2","knowledge","How many sides does a hexagon have?","مسدس کے کتنے اضلاع ہوتے ہیں؟",["Five / پانچ","Six / چھ","Seven / سات","Eight / آٹھ"],1),
+Q("k3","knowledge","Which is the largest ocean on Earth?","زمین کا سب سے بڑا سمندر کون سا ہے؟",["Atlantic / بحر اوقیانوس","Indian / بحر ہند","Pacific / بحرالکاہل","Arctic / بحر منجمد شمالی"],2),
+Q("k4","knowledge","What is the capital of Japan?","جاپان کا دارالحکومت کیا ہے؟",["Seoul / سیول","Tokyo / ٹوکیو","Beijing / بیجنگ","Bangkok / بنکاک"],1),
+Q("k5","knowledge","How many days are in a leap year?","لیپ سال میں کتنے دن ہوتے ہیں؟",["365","366","364","367"],1),
+Q("k6","knowledge","Which animal is the tallest in the world?","دنیا کا سب سے لمبا جانور کون سا ہے؟",["Elephant / ہاتھی","Giraffe / زرافہ","Camel / اونٹ","Ostrich / شتر مرغ"],1),
+Q("k7","knowledge","What is the currency of Japan?","جاپان کی کرنسی کیا ہے؟",["Won / وون","Yuan / یوان","Yen / ین","Rupee / روپیہ"],2),
+Q("k8","knowledge","How many minutes are in one hour?","ایک گھنٹے میں کتنے منٹ ہوتے ہیں؟",["30","45","60","90"],2),
+Q("k9","knowledge","Which language is primarily spoken in Brazil?","برازیل میں بنیادی طور پر کون سی زبان بولی جاتی ہے؟",["Spanish / ہسپانوی","Portuguese / پرتگالی","French / فرانسیسی","Italian / اطالوی"],1),
+Q("k10","knowledge","Which shape has three sides?","تین اضلاع والی شکل کون سی ہے؟",["Triangle / مثلث","Square / مربع","Circle / دائرہ","Pentagon / پنج ضلعی"],0),
+Q("s1","science","What gas do plants absorb from the air?","پودے ہوا سے کون سی گیس جذب کرتے ہیں؟",["Oxygen / آکسیجن","Carbon dioxide / کاربن ڈائی آکسائیڈ","Helium / ہیلیم","Hydrogen / ہائیڈروجن"],1),
+Q("s2","science","What is the centre of an atom called?","ایٹم کے مرکز کو کیا کہتے ہیں؟",["Nucleus / نیوکلئیس","Cell / خلیہ","Orbit / مدار","Core / کور"],0),
+Q("s3","science","Which organ pumps blood around the body?","جسم میں خون کون سا عضو پمپ کرتا ہے؟",["Lungs / پھیپھڑے","Brain / دماغ","Heart / دل","Kidneys / گردے"],2),
+Q("s4","science","At sea level, water boils at what temperature in Celsius?","سطح سمندر پر پانی کتنے ڈگری سیلسیئس پر ابلتا ہے؟",["50°","75°","100°","120°"],2),
+Q("s5","science","Which force pulls objects toward Earth?","چیزوں کو زمین کی طرف کون سی قوت کھینچتی ہے؟",["Magnetism / مقناطیسیت","Gravity / کشش ثقل","Friction / رگڑ","Pressure / دباؤ"],1),
+Q("s6","science","What is the closest star to Earth?","زمین کے سب سے قریب ستارہ کون سا ہے؟",["Sirius / شعریٰ","The Sun / سورج","Polaris / قطبی ستارہ","Vega / ویگا"],1),
+Q("s7","science","Which part of a plant usually absorbs water?","پودے کا کون سا حصہ عموماً پانی جذب کرتا ہے؟",["Flower / پھول","Roots / جڑیں","Leaves / پتے","Fruit / پھل"],1),
+Q("s8","science","What is H₂O commonly known as?","H₂O کو عام طور پر کیا کہتے ہیں؟",["Salt / نمک","Water / پانی","Oxygen / آکسیجن","Sugar / چینی"],1),
+Q("h1","history","The ancient pyramids are most famously associated with which country?","قدیم اہرام سب سے زیادہ کس ملک سے منسوب ہیں؟",["Egypt / مصر","Greece / یونان","Mexico / میکسیکو","India / بھارت"],0),
+Q("h2","history","The Great Wall is in which country?","عظیم دیوار کس ملک میں ہے؟",["China / چین","Japan / جاپان","Italy / اٹلی","Turkey / ترکی"],0),
+Q("h3","history","Which city was the centre of the Roman Empire?","رومی سلطنت کا مرکز کون سا شہر تھا؟",["Athens / ایتھنز","Rome / روم","Cairo / قاہرہ","Paris / پیرس"],1),
+Q("h4","history","The Renaissance began in which part of Europe?","نشاۃ ثانیہ کا آغاز یورپ کے کس حصے میں ہوا؟",["Northern Europe / شمالی یورپ","Italy / اٹلی","Scandinavia / اسکینڈینیویا","Iberia / آئبیریا"],1),
+Q("h5","history","Which ancient civilisation developed cuneiform writing?","کس قدیم تہذیب نے میخی رسم الخط تیار کیا؟",["Sumerians / سومیری","Vikings / وائکنگز","Aztecs / ازٹیک","Mongols / منگول"],0),
+Q("f1","fantasy","Which mythical creature is famous for breathing fire?","کون سی افسانوی مخلوق آگ اگلنے کے لیے مشہور ہے؟",["Phoenix / فینکس","Dragon / ڈریگن","Mermaid / جل پری","Unicorn / ایک سینگ والا گھوڑا"],1),
+Q("f2","fantasy","A phoenix is often associated with what?","فینکس کو اکثر کس چیز سے جوڑا جاتا ہے؟",["Rebirth / نئی زندگی","Ice / برف","Invisible ink / پوشیدہ سیاہی","Thunder / گرج"],0),
+Q("f3","fantasy","Which creature is traditionally described with one horn?","روایتی کہانیوں میں کس مخلوق کا ایک سینگ ہوتا ہے؟",["Griffin / گریفن","Unicorn / یونیکورن","Centaur / سینٹور","Goblin / گوبلن"],1),
+Q("f4","fantasy","Which item is commonly linked to a wizard?","جادوگر کے ساتھ کون سی چیز عام طور پر منسلک ہے؟",["Wand / جادو کی چھڑی","Compass / قطب نما","Anchor / لنگر","Stethoscope / اسٹیتھوسکوپ"],0),
+Q("l1","literature","What is a story's main character often called?","کہانی کے مرکزی کردار کو کیا کہتے ہیں؟",["Protagonist / مرکزی کردار","Editor / مدیر","Audience / ناظرین","Publisher / ناشر"],0),
+Q("l2","literature","What do we call a comparison using 'like' or 'as'?","'کی طرح' یا 'جیسا' سے تشبیہ دینے کو کیا کہتے ہیں؟",["Simile / تشبیہ","Metaphor / استعارہ","Plot / پلاٹ","Irony / طنز"],0),
+Q("l3","literature","A book of poems is commonly called what?","نظموں کی کتاب کو عام طور پر کیا کہتے ہیں؟",["Atlas / اٹلس","Poetry collection / شعری مجموعہ","Dictionary / لغت","Manual / رہنما"],1),
+Q("l4","literature","What is the setting of a story?","کہانی کا ماحول اور مقام کیا کہلاتا ہے؟",["Where and when it happens / مقام اور وقت","The cover / سرورق","The author's name / مصنف کا نام","The final page / آخری صفحہ"],0),
+Q("p1","personality","You have a free afternoon. What sounds best?","آپ کے پاس ایک فارغ دوپہر ہے، کیا پسند کریں گے؟",["Read or create / پڑھنا یا تخلیق","Go on an adventure / مہم پر جانا","Meet friends / دوستوں سے ملنا","Rest quietly / سکون کرنا"],0),
+Q("p2","personality","In a group project, you usually...","گروپ پراجیکٹ میں آپ عموماً...",["Organise the plan / منصوبہ بناتے ہیں","Share creative ideas / نئے خیالات دیتے ہیں","Support everyone / سب کی مدد کرتے ہیں","Research details / معلومات تلاش کرتے ہیں"],0),
+Q("p3","personality","Choose a magical companion.","ایک جادوئی ساتھی منتخب کریں۔",["A wise owl / دانا الو","A loyal dragon / وفادار ڈریگن","A tiny fairy / ننھی پری","A moon cat / چاند جیسی بلی"],3),
+Q("p4","personality","Which quality matters most in a friend?","دوست میں سب سے اہم خوبی کیا ہے؟",["Honesty / سچائی","Humour / مزاح","Loyalty / وفاداری","Kindness / مہربانی"],0),
+Q("p5","personality","Pick a place for a story adventure.","کہانی کی مہم کے لیے جگہ منتخب کریں۔",["Ancient library / قدیم کتب خانہ","Enchanted forest / جادوئی جنگل","A floating city / ہوا میں تیرتا شہر","A seaside town / ساحلی قصبہ"],1)
 ];
-const quizzes=[
-{id:"knowledge",title:"General Knowledge",category:"Knowledge",art:"🌍",questions:[
-["Largest ocean on Earth?",["Atlantic","Indian","Pacific","Arctic"],2],
-["Days in a leap year?",["364","365","366","367"],2],
-["Which planet is the Red Planet?",["Venus","Mars","Jupiter","Mercury"],1],
-["Capital of Japan?",["Seoul","Beijing","Tokyo","Bangkok"],2],
-["Which animal is tallest?",["Elephant","Giraffe","Camel","Horse"],1],
-["Sides of a hexagon?",["Five","Six","Seven","Eight"],1],
-["Which instrument measures temperature?",["Barometer","Compass","Thermometer","Telescope"],2],
-["Largest continent?",["Africa","Europe","Asia","Australia"],2],
-["Main language of Brazil?",["Spanish","Portuguese","French","English"],1],
-["Minutes in two hours?",["60","90","120","180"],2]]},
-{id:"science",title:"Science Explorer",category:"Science",art:"🔬",questions:[
-["Chemical symbol for water?",["CO2","H2O","O2","NaCl"],1],
-["Which organ pumps blood?",["Lungs","Brain","Heart","Kidneys"],2],
-["Which gas do plants absorb?",["Oxygen","Carbon dioxide","Helium","Hydrogen"],1],
-["Planets in our solar system?",["Seven","Eight","Nine","Ten"],1],
-["Force that pulls objects toward Earth?",["Friction","Magnetism","Gravity","Pressure"],2],
-["Center of an atom?",["Cell","Nucleus","Core shell","Molecule"],1],
-["Vitamin associated with sunlight exposure?",["A","B12","C","D"],3],
-["Water's boiling point at sea level?",["50°C","75°C","100°C","150°C"],2],
-["Which plant part absorbs water?",["Flower","Leaves","Roots","Fruit"],2],
-["Earth's natural satellite?",["Mars","Moon","Sun","Venus"],1]]},
-{id:"history",title:"History Challenge",category:"History",art:"🏛️",questions:[
-["The Great Wall is in which country?",["India","China","Japan","Egypt"],1],
-["Ancient pyramids are associated with?",["Greece","Egypt","Italy","Mexico"],1],
-["First person to walk on the Moon?",["Yuri Gagarin","Neil Armstrong","Buzz Aldrin","John Glenn"],1],
-["The Renaissance began in?",["Italy","Canada","Brazil","Norway"],0],
-["Mohenjo-daro belonged to which civilization?",["Roman","Indus Valley","Maya","Greek"],1],
-["Ancient Olympic Games began in?",["Greece","China","Egypt","Persia"],0],
-["Capital of the Roman Empire?",["Athens","Rome","Paris","London"],1],
-["Printing press associated with?",["Galileo","Gutenberg","Newton","Edison"],1],
-["Which ship sank in 1912?",["Mayflower","Titanic","Endeavour","Beagle"],1],
-["Petra is in which modern country?",["Jordan","Turkey","Iran","Iraq"],0]]},
-{id:"fantasy",title:"Fantasy & Fiction",category:"Fantasy",art:"🪄",questions:[
-["Which creature breathes fire in fantasy stories?",["Dragon","Unicorn","Phoenix","Mermaid"],0],
-["Object commonly associated with a wizard?",["Wand","Compass","Helmet","Anchor"],0],
-["A phoenix is traditionally reborn from?",["Ice","Ashes","Water","Stone"],1],
-["Half-human, half-fish creature?",["Centaur","Mermaid","Goblin","Fairy"],1],
-["What does an invisibility cloak do?",["Hides its wearer","Creates rain","Freezes time","Summons food"],0],
-["A common fantasy setting?",["Magical kingdom","Office spreadsheet","Airport","Car repair shop"],0],
-["A tiny magical being?",["Fairy","Shark","Rhino","Eagle"],0],
-["Magical item used for fortune-telling?",["Crystal ball","Stopwatch","Ruler","Battery"],0],
-["What is a quest?",["Journey to achieve a goal","Sandwich","Instrument","Planet"],0],
-["Creature associated with the full moon?",["Werewolf","Dolphin","Penguin","Parrot"],0]]},
-{id:"literature",title:"Literature Corner",category:"Literature",art:"📚",questions:[
-["Who wrote Pride and Prejudice?",["Jane Austen","Emily Brontë","Charles Dickens","Mark Twain"],0],
-["Who wrote Romeo and Juliet?",["William Shakespeare","Oscar Wilde","George Orwell","J.R.R. Tolkien"],0],
-["Main character in a story?",["Protagonist","Publisher","Illustrator","Editor"],0],
-["Grouped lines in a poem?",["Stanza","Chapter","Index","Footnote"],0],
-["Who wrote Alice's Adventures in Wonderland?",["Lewis Carroll","Jules Verne","Arthur Conan Doyle","H.G. Wells"],0],
-["Time and place of a story?",["Setting","Theme song","Appendix","Glossary"],0],
-["Who wrote The Jungle Book?",["Rudyard Kipling","Jane Austen","Agatha Christie","Roald Dahl"],0],
-["A person's life story written by that person?",["Autobiography","Biography","Dictionary","Atlas"],0],
-["A book's list of chapters and pages?",["Contents","Index card","Preface","Caption"],0],
-["Central message of a story?",["Theme","Font","Cover","Publisher"],0]]}
+
+const CATEGORIES=[
+{id:"knowledge",emoji:"🌍",title:"Knowledge",desc:"General knowledge & facts"},
+{id:"science",emoji:"🔬",title:"Science",desc:"Discover how things work"},
+{id:"history",emoji:"🏛️",title:"History",desc:"Civilisations & the past"},
+{id:"fantasy",emoji:"🐉",title:"Fantasy",desc:"Magic, myths & creatures"},
+{id:"literature",emoji:"📚",title:"Literature",desc:"Stories, books & writing"},
+{id:"personality",emoji:"🔮",title:"Personality",desc:"Discover your quiz vibe"}
 ];
-function toast(s){const el=$("toast");el.textContent=s;el.classList.remove("hidden");clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>el.classList.add("hidden"),2600)}
-function go(id){$(id)?.scrollIntoView({behavior:"smooth",block:"start"});document.querySelectorAll(".bottomnav button").forEach(b=>b.classList.toggle("active",b.getAttribute("onclick")?.includes("'"+id+"'")))}
-function own(id){return game.owned.includes(id)}
-function level(){return Math.floor(game.xp/100)+1}
-function safe(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
-function saveLocal(){try{localStorage.setItem("fictionQuizSave",JSON.stringify(game))}catch(e){toast("Device storage is full.")}}
-function scheduleSave(){saveLocal();clearTimeout(saveTimer);saveTimer=setTimeout(()=>saveCloud(),600)}
-function updateUI(){
-$("playerName").textContent=game.name;$("avatar").textContent=game.avatar||"🦋";
-$("xp").textContent=game.xp;$("coins").textContent=game.coins;$("streak").textContent=game.streak;
-$("levelText").textContent="Level "+level()+" • "+(level()>=10?"Expert":level()>=5?"Advanced":"Beginner");
-$("levelBar").style.width=(game.xp%100)+"%";
-$("rewardXP").textContent=game.xp;$("rewardCoins").textContent=game.coins;$("rewardCards").textContent=game.owned.length;$("cardCount").textContent=game.owned.length+" cards";
-$("dailyStatus").textContent=game.dailyDate===today()&&game.dailyDone?"Today's challenge completed ✓ Come back tomorrow!":"Your daily challenge is ready!";
-$("eventProgress").textContent="Progress: "+Math.min(game.eventCount,3)+" / 3"+(game.eventClaimed?" • Reward claimed ✓":"");
-$("nameInput").value=game.name;$("languageInput").value=game.language||"en";
+const CARDS=[
+{id:"moon-sticker",emoji:"🌙",name:"Moon Sticker",type:"Sticker",price:0},
+{id:"dragon",emoji:"🐉",name:"Dragon Guardian",type:"Character",price:250},
+{id:"moon-princess",emoji:"👑",name:"Moon Royalty",type:"Character",price:300},
+{id:"star-theme",emoji:"🌠",name:"Starfall Theme",type:"Theme",price:180},
+{id:"rose-sticker",emoji:"🌹",name:"Rose Sticker",type:"Sticker",price:100},
+{id:"phoenix",emoji:"🔥",name:"Phoenix Spirit",type:"Character",price:450},
+{id:"galaxy-theme",emoji:"🌌",name:"Galaxy Theme",type:"Theme",price:500},
+{id:"magic-wand",emoji:"🪄",name:"Magic Wand",type:"Sticker",price:150},
+{id:"crystal",emoji:"💎",name:"Crystal Keeper",type:"Character",price:600},
+{id:"butterfly",emoji:"🦋",name:"Dream Butterfly",type:"Sticker",price:200},
+{id:"forest-theme",emoji:"🌲",name:"Enchanted Forest",type:"Theme",price:350},
+{id:"unicorn",emoji:"🦄",name:"Unicorn Dream",type:"Character",price:400}
+];
+const BOXES=[
+{id:"common",emoji:"🎁",name:"Mystery Box",price:150,description:"Coins, XP or a card"},
+{id:"rare",emoji:"🎀",name:"Rare Box",price:300,description:"Better chance of a collectible"},
+{id:"epic",emoji:"💎",name:"Epic Box",price:600,description:"Premium reward possibilities"}
+];
+const SHOP_ITEMS=[
+{id:"rose-sticker",emoji:"🌹",name:"Rose Sticker",price:100},
+{id:"magic-wand",emoji:"🪄",name:"Magic Wand",price:150},
+{id:"star-theme",emoji:"🌠",name:"Starfall Theme",price:180},
+{id:"dragon",emoji:"🐉",name:"Dragon Guardian",price:250},
+{id:"moon-princess",emoji:"👑",name:"Moon Royalty",price:300},
+{id:"forest-theme",emoji:"🌲",name:"Enchanted Forest",price:350},
+{id:"unicorn",emoji:"🦄",name:"Unicorn Dream",price:400},
+{id:"phoenix",emoji:"🔥",name:"Phoenix Spirit",price:450},
+{id:"galaxy-theme",emoji:"🌌",name:"Galaxy Theme",price:500},
+{id:"crystal",emoji:"💎",name:"Crystal Keeper",price:600}
+];
+const ACHIEVEMENTS=[
+{id:"first",emoji:"🌱",name:"First Steps",desc:"Complete your first quiz",test:()=>game.quizzesDone>=1},
+{id:"perfect",emoji:"🎯",name:"Perfect Round",desc:"Get 100% on a quiz",test:()=>game.bestScore>=100},
+{id:"collector",emoji:"🃏",name:"Collector",desc:"Collect 5 cards",test:()=>game.ownedCards.length>=5},
+{id:"level5",emoji:"⭐",name:"Rising Star",desc:"Reach level 5",test:()=>level()>=5},
+{id:"streak",emoji:"🔥",name:"Daily Visitor",desc:"Claim daily gifts on 3 days",test:()=>game.dailyStreak>=3},
+{id:"quiz10",emoji:"🏆",name:"Quiz Explorer",desc:"Complete 10 quizzes",test:()=>game.quizzesDone>=10}
+];
+
+function questionText(q){return game.language==="ur"?q.ur:q.en;}
+function answerText(a){
+  if(game.language==="ur")return a.split(" / ").slice(-1)[0];
+  return a.split(" / ")[0];
 }
-function renderQuizzes(cat=currentCategory){
-currentCategory=cat;const list=quizzes.filter(q=>cat==="All"||q.category===cat);
-$("quizGrid").innerHTML=list.map(q=>`<article class="card"><div class="art">${q.art}<span class="rarity">${q.questions.length} Qs</span></div><div class="cardtitle">${q.title}</div><p class="desc">${q.category} • ${game.completed.includes(q.id)?"Reward claimed":"Earn XP + coins"}</p><button class="btn full" onclick="startQuiz('${q.id}')">Play Quiz</button></article>`).join("");
+function renderCategories(){
+  $("categoryGrid").innerHTML="";
+  CATEGORIES.forEach(cat=>{
+    const count=QUESTIONS.filter(q=>q.category===cat.id).length;
+    const card=document.createElement("article");card.className="category-card";
+    card.innerHTML=`<span class="emoji">${cat.emoji}</span><h3>${cat.title}</h3><p>${cat.desc} · ${count} questions</p><button class="primary" type="button">${t("start")}</button>`;
+    card.querySelector("button").addEventListener("click",()=>startQuiz(cat.id));
+    $("categoryGrid").appendChild(card);
+  });
 }
-function filterQuiz(cat,b){currentCategory=cat;document.querySelectorAll("#quizTabs .tab").forEach(x=>x.classList.remove("active"));b.classList.add("active");renderQuizzes(cat)}
-function renderCards(){
-const list=cards.filter(c=>(currentType==="All"||c.type===currentType)&&(currentRarity==="All"||c.rarity===currentRarity));
-$("collectionGrid").innerHTML=list.map(c=>{const unlocked=own(c.id);return `<article class="card"><div class="art" style="${unlocked?"":"filter:saturate(.3)"}">${unlocked?c.art:"🔒"}<span class="rarity">${c.rarity}</span></div><div class="cardtitle">${unlocked?c.name:"Locked "+c.type}</div><p class="desc">${unlocked?safe(c.desc):"Unlock to reveal this card."}</p><span class="tag">${c.type}</span>${unlocked?'<span class="tag">Unlocked ✓</span>':`<button class="btn full" onclick="buyCard('${c.id}')">${c.price} 🪙</button>`}</article>`}).join("");
-}
-function filterType(t,b){currentType=t;document.querySelectorAll("#typeTabs .tab").forEach(x=>x.classList.remove("active"));b.classList.add("active");renderCards()}
-function filterRarity(r,b){currentRarity=r;document.querySelectorAll("#rarityTabs .tab").forEach(x=>x.classList.remove("active"));b.classList.add("active");renderCards()}
-function renderShop(){
-$("shopGrid").innerHTML=cards.filter(c=>!own(c.id)).map(c=>`<article class="card"><div class="art">${c.art}<span class="rarity">${c.rarity}</span></div><div class="cardtitle">${c.name}</div><p class="desc">${c.desc}</p><button class="btn full" onclick="buyCard('${c.id}')">Unlock • ${c.price} 🪙</button></article>`).join("")||'<div class="empty">All cards collected! ✨</div>';
+function renderCollection(){
+  $("collectionGrid").innerHTML="";
+  CARDS.forEach(card=>{
+    const owned=game.ownedCards.includes(card.id);
+    const el=document.createElement("article");el.className="collect-card"+(owned?"":" locked");
+    el.innerHTML=`<div class="emoji">${card.emoji}</div><strong>${card.name}</strong><p>${card.type}</p><span class="pill">${owned?t("owned"):"🔒 "+card.price+" 🪙"}</span>`;
+    $("collectionGrid").appendChild(el);
+  });
+  $("collectionCount").textContent=game.ownedCards.length+" / "+CARDS.length+" "+t("collected");
 }
 function renderGifts(){
-$("giftInventory").innerHTML=game.gifts.length?game.gifts.slice().reverse().map(g=>`<article class="card"><div class="art">${safe(g.art||"🎁")}</div><div class="cardtitle">${safe(g.name)}</div><p class="desc">${safe(g.desc||"FictionQuiz reward")}</p></article>`).join(""):'<div class="empty">No gifts yet. Open your daily gift! 🎁</div>';
+  $("giftGrid").innerHTML="";
+  BOXES.forEach(box=>{
+    const el=document.createElement("article");el.className="gift-card";
+    el.innerHTML=`<span class="gift-emoji">${box.emoji}</span><h3>${box.name}</h3><p>${box.description}</p><p class="reward-line">🪙 ${box.price}</p><button class="primary">${t("openBox")}</button>`;
+    el.querySelector("button").addEventListener("click",()=>openBox(box.id));
+    $("giftGrid").appendChild(el);
+  });
+}
+function renderShop(){
+  $("shopGrid").innerHTML="";
+  SHOP_ITEMS.forEach(item=>{
+    const owned=game.ownedCards.includes(item.id);
+    const el=document.createElement("article");el.className="category-card";
+    el.innerHTML=`<span class="emoji">${item.emoji}</span><h3>${item.name}</h3><p>🪙 ${item.price}</p><button class="${owned?"ghost":"primary"}" ${owned?"disabled":""}>${owned?t("owned"):t("buy")}</button>`;
+    el.querySelector("button").addEventListener("click",()=>buyCard(item.id));
+    $("shopGrid").appendChild(el);
+  });
 }
 function renderAchievements(){
-const list=[
-{id:"first",name:"First Quiz",art:"🧠",desc:"Complete your first quiz.",ok:game.completed.length>0},
-{id:"collector",name:"Card Collector",art:"🃏",desc:"Collect 3 cards.",ok:game.owned.length>=3},
-{id:"rich",name:"Coin Saver",art:"🪙",desc:"Have 500 coins.",ok:game.coins>=500},
-{id:"streak",name:"Daily Player",art:"🔥",desc:"Build a 3-day streak.",ok:game.streak>=3}
-];
-list.forEach(a=>{if(a.ok&&!game.achievements.includes(a.id)){game.achievements.push(a.id);toast("Achievement unlocked: "+a.name+" 🏆")}});
-$("achievementGrid").innerHTML=list.map(a=>`<article class="card"><div class="art">${a.ok?a.art:"🔒"}</div><div class="cardtitle">${a.name}</div><p class="desc">${a.desc}</p><span class="tag">${a.ok?"Unlocked":"Locked"}</span></article>`).join("");
+  $("achievementGrid").innerHTML="";
+  ACHIEVEMENTS.forEach(a=>{
+    const earned=a.test();
+    if(earned&&!game.achievements.includes(a.id)){
+      game.achievements.push(a.id);
+      // Achievements are cosmetic; no extra currency is silently awarded.
+    }
+    const el=document.createElement("article");el.className="achievement";
+    el.innerHTML=`<span class="emoji">${earned?a.emoji:"🔒"}</span><div><strong>${a.name}</strong><p>${a.desc}</p><span class="pill">${earned?t("unlocked"):t("locked")}</span></div>`;
+    $("achievementGrid").appendChild(el);
+  });
 }
-function renderAll(){updateUI();renderQuizzes();renderCards();renderShop();renderGifts();renderAchievements();saveLocal()}
-function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
-function startQuiz(id){
-const q=quizzes.find(x=>x.id===id);if(!q)return;
-activeQuiz=q;questions=shuffle(q.questions).map(x=>({q:x[0],a:x[1],correct:x[2]}));qi=0;score=0;answered=false;quizMode="normal";showQuestion();
+function renderAll(){
+  $("playerName").textContent=game.name||"Quiz Lover";
+  $("nameInput").value=game.name||"Quiz Lover";
+  $("avatarInput").value=game.avatar||"🌙";
+  $("avatarView").innerHTML="";
+  if(game.photo){
+    const img=document.createElement("img");img.src=game.photo;img.alt="Profile photo";
+    $("avatarView").appendChild(img);
+  }else $("avatarView").textContent=game.avatar||"🌙";
+  $("xpStat").textContent=game.xp;
+  $("coinStat").textContent=game.coins;
+  $("quizStat").textContent=game.quizzesDone;
+  $("cardStat").textContent=game.ownedCards.length;
+  $("shopCoins").textContent=game.coins;
+  $("rankPill").textContent=rank();
+  $("levelPill").textContent="Level "+level();
+  $("levelProgress").style.width=levelXP()+"%";
+  $("progressText").textContent=levelXP()+"/100 XP";
+  $("levelProgressLabel").textContent=t("levelProgress");
+  const claimed=game.dailyDate===todayKey();
+  $("dailyBtn").disabled=claimed;
+  $("dailyStatus").textContent=claimed?t("claimed"):t("available");
+  $("streakText").textContent="🔥 "+game.dailyStreak+" day streak";
+  $("eventProgressText").textContent=Math.min(game.eventCount,3)+" / 3 quizzes";
+  $("eventProgress").style.width=(Math.min(game.eventCount,3)/3*100)+"%";
+  $("eventRewardBtn").disabled=game.eventCount<3||game.eventClaimed;
+  $("eventRewardBtn").textContent=game.eventClaimed?t("eventClaimed"):t("eventReward");
+  $("questionPoolLabel").textContent=t("fresh");
+  $("soundState").textContent=t(game.sound?"soundOn":"soundOff");
+  $("musicState").textContent=t(game.music?"soundOn":"soundOff");
+  renderCategories();renderCollection();renderGifts();renderShop();renderAchievements();applyLanguage();
 }
-function startDaily(){
-if(game.dailyDate===today()&&game.dailyDone){toast("Daily challenge already completed. Come back tomorrow!");return}
-activeQuiz=quizzes[Math.floor(Math.random()*quizzes.length)];questions=shuffle(activeQuiz.questions).slice(0,5).map(x=>({q:x[0],a:x[1],correct:x[2]}));qi=0;score=0;answered=false;quizMode="daily";showQuestion();
+function addXP(amount){
+  const oldLevel=level();
+  game.xp=Math.max(0,game.xp+amount);
+  if(level()>oldLevel){showGift("🎉",t("levelUp"),"You reached Level "+level(),"fireworks");}
 }
-function startEvent(){
-if(game.eventClaimed){toast("Event reward already claimed!");return}
-activeQuiz=quizzes.find(q=>q.id==="fantasy");questions=shuffle(activeQuiz.questions).slice(0,5).map(x=>({q:x[0],a:x[1],correct:x[2]}));qi=0;score=0;answered=false;quizMode="event";showQuestion();
+function awardCard(cardId){
+  if(!CARDS.some(c=>c.id===cardId)||game.ownedCards.includes(cardId))return false;
+  game.ownedCards.push(cardId);return true;
 }
-function showQuestion(){
-const q=questions[qi];if(!q)return finishQuiz();
-const root=$("modalRoot");root.classList.remove("hidden");
-root.innerHTML=`<div class="modalbox"><div class="sectionhead"><span class="tag">${safe(activeQuiz.title)}</span><button class="smallbtn" onclick="closeModal()">✕</button></div><div class="levelbar"><span style="width:${qi/questions.length*100}%"></span></div><p class="muted small">Question ${qi+1} of ${questions.length}</p><h2>${safe(q.q)}</h2><div id="answers" style="display:grid;gap:9px">${q.a.map((a,i)=>`<button class="btn secondary full" style="text-align:left" onclick="answer(${i})">${String.fromCharCode(65+i)}. ${safe(a)}</button>`).join("")}</div><p id="feedback" class="muted small"></p><button id="next" class="btn full hidden" onclick="nextQuestion()">Next Question →</button></div>`;
+function randomUnownedCard(){
+  const available=CARDS.filter(c=>!game.ownedCards.includes(c.id));
+  return available.length?available[Math.floor(Math.random()*available.length)]:null;
 }
-function answer(choice){
-if(answered)return;answered=true;const q=questions[qi];const btns=$("answers").querySelectorAll("button");
-btns.forEach((b,i)=>{b.disabled=true;if(i===q.correct)b.style.borderColor="#46e3a0";else if(i===choice)b.style.borderColor="#ff6b89"});
-if(choice===q.correct)score++;
-$("feedback").textContent=choice===q.correct?"Correct! 🎉":"Correct answer: "+q.a[q.correct];$("next").classList.remove("hidden");
+function claimDaily(){
+  if(game.dailyDate===todayKey())return;
+  const yesterday=new Date();yesterday.setDate(yesterday.getDate()-1);
+  const yKey=yesterday.getFullYear()+"-"+String(yesterday.getMonth()+1).padStart(2,"0")+"-"+String(yesterday.getDate()).padStart(2,"0");
+  game.dailyStreak=game.lastDailyDate===yKey?game.dailyStreak+1:1;
+  game.lastDailyDate=todayKey();game.dailyDate=todayKey();
+  const coins=25+Math.min(game.dailyStreak,7)*5;
+  game.coins+=coins;addXP(10);saveGame();
+  showGift("🎁",t("dailyReward"),"+"+coins+" coins · +10 XP","gift");
 }
-function nextQuestion(){qi++;answered=false;if(qi>=questions.length)finishQuiz();else showQuestion()}
-function updateStreak(){
-if(game.lastDay===today())return;
-game.streak=game.lastDay===yesterday()?game.streak+1:1;game.lastDay=today();
+function claimEvent(){
+  if(game.eventClaimed)return;
+  if(game.eventCount<3){toast(t("eventLocked"));return;}
+  game.eventClaimed=true;game.coins+=100;addXP(40);
+  const card=randomUnownedCard();if(card)awardCard(card.id);
+  saveGame();showGift("🌌",t("eventDone"),"+100 coins · +40 XP"+(card?" · "+card.name:""),"fireworks");
 }
-function finishQuiz(){
-const count=questions.length,percent=Math.round(score/count*100);
-let xp=0,coin=0,first=false;
-if(quizMode==="normal"){
-first=!game.completed.includes(activeQuiz.id);
-if(first){xp=score*10;coin=score*5;game.completed.push(activeQuiz.id)}
-}else if(quizMode==="daily"){
-game.dailyDate=today();game.dailyDone=true;
-xp=score*10+(score>0?15:0);coin=score*5+(score>0?10:0);
-}else if(quizMode==="event"){
-if(score>0){game.eventCount=Math.min(3,game.eventCount+1);xp=score*5;coin=score*2}
-if(game.eventCount>=3&&!game.eventClaimed){game.eventClaimed=true;const reward=cards.find(c=>c.id==="royal-dream");if(reward&&!own(reward.id)){game.owned.push(reward.id);game.gifts.push({name:reward.name,art:reward.art,desc:"Fantasy Hunt event reward"});toast("Event card unlocked! 💎")}}
-}
-game.xp+=xp;game.coins+=coin;
-if(score>0)updateStreak();
-renderAll();scheduleSave();
-$("modalRoot").innerHTML=`<div class="modalbox" style="text-align:center"><div style="font-size:56px">🏆</div><h2>Quiz Completed!</h2><p>You got <strong>${score}/${count}</strong> correct.</p><div class="stats"><div class="stat">⭐<span class="num">+${xp}</span><span class="label">XP</span></div><div class="stat">🪙<span class="num">+${coin}</span><span class="label">Coins</span></div><div class="stat">🎯<span class="num">${percent}%</span><span class="label">Score</span></div></div><p class="muted small">${quizMode==="normal"?(first?"First-completion reward claimed.":"Repeat quiz: no repeat reward."):"Challenge rewards applied."}</p><button class="btn full" onclick="closeModal()">Continue</button></div>`;
-}
-function closeModal(){$("modalRoot").classList.add("hidden");$("modalRoot").innerHTML=""}
-function popup(title,art,desc){const root=$("modalRoot");root.classList.remove("hidden");root.innerHTML=`<div class="modalbox" style="text-align:center"><div style="font-size:64px;animation:bounce .8s infinite alternate">${safe(art)}</div><h2>${safe(title)}</h2><p>${safe(desc)}</p><button class="btn full" onclick="closeModal()">Continue</button></div>`}
-function openDailyGift(){
-if(game.giftDate===today()){toast("Daily gift already claimed. Come back tomorrow!");return}
-const possible=cards.filter(c=>!own(c.id));const roll=Math.random();let reward;
-if(possible.length&&roll<.7){reward=possible[Math.floor(Math.random()*possible.length)];game.owned.push(reward.id);game.gifts.push({name:reward.name,art:reward.art,desc:"Daily mystery gift • "+reward.rarity})}
-else{const bonus=roll<.9?20:40;game.coins+=bonus;reward={name:"Coin Bonus",art:"🪙",desc:"You received "+bonus+" bonus coins!"};game.gifts.push(reward)}
-game.giftDate=today();game.xp+=10;renderAll();scheduleSave();popup("Mystery Gift Unlocked!",reward.art,reward.desc||reward.name);
+function openBox(id){
+  const box=BOXES.find(b=>b.id===id);if(!box)return;
+  if(game.coins<box.price){toast(t("notEnough"));return;}
+  game.coins-=box.price;game.openedBoxes++;
+  let reward;
+  const roll=Math.random();
+  if(roll<.48){const coins=box.id==="epic"?250:box.id==="rare"?100:50;game.coins+=coins;reward="🪙 +"+coins+" coins";}
+  else if(roll<.76){const xp=box.id==="epic"?100:box.id==="rare"?50:25;addXP(xp);reward="⭐ +"+xp+" XP";}
+  else{
+    const card=randomUnownedCard();
+    if(card){awardCard(card.id);reward=card.emoji+" "+card.name;showGift(card.emoji,t("cardReward"),card.name,card.type==="Character"?"car":"roses");}
+    else{game.coins+=100;reward="🪙 +100 bonus coins";}
+  }
+  saveGame();playSound("gift");
+  showGift(box.emoji,box.name+" opened!",reward,box.id==="epic"?"fireworks":"gift");
 }
 function buyCard(id){
-const c=cards.find(x=>x.id===id);if(!c)return;
-if(own(id)){toast("Already in your collection!");return}
-if(game.coins<c.price){toast("Not enough coins. Play quizzes to earn more!");return}
-game.coins-=c.price;game.owned.push(id);game.xp+=5;game.gifts.push({name:c.name,art:c.art,desc:"Purchased from Coin Shop"});renderAll();scheduleSave();popup("Card Unlocked!",c.art,c.name+" added to your collection.");
+  const item=SHOP_ITEMS.find(i=>i.id===id);
+  if(!item)return;
+  if(game.ownedCards.includes(id)){toast(t("alreadyOwned"));return;}
+  if(game.coins<item.price){toast(t("notEnough"));return;}
+  game.coins-=item.price;awardCard(id);saveGame();playSound("correct");
+  showGift(item.emoji,t("bought"),item.name,"gift");
 }
-function buyBox(type){
-const cost=type==="epic"?600:300;if(game.coins<cost){toast("Not enough coins!");return}
-const possible=cards.filter(c=>!own(c.id));if(!possible.length){toast("All cards collected!");return}
-const pool=possible.filter(c=>type==="epic"?["Epic","Legendary"].includes(c.rarity):["Rare","Epic","Legendary"].includes(c.rarity));
-const list=pool.length?pool:possible;const reward=list[Math.floor(Math.random()*list.length)];
-game.coins-=cost;game.owned.push(reward.id);game.gifts.push({name:reward.name,art:reward.art,desc:type+" gift box reward"});renderAll();scheduleSave();popup("Gift Box Opened!",reward.art,reward.name+" unlocked!");
+function showGift(emoji,title,description,effect="gift"){
+  $("modalRoot").innerHTML="";
+  const overlay=document.createElement("div");overlay.className="overlay";
+  const modal=document.createElement("div");modal.className="modal";
+  const big=document.createElement("div");big.className="big";big.textContent=emoji;
+  const h=document.createElement("h2");h.textContent=title;
+  const p=document.createElement("p");p.textContent=description;
+  const btn=document.createElement("button");btn.className="primary";btn.textContent=t("close");
+  btn.addEventListener("click",()=>{$("modalRoot").innerHTML="";});
+  modal.append(big,h,p,btn);overlay.appendChild(modal);$("modalRoot").appendChild(overlay);
+  if(effect==="car")animateBurst(["🏎️","✨","⭐","💨"]);
+  else if(effect==="fireworks")animateBurst(["🎆","✨","🎇","⭐","💫"]);
+  else if(effect==="roses")animateBurst(["🌹","🌸","💗","🌹","🌺"]);
+  else if(effect==="gift")animateBurst(["🎁","✨","⭐","💖"]);
+  playSound("gift");
 }
-function buySticker(){
-if(game.coins<150){toast("Sticker pack needs 150 coins.");return}
-const possible=cards.filter(c=>c.type==="Sticker"&&!own(c.id));if(!possible.length){toast("All stickers collected!");return}
-const c=possible[Math.floor(Math.random()*possible.length)];game.coins-=150;game.owned.push(c.id);game.gifts.push({name:c.name,art:c.art,desc:"Sticker pack reward"});renderAll();scheduleSave();popup("Sticker Unlocked!",c.art,c.name+" added to your collection.");
-}
-function saveProfile(){
-const name=$("nameInput").value.trim().slice(0,24);if(name)game.name=name;
-game.language=$("languageInput").value;renderAll();scheduleSave();toast("Profile saved!");
-}
-function enableNotifications(){
-if(!("Notification"in window)){$("notificationStatus").textContent="This browser does not support notifications.";return}
-Notification.requestPermission().then(p=>{$("notificationStatus").textContent=p==="granted"?"Notifications allowed. Automatic reminders need extra setup.":"Permission was not granted.";if(p==="granted")toast("Notifications enabled!")}).catch(()=>toast("Could not request notification permission."));
+function animateBurst(items){
+  const root=$("burstRoot");root.innerHTML="";
+  for(let i=0;i<22;i++){
+    const s=document.createElement("span");s.textContent=items[Math.floor(Math.random()*items.length)];
+    s.style.left=Math.random()*100+"%";s.style.animationDelay=Math.random()*.8+"s";
+    s.style.fontSize=(18+Math.random()*20)+"px";root.appendChild(s);
+  }
+  setTimeout(()=>root.innerHTML="",3500);
 }
 
-/* Firebase setup: use your existing FictionQuiz web app config. */
-const firebaseConfig={
-apiKey:"AIzaSyAlUjsq-N0lk2fBa8SQSsJ-AM_xsWofBKo",
-authDomain:"fictionquiz-fa0bb.firebaseapp.com",
-projectId:"fictionquiz-fa0bb",
-storageBucket:"fictionquiz-fa0bb.firebasestorage.app",
-messagingSenderId:"342330435715",
-appId:"1:342330435715:web:715ee35961a1b6267653b6",
-measurementId:"G-6JEHBF74BE"
-};
-try{
-if(window.firebase){
-firebase.initializeApp(firebaseConfig);auth=firebase.auth();db=firebase.firestore();
-auth.onAuthStateChanged(async user=>{
-currentUser=user||null;
-if(user){
-$("authStatus").textContent="Signed in: "+(user.email||"account")+" • Syncing…";
-await loadCloud();
-$("authStatus").textContent="Signed in • Cloud sync enabled";
-await saveCloud();await loadLeaderboard();
-}else{
-cloudReady=false;$("authStatus").textContent="Not signed in. Local progress is saved on this device.";
-$("leaderboardStatus").textContent="Sign in to load and join the global leaderboard.";
+/* Quiz flow */
+function startQuiz(category){
+  const seen=new Set(game.seenQuestions);
+  let pool=QUESTIONS.filter(q=>q.category===category&&!seen.has(q.id));
+  if(pool.length===0){
+    const remaining=QUESTIONS.filter(q=>q.category===category);
+    if(!remaining.length){toast("No questions available.");return;}
+    toast(t("noQuestions"));return;
+  }
+  // Slightly increase difficulty by mixing questions; no repeated questions until history reset.
+  pool=pool.sort(()=>Math.random()-.5).slice(0,Math.min(10,pool.length));
+  currentQuiz={category,questions:pool,index:0,score:0,answered:0,friend:false};
+  pool.forEach(q=>game.seenQuestions.push(q.id));
+  saveGame();showQuestion();
 }
+function showQuestion(){
+  if(!currentQuiz)return;
+  quizAnswerLock=false;
+  const q=currentQuiz.questions[currentQuiz.index];
+  if(!q){finishQuiz();return;}
+  const root=$("modalRoot");root.innerHTML="";
+  const overlay=document.createElement("div");overlay.className="overlay";
+  const modal=document.createElement("div");modal.className="modal quiz-shell";modal.style.textAlign="start";
+  const top=document.createElement("div");top.className="quiz-top";
+  const count=document.createElement("span");count.className="pill";count.textContent=(currentQuiz.index+1)+" / "+currentQuiz.questions.length;
+  const cat=document.createElement("span");cat.className="pill";cat.textContent=currentQuiz.category;
+  top.append(count,cat);
+  const prog=document.createElement("div");prog.className="progress";
+  const progIn=document.createElement("span");progIn.style.width=(currentQuiz.index/currentQuiz.questions.length*100)+"%";prog.appendChild(progIn);
+  const question=document.createElement("div");question.className="question";question.textContent=questionText(q);
+  const answers=document.createElement("div");answers.className="answers";
+  q.answers.forEach((a,i)=>{
+    const btn=document.createElement("button");btn.className="answer";btn.textContent=answerText(a);
+    btn.addEventListener("click",()=>answerQuestion(i,btn,answers,q));answers.appendChild(btn);
+  });
+  const close=document.createElement("button");close.className="ghost small";close.style.marginTop="15px";close.textContent=t("close");
+  close.addEventListener("click",()=>{currentQuiz=null;root.innerHTML="";});
+  modal.append(top,prog,question,answers,close);overlay.appendChild(modal);root.appendChild(overlay);
+}
+function answerQuestion(index,button,answers,q){
+  if(quizAnswerLock)return;quizAnswerLock=true;
+  const all=[...answers.querySelectorAll("button")];
+  all.forEach(b=>b.disabled=true);
+  if(index===q.correct){
+    button.classList.add("correct");currentQuiz.score++;playSound("correct");toast(t("correct"));
+  }else{
+    button.classList.add("wrong");if(all[q.correct])all[q.correct].classList.add("correct");
+    playSound("wrong");toast(t("incorrect"));
+  }
+  currentQuiz.answered++;
+  setTimeout(()=>{
+    if(!currentQuiz)return;
+    currentQuiz.index++;
+    if(currentQuiz.index>=currentQuiz.questions.length)finishQuiz();
+    else showQuestion();
+  },850);
+}
+function finishQuiz(){
+  if(!currentQuiz)return;
+  const result=currentQuiz;
+  const total=result.questions.length;
+  const score=result.score;
+  const percent=total?Math.round(score/total*100):0;
+  const firstTime=!game.completed.includes(result.category);
+  // Rewards are game convenience rewards, not secure or verified scores.
+  const xp=score*10+(percent===100?10:0);
+  const coins=score*5;
+  addXP(xp);game.coins+=coins;
+  game.quizzesDone++;game.bestScore=Math.max(game.bestScore,percent);
+  if(firstTime)game.completed.push(result.category);
+  if(result.category==="fantasy"&&score>0)game.eventCount=Math.min(3,game.eventCount+1);
+  if(result.friend)game.friendPlays++;
+  saveGame();currentQuiz=null;
+  $("modalRoot").innerHTML="";
+  const overlay=document.createElement("div");overlay.className="overlay";
+  const modal=document.createElement("div");modal.className="modal";
+  const big=document.createElement("div");big.className="big";big.textContent=percent===100?"🏆":percent>=60?"🌟":"💪";
+  const h=document.createElement("h2");h.textContent=t("quizComplete");
+  const p=document.createElement("p");p.textContent=t("yourScore")+": "+score+" / "+total+" ("+percent+"%)";
+  const reward=document.createElement("p");reward.className="reward-line";reward.textContent="⭐ +"+xp+" XP · 🪙 +"+coins+" coins";
+  const btn=document.createElement("button");btn.className="primary";btn.textContent=t("close");
+  btn.addEventListener("click",()=>{$("modalRoot").innerHTML="";});
+  const again=document.createElement("button");again.className="ghost";again.style.marginLeft="7px";again.textContent=t("playAgain");
+  again.addEventListener("click",()=>{$("modalRoot").innerHTML="";startQuiz(result.category);});
+  modal.append(big,h,p,reward);if(percent===100){const perfect=document.createElement("p");perfect.textContent=t("perfect");modal.appendChild(perfect);}
+  modal.append(btn,again);overlay.appendChild(modal);$("modalRoot").appendChild(overlay);
+  playSound(percent===100?"gift":"correct");
+}
+function resetQuestionHistory(){
+  if(!confirm("Reset all seen-question history? This will allow questions to repeat."))return;
+  game.seenQuestions=[];saveGame();toast(t("historyReset"));
+}
+
+/* Friendship quiz uses a fun compatibility-style score, not a scientific assessment. */
+function startFriendQuiz(type){
+  const title=type==="friend"?"Best Friend":type==="sibling"?"Sibling Quiz":"Compatibility Quiz";
+  const questions=[
+    {q:"Which activity sounds most fun?",a:["A movie night","An outdoor adventure","A creative project","A relaxing day"]},
+    {q:"What makes a good teammate?",a:["Honesty","Humour","Reliability","Kindness"]},
+    {q:"Choose a dream hangout.",a:["Book café","Amusement park","Beach sunset","Game night"]},
+    {q:"How do you solve a disagreement?",a:["Talk it out","Take a short break","Ask for advice","Write down thoughts"]},
+    {q:"Pick a shared challenge.",a:["Trivia quiz","Puzzle room","Cooking together","Creative contest"]}
+  ];
+  let i=0,answers=[];
+  const render=()=>{
+    const root=$("modalRoot");root.innerHTML="";
+    const overlay=document.createElement("div");overlay.className="overlay";
+    const modal=document.createElement("div");modal.className="modal";modal.style.textAlign="start";
+    const h=document.createElement("h2");h.textContent=title;
+    const desc=document.createElement("p");desc.textContent="Question "+(i+1)+" of "+questions.length+" · Just for fun";
+    const q=document.createElement("div");q.className="question";q.textContent=questions[i].q;
+    const opts=document.createElement("div");opts.className="answers";
+    questions[i].a.forEach((a,n)=>{
+      const b=document.createElement("button");b.className="answer";b.textContent=a;
+      b.onclick=()=>{answers.push(n);i++;if(i<questions.length)render();else showResult();};opts.appendChild(b);
+    });
+    const cancel=document.createElement("button");cancel.className="ghost small";cancel.style.marginTop="12px";cancel.textContent=t("close");cancel.onclick=()=>root.innerHTML="";
+    modal.append(h,desc,q,opts,cancel);overlay.appendChild(modal);root.appendChild(overlay);
+  };
+  const showResult=()=>{
+    const sum=answers.reduce((a,b)=>a+b,0);
+    const percent=Math.round((1-Math.abs(sum-7.5)/15)*100);
+    game.friendPlays++;addXP(10);saveGame();
+    $("modalRoot").innerHTML="";
+    const overlay=document.createElement("div");overlay.className="overlay";
+    const modal=document.createElement("div");modal.className="modal";
+    const big=document.createElement("div");big.className="big";big.textContent=percent>75?"💞":"🫶";
+    const h=document.createElement("h2");h.textContent=t("friendResult");
+    const p=document.createElement("p");p.textContent="Your fun compatibility vibe: "+Math.max(50,Math.min(99,percent))+"%. This is just a playful quiz, not a real measure of a relationship.";
+    const btn=document.createElement("button");btn.className="primary";btn.textContent=t("close");btn.onclick=()=>{$("modalRoot").innerHTML="";};
+    modal.append(big,h,p,btn);overlay.appendChild(modal);$("modalRoot").appendChild(overlay);
+    playSound("gift");
+  };
+  render();
+}
+
+/* Profile settings: photos stay local and are resized before saving. */
+function saveProfile(){
+  const name=safeText($("nameInput").value,24);
+  if(!name){toast(t("chooseName"));return;}
+  game.name=name;game.avatar=$("avatarInput").value;
+  saveGame();toast(t("profileSaved"));syncPublicProfile();
+}
+function removePhoto(){game.photo="";saveGame();toast(t("profileSaved"));}
+$("photoInput").addEventListener("change",event=>{
+  const file=event.target.files&&event.target.files[0];if(!file)return;
+  if(!["image/jpeg","image/png","image/webp"].includes(file.type)){toast("Use JPG, PNG or WebP.");event.target.value="";return;}
+  if(file.size>1024*1024){toast(t("photoLarge"));event.target.value="";return;}
+  const reader=new FileReader();
+  reader.onload=()=>{
+    const img=new Image();
+    img.onload=()=>{
+      const canvas=document.createElement("canvas");const max=240;
+      const ratio=Math.min(1,max/Math.max(img.width,img.height));
+      canvas.width=Math.round(img.width*ratio);canvas.height=Math.round(img.height*ratio);
+      canvas.getContext("2d").drawImage(img,0,0,canvas.width,canvas.height);
+      game.photo=canvas.toDataURL("image/jpeg",.75);saveGame();toast(t("profileSaved"));
+    };
+    img.onerror=()=>toast("Could not read that image.");
+    img.src=reader.result;
+  };
+  reader.readAsDataURL(file);
 });
-}else{$("authStatus").textContent="Firebase SDK did not load. Local play is still available."}
-}catch(e){console.error(e);$("authStatus").textContent="Firebase setup error. Local play is still available."}
-async function createAccount(){
-if(!auth)return toast("Firebase is not available.");
-const email=$("emailInput").value.trim(),password=$("passwordInput").value;
-if(!email||password.length<6)return toast("Enter a valid email and a password of at least 6 characters.");
-try{await auth.createUserWithEmailAndPassword(email,password);toast("Account created!")}catch(e){toast(firebaseError(e))}
+$("languageBtn").addEventListener("click",()=>{
+  game.language=game.language==="en"?"ur":"en";saveGame();toast(t("languageChanged"));
+});
+function toggleSetting(which){
+  if(which==="sound")game.sound=!game.sound;
+  if(which==="music"){game.music=!game.music;if(game.music)startAmbient();else stopAmbient();}
+  saveGame();playSound("correct");
 }
-async function loginAccount(){
-if(!auth)return toast("Firebase is not available.");
-const email=$("emailInput").value.trim(),password=$("passwordInput").value;
-if(!email||!password)return toast("Enter your email and password.");
-try{await auth.signInWithEmailAndPassword(email,password);toast("Signed in!")}catch(e){toast(firebaseError(e))}
+function audio(){
+  try{
+    if(!audioContext)audioContext=new (window.AudioContext||window.webkitAudioContext)();
+    if(audioContext.state==="suspended")audioContext.resume();
+    return audioContext;
+  }catch(e){return null;}
 }
-async function logoutAccount(){if(!auth)return;try{await auth.signOut();toast("Signed out.")}catch(e){toast(firebaseError(e))}}
-function firebaseError(e){const m=e?.code||"";return ({ "auth/email-already-in-use":"Email already registered. Try signing in.","auth/invalid-email":"Check your email address.","auth/weak-password":"Use a stronger password of at least 6 characters.","auth/invalid-credential":"Email or password is incorrect.","auth/network-request-failed":"Check your internet connection.","permission-denied":"Firestore rules are blocking access. Configure the rules before syncing."})[m]||e.message||"Firebase request failed."}
-async function loadCloud(){
-if(!db||!currentUser)return;
-try{
-const ref=db.collection("userProfiles").doc(currentUser.uid);const snap=await ref.get();
-if(snap.exists){
-const cloud=snap.data();const local=game;
-game={...DEFAULT,...cloud,...{
-completed:[...new Set([...(cloud.completed||[]),...(local.completed||[])])],
-owned:[...new Set([...(cloud.owned||[]),...(local.owned||[])])],
-gifts:[...(cloud.gifts||[]),...(local.gifts||[])],
-achievements:[...new Set([...(cloud.achievements||[]),...(local.achievements||[])])],
-xp:Math.max(Number(cloud.xp)||0,Number(local.xp)||0),
-coins:Math.max(Number(cloud.coins)||0,Number(local.coins)||0),
-streak:Math.max(Number(cloud.streak)||0,Number(local.streak)||0),
-name:local.name!=="Quiz Player"?local.name:(cloud.name||"Quiz Player")
-}};
+function playSound(kind){
+  if(!game.sound)return;
+  const ctx=audio();if(!ctx)return;
+  const notes=kind==="correct"?[660,880]:kind==="wrong"?[220,160]:[523,659,784];
+  let start=ctx.currentTime;
+  notes.forEach((freq,i)=>{
+    const osc=ctx.createOscillator(),gain=ctx.createGain();
+    osc.type="sine";osc.frequency.value=freq;
+    gain.gain.setValueAtTime(.0001,start+i*.09);
+    gain.gain.exponentialRampToValueAtTime(.08,start+i*.09+.02);
+    gain.gain.exponentialRampToValueAtTime(.0001,start+i*.09+.14);
+    osc.connect(gain);gain.connect(ctx.destination);
+    osc.start(start+i*.09);osc.stop(start+i*.09+.16);
+  });
 }
-cloudReady=true;renderAll();
-}catch(e){console.error(e);$("authStatus").textContent="Cloud load failed: "+firebaseError(e)}
+function startAmbient(){
+  const ctx=audio();if(!ctx||musicOscillator)return;
+  musicOscillator=ctx.createOscillator();musicGain=ctx.createGain();
+  musicOscillator.type="sine";musicOscillator.frequency.value=110;
+  musicGain.gain.value=.012;musicOscillator.connect(musicGain);musicGain.connect(ctx.destination);
+  musicOscillator.start();
 }
-async function saveCloud(){
-if(!db||!currentUser||saving)return;
-saving=true;
-try{
-const payload={name:game.name,xp:game.xp,coins:game.coins,streak:game.streak,lastDay:game.lastDay,completed:game.completed,owned:game.owned,gifts:game.gifts,giftDate:game.giftDate,dailyDate:game.dailyDate,dailyDone:game.dailyDone,eventCount:game.eventCount,eventClaimed:game.eventClaimed,achievements:game.achievements,language:game.language,updatedAt:firebase.firestore.FieldValue.serverTimestamp()};
-await db.collection("userProfiles").doc(currentUser.uid).set(payload,{merge:true});
-await db.collection("leaderboard").doc(currentUser.uid).set({name:game.name,xp:game.xp,level:level(),updatedAt:firebase.firestore.FieldValue.serverTimestamp()},{merge:true});
-$("authStatus").textContent="Cloud sync complete.";
-}catch(e){console.error(e);$("authStatus").textContent="Sync blocked: "+firebaseError(e)}
-finally{saving=false}
+function stopAmbient(){
+  try{if(musicOscillator)musicOscillator.stop();}catch(e){}
+  musicOscillator=null;musicGain=null;
+}
+$("soundBtn").addEventListener("click",()=>toggleSetting("sound"));
+function exportSave(){
+  const blob=new Blob([JSON.stringify(game,null,2)],{type:"application/json"});
+  const url=URL.createObjectURL(blob);const a=document.createElement("a");
+  a.href=url;a.download="fictionquiz-save.json";a.click();URL.revokeObjectURL(url);toast(t("saveExport"));
+}
+
+/* Firebase auth. Private profile reads/writes are limited by Firestore rules.
+   Do not store game XP/coins in a publicly writable leaderboard document. */
+function initFirebase(){
+  try{
+    if(!window.firebase){$("authStatus").textContent=t("firebaseUnavailable");return;}
+    if(!firebase.apps.length)firebase.initializeApp(firebaseConfig);
+    auth=firebase.auth();db=firebase.firestore();
+    auth.onAuthStateChanged(async user=>{
+      currentUser=user||null;
+      $("authStatus").textContent=user?("Signed in: "+(user.email||"Anonymous account")):"Playing locally";
+      if(user)await loadCloudProfile();
+      loadLeaderboard();
+    });
+  }catch(e){$("authStatus").textContent=t("firebaseUnavailable");}
+}
+async function signUp(){
+  if(!auth){toast(t("firebaseUnavailable"));return;}
+  const email=$("emailInput").value.trim(),password=$("passwordInput").value;
+  if(!email||password.length<6){toast("Enter an email and a password with at least 6 characters.");return;}
+  try{
+    await auth.createUserWithEmailAndPassword(email,password);
+    await syncPublicProfile();toast(t("accountCreated"));
+  }catch(e){toast(authError(e));}
+}
+async function signIn(){
+  if(!auth){toast(t("firebaseUnavailable"));return;}
+  const email=$("emailInput").value.trim(),password=$("passwordInput").value;
+  if(!email||!password){toast("Enter your email and password.");return;}
+  try{await auth.signInWithEmailAndPassword(email,password);toast(t("signedIn"));}
+  catch(e){toast(authError(e));}
+}
+async function signOutUser(){
+  if(!auth)return;
+  try{await auth.signOut();toast(t("signedOut"));}
+  catch(e){toast(authError(e));}
+}
+function authError(e){
+  const code=e&&e.code;
+  const messages={
+    "auth/email-already-in-use":"This email already has an account.",
+    "auth/invalid-email":"Enter a valid email address.",
+    "auth/weak-password":"Choose a stronger password (at least 6 characters).",
+    "auth/invalid-credential":"Email or password is incorrect.",
+    "auth/network-request-failed":"Network error. Check your connection."
+  };
+  return messages[code]||"Could not complete the account action. Check Firebase Authentication settings.";
+}
+async function syncPublicProfile(){
+  if(!currentUser||!db)return;
+  try{
+    // Only basic profile metadata is sent. XP, coins and local photo are not uploaded.
+    await db.collection("userProfiles").doc(currentUser.uid).set({
+      name:safeText(game.name,24),
+      language:game.language,
+      updatedAt:firebase.firestore.FieldValue.serverTimestamp()
+    },{merge:true});
+  }catch(e){toast("Profile sync blocked. Check Firestore rules.");}
+}
+async function loadCloudProfile(){
+  if(!currentUser||!db)return;
+  try{
+    const doc=await db.collection("userProfiles").doc(currentUser.uid).get();
+    if(doc.exists){
+      const data=doc.data()||{};
+      if(typeof data.name==="string"&&data.name.trim())game.name=safeText(data.name,24);
+      if(data.language==="en"||data.language==="ur")game.language=data.language;
+      saveGame();
+    }else await syncPublicProfile();
+  }catch(e){console.warn("Cloud profile read blocked by Firestore rules.");}
 }
 async function loadLeaderboard(){
-if(!db){$("leaderboardStatus").textContent="Firebase is not available.";return}
-try{
-const snap=await db.collection("leaderboard").orderBy("xp","desc").limit(20).get();
-if(snap.empty){$("leaderboardStatus").textContent="No leaderboard entries yet. Sign in and earn XP!";$("leaderboardList").innerHTML="";return}
-$("leaderboardStatus").textContent="Top players by XP";
-$("leaderboardList").innerHTML=snap.docs.map((doc,i)=>{const p=doc.data();return `<div class="profile"><div class="avatar">${i===0?"👑":i===1?"🥈":i===2?"🥉":"🏅"}</div><div class="profileinfo"><strong>${i+1}. ${safe(p.name||"Quiz Player")}</strong><span class="muted small">Level ${Number(p.level)||1}</span></div><span class="tag">⭐ ${Number(p.xp)||0}</span></div>`}).join("");
-}catch(e){$("leaderboardStatus").textContent="Could not load leaderboard: "+firebaseError(e)}
+  const root=$("leaderboardList");root.innerHTML="";
+  if(!db){
+    const p=document.createElement("p");p.className="muted";p.textContent=t("noLeaderboard");root.appendChild(p);return;
+  }
+  try{
+    const snap=await db.collection("leaderboard").orderBy("xp","desc").limit(10).get();
+    if(snap.empty){
+      const p=document.createElement("p");p.className="muted";p.textContent=t("noLeaderboard");root.appendChild(p);return;
+    }
+    snap.forEach((doc,index)=>{
+      const d=doc.data()||{};
+      const row=document.createElement("div");row.className="row";
+      row.style.cssText="padding:10px 0;border-bottom:1px solid var(--line);justify-content:space-between";
+      const name=document.createElement("strong");name.textContent=(index+1)+". "+safeText(d.name||"Quiz Player",24);
+      const xp=document.createElement("span");xp.className="pill";xp.textContent=(Math.max(0,Number(d.xp)||0))+" XP";
+      row.append(name,xp);root.appendChild(row);
+    });
+  }catch(e){
+    const p=document.createElement("p");p.className="muted";p.textContent=t("noLeaderboard");root.appendChild(p);
+  }
 }
-function init(){if(game.dailyDate!==today())game.dailyDone=false;renderAll()}
-init();
+
+/* Startup */
+renderAll();
+initFirebase();
+if(game.music)stopAmbient(); // Ambient sound only starts after a user gesture.
 </script>
 </body>
 </html>
