@@ -1,271 +1,539 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Play fun personality, friendship, Urdu novel, K-pop, K-drama, knowledge and culture quizzes on FictionQuiz. Earn XP, unlock rewards and challenge friends.">
-<meta name="theme-color" content="#17122f">
-<title>FictionQuiz — Play • Discover • Challenge</title>
+<meta name="theme-color" content="#10082d">
+<meta name="description" content="Play quizzes, collect fictional character cards, earn coins and unlock magical rewards on FictionQuiz.">
+<title>FictionQuiz — Play, Collect & Unlock</title>
 <style>
-:root{--bg:#f8f5ff;--panel:#fff;--ink:#292344;--muted:#77718f;--line:#e9e1fa;--pink:#ef65b8;--purple:#8065f4;--blue:#5d9cff;--mint:#54d9b3;--gold:#ffc85b;--shadow:0 12px 35px #43308012}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 10% 0,#f4dfff 0,transparent 28%),var(--bg);color:var(--ink);font-family:Inter,ui-rounded,system-ui,-apple-system,Segoe UI,sans-serif;transition:.2s}
-body.dark{--bg:#100e20;--panel:#1b1730;--ink:#f8f4ff;--muted:#b3abc9;--line:#352c52;--shadow:0 12px 35px #0003;background:radial-gradient(circle at 10% 0,#30204c 0,transparent 32%),var(--bg)}
-button,input,textarea,select{font:inherit}button{cursor:pointer;border:0}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #a996ff;outline-offset:2px}
-.top{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-.nav{max-width:1240px;margin:auto;padding:14px 20px;display:flex;gap:16px;align-items:center;justify-content:space-between}.brand{font-size:22px;font-weight:900;letter-spacing:-.8px}.brand span{color:var(--pink)}.brand small{display:block;font-size:10px;letter-spacing:2px;color:var(--muted);font-weight:700}
-.navtools{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.pill,.select,.iconbtn{background:var(--panel);border:1px solid var(--line);color:var(--ink);border-radius:14px;padding:10px 12px}.iconbtn{font-size:18px}.wrap{max-width:1240px;margin:auto;padding:22px 20px 90px}.hero{display:grid;grid-template-columns:1.4fr .8fr;gap:18px}.heroMain{background:linear-gradient(125deg,#7552e9,#d55bb4 60%,#ffba78);color:white;padding:28px;border-radius:28px;position:relative;overflow:hidden;box-shadow:var(--shadow);min-height:225px}.heroMain:after{content:"✦";position:absolute;font-size:190px;right:25px;bottom:-65px;opacity:.15}.eyebrow{text-transform:uppercase;font-size:11px;letter-spacing:2px;font-weight:900;opacity:.85}.hero h1{font-size:clamp(28px,4vw,43px);line-height:1.1;margin:12px 0}.hero p{max-width:510px;line-height:1.6}.primary,.secondary,.soft{border-radius:14px;padding:12px 17px;font-weight:800;transition:transform .15s}.primary{background:linear-gradient(100deg,var(--pink),var(--purple));color:#fff;box-shadow:0 8px 20px #8c5be533}.secondary{background:var(--panel);border:1px solid var(--line);color:var(--ink)}.soft{background:#f3eaff;color:#7656d9}.primary:hover,.secondary:hover,.soft:hover,.category:hover,.quizcard:hover{transform:translateY(-2px)}
-.player{background:var(--panel);border:1px solid var(--line);border-radius:26px;padding:22px;box-shadow:var(--shadow);display:flex;flex-direction:column;justify-content:center}.playerTop{display:flex;align-items:center;gap:13px}.avatar{width:56px;height:56px;border-radius:20px;display:grid;place-items:center;font-size:30px;background:linear-gradient(135deg,#ffcae8,#d9ceff)}.player h2{font-size:19px;margin:0}.muted{color:var(--muted)}.small{font-size:12px}.progress{height:10px;background:var(--line);border-radius:20px;overflow:hidden;margin:14px 0 8px}.progress span{display:block;height:100%;background:linear-gradient(90deg,var(--pink),var(--purple));border-radius:20px;transition:width .3s}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0 28px}.stat{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:16px;box-shadow:var(--shadow);display:flex;align-items:center;gap:12px}.stat .emoji{font-size:27px}.stat strong{display:block;font-size:22px}.stat span:last-child{font-size:12px;color:var(--muted)}
-.section{margin-top:28px}.sectionHead{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:14px}.sectionHead h2{margin:0;font-size:23px}.sectionHead p{margin:5px 0 0;color:var(--muted);font-size:13px}.textbtn{background:none;color:var(--purple);font-weight:800}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}.category{border-radius:21px;padding:18px;color:white;text-align:left;min-height:140px;transition:.15s;box-shadow:var(--shadow);display:flex;flex-direction:column;justify-content:space-between}.category .catEmoji{font-size:28px;background:#ffffff30;width:48px;height:48px;border-radius:17px;display:grid;place-items:center}.category strong{font-size:16px}.category small{opacity:.85}.c1{background:linear-gradient(140deg,#5279f9,#6d47d9)}.c2{background:linear-gradient(140deg,#30c99a,#168c91)}.c3{background:linear-gradient(140deg,#ff9c6b,#ed5d91)}.c4{background:linear-gradient(140deg,#a76bfa,#e05ba7)}.c5{background:linear-gradient(140deg,#40a9e8,#5464df)}.c6{background:linear-gradient(140deg,#f5bb46,#ed8152)}.c7{background:linear-gradient(140deg,#e56f9d,#9e55d9)}.c8{background:linear-gradient(140deg,#5bc8b5,#6576e8)}
-.quizgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.quizcard{border:1px solid var(--line);background:var(--panel);border-radius:20px;padding:17px;box-shadow:var(--shadow);transition:.15s}.quizEmoji{font-size:29px;width:52px;height:52px;display:grid;place-items:center;background:linear-gradient(135deg,#ffdfef,#e4dcff);border-radius:18px;margin-bottom:12px}.quizcard h3{font-size:16px;margin:0 0 7px}.quizcard p{font-size:12px;color:var(--muted);min-height:32px;line-height:1.5}.quizMeta{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--muted);margin:10px 0}
-.twocol{display:grid;grid-template-columns:1fr 1fr;gap:16px}.panel{background:var(--panel);border:1px solid var(--line);border-radius:23px;padding:20px;box-shadow:var(--shadow)}.panel h3{margin:0 0 8px}.mission{display:flex;gap:11px;align-items:center;border-bottom:1px solid var(--line);padding:12px 0}.mission:last-child{border:0}.mission .mi{font-size:22px}.missionInfo{flex:1}.missionInfo strong{font-size:13px}.missionInfo small{display:block;color:var(--muted);margin-top:4px}.xpReward{color:var(--purple);font-size:12px;font-weight:900;white-space:nowrap}
-.result{text-align:center;max-width:720px;margin:24px auto}.resultCard{background:var(--panel);border:1px solid var(--line);border-radius:28px;padding:28px;box-shadow:var(--shadow)}.resultEmoji{font-size:60px}.result h1{font-size:32px;margin:8px}.questionBox{max-width:780px;margin:20px auto}.qTop{display:flex;justify-content:space-between;color:var(--muted);font-size:13px}.question{font-size:clamp(22px,4vw,31px);line-height:1.25;margin:20px 0}.answers{display:grid;grid-template-columns:1fr 1fr;gap:12px}.answer{background:var(--panel);border:2px solid var(--line);color:var(--ink);border-radius:18px;padding:18px;text-align:left;font-weight:700;min-height:78px;transition:.15s}.answer:hover{border-color:var(--purple)}.answer.correct{border-color:#28bd89;background:#28bd8919}.answer.wrong{border-color:#f15c83;background:#f15c8319;animation:shake .25s}.answer:disabled{cursor:default}.feedback{min-height:26px;text-align:center;font-weight:900;margin:14px}.hide{display:none!important}.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:12px 18px;border-radius:14px;z-index:20;box-shadow:var(--shadow);font-weight:700;max-width:90%;text-align:center}.modalBack{position:fixed;inset:0;background:#120b28a8;display:grid;place-items:center;padding:18px;z-index:15}.modal{background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:24px;padding:23px;max-width:650px;width:100%;max-height:88vh;overflow:auto}.modal h2{margin-top:0}.field{width:100%;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);padding:12px;margin:6px 0 12px}.leaderRow{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--line)}.leaderRow:last-child{border:0}.rank{width:28px;height:28px;border-radius:50%;background:var(--bg);display:grid;place-items:center;font-weight:900}.leaderRow strong{flex:1}.rewardRow{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid var(--line)}.rewardRow:last-child{border:0}.bottomNav{display:none}.footer{text-align:center;color:var(--muted);font-size:12px;padding:32px 0 10px}
-@keyframes shake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}@keyframes pop{50%{transform:scale(1.04)}}
-@media(max-width:850px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.quizgrid{grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:repeat(2,1fr)}.twocol{grid-template-columns:1fr}.nav{padding:12px}.nav .brand{font-size:19px}.wrap{padding:16px 13px 90px}.heroMain{padding:23px}.navtools .select{max-width:120px}}
-@media(max-width:520px){.grid,.quizgrid{grid-template-columns:1fr 1fr;gap:9px}.category{padding:13px;min-height:132px}.category strong{font-size:14px}.quizcard{padding:12px}.quizcard p{min-height:44px}.stats{gap:8px}.stat{padding:12px;gap:8px}.stat strong{font-size:19px}.stat .emoji{font-size:23px}.navtools .select{width:40px;padding:8px 2px}.navtools .lang{width:70px}.heroMain{min-height:220px}.answers{grid-template-columns:1fr}.answer{min-height:60px}.sectionHead h2{font-size:20px}.bottomNav{position:fixed;bottom:0;left:0;right:0;display:flex;justify-content:space-around;background:var(--panel);border-top:1px solid var(--line);z-index:8;padding:9px 4px calc(9px + env(safe-area-inset-bottom))}.bottomNav button{background:none;color:var(--muted);font-size:11px;display:grid;gap:3px;justify-items:center}.bottomNav b{font-size:20px}.navtools .pill{padding:8px}.hideMobile{display:none}}
+:root{--bg:#09051e;--panel:#171039;--panel2:#241752;--purple:#9c4dff;--pink:#ed54d9;--gold:#ffc857;--text:#fff;--muted:#bcb6e5;--border:#44318a;--green:#46e3a0}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;background:radial-gradient(ellipse at top,#25105b,var(--bg) 58%);color:var(--text);font-family:Arial,sans-serif;min-height:100vh}
+button,input,select{font:inherit}
+button{cursor:pointer}
+button:disabled{opacity:.5;cursor:not-allowed}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.topbar{position:sticky;top:0;z-index:20;background:#10092af5;backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.nav{max-width:1120px;margin:auto;padding:12px 16px;display:flex;align-items:center;gap:12px}
+.brand{color:white;text-decoration:none;font-size:23px;font-weight:900;letter-spacing:-1px}
+.brand span{color:#d47bff}
+.navright{margin-left:auto;display:flex;gap:7px}
+.wrap{max-width:1120px;margin:auto;padding:18px 15px 100px}
+.hero{position:relative;overflow:hidden;background:linear-gradient(120deg,#321078,#741ec4 55%,#251050);border:1px solid #a05bff;border-radius:24px;padding:28px 22px;margin-bottom:16px;box-shadow:0 0 32px #7729ce30}
+.hero:after{content:"✦";position:absolute;right:22px;top:12px;font-size:80px;color:#ffffff20;pointer-events:none}
+.eyebrow{color:#ffda83;font-size:11px;font-weight:bold;letter-spacing:2px;text-transform:uppercase}
+h1{font-size:clamp(30px,6vw,46px);margin:10px 0}
+h2{font-size:21px;margin:0 0 14px}
+h3{font-size:16px;margin:0 0 8px}
+p{line-height:1.5}
+.muted{color:var(--muted)}
+.small{font-size:12px}
+.btn,.tab,.iconbtn,.smallbtn{border:1px solid var(--border);border-radius:13px;padding:11px 14px;color:white;font-weight:bold}
+.btn{background:linear-gradient(110deg,var(--purple),var(--pink));border:0;box-shadow:0 5px 18px #9c4dff25}
+.btn.secondary,.smallbtn,.iconbtn{background:#211747;box-shadow:none}
+.btn.gold{background:linear-gradient(110deg,#f5a623,#ffda72);color:#29143c}
+.full{width:100%}
+.panel{background:linear-gradient(145deg,#19123d,#100c2b);border:1px solid var(--border);border-radius:19px;padding:16px;min-width:0}
+.profile{display:flex;align-items:center;gap:12px;background:#120d31;border:1px solid var(--border);padding:13px;border-radius:16px;margin-bottom:13px}
+.avatar{width:50px;height:50px;display:grid;place-items:center;border-radius:15px;background:linear-gradient(135deg,#963cff,#ed54d9);font-size:27px;flex-shrink:0}
+.profileinfo{flex:1;min-width:0}
+.profileinfo strong{display:block;overflow-wrap:anywhere}
+.levelbar{height:7px;background:#332653;border-radius:10px;margin-top:8px;overflow:hidden}
+.levelbar span{display:block;height:100%;width:0;background:linear-gradient(90deg,#9c4dff,#ff70d9)}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-bottom:13px}
+.stat{background:#17103b;border:1px solid var(--border);border-radius:14px;padding:12px 5px;text-align:center}
+.num{display:block;font-size:20px;font-weight:900;margin:5px 0}
+.label{font-size:11px;color:var(--muted)}
+.quickgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.quick{background:#1a1240;color:white;border:1px solid var(--border);border-radius:14px;padding:12px 3px;font-size:11px;font-weight:bold}
+.quick span{display:block;font-size:24px;margin-bottom:5px}
+.section{margin-top:25px;scroll-margin-top:78px}
+.sectionhead{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.card{background:linear-gradient(155deg,#20164d,#100b2b);border:1px solid var(--border);border-radius:16px;padding:12px;min-width:0;overflow:hidden}
+.art{min-height:90px;display:grid;place-items:center;position:relative;border-radius:12px;margin-bottom:10px;background:radial-gradient(circle at 50% 25%,#6c32a9,#1a103e 72%);font-size:39px}
+.rarity{position:absolute;top:6px;right:6px;background:#08051ddd;border:1px solid #7357ae;border-radius:20px;padding:4px 6px;font-size:9px}
+.cardtitle{font-size:13px;font-weight:bold;margin-bottom:6px}
+.desc{font-size:11px;color:var(--muted);line-height:1.45}
+.tag{display:inline-block;border:1px solid var(--border);color:#dfcaff;background:#24164a;border-radius:20px;font-size:10px;padding:5px 8px;margin:3px 2px 3px 0}
+.tabs{display:flex;gap:7px;overflow-x:auto;padding:2px 0 9px;margin-bottom:7px}
+.tab{white-space:nowrap;background:#130d31;color:#d8ccef;padding:9px 12px;font-size:12px}
+.tab.active{background:linear-gradient(110deg,#8f3bff,#d744db);border-color:transparent;color:white}
+.notice{border:1px solid #6d4aa3;background:#24164b;border-radius:13px;padding:12px;color:#e8dfff;font-size:12px}
+input,select{width:100%;background:#0d0825;color:white;border:1px solid var(--border);border-radius:11px;padding:12px;margin:6px 0 12px}
+label{font-size:12px;color:var(--muted)}
+.bottomnav{position:fixed;z-index:30;bottom:0;left:0;right:0;background:#10092af5;border-top:1px solid var(--border);display:flex;justify-content:space-around;padding:8px 4px max(8px,env(safe-area-inset-bottom));backdrop-filter:blur(14px)}
+.bottomnav button{background:none;border:0;color:#bdb3e7;font-size:10px;min-width:0;padding:4px}
+.bottomnav button span{display:block;font-size:21px;margin-bottom:3px}
+.bottomnav button.active{color:#f0a4ff}
+.hidden{display:none!important}
+.empty{text-align:center;padding:20px 8px;color:var(--muted);font-size:13px}
+#toast{position:fixed;z-index:90;left:50%;bottom:85px;transform:translateX(-50%);background:#281752;border:1px solid #a45aff;border-radius:13px;padding:12px 17px;max-width:90%;text-align:center;box-shadow:0 8px 30px #0008}
+#modalRoot{position:fixed;inset:0;z-index:80;overflow:auto;background:#08041df2;padding:15px;display:grid;place-items:center}
+.modalbox{width:min(520px,100%);max-height:92vh;overflow:auto;background:linear-gradient(145deg,#19123d,#100c2b);border:1px solid #7650c9;border-radius:20px;padding:18px;animation:pop .25s ease-out}
+@keyframes pop{from{transform:scale(.88);opacity:0}to{transform:scale(1);opacity:1}}
+@keyframes bounce{to{transform:translateY(-8px)}}
+@media(min-width:760px){.wrap{padding-top:24px}.dashboard{display:grid;grid-template-columns:1fr 1fr;gap:16px}.dashboard>.section{margin-top:0}.grid{grid-template-columns:repeat(4,minmax(0,1fr))}.hero{padding:36px}}
+@media(max-width:430px){.wrap{padding:13px 10px 95px}.hero{padding:22px 15px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.card{padding:10px}.stats{gap:5px}.num{font-size:17px}.quick{font-size:10px}.quick span{font-size:22px}.brand{font-size:20px}}
 </style>
 </head>
 <body>
-<header class="top"><div class="nav">
-  <div class="brand">Fiction<span>Quiz</span> ✦<small>PLAY · DISCOVER · CHALLENGE</small></div>
-  <div class="navtools">
-    <button class="iconbtn" id="themeBtn" title="Toggle light/dark mode" aria-label="Toggle theme">🌙</button>
-    <select id="language" class="select lang" aria-label="Language"><option value="en">EN</option><option value="ur">اردو</option><option value="hi">हिंदी</option><option value="tr">TR</option><option value="ar">AR</option><option value="ko">한국어</option><option value="bn">বাংলা</option></select>
-    <button class="pill" id="profileBtn">👤 <span id="navName">Quiz Lover</span></button>
-  </div>
-</div></header>
-<main class="wrap">
-<section id="home">
-  <div class="hero">
-    <div class="heroMain"><div class="eyebrow">YOUR LITTLE QUIZ UNIVERSE ✨</div><h1 id="heroTitle">Find your vibe.<br>Prove your knowledge.</h1><p id="heroText">Discover your fictional personality, test your novel knowledge, and challenge your friends.</p><button class="primary" onclick="scrollToSection('featured')">Explore quizzes ↗</button></div>
-    <div class="player"><div class="playerTop"><div class="avatar" id="avatarDisplay">🦋</div><div><h2 id="playerName">Quiz Lover</h2><div class="muted small" id="rankText">Curious Reader · Level 1</div></div><button class="textbtn" style="margin-left:auto" onclick="openProfile()">Edit</button></div><div class="progress"><span id="levelBar" style="width:0%"></span></div><div style="display:flex;justify-content:space-between"><span class="small muted" id="xpLabel">0 XP</span><span class="small muted" id="nextLabel">100 XP to Level 2</span></div><p class="small muted" style="margin-bottom:0">Your progress is saved on this device.</p></div>
-  </div>
-  <div class="stats">
-    <div class="stat"><span class="emoji">⚡</span><div><strong id="xpStat">0</strong><span>XP Points</span></div></div>
-    <div class="stat"><span class="emoji">🔥</span><div><strong id="streakStat">0</strong><span>Day Streak</span></div></div>
-    <div class="stat"><span class="emoji">🏆</span><div><strong id="doneStat">0</strong><span>Quizzes Played</span></div></div>
-    <div class="stat"><span class="emoji">🎁</span><div><strong id="rewardStat">0</strong><span>Items Unlocked</span></div></div>
-  </div>
-  <section class="section" id="categories"><div class="sectionHead"><div><h2>🎨 Quiz Categories</h2><p>Pick a mood and find your next quiz.</p></div><button class="textbtn" onclick="showAllQuizzes()">View all →</button></div><div class="grid" id="categoryGrid"></div></section>
-  <section class="section" id="featured"><div class="sectionHead"><div><h2>✨ Featured Quizzes</h2><p>Play, discover your result, and earn XP.</p></div><button class="textbtn" onclick="showAllQuizzes()">All quizzes →</button></div><div class="quizgrid" id="quizGrid"></div></section>
-  <!-- FICTIONQUIZ EVENTS & GIFT BOX -->
-<section class="section">
-  <div class="twocol">
-    <div class="panel">
-      <h3>🎁 Mystery Gift Box</h3>
-      <p class="muted small">Open your daily mystery gift!</p>
-      <button class="primary" onclick="openMysteryGift()">
-        🎁 Open Gift Box
-      </button>
-      <p id="giftStatus" class="muted small"></p>
-    </div>
+<header class="topbar">
+<nav class="nav">
+<a class="brand" href="#home">Fiction<span>Quiz</span> ✦</a>
+<div class="navright">
+<button class="iconbtn" onclick="go('notifications')" aria-label="Notifications">🔔</button>
+<button class="iconbtn" onclick="go('profile')" aria-label="Profile">👤</button>
+</div>
+</nav>
+</header>
 
-    <div class="panel">
-      <h3>🎉 Special Events</h3>
-      <p class="muted small">Join quiz events and collect rewards.</p>
-      <button class="primary" onclick="openEvents()">
-        Explore Events ✨
-      </button>
-    </div>
-  </div>
+<main class="wrap" id="home">
+<section class="hero">
+<div class="eyebrow">✦ Your fictional universe ✦</div>
+<h1>Play. Collect.<br>Unlock Magic.</h1>
+<p>Take quizzes, earn coins, collect character cards and build your legendary collection.</p>
+<button class="btn" onclick="go('quizzes')">Start a Quiz ✨</button>
+<button class="btn secondary" onclick="go('collection')">My Collection 🃏</button>
 </section>
-<!-- END EVENTS & GIFT BOX -->
-  <section class="section"><div class="twocol">
-    <div class="panel"><h3>🌞 Daily Quiz</h3><p class="muted small">A new pick each day. One daily bonus per date.</p><div id="dailyCard"></div></div>
-    <div class="panel"><h3>💫 Weekly Challenge</h3><p class="muted small">Mixed trivia challenge. Best score wins bragging rights on this device.</p><div id="weeklyCard"></div></div>
-  </div></section>
-  <section class="section"><div class="twocol">
-    <div class="panel"><div class="sectionHead"><div><h3>🎯 Daily Missions</h3><p>Small steps, bonus XP.</p></div></div><div id="missions"></div><button class="secondary" onclick="claimDailyReward()" style="width:100%;margin-top:10px">🎁 Claim daily reward</button></div>
-    <div class="panel"><div class="sectionHead"><div><h3>🏅 Achievements</h3><p>Little milestones worth celebrating.</p></div></div><div id="achievements"></div><button class="secondary" style="width:100%;margin-top:10px" onclick="openRewards()">Open rewards & closet</button></div>
-  </div></section>
-  <section class="section"><div class="twocol">
-    <div class="panel"><div class="sectionHead"><div><h3>👑 Leaderboard</h3><p>Local demo ranking. Not a global leaderboard.</p></div><button class="textbtn" onclick="openLeaderboard()">View →</button></div><div id="leaderboard"></div></div>
-    <div class="panel"><h3>💌 Challenge a Friend</h3><p class="muted small">Create a quiz link and send it to a friend. Their score is recorded on their device, not synced here.</p><button class="primary" onclick="openCreate()">Create your own quiz</button><button class="secondary" onclick="openJoin()" style="margin-left:6px">Join a challenge</button><div id="challengeInfo" class="small muted" style="margin-top:12px"></div></div>
-  </div></section>
-  <div class="footer">Made for curious minds and fiction lovers ✦ FictionQuiz saves progress in your browser. Global scores and cross-device sync require a backend.</div>
+
+<div class="dashboard">
+<section class="panel">
+<div class="profile">
+<div class="avatar" id="avatar">🦋</div>
+<div class="profileinfo"><strong id="playerName">Quiz Player</strong><span class="muted small" id="levelText">Level 1 • Beginner</span><div class="levelbar"><span id="levelBar"></span></div></div>
+<button class="smallbtn" onclick="go('profile')">Edit</button>
+</div>
+<div class="stats">
+<div class="stat">⭐<span class="num" id="xp">0</span><span class="label">XP</span></div>
+<div class="stat">🪙<span class="num" id="coins">100</span><span class="label">Coins</span></div>
+<div class="stat">🔥<span class="num" id="streak">0</span><span class="label">Day Streak</span></div>
+</div>
+<div class="quickgrid">
+<button class="quick" onclick="go('quizzes')"><span>🧠</span>Quizzes</button>
+<button class="quick" onclick="go('collection')"><span>🃏</span>Cards</button>
+<button class="quick" onclick="go('rewards')"><span>🎁</span>Gifts</button>
+<button class="quick" onclick="go('shop')"><span>🛍️</span>Shop</button>
+</div>
 </section>
-<section id="playScreen" class="hide">
-  <div class="questionBox"><button class="secondary" onclick="goHome()">← Exit quiz</button><div class="qTop" style="margin-top:20px"><span id="quizNameTop">Quiz</span><span id="questionCount">Question 1/5</span></div><div class="progress"><span id="quizProgress" style="width:0%"></span></div><div class="question" id="questionText"></div><div class="answers" id="answerGrid"></div><div class="feedback" id="feedback" aria-live="polite"></div><div style="text-align:center"><button class="primary hide" id="nextBtn" onclick="nextQuestion()">Next question →</button></div></div>
+<section class="panel">
+<h2>🌟 Daily Check-in</h2>
+<p class="muted small">Come back each day to keep your streak going.</p>
+<div class="notice" id="dailyStatus">Your daily challenge is ready.</div>
+<button class="btn full" style="margin-top:12px" onclick="startDaily()">Play Daily Challenge</button>
+<button class="btn gold full" style="margin-top:8px" onclick="openDailyGift()">🎁 Open Daily Gift</button>
 </section>
-<section id="resultScreen" class="hide"><div class="result"><div class="resultCard"><div class="resultEmoji" id="resultEmoji">✨</div><div class="eyebrow">QUIZ COMPLETE</div><h1 id="resultTitle">Your result</h1><p class="muted" id="resultDescription"></p><div class="stats" style="grid-template-columns:repeat(2,1fr)"><div class="stat"><span class="emoji">🎯</span><div><strong id="resultScore">0/5</strong><span>Correct answers</span></div></div><div class="stat"><span class="emoji">⚡</span><div><strong id="resultXP">+0 XP</strong><span>Earned this round</span></div></div></div><div id="resultNote" class="muted small"></div><div style="display:flex;justify-content:center;gap:9px;flex-wrap:wrap;margin-top:20px"><button class="primary" onclick="goHome()">Back to home</button><button class="secondary" onclick="shareResult()">Share result</button><button class="secondary" onclick="showAllQuizzes()">Play another</button></div></div></div></section>
+</div>
+
+<section class="section" id="quizzes">
+<div class="sectionhead"><h2>🧠 Play & Earn</h2><span class="tag">5 topics</span></div>
+<div class="panel">
+<div class="tabs" id="quizTabs">
+<button class="tab active" onclick="filterQuiz('All',this)">All</button>
+<button class="tab" onclick="filterQuiz('Knowledge',this)">Knowledge</button>
+<button class="tab" onclick="filterQuiz('Science',this)">Science</button>
+<button class="tab" onclick="filterQuiz('History',this)">History</button>
+<button class="tab" onclick="filterQuiz('Fantasy',this)">Fantasy</button>
+<button class="tab" onclick="filterQuiz('Literature',this)">Literature</button>
+</div>
+<div class="grid" id="quizGrid"></div>
+</div>
+</section>
+
+<section class="section" id="collection">
+<div class="sectionhead"><h2>🃏 My Collection</h2><span class="tag" id="cardCount">0 cards</span></div>
+<div class="panel">
+<div class="tabs" id="typeTabs">
+<button class="tab active" onclick="filterType('All',this)">All</button>
+<button class="tab" onclick="filterType('Character',this)">Characters</button>
+<button class="tab" onclick="filterType('Theme',this)">Themes</button>
+<button class="tab" onclick="filterType('Sticker',this)">Stickers</button>
+</div>
+<div class="tabs" id="rarityTabs">
+<button class="tab active" onclick="filterRarity('All',this)">All Rarities</button>
+<button class="tab" onclick="filterRarity('Common',this)">Common</button>
+<button class="tab" onclick="filterRarity('Rare',this)">Rare</button>
+<button class="tab" onclick="filterRarity('Epic',this)">Epic</button>
+<button class="tab" onclick="filterRarity('Legendary',this)">Legendary</button>
+</div>
+<div class="grid" id="collectionGrid"></div>
+</div>
+</section>
+
+<section class="section" id="rewards">
+<div class="sectionhead"><h2>🎁 Gifts & Rewards</h2></div>
+<div class="panel">
+<div class="stats">
+<div class="stat">⭐<span class="num" id="rewardXP">0</span><span class="label">Total XP</span></div>
+<div class="stat">🪙<span class="num" id="rewardCoins">100</span><span class="label">Coins</span></div>
+<div class="stat">🎴<span class="num" id="rewardCards">0</span><span class="label">Cards</span></div>
+</div>
+<div class="grid">
+<div class="card"><div class="art">🎁</div><div class="cardtitle">Daily Mystery Box</div><p class="desc">One free mystery reward each day.</p><button class="btn full" onclick="openDailyGift()">Open Gift</button></div>
+<div class="card"><div class="art">💎</div><div class="cardtitle">Rare Gift Box</div><p class="desc">A chance to unlock a rare card.</p><button class="btn full" onclick="buyBox('rare')">300 🪙</button></div>
+<div class="card"><div class="art">🌟</div><div class="cardtitle">Epic Gift Box</div><p class="desc">A chance to unlock an epic card.</p><button class="btn full" onclick="buyBox('epic')">600 🪙</button></div>
+<div class="card"><div class="art">💌</div><div class="cardtitle">Sticker Pack</div><p class="desc">Add a sticker to your collection.</p><button class="btn full" onclick="buySticker()">150 🪙</button></div>
+</div>
+<div class="section"><h3>🎒 My Unlocked Gifts</h3><div class="grid" id="giftInventory"></div></div>
+</div>
+</section>
+
+<section class="section" id="shop">
+<div class="sectionhead"><h2>🛍️ Coin Shop</h2></div>
+<div class="panel"><p class="muted small">Use coins to unlock characters, themes and stickers.</p><div class="grid" id="shopGrid"></div></div>
+</section>
+
+<section class="section" id="events">
+<div class="sectionhead"><h2>🎉 Special Event</h2><span class="tag">Fantasy Hunt</span></div>
+<div class="panel">
+<div class="card"><div class="art">🌌</div><h3>Fantasy Card Hunt</h3><p class="desc">Complete three fantasy quizzes to earn an event card.</p><div class="notice" id="eventProgress">Progress: 0 / 3</div><button class="btn full" style="margin-top:12px" onclick="startEvent()">Play Event Quiz</button></div>
+<div class="section"><h3>🏆 Achievements</h3><div class="grid" id="achievementGrid"></div></div>
+</div>
+</section>
+
+<section class="section" id="leaderboard">
+<div class="sectionhead"><h2>🌍 Global Leaderboard</h2><button class="smallbtn" onclick="loadLeaderboard()">Refresh</button></div>
+<div class="panel">
+<p class="muted small">Sign in to sync progress and appear on the leaderboard. Scores are client-reported in this basic version.</p>
+<div id="leaderboardStatus" class="notice">Firebase is connecting…</div>
+<div id="leaderboardList" class="section"></div>
+</div>
+</section>
+
+<section class="section" id="profile">
+<div class="sectionhead"><h2>👤 Player Profile</h2></div>
+<div class="panel">
+<label for="nameInput">Player name</label><input id="nameInput" maxlength="24" placeholder="Enter your name">
+<label for="languageInput">Language / زبان</label>
+<select id="languageInput"><option value="en">English</option><option value="ur">اردو (Urdu)</option></select>
+<label for="emailInput">Email address (for account sync)</label><input id="emailInput" type="email" autocomplete="email" placeholder="you@example.com">
+<label for="passwordInput">Password (at least 6 characters)</label><input id="passwordInput" type="password" autocomplete="current-password" placeholder="Password">
+<button class="btn full" onclick="saveProfile()">Save Local Profile</button>
+<button class="btn full" style="margin-top:8px" onclick="createAccount()">Create Account & Sync</button>
+<button class="btn secondary full" style="margin-top:8px" onclick="loginAccount()">Sign In & Sync</button>
+<button class="btn secondary full" style="margin-top:8px" onclick="logoutAccount()">Sign Out</button>
+<div class="notice" style="margin-top:12px" id="authStatus">Local play is available. Sign in to sync across devices.</div>
+<p class="muted small">Keep your password private. This page never needs a Firebase private key.</p>
+</div>
+</section>
+
+<section class="section" id="notifications">
+<div class="sectionhead"><h2>🔔 Notifications</h2></div>
+<div class="panel"><p class="muted small">Enable browser notifications where supported. This does not schedule automatic daily push reminders.</p><button class="btn" onclick="enableNotifications()">Enable Notifications</button><p class="muted small" id="notificationStatus"></p></div>
+</section>
 </main>
-<nav class="bottomNav"><button onclick="goHome()"><b>⌂</b>Home</button><button onclick="scrollToSection('categories')"><b>▦</b>Categories</button><button onclick="scrollToSection('featured')"><b>✦</b>Quizzes</button><button onclick="openRewards()"><b>🎁</b>Rewards</button><button onclick="openProfile()"><b>☺</b>Profile</button></nav>
-<div id="modalRoot"></div><div id="toast" class="toast hide" role="status"></div>
+
+<nav class="bottomnav">
+<button class="active" onclick="go('home')"><span>🏠</span>Home</button>
+<button onclick="go('quizzes')"><span>🧠</span>Quiz</button>
+<button onclick="go('collection')"><span>🃏</span>Cards</button>
+<button onclick="go('shop')"><span>🛍️</span>Shop</button>
+<button onclick="go('events')"><span>🎉</span>Events</button>
+</nav>
+<div id="toast" class="hidden" role="status"></div>
+<div id="modalRoot" class="hidden"></div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 <script>
 "use strict";
 const $=id=>document.getElementById(id);
-const categories=[
- {id:"novels",name:"Urdu Novels",emoji:"📚",cls:"c1",desc:"Novel worlds, characters & tropes"},
- {id:"personality",name:"Personality",emoji:"🦋",cls:"c4",desc:"Discover your fictional vibe"},
- {id:"friendship",name:"Friendship",emoji:"💗",cls:"c7",desc:"Bestie tests and friendship goals"},
- {id:"kpop",name:"K-Pop & BTS",emoji:"🎤",cls:"c5",desc:"Fan vibes and music moods"},
- {id:"kdrama",name:"K-Drama",emoji:"🎬",cls:"c3",desc:"Drama tropes and comfort stories"},
- {id:"knowledge",name:"General Knowledge",emoji:"🌍",cls:"c2",desc:"Facts, science, history and more"},
- {id:"pakistan",name:"Pakistan",emoji:"🇵🇰",cls:"c6",desc:"Culture, places and history"},
- {id:"islamic",name:"Islamic Knowledge",emoji:"🌙",cls:"c8",desc:"Learn respectful basics"}
+const today=()=>{const d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")};
+const yesterday=()=>{const d=new Date();d.setDate(d.getDate()-1);return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")};
+const DEFAULT={name:"Quiz Player",avatar:"🦋",xp:0,coins:100,streak:0,lastDay:"",completed:[],owned:[],gifts:[],giftDate:"",dailyDate:"",dailyDone:false,eventCount:0,eventClaimed:false,achievements:[],language:"en"};
+let game;
+try{game={...DEFAULT,...JSON.parse(localStorage.getItem("fictionQuizSave")||"{}")}}catch(e){game={...DEFAULT}}
+["completed","owned","gifts","achievements"].forEach(k=>{if(!Array.isArray(game[k]))game[k]=[]});
+let currentCategory="All",currentType="All",currentRarity="All";
+let activeQuiz=null,questions=[],qi=0,score=0,answered=false,quizMode="normal",dailyRewardGiven=false;
+let auth=null,db=null,currentUser=null,cloudReady=false,saving=false,saveTimer=null;
+
+const cards=[
+{id:"moon-prince",name:"Moon Prince",type:"Character",rarity:"Common",art:"🌙",price:100,desc:"A mysterious moonlit hero."},
+{id:"star-witch",name:"Star Witch",type:"Character",rarity:"Rare",art:"🧙‍♀️",price:250,desc:"A keeper of celestial magic."},
+{id:"shadow-hero",name:"Shadow Hero",type:"Character",rarity:"Epic",art:"🦸",price:500,desc:"Guardian of the night."},
+{id:"golden-queen",name:"Golden Queen",type:"Character",rarity:"Legendary",art:"👑",price:1000,desc:"The rarest royal character."},
+{id:"fantasy-world",name:"Fantasy World",type:"Theme",rarity:"Common",art:"🏰",price:120,desc:"A magical fantasy theme."},
+{id:"royal-dream",name:"Royal Dreams",type:"Theme",rarity:"Rare",art:"💎",price:280,desc:"A luxurious royal theme."},
+{id:"dark-academia",name:"Dark Academia",type:"Theme",rarity:"Epic",art:"📚",price:550,desc:"A mysterious academic aesthetic."},
+{id:"moonlight",name:"Moonlight",type:"Theme",rarity:"Legendary",art:"🌌",price:900,desc:"A celestial theme."},
+{id:"sparkle-sticker",name:"Magic Sparkle",type:"Sticker",rarity:"Common",art:"✨",price:50,desc:"A sparkling sticker."},
+{id:"heart-sticker",name:"Friendship Heart",type:"Sticker",rarity:"Rare",art:"💖",price:120,desc:"A friendship sticker."},
+{id:"crown-sticker",name:"Royal Crown",type:"Sticker",rarity:"Epic",art:"👑",price:300,desc:"A premium royal sticker."},
+{id:"legend-sticker",name:"Legend Badge",type:"Sticker",rarity:"Legendary",art:"🏆",price:600,desc:"A legendary badge."}
 ];
 const quizzes=[
-{id:"novel-vibe",title:"Which Urdu Novel Vibe Are You?",category:"novels",emoji:"📖",desc:"Find the story mood that fits you.",type:"personality",questions:[
-{q:"Your perfect evening is…",a:["Reading with chai ☕","A long walk under the stars 🌙","Solving a mystery 🔎","Laughing with family 💗"],r:["The Soft Romantic","The Dreamer","The Mystery Seeker","The Warm Soul"]},
-{q:"In a story, you notice…",a:["Meaningful dialogues","Hidden clues","Strong friendships","Unexpected twists"],r:["The Soft Romantic","The Mystery Seeker","The Loyal Heart","The Plot Detective"]},
-{q:"Pick a setting.",a:["A cosy old library","A rainy city street","A grand family home","A quiet seaside town"],r:["The Bookish Soul","The Dreamer","The Family Anchor","The Free Spirit"]}]},
-{id:"friendship-vibe",title:"What Kind of Bestie Are You?",category:"friendship",emoji:"🫶",desc:"Find your role in the friend group.",type:"personality",questions:[
-{q:"Your friend has a bad day. You…",a:["Listen without judging","Make them laugh","Help solve the problem","Show up with snacks"],r:["The Safe Place","The Sunshine","The Problem Solver","The Care Giver"]},
-{q:"In the group chat, you are…",a:["The advice giver","The meme sender","The quiet observer","The planner"],r:["The Safe Place","The Sunshine","The Thoughtful One","The Organiser"]},
-{q:"Choose a friendship value.",a:["Trust","Fun","Honesty","Showing up"],r:["The Loyal Heart","The Sunshine","The Truth Teller","The Safe Place"]}]},
-{id:"colour-soul",title:"What Does Your Favourite Colour Say?",category:"personality",emoji:"🎨",desc:"A light-hearted colour personality quiz.",type:"personality",questions:[
-{q:"Choose a colour you love.",a:["Pink 🌸","Blue 🌊","Black 🖤","Green 🌿"],r:["The Gentle Dreamer","The Calm Mind","The Quiet Power","The Growing Soul"]},
-{q:"Pick your ideal place.",a:["Flower garden","Ocean view","Cosy night café","Forest trail"],r:["The Gentle Dreamer","The Calm Mind","The Quiet Power","The Growing Soul"]},
-{q:"Your friends may call you…",a:["Sweet","Reliable","Mysterious","Grounded"],r:["The Gentle Dreamer","The Calm Mind","The Quiet Power","The Growing Soul"]}]},
-{id:"food-mood",title:"Your Comfort Food Personality",category:"personality",emoji:"🍜",desc:"Choose your comfort plate and discover your vibe.",type:"personality",questions:[
-{q:"Pick your comfort food.",a:["Biryani 🍚","Noodles 🍜","Pizza 🍕","Dessert 🍰"],r:["The Big Energy","The Curious Soul","The Social Butterfly","The Sweet Dreamer"]},
-{q:"Your ideal hangout includes…",a:["A family feast","Trying a new café","A movie and pizza","Tea and something sweet"],r:["The Big Energy","The Curious Soul","The Social Butterfly","The Sweet Dreamer"]},
-{q:"Choose a weekend plan.",a:["A lively get-together","Explore somewhere new","Friends and games","A peaceful reset"],r:["The Big Energy","The Curious Soul","The Social Butterfly","The Sweet Dreamer"]}]},
-{id:"kdrama-vibe",title:"Which K-Drama Trope Is Your Life?",category:"kdrama",emoji:"🎬",desc:"Slow burn, comedy, mystery or found family?",type:"personality",questions:[
-{q:"Choose a plot mood.",a:["Slow-burn feelings","Funny misunderstandings","A clever mystery","Found family"],r:["The Slow Burn","The Rom-Com Lead","The Mystery Solver","The Found-Family Heart"]},
-{q:"Your perfect episode has…",a:["A meaningful conversation","A hilarious scene","A surprising clue","A heartfelt reunion"],r:["The Slow Burn","The Rom-Com Lead","The Mystery Solver","The Found-Family Heart"]},
-{q:"Pick a soundtrack.",a:["Soft piano","Upbeat pop","Dramatic strings","Warm acoustic"],r:["The Slow Burn","The Rom-Com Lead","The Mystery Solver","The Found-Family Heart"]}]},
-{id:"kpop-fan",title:"What Kind of K-Pop Fan Are You?",category:"kpop",emoji:"🎧",desc:"A fun fan-vibe quiz; no official artist affiliation.",type:"personality",questions:[
-{q:"Your favourite comeback moment is…",a:["The choreography","The vocals","The styling","The behind-the-scenes fun"],r:["The Dance Detective","The Vocal Lover","The Style Icon","The Fandom Friend"]},
-{q:"Your playlist is mostly…",a:["High-energy tracks","Emotional songs","Aesthetic chill songs","A little of everything"],r:["The Dance Detective","The Vocal Lover","The Style Icon","The Fandom Friend"]},
-{q:"At a concert, you would…",a:["Learn every move","Sing every word","Plan the outfit","Enjoy it with friends"],r:["The Dance Detective","The Vocal Lover","The Style Icon","The Fandom Friend"]}]},
-{id:"knowledge",title:"Quick General Knowledge",category:"knowledge",emoji:"🌍",desc:"Five quick facts from around the world.",type:"trivia",questions:[
-{q:"Which planet is known as the Red Planet?",a:["Venus","Mars","Jupiter","Mercury"],correct:1,explain:"Mars looks reddish because of iron oxide on its surface."},
-{q:"How many sides does a hexagon have?",a:["Five","Six","Seven","Eight"],correct:1},
-{q:"Which is the largest ocean on Earth?",a:["Atlantic","Indian","Arctic","Pacific"],correct:3},
-{q:"What gas do plants absorb during photosynthesis?",a:["Oxygen","Nitrogen","Carbon dioxide","Helium"],correct:2},
-{q:"Which instrument measures temperature?",a:["Barometer","Thermometer","Compass","Ruler"],correct:1}]},
-{id:"science",title:"Science Mini Quiz",category:"knowledge",emoji:"🔬",desc:"Easy science questions for curious minds.",type:"trivia",questions:[
-{q:"Which part of a plant usually absorbs water?",a:["Flower","Roots","Fruit","Petal"],correct:1},
-{q:"What is H₂O commonly called?",a:["Salt","Oxygen","Water","Hydrogen"],correct:2},
-{q:"Earth orbits which object?",a:["The Moon","Mars","The Sun","Polaris"],correct:2},
-{q:"Which organ pumps blood around the body?",a:["Lungs","Brain","Heart","Stomach"],correct:2},
-{q:"Which state of matter has a fixed shape?",a:["Solid","Liquid","Gas","Plasma only"],correct:0}]},
-{id:"pakistan-quiz",title:"Pakistan Knowledge Challenge",category:"pakistan",emoji:"🇵🇰",desc:"Test your knowledge of Pakistan.",type:"trivia",questions:[
-{q:"What is the capital of Pakistan?",a:["Karachi","Lahore","Islamabad","Peshawar"],correct:2},
-{q:"Pakistan became independent in…",a:["1940","1947","1956","1965"],correct:1},
-{q:"Which is Pakistan's national language?",a:["Punjabi","Sindhi","Urdu","Pashto"],correct:2},
-{q:"Which sea lies south of Pakistan?",a:["Red Sea","Arabian Sea","Black Sea","Caspian Sea"],correct:1},
-{q:"Minar-e-Pakistan is in…",a:["Quetta","Lahore","Karachi","Multan"],correct:1}]},
-{id:"islamic-knowledge",title:"Islamic Knowledge Basics",category:"islamic",emoji:"🌙",desc:"A respectful quiz on basic Islamic knowledge.",type:"trivia",questions:[
-{q:"How many pillars of Islam are commonly taught?",a:["Three","Four","Five","Six"],correct:2},
-{q:"What is the name of the holy month of fasting?",a:["Shawwal","Ramadan","Safar","Rajab"],correct:1},
-{q:"Which city is home to the Kaaba?",a:["Madinah","Makkah","Jerusalem","Cairo"],correct:1},
-{q:"How many daily obligatory prayers are there in Islam?",a:["Three","Four","Five","Seven"],correct:2},
-{q:"What is the Islamic greeting commonly translated as 'peace be upon you'?",a:["Shukran","Bismillah","Assalamu alaikum","Alhamdulillah"],correct:2}]},
-{id:"friend-check",title:"Who Knows You Best?",category:"friendship",emoji:"💌",desc:"Create a quiz with your own answers to send to friends.",type:"custom"}
+{id:"knowledge",title:"General Knowledge",category:"Knowledge",art:"🌍",questions:[
+["Largest ocean on Earth?",["Atlantic","Indian","Pacific","Arctic"],2],
+["Days in a leap year?",["364","365","366","367"],2],
+["Which planet is the Red Planet?",["Venus","Mars","Jupiter","Mercury"],1],
+["Capital of Japan?",["Seoul","Beijing","Tokyo","Bangkok"],2],
+["Which animal is tallest?",["Elephant","Giraffe","Camel","Horse"],1],
+["Sides of a hexagon?",["Five","Six","Seven","Eight"],1],
+["Which instrument measures temperature?",["Barometer","Compass","Thermometer","Telescope"],2],
+["Largest continent?",["Africa","Europe","Asia","Australia"],2],
+["Main language of Brazil?",["Spanish","Portuguese","French","English"],1],
+["Minutes in two hours?",["60","90","120","180"],2]]},
+{id:"science",title:"Science Explorer",category:"Science",art:"🔬",questions:[
+["Chemical symbol for water?",["CO2","H2O","O2","NaCl"],1],
+["Which organ pumps blood?",["Lungs","Brain","Heart","Kidneys"],2],
+["Which gas do plants absorb?",["Oxygen","Carbon dioxide","Helium","Hydrogen"],1],
+["Planets in our solar system?",["Seven","Eight","Nine","Ten"],1],
+["Force that pulls objects toward Earth?",["Friction","Magnetism","Gravity","Pressure"],2],
+["Center of an atom?",["Cell","Nucleus","Core shell","Molecule"],1],
+["Vitamin associated with sunlight exposure?",["A","B12","C","D"],3],
+["Water's boiling point at sea level?",["50°C","75°C","100°C","150°C"],2],
+["Which plant part absorbs water?",["Flower","Leaves","Roots","Fruit"],2],
+["Earth's natural satellite?",["Mars","Moon","Sun","Venus"],1]]},
+{id:"history",title:"History Challenge",category:"History",art:"🏛️",questions:[
+["The Great Wall is in which country?",["India","China","Japan","Egypt"],1],
+["Ancient pyramids are associated with?",["Greece","Egypt","Italy","Mexico"],1],
+["First person to walk on the Moon?",["Yuri Gagarin","Neil Armstrong","Buzz Aldrin","John Glenn"],1],
+["The Renaissance began in?",["Italy","Canada","Brazil","Norway"],0],
+["Mohenjo-daro belonged to which civilization?",["Roman","Indus Valley","Maya","Greek"],1],
+["Ancient Olympic Games began in?",["Greece","China","Egypt","Persia"],0],
+["Capital of the Roman Empire?",["Athens","Rome","Paris","London"],1],
+["Printing press associated with?",["Galileo","Gutenberg","Newton","Edison"],1],
+["Which ship sank in 1912?",["Mayflower","Titanic","Endeavour","Beagle"],1],
+["Petra is in which modern country?",["Jordan","Turkey","Iran","Iraq"],0]]},
+{id:"fantasy",title:"Fantasy & Fiction",category:"Fantasy",art:"🪄",questions:[
+["Which creature breathes fire in fantasy stories?",["Dragon","Unicorn","Phoenix","Mermaid"],0],
+["Object commonly associated with a wizard?",["Wand","Compass","Helmet","Anchor"],0],
+["A phoenix is traditionally reborn from?",["Ice","Ashes","Water","Stone"],1],
+["Half-human, half-fish creature?",["Centaur","Mermaid","Goblin","Fairy"],1],
+["What does an invisibility cloak do?",["Hides its wearer","Creates rain","Freezes time","Summons food"],0],
+["A common fantasy setting?",["Magical kingdom","Office spreadsheet","Airport","Car repair shop"],0],
+["A tiny magical being?",["Fairy","Shark","Rhino","Eagle"],0],
+["Magical item used for fortune-telling?",["Crystal ball","Stopwatch","Ruler","Battery"],0],
+["What is a quest?",["Journey to achieve a goal","Sandwich","Instrument","Planet"],0],
+["Creature associated with the full moon?",["Werewolf","Dolphin","Penguin","Parrot"],0]]},
+{id:"literature",title:"Literature Corner",category:"Literature",art:"📚",questions:[
+["Who wrote Pride and Prejudice?",["Jane Austen","Emily Brontë","Charles Dickens","Mark Twain"],0],
+["Who wrote Romeo and Juliet?",["William Shakespeare","Oscar Wilde","George Orwell","J.R.R. Tolkien"],0],
+["Main character in a story?",["Protagonist","Publisher","Illustrator","Editor"],0],
+["Grouped lines in a poem?",["Stanza","Chapter","Index","Footnote"],0],
+["Who wrote Alice's Adventures in Wonderland?",["Lewis Carroll","Jules Verne","Arthur Conan Doyle","H.G. Wells"],0],
+["Time and place of a story?",["Setting","Theme song","Appendix","Glossary"],0],
+["Who wrote The Jungle Book?",["Rudyard Kipling","Jane Austen","Agatha Christie","Roald Dahl"],0],
+["A person's life story written by that person?",["Autobiography","Biography","Dictionary","Atlas"],0],
+["A book's list of chapters and pages?",["Contents","Index card","Preface","Caption"],0],
+["Central message of a story?",["Theme","Font","Cover","Publisher"],0]]}
 ];
-const weeklyQuestions=[
-{q:"Which author wrote the Harry Potter series?",a:["J. R. R. Tolkien","J. K. Rowling","Roald Dahl","C. S. Lewis"],correct:1},
-{q:"Which continent is the Sahara Desert in?",a:["Asia","South America","Africa","Australia"],correct:2},
-{q:"What is the closest star to Earth?",a:["Sirius","The Sun","Polaris","Vega"],correct:1},
-{q:"Which Pakistani city is famous for its historic Badshahi Mosque?",a:["Lahore","Karachi","Hyderabad","Gwadar"],correct:0},
-{q:"What is the chemical symbol for gold?",a:["Ag","Gd","Au","Go"],correct:2},
-{q:"How many days are in a leap year?",a:["364","365","366","367"],correct:2},
-{q:"Which language is primarily written in Hangul?",a:["Japanese","Korean","Thai","Turkish"],correct:1},
-{q:"Which ocean is between Africa and Australia?",a:["Indian","Pacific","Atlantic","Arctic"],correct:0}
+function toast(s){const el=$("toast");el.textContent=s;el.classList.remove("hidden");clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>el.classList.add("hidden"),2600)}
+function go(id){$(id)?.scrollIntoView({behavior:"smooth",block:"start"});document.querySelectorAll(".bottomnav button").forEach(b=>b.classList.toggle("active",b.getAttribute("onclick")?.includes("'"+id+"'")))}
+function own(id){return game.owned.includes(id)}
+function level(){return Math.floor(game.xp/100)+1}
+function safe(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function saveLocal(){try{localStorage.setItem("fictionQuizSave",JSON.stringify(game))}catch(e){toast("Device storage is full.")}}
+function scheduleSave(){saveLocal();clearTimeout(saveTimer);saveTimer=setTimeout(()=>saveCloud(),600)}
+function updateUI(){
+$("playerName").textContent=game.name;$("avatar").textContent=game.avatar||"🦋";
+$("xp").textContent=game.xp;$("coins").textContent=game.coins;$("streak").textContent=game.streak;
+$("levelText").textContent="Level "+level()+" • "+(level()>=10?"Expert":level()>=5?"Advanced":"Beginner");
+$("levelBar").style.width=(game.xp%100)+"%";
+$("rewardXP").textContent=game.xp;$("rewardCoins").textContent=game.coins;$("rewardCards").textContent=game.owned.length;$("cardCount").textContent=game.owned.length+" cards";
+$("dailyStatus").textContent=game.dailyDate===today()&&game.dailyDone?"Today's challenge completed ✓ Come back tomorrow!":"Your daily challenge is ready!";
+$("eventProgress").textContent="Progress: "+Math.min(game.eventCount,3)+" / 3"+(game.eventClaimed?" • Reward claimed ✓":"");
+$("nameInput").value=game.name;$("languageInput").value=game.language||"en";
+}
+function renderQuizzes(cat=currentCategory){
+currentCategory=cat;const list=quizzes.filter(q=>cat==="All"||q.category===cat);
+$("quizGrid").innerHTML=list.map(q=>`<article class="card"><div class="art">${q.art}<span class="rarity">${q.questions.length} Qs</span></div><div class="cardtitle">${q.title}</div><p class="desc">${q.category} • ${game.completed.includes(q.id)?"Reward claimed":"Earn XP + coins"}</p><button class="btn full" onclick="startQuiz('${q.id}')">Play Quiz</button></article>`).join("");
+}
+function filterQuiz(cat,b){currentCategory=cat;document.querySelectorAll("#quizTabs .tab").forEach(x=>x.classList.remove("active"));b.classList.add("active");renderQuizzes(cat)}
+function renderCards(){
+const list=cards.filter(c=>(currentType==="All"||c.type===currentType)&&(currentRarity==="All"||c.rarity===currentRarity));
+$("collectionGrid").innerHTML=list.map(c=>{const unlocked=own(c.id);return `<article class="card"><div class="art" style="${unlocked?"":"filter:saturate(.3)"}">${unlocked?c.art:"🔒"}<span class="rarity">${c.rarity}</span></div><div class="cardtitle">${unlocked?c.name:"Locked "+c.type}</div><p class="desc">${unlocked?safe(c.desc):"Unlock to reveal this card."}</p><span class="tag">${c.type}</span>${unlocked?'<span class="tag">Unlocked ✓</span>':`<button class="btn full" onclick="buyCard('${c.id}')">${c.price} 🪙</button>`}</article>`}).join("");
+}
+function filterType(t,b){currentType=t;document.querySelectorAll("#typeTabs .tab").forEach(x=>x.classList.remove("active"));b.classList.add("active");renderCards()}
+function filterRarity(r,b){currentRarity=r;document.querySelectorAll("#rarityTabs .tab").forEach(x=>x.classList.remove("active"));b.classList.add("active");renderCards()}
+function renderShop(){
+$("shopGrid").innerHTML=cards.filter(c=>!own(c.id)).map(c=>`<article class="card"><div class="art">${c.art}<span class="rarity">${c.rarity}</span></div><div class="cardtitle">${c.name}</div><p class="desc">${c.desc}</p><button class="btn full" onclick="buyCard('${c.id}')">Unlock • ${c.price} 🪙</button></article>`).join("")||'<div class="empty">All cards collected! ✨</div>';
+}
+function renderGifts(){
+$("giftInventory").innerHTML=game.gifts.length?game.gifts.slice().reverse().map(g=>`<article class="card"><div class="art">${safe(g.art||"🎁")}</div><div class="cardtitle">${safe(g.name)}</div><p class="desc">${safe(g.desc||"FictionQuiz reward")}</p></article>`).join(""):'<div class="empty">No gifts yet. Open your daily gift! 🎁</div>';
+}
+function renderAchievements(){
+const list=[
+{id:"first",name:"First Quiz",art:"🧠",desc:"Complete your first quiz.",ok:game.completed.length>0},
+{id:"collector",name:"Card Collector",art:"🃏",desc:"Collect 3 cards.",ok:game.owned.length>=3},
+{id:"rich",name:"Coin Saver",art:"🪙",desc:"Have 500 coins.",ok:game.coins>=500},
+{id:"streak",name:"Daily Player",art:"🔥",desc:"Build a 3-day streak.",ok:game.streak>=3}
 ];
-const defaultData={name:"Quiz Lover",avatar:"🦋",xp:0,streak:0,lastDay:"",done:0,completed:[],missionsDate:"",missions:{},dailyClaims:[],achievements:[],owned:[],theme:"light",language:"en",weeklyBest:0};
-let data;
-try{data={...defaultData,...JSON.parse(localStorage.getItem("fqData")||"{}")}}catch(e){data={...defaultData}}
-let currentQuiz=null,qIndex=0,score=0,answersLocked=false,dailyMode=false,weeklyMode=false,challengeMode=false,sessionXP=0,personalityCounts={},customCreator=false;
-const today=()=>{let d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")};
-const weekKey=()=>{let d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()+4-(d.getDay()||7));let y=d.getFullYear();let start=new Date(y,0,1);return y+"-W"+String(Math.ceil((((d-start)/86400000)+1)/7)).padStart(2,"0")};
-function save(){localStorage.setItem("fqData",JSON.stringify(data))}
-function toast(msg){$("toast").textContent=msg;$("toast").classList.remove("hide");clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>$("toast").classList.add("hide"),2600)}
-function level(){return Math.floor(data.xp/100)+1}
-function rankName(){return ["Curious Reader","Page Turner","Quiz Explorer","Plot Detective","Knowledge Star","Fiction Legend"][Math.min(5,Math.floor(data.xp/250))]}
-function render(){document.body.classList.toggle("dark",data.theme==="dark");$("themeBtn").textContent=data.theme==="dark"?"☀️":"🌙";$("language").value=data.language||"en";$("playerName").textContent=data.name;$("navName").textContent=data.name;$("avatarDisplay").textContent=data.avatar;$("rankText").textContent=rankName()+" · Level "+level();$("xpStat").textContent=data.xp;$("streakStat").textContent=data.streak;$("doneStat").textContent=data.done;$("rewardStat").textContent=data.owned.length;$("xpLabel").textContent=data.xp+" XP";$("nextLabel").textContent=(level()*100-data.xp)+" XP to Level "+(level()+1);$("levelBar").style.width=(data.xp%100)+"%";renderCategories();renderQuizzes();renderDaily();renderMissions();renderAchievements();renderLeaderboard();save()}
-function renderCategories(){ $("categoryGrid").innerHTML=categories.map(c=>`<button class="category ${c.cls}" onclick="filterCategory('${c.id}')"><span class="catEmoji">${c.emoji}</span><span><strong>${c.name}</strong><br><small>${c.desc}</small></span></button>`).join("")}
-function renderQuizzes(list=quizzes.filter(q=>q.id!=="friend-check").slice(0,6)){ $("quizGrid").innerHTML=list.map(q=>`<article class="quizcard"><div class="quizEmoji">${q.emoji}</div><h3>${q.title}</h3><p>${q.desc}</p><div class="quizMeta"><span>${q.questions?.length||"Custom"} questions</span><span>${q.type==="trivia"?"Knowledge":"Personality"}</span></div><button class="primary" style="width:100%" onclick="startQuiz('${q.id}')">Start quiz ↗</button></article>`).join("")}
-function filterCategory(id){const list=quizzes.filter(q=>q.category===id&&q.id!=="friend-check");$("featured").scrollIntoView({behavior:"smooth"});renderQuizzes(list);if(!list.length)toast("More quizzes for this category are coming soon!")}
-function showAllQuizzes(){goHome();$("featured").scrollIntoView({behavior:"smooth"});renderQuizzes(quizzes.filter(q=>q.id!=="friend-check"))}
-function renderDaily(){const list=quizzes.filter(q=>q.type==="trivia"&&q.id!=="friend-check");let seed=Number(today().replaceAll("-",""));let q=list[seed%list.length];$("dailyCard").innerHTML=`<div class="quizMeta"><span>${q.emoji} ${q.title}</span><span>+10 bonus XP</span></div><button class="primary" onclick="playDaily('${q.id}')" style="width:100%">${data.dailyClaims.includes(today())?"Play again":"Play daily quiz"} →</button>`;const wk=weekKey();$("weeklyCard").innerHTML=`<div class="quizMeta"><span>🧠 ${weeklyQuestions.length} mixed questions</span><span>Best: ${data.weeklyBest||0}/${weeklyQuestions.length}</span></div><button class="primary" style="width:100%" onclick="playWeekly()">Start weekly challenge →</button>`}
-function resetMissions(){if(data.missionsDate!==today()){data.missionsDate=today();data.missions={quiz:false,score:false,daily:false,challenge:false,reward:false}}}
-function renderMissions(){resetMissions();const ms=[["quiz","🧩","Complete any quiz","+5 XP"],["score","🎯","Score at least 3 correct","+5 XP"],["daily","🌞","Play today's daily quiz","+10 XP"],["challenge","👯","Complete weekly challenge","+10 XP"]];$("missions").innerHTML=ms.map(m=>`<div class="mission"><span class="mi">${m[1]}</span><div class="missionInfo"><strong>${m[2]}</strong><small>${data.missions[m[0]]?"Completed ✓":"One-time daily mission"}</small></div><span class="xpReward">${data.missions[m[0]]?"✓":m[3]}</span></div>`).join("")}
-function renderAchievements(){const list=[["🌱","First Steps",data.done>=1],["📚","Bookworm",data.done>=5],["🎯","Sharp Mind",data.xp>=100],["🔥","Streak Starter",data.streak>=3],["✨","XP Collector",data.xp>=250]];$("achievements").innerHTML=list.map(a=>`<div class="mission"><span class="mi">${a[0]}</span><div class="missionInfo"><strong>${a[1]}</strong><small>${a[2]?"Unlocked":"Keep playing to unlock"}</small></div><span class="xpReward">${a[2]?"✓":"🔒"}</span></div>`).join("")}
-function renderLeaderboard(){const rows=[{n:data.name,a:data.avatar,x:data.xp},...(JSON.parse(localStorage.getItem("fqDemoPlayers")||"[]"))].sort((a,b)=>b.x-a.x).slice(0,5);$("leaderboard").innerHTML=rows.map((r,i)=>`<div class="leaderRow"><span class="rank">${i+1}</span><span>${r.a||"🌟"}</span><strong>${escapeHtml(r.n)}${r.n===data.name?" (you)":""}</strong><span class="xpReward">${r.x} XP</span></div>`).join("")}
-function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
-function updateStreak(){let t=today();if(data.lastDay===t)return;let y=new Date();y.setDate(y.getDate()-1);let yesterday=y.getFullYear()+"-"+String(y.getMonth()+1).padStart(2,"0")+"-"+String(y.getDate()).padStart(2,"0");data.streak=data.lastDay===yesterday?data.streak+1:1;data.lastDay=t}
-function award(amount){data.xp+=amount;sessionXP+=amount}
-function missionDone(key,xp){resetMissions();if(!data.missions[key]){data.missions[key]=true;award(xp);toast("Mission complete! +"+xp+" XP")}}
-function startQuiz(id){let q=quizzes.find(x=>x.id===id);if(!q)return;if(q.type==="custom"){openCreate();return}currentQuiz={...q,questions:q.questions.map(x=>({...x,a:[...x.a]}))};dailyMode=false;weeklyMode=false;challengeMode=false;beginPlay()}
-function playDaily(id){dailyMode=true;weeklyMode=false;challengeMode=false;startQuiz(id);dailyMode=true}
-function playWeekly(){currentQuiz={id:"weekly-"+weekKey(),title:"Weekly Mixed Challenge",emoji:"🧠",category:"knowledge",type:"trivia",questions:weeklyQuestions.map(q=>({...q,a:[...q.a]}))};dailyMode=false;weeklyMode=true;challengeMode=false;beginPlay()}
-function beginPlay(){qIndex=0;score=0;sessionXP=0;personalityCounts={};$("home").classList.add("hide");$("resultScreen").classList.add("hide");$("playScreen").classList.remove("hide");renderQuestion();window.scrollTo({top:0,behavior:"smooth"})}
-function renderQuestion(){answersLocked=false;const q=currentQuiz.questions[qIndex];$("quizNameTop").textContent=currentQuiz.emoji+" "+currentQuiz.title;$("questionCount").textContent=`Question ${qIndex+1}/${currentQuiz.questions.length}`;$("quizProgress").style.width=(qIndex/currentQuiz.questions.length*100)+"%";$("questionText").textContent=q.q;$("feedback").textContent="";$("nextBtn").classList.add("hide");$("answerGrid").innerHTML=q.a.map((a,i)=>`<button class="answer" onclick="chooseAnswer(${i})"><span style="color:var(--purple);margin-right:9px">${String.fromCharCode(65+i)}.</span>${escapeHtml(a)}</button>`).join("")}
-function chooseAnswer(i){if(answersLocked)return;answersLocked=true;const q=currentQuiz.questions[qIndex];const buttons=[...$("answerGrid").querySelectorAll("button")];buttons.forEach(b=>b.disabled=true);let right=q.correct; if(currentQuiz.type==="personality"){let res=q.r?.[i]||"Your Unique Vibe";personalityCounts[res]=(personalityCounts[res]||0)+1;buttons[i].classList.add("correct");$("feedback").textContent="✨ That feels like you!";}else{if(i===right){score++;buttons[i].classList.add("correct");$("feedback").textContent="✨ CORRECT!";}else{buttons[i].classList.add("wrong");if(buttons[right])buttons[right].classList.add("correct");$("feedback").textContent="Not quite — "+q.a[right]+" is correct.";}}$("nextBtn").textContent=qIndex===currentQuiz.questions.length-1?"See my result ✨":"Next question →";$("nextBtn").classList.remove("hide")}
-function nextQuestion(){if(qIndex<currentQuiz.questions.length-1){qIndex++;renderQuestion()}else finishQuiz()}
-function finishQuiz(){const total=currentQuiz.questions.length;let personality=currentQuiz.type==="personality";let title,desc,emoji;if(personality){let sorted=Object.entries(personalityCounts).sort((a,b)=>b[1]-a[1]);title=sorted[0]?.[0]||"Your Unique Vibe";desc="Your answers suggest this is the vibe you connect with most. Everyone is a mix of different traits!";emoji="🦋"}else{title=score>=Math.ceil(total*.8)?"Knowledge Star":score>=Math.ceil(total*.5)?"Curious Explorer":"Keep Growing!";desc=`You answered ${score} out of ${total} questions correctly. Every quiz is a chance to learn something new.`;emoji=score>=Math.ceil(total*.8)?"🏆":"🌱"}
-let earned=10+score*2;if(personality)earned=10; if(dailyMode&&!data.dailyClaims.includes(today())){earned+=10;data.dailyClaims.push(today())}if(weeklyMode){data.weeklyBest=Math.max(data.weeklyBest,score);earned+=score>=Math.ceil(total*.7)?15:5;missionDone("challenge",10)}award(earned);data.done++;data.completed.push({id:currentQuiz.id,date:today(),score,total});updateStreak();missionDone("quiz",5);if(!personality&&score>=3)missionDone("score",5);if(dailyMode)missionDone("daily",10);$("playScreen").classList.add("hide");$("resultScreen").classList.remove("hide");$("resultEmoji").textContent=emoji;$("resultTitle").textContent=title;$("resultDescription").textContent=desc;$("resultScore").textContent=personality?"Vibe":score+"/"+total;$("resultXP").textContent="+"+sessionXP+" XP";$("resultNote").textContent=(dailyMode?"Daily bonus included. ":weeklyMode?"Weekly challenge bonus included. ":"")+"Progress saved on this device.";render();window.scrollTo({top:0,behavior:"smooth"})}
-function goHome(){$("playScreen").classList.add("hide");$("resultScreen").classList.add("hide");$("home").classList.remove("hide");render();window.scrollTo({top:0,behavior:"smooth"})}
-function scrollToSection(id){goHome();setTimeout(()=>$ (id).scrollIntoView({behavior:"smooth"}),30)}
-function shareResult(){let text=`I played ${currentQuiz?.title||"FictionQuiz"} on FictionQuiz! My score: ${$("resultScore").textContent}. Can you beat me?`;if(navigator.share)navigator.share({title:"FictionQuiz challenge",text}).catch(()=>{});else if(navigator.clipboard)navigator.clipboard.writeText(text).then(()=>toast("Result text copied!"));else toast(text)}
-function openModal(html){$("modalRoot").innerHTML=`<div class="modalBack" onclick="if(event.target===this)closeModal()"><div class="modal">${html}</div></div>`}
-function closeModal(){$("modalRoot").innerHTML=""}
-function openProfile(){openModal(`<h2>👤 Your profile</h2><label class="small muted">Display name</label><input class="field" id="editName" maxlength="24" value="${escapeHtml(data.name)}"><label class="small muted">Choose an avatar</label><div style="display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 18px">${["🦋","🐼","🐱","🦊","🐰","🐸","🌸","⭐","🦄","🐨"].map(a=>`<button class="secondary" onclick="selectAvatar('${a}')" style="font-size:24px">${a}</button>`).join("")}</div><p class="muted small">Your profile is stored locally in this browser. No account is required.</p><button class="primary" onclick="saveProfile()">Save profile</button> <button class="secondary" onclick="closeModal()">Cancel</button>`)}
-let chosenAvatar=data.avatar;function selectAvatar(a){chosenAvatar=a;document.querySelectorAll(".modal button.secondary").forEach(b=>b.style.outline="");event.currentTarget.style.outline="2px solid var(--purple)"}function saveProfile(){let name=$("editName").value.trim().slice(0,24);if(name)data.name=name;data.avatar=chosenAvatar;closeModal();render();toast("Profile saved!")}
-  function openMysteryGift(){
-  const today = new Date().toDateString();
-
-  if(data.mysteryGiftDate === today){
-    toast("Aaj ka gift already open ho chuka! Kal wapas aana 🎁");
-    return;
-  }
-
-  const gifts = [
-    {type:"xp", amount:10, label:"🎉 +10 XP"},
-    {type:"xp", amount:25, label:"🌟 +25 XP"},
-    {type:"xp", amount:50, label:"💎 +50 XP"},
-    {type:"item", id:"frame-pink", label:"🌸 Pink Aura Frame"},
-    {type:"item", id:"frame-star", label:"⭐ Starry Frame"},
-    {type:"item", id:"avatar-unicorn", label:"🦄 Unicorn Avatar"},
-    {type:"item", id:"theme-night", label:"🌙 Midnight Theme"}
-  ];
-
-  const gift = gifts[Math.floor(Math.random()*gifts.length)];
-
-  if(!data.owned) data.owned = [];
-
-  if(gift.type === "item" && data.owned.includes(gift.id)){
-    data.xp += 25;
-    gift.label = "🎉 Already owned! Bonus +25 XP";
-  } else if(gift.type === "item"){
-    data.owned.push(gift.id);
-  } else {
-    data.xp += gift.amount;
-  }
-
-  data.mysteryGiftDate = today;
-  save();
-  render();
-  alert("Your Mystery Gift: " + gift.label);
+list.forEach(a=>{if(a.ok&&!game.achievements.includes(a.id)){game.achievements.push(a.id);toast("Achievement unlocked: "+a.name+" 🏆")}});
+$("achievementGrid").innerHTML=list.map(a=>`<article class="card"><div class="art">${a.ok?a.art:"🔒"}</div><div class="cardtitle">${a.name}</div><p class="desc">${a.desc}</p><span class="tag">${a.ok?"Unlocked":"Locked"}</span></article>`).join("");
+}
+function renderAll(){updateUI();renderQuizzes();renderCards();renderShop();renderGifts();renderAchievements();saveLocal()}
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function startQuiz(id){
+const q=quizzes.find(x=>x.id===id);if(!q)return;
+activeQuiz=q;questions=shuffle(q.questions).map(x=>({q:x[0],a:x[1],correct:x[2]}));qi=0;score=0;answered=false;quizMode="normal";showQuestion();
+}
+function startDaily(){
+if(game.dailyDate===today()&&game.dailyDone){toast("Daily challenge already completed. Come back tomorrow!");return}
+activeQuiz=quizzes[Math.floor(Math.random()*quizzes.length)];questions=shuffle(activeQuiz.questions).slice(0,5).map(x=>({q:x[0],a:x[1],correct:x[2]}));qi=0;score=0;answered=false;quizMode="daily";showQuestion();
+}
+function startEvent(){
+if(game.eventClaimed){toast("Event reward already claimed!");return}
+activeQuiz=quizzes.find(q=>q.id==="fantasy");questions=shuffle(activeQuiz.questions).slice(0,5).map(x=>({q:x[0],a:x[1],correct:x[2]}));qi=0;score=0;answered=false;quizMode="event";showQuestion();
+}
+function showQuestion(){
+const q=questions[qi];if(!q)return finishQuiz();
+const root=$("modalRoot");root.classList.remove("hidden");
+root.innerHTML=`<div class="modalbox"><div class="sectionhead"><span class="tag">${safe(activeQuiz.title)}</span><button class="smallbtn" onclick="closeModal()">✕</button></div><div class="levelbar"><span style="width:${qi/questions.length*100}%"></span></div><p class="muted small">Question ${qi+1} of ${questions.length}</p><h2>${safe(q.q)}</h2><div id="answers" style="display:grid;gap:9px">${q.a.map((a,i)=>`<button class="btn secondary full" style="text-align:left" onclick="answer(${i})">${String.fromCharCode(65+i)}. ${safe(a)}</button>`).join("")}</div><p id="feedback" class="muted small"></p><button id="next" class="btn full hidden" onclick="nextQuestion()">Next Question →</button></div>`;
+}
+function answer(choice){
+if(answered)return;answered=true;const q=questions[qi];const btns=$("answers").querySelectorAll("button");
+btns.forEach((b,i)=>{b.disabled=true;if(i===q.correct)b.style.borderColor="#46e3a0";else if(i===choice)b.style.borderColor="#ff6b89"});
+if(choice===q.correct)score++;
+$("feedback").textContent=choice===q.correct?"Correct! 🎉":"Correct answer: "+q.a[q.correct];$("next").classList.remove("hidden");
+}
+function nextQuestion(){qi++;answered=false;if(qi>=questions.length)finishQuiz();else showQuestion()}
+function updateStreak(){
+if(game.lastDay===today())return;
+game.streak=game.lastDay===yesterday()?game.streak+1:1;game.lastDay=today();
+}
+function finishQuiz(){
+const count=questions.length,percent=Math.round(score/count*100);
+let xp=0,coin=0,first=false;
+if(quizMode==="normal"){
+first=!game.completed.includes(activeQuiz.id);
+if(first){xp=score*10;coin=score*5;game.completed.push(activeQuiz.id)}
+}else if(quizMode==="daily"){
+game.dailyDate=today();game.dailyDone=true;
+xp=score*10+(score>0?15:0);coin=score*5+(score>0?10:0);
+}else if(quizMode==="event"){
+if(score>0){game.eventCount=Math.min(3,game.eventCount+1);xp=score*5;coin=score*2}
+if(game.eventCount>=3&&!game.eventClaimed){game.eventClaimed=true;const reward=cards.find(c=>c.id==="royal-dream");if(reward&&!own(reward.id)){game.owned.push(reward.id);game.gifts.push({name:reward.name,art:reward.art,desc:"Fantasy Hunt event reward"});toast("Event card unlocked! 💎")}}
+}
+game.xp+=xp;game.coins+=coin;
+if(score>0)updateStreak();
+renderAll();scheduleSave();
+$("modalRoot").innerHTML=`<div class="modalbox" style="text-align:center"><div style="font-size:56px">🏆</div><h2>Quiz Completed!</h2><p>You got <strong>${score}/${count}</strong> correct.</p><div class="stats"><div class="stat">⭐<span class="num">+${xp}</span><span class="label">XP</span></div><div class="stat">🪙<span class="num">+${coin}</span><span class="label">Coins</span></div><div class="stat">🎯<span class="num">${percent}%</span><span class="label">Score</span></div></div><p class="muted small">${quizMode==="normal"?(first?"First-completion reward claimed.":"Repeat quiz: no repeat reward."):"Challenge rewards applied."}</p><button class="btn full" onclick="closeModal()">Continue</button></div>`;
+}
+function closeModal(){$("modalRoot").classList.add("hidden");$("modalRoot").innerHTML=""}
+function popup(title,art,desc){const root=$("modalRoot");root.classList.remove("hidden");root.innerHTML=`<div class="modalbox" style="text-align:center"><div style="font-size:64px;animation:bounce .8s infinite alternate">${safe(art)}</div><h2>${safe(title)}</h2><p>${safe(desc)}</p><button class="btn full" onclick="closeModal()">Continue</button></div>`}
+function openDailyGift(){
+if(game.giftDate===today()){toast("Daily gift already claimed. Come back tomorrow!");return}
+const possible=cards.filter(c=>!own(c.id));const roll=Math.random();let reward;
+if(possible.length&&roll<.7){reward=possible[Math.floor(Math.random()*possible.length)];game.owned.push(reward.id);game.gifts.push({name:reward.name,art:reward.art,desc:"Daily mystery gift • "+reward.rarity})}
+else{const bonus=roll<.9?20:40;game.coins+=bonus;reward={name:"Coin Bonus",art:"🪙",desc:"You received "+bonus+" bonus coins!"};game.gifts.push(reward)}
+game.giftDate=today();game.xp+=10;renderAll();scheduleSave();popup("Mystery Gift Unlocked!",reward.art,reward.desc||reward.name);
+}
+function buyCard(id){
+const c=cards.find(x=>x.id===id);if(!c)return;
+if(own(id)){toast("Already in your collection!");return}
+if(game.coins<c.price){toast("Not enough coins. Play quizzes to earn more!");return}
+game.coins-=c.price;game.owned.push(id);game.xp+=5;game.gifts.push({name:c.name,art:c.art,desc:"Purchased from Coin Shop"});renderAll();scheduleSave();popup("Card Unlocked!",c.art,c.name+" added to your collection.");
+}
+function buyBox(type){
+const cost=type==="epic"?600:300;if(game.coins<cost){toast("Not enough coins!");return}
+const possible=cards.filter(c=>!own(c.id));if(!possible.length){toast("All cards collected!");return}
+const pool=possible.filter(c=>type==="epic"?["Epic","Legendary"].includes(c.rarity):["Rare","Epic","Legendary"].includes(c.rarity));
+const list=pool.length?pool:possible;const reward=list[Math.floor(Math.random()*list.length)];
+game.coins-=cost;game.owned.push(reward.id);game.gifts.push({name:reward.name,art:reward.art,desc:type+" gift box reward"});renderAll();scheduleSave();popup("Gift Box Opened!",reward.art,reward.name+" unlocked!");
+}
+function buySticker(){
+if(game.coins<150){toast("Sticker pack needs 150 coins.");return}
+const possible=cards.filter(c=>c.type==="Sticker"&&!own(c.id));if(!possible.length){toast("All stickers collected!");return}
+const c=possible[Math.floor(Math.random()*possible.length)];game.coins-=150;game.owned.push(c.id);game.gifts.push({name:c.name,art:c.art,desc:"Sticker pack reward"});renderAll();scheduleSave();popup("Sticker Unlocked!",c.art,c.name+" added to your collection.");
+}
+function saveProfile(){
+const name=$("nameInput").value.trim().slice(0,24);if(name)game.name=name;
+game.language=$("languageInput").value;renderAll();scheduleSave();toast("Profile saved!");
+}
+function enableNotifications(){
+if(!("Notification"in window)){$("notificationStatus").textContent="This browser does not support notifications.";return}
+Notification.requestPermission().then(p=>{$("notificationStatus").textContent=p==="granted"?"Notifications allowed. Automatic reminders need extra setup.":"Permission was not granted.";if(p==="granted")toast("Notifications enabled!")}).catch(()=>toast("Could not request notification permission."));
 }
 
-function openEvents(){
-  alert("🎉 FictionQuiz Events\n\n✨ Weekly Quiz Challenge\n📚 Novel Lover Challenge\n🏆 Earn XP and unlock rewards!");
+/* Firebase setup: use your existing FictionQuiz web app config. */
+const firebaseConfig={
+apiKey:"AIzaSyAlUjsq-N0lk2fBa8SQSsJ-AM_xsWofBKo",
+authDomain:"fictionquiz-fa0bb.firebaseapp.com",
+projectId:"fictionquiz-fa0bb",
+storageBucket:"fictionquiz-fa0bb.firebasestorage.app",
+messagingSenderId:"342330435715",
+appId:"1:342330435715:web:715ee35961a1b6267653b6",
+measurementId:"G-6JEHBF74BE"
+};
+try{
+if(window.firebase){
+firebase.initializeApp(firebaseConfig);auth=firebase.auth();db=firebase.firestore();
+auth.onAuthStateChanged(async user=>{
+currentUser=user||null;
+if(user){
+$("authStatus").textContent="Signed in: "+(user.email||"account")+" • Syncing…";
+await loadCloud();
+$("authStatus").textContent="Signed in • Cloud sync enabled";
+await saveCloud();await loadLeaderboard();
+}else{
+cloudReady=false;$("authStatus").textContent="Not signed in. Local progress is saved on this device.";
+$("leaderboardStatus").textContent="Sign in to load and join the global leaderboard.";
 }
-function claimDailyReward(){resetMissions();if(data.missions.reward){toast("Daily reward already claimed. Come back tomorrow!");return}data.missions.reward=true;award(10);render();toast("Daily reward claimed! +10 XP")}
-function openRewards(){let items=[{id:"frame-pink",e:"🌸",name:"Pink Aura Frame",cost:50},{id:"frame-star",e:"🌟",name:"Starry Frame",cost:100},{id:"theme-night",e:"🌙",name:"Midnight Theme",cost:150},{id:"avatar-unicorn",e:"🦄",name:"Unicorn Avatar",cost:200}];openModal(`<h2>🎁 Rewards & Closet</h2><p class="muted small">Unlock items with XP. Purchases are saved on this device.</p>${items.map(x=>`<div class="rewardRow"><span style="font-size:30px">${x.e}</span><div style="flex:1"><strong>${x.name}</strong><div class="small muted">${x.cost} XP</div></div>${data.owned.includes(x.id)?'<span class="xpReward">Owned ✓</span>':`<button class="primary" onclick="buyItem('${x.id}',${x.cost})">Unlock</button>`}</div>`).join("")}<button class="secondary" onclick="closeModal()" style="margin-top:15px">Close</button>`)}
-function buyItem(id,cost){if(data.owned.includes(id)){toast("Already unlocked!");return}if(data.xp<cost){toast("You need "+(cost-data.xp)+" more XP.");return}data.xp-=cost;data.owned.push(id);save();closeModal();render();toast("Item unlocked! ✨")}
-function openLeaderboard(){openModal(`<h2>👑 Leaderboard</h2><p class="muted small">This is a local preview, not a global ranking. To share scores across devices, the site needs Firebase or another backend.</p>${$("leaderboard").innerHTML}<button class="secondary" onclick="closeModal()">Close</button>`)}
-function openCreate(){openModal(`<h2>💌 Create a friend quiz</h2><p class="muted small">Write a question and four options. Add the correct answer from your point of view, then share the generated link. Anyone with the link can play it.</p><label class="small muted">Quiz title</label><input class="field" id="customTitle" maxlength="70" value="Who Knows Me Best?"><div id="customQuestions"></div><button class="secondary" onclick="addCustomQuestion()">+ Add question</button><button class="primary" onclick="makeChallenge()" style="float:right">Create share link</button><div style="clear:both"></div><div id="customLink"></div><button class="secondary" onclick="closeModal()" style="margin-top:14px">Close</button>`);customCount=0;addCustomQuestion()}
-let customCount=0;function addCustomQuestion(){if(customCount>=10){toast("Maximum 10 questions.");return}customCount++;let n=customCount;let div=document.createElement("div");div.style.cssText="border-top:1px solid var(--line);padding-top:12px;margin-top:12px";div.innerHTML=`<strong>Question ${n}</strong><input class="field" id="cq${n}" placeholder="Write your question"><div class="grid" style="grid-template-columns:1fr 1fr;gap:6px">${[0,1,2,3].map(i=>`<input class="field" id="ca${n}_${i}" placeholder="Option ${i+1}" style="margin:0">`).join("")}</div><label class="small muted">Your correct answer</label><select class="field" id="cc${n}"><option value="0">Option 1</option><option value="1">Option 2</option><option value="2">Option 3</option><option value="3">Option 4</option></select>`;$("customQuestions").appendChild(div)}
-function makeChallenge(){let qs=[];for(let n=1;n<=customCount;n++){let q=$("cq"+n)?.value.trim();if(!q)continue;let a=[0,1,2,3].map(i=>$("ca"+n+"_"+i).value.trim());if(a.some(x=>!x)){toast("Fill all four options for each question.");return}qs.push({q,a,correct:Number($("cc"+n).value)})}if(!qs.length){toast("Add at least one complete question.");return}let payload={title:$("customTitle").value.trim()||"Friend Quiz",questions:qs,owner:data.name};let encoded=btoa(unescape(encodeURIComponent(JSON.stringify(payload))));let link=location.href.split("?")[0]+"?challenge="+encodeURIComponent(encoded);$("customLink").innerHTML=`<p class="small muted">Copy this link and send it to your friend:</p><textarea class="field" id="shareLink" rows="3" readonly>${link}</textarea><button class="primary" onclick="copyChallenge()">Copy link</button>`}
-function copyChallenge(){let text=$("shareLink").value;if(navigator.clipboard)navigator.clipboard.writeText(text).then(()=>toast("Challenge link copied!")).catch(()=>fallbackCopy(text));else fallbackCopy(text)}
-function fallbackCopy(text){$("shareLink").select();try{document.execCommand("copy");toast("Link copied!")}catch(e){toast("Select and copy the link manually.")}}
-function openJoin(){openModal(`<h2>🔗 Join a friend challenge</h2><p class="muted small">Paste the full FictionQuiz challenge link.</p><textarea id="joinUrl" class="field" rows="3" placeholder="Paste challenge link here"></textarea><button class="primary" onclick="joinChallenge()">Join challenge</button> <button class="secondary" onclick="closeModal()">Cancel</button>`)}
-function loadChallenge(payload){if(!payload||!Array.isArray(payload.questions)||payload.questions.length<1||payload.questions.length>10)return false;for(let q of payload.questions){if(typeof q.q!=="string"||!Array.isArray(q.a)||q.a.length!==4||!Number.isInteger(q.correct)||q.correct<0||q.correct>3)return false}currentQuiz={id:"custom-"+Date.now(),title:String(payload.title||"Friend Challenge").slice(0,70),emoji:"💌",category:"friendship",type:"trivia",questions:payload.questions};challengeMode=true;dailyMode=false;weeklyMode=false;closeModal();beginPlay();return true}
-function joinChallenge(){let url=$("joinUrl").value.trim();try{let u=new URL(url);let enc=u.searchParams.get("challenge");if(!enc)throw Error();let payload=JSON.parse(decodeURIComponent(escape(atob(enc))));if(!loadChallenge(payload))throw Error()}catch(e){toast("That link doesn't look valid. Please paste the full challenge link.")}}
-function loadFromAddress(){const enc=new URLSearchParams(location.search).get("challenge");if(!enc)return;try{let payload=JSON.parse(decodeURIComponent(escape(atob(enc))));if(loadChallenge(payload)){$("challengeInfo").textContent="A friend challenge is ready!";history.replaceState({},document.title,location.pathname)}}catch(e){toast("Could not load that challenge link.")}}
-$("themeBtn").addEventListener("click",()=>{data.theme=data.theme==="dark"?"light":"dark";render()});
-$("language").addEventListener("change",e=>{data.language=e.target.value;save();const msgs={en:"Language preference saved. Some quiz content is currently English.",ur:"زبان کی ترجیح محفوظ ہوگئی۔ کچھ کوئز مواد فی الحال انگریزی میں ہے۔",hi:"भाषा की पसंद सेव हो गई। कुछ क्विज़ सामग्री अभी अंग्रेज़ी में है।",tr:"Dil tercihi kaydedildi. Bazı sınav içerikleri şimdilik İngilizce.",ar:"تم حفظ تفضيل اللغة. بعض محتوى الاختبارات باللغة الإنجليزية حاليًا.",ko:"언어 설정이 저장되었습니다. 일부 퀴즈는 현재 영어로 제공됩니다.",bn:"ভাষার পছন্দ সংরক্ষিত হয়েছে। কিছু কুইজের বিষয়বস্তু এখনো ইংরেজিতে।"};toast(msgs[data.language]||msgs.en)});
-$("profileBtn").addEventListener("click",openProfile);
-function init(){resetMissions();render();renderQuizzes();loadFromAddress();if(location.search.includes("challenge=")){$("home").classList.remove("hide")}}
+});
+}else{$("authStatus").textContent="Firebase SDK did not load. Local play is still available."}
+}catch(e){console.error(e);$("authStatus").textContent="Firebase setup error. Local play is still available."}
+async function createAccount(){
+if(!auth)return toast("Firebase is not available.");
+const email=$("emailInput").value.trim(),password=$("passwordInput").value;
+if(!email||password.length<6)return toast("Enter a valid email and a password of at least 6 characters.");
+try{await auth.createUserWithEmailAndPassword(email,password);toast("Account created!")}catch(e){toast(firebaseError(e))}
+}
+async function loginAccount(){
+if(!auth)return toast("Firebase is not available.");
+const email=$("emailInput").value.trim(),password=$("passwordInput").value;
+if(!email||!password)return toast("Enter your email and password.");
+try{await auth.signInWithEmailAndPassword(email,password);toast("Signed in!")}catch(e){toast(firebaseError(e))}
+}
+async function logoutAccount(){if(!auth)return;try{await auth.signOut();toast("Signed out.")}catch(e){toast(firebaseError(e))}}
+function firebaseError(e){const m=e?.code||"";return ({ "auth/email-already-in-use":"Email already registered. Try signing in.","auth/invalid-email":"Check your email address.","auth/weak-password":"Use a stronger password of at least 6 characters.","auth/invalid-credential":"Email or password is incorrect.","auth/network-request-failed":"Check your internet connection.","permission-denied":"Firestore rules are blocking access. Configure the rules before syncing."})[m]||e.message||"Firebase request failed."}
+async function loadCloud(){
+if(!db||!currentUser)return;
+try{
+const ref=db.collection("userProfiles").doc(currentUser.uid);const snap=await ref.get();
+if(snap.exists){
+const cloud=snap.data();const local=game;
+game={...DEFAULT,...cloud,...{
+completed:[...new Set([...(cloud.completed||[]),...(local.completed||[])])],
+owned:[...new Set([...(cloud.owned||[]),...(local.owned||[])])],
+gifts:[...(cloud.gifts||[]),...(local.gifts||[])],
+achievements:[...new Set([...(cloud.achievements||[]),...(local.achievements||[])])],
+xp:Math.max(Number(cloud.xp)||0,Number(local.xp)||0),
+coins:Math.max(Number(cloud.coins)||0,Number(local.coins)||0),
+streak:Math.max(Number(cloud.streak)||0,Number(local.streak)||0),
+name:local.name!=="Quiz Player"?local.name:(cloud.name||"Quiz Player")
+}};
+}
+cloudReady=true;renderAll();
+}catch(e){console.error(e);$("authStatus").textContent="Cloud load failed: "+firebaseError(e)}
+}
+async function saveCloud(){
+if(!db||!currentUser||saving)return;
+saving=true;
+try{
+const payload={name:game.name,xp:game.xp,coins:game.coins,streak:game.streak,lastDay:game.lastDay,completed:game.completed,owned:game.owned,gifts:game.gifts,giftDate:game.giftDate,dailyDate:game.dailyDate,dailyDone:game.dailyDone,eventCount:game.eventCount,eventClaimed:game.eventClaimed,achievements:game.achievements,language:game.language,updatedAt:firebase.firestore.FieldValue.serverTimestamp()};
+await db.collection("userProfiles").doc(currentUser.uid).set(payload,{merge:true});
+await db.collection("leaderboard").doc(currentUser.uid).set({name:game.name,xp:game.xp,level:level(),updatedAt:firebase.firestore.FieldValue.serverTimestamp()},{merge:true});
+$("authStatus").textContent="Cloud sync complete.";
+}catch(e){console.error(e);$("authStatus").textContent="Sync blocked: "+firebaseError(e)}
+finally{saving=false}
+}
+async function loadLeaderboard(){
+if(!db){$("leaderboardStatus").textContent="Firebase is not available.";return}
+try{
+const snap=await db.collection("leaderboard").orderBy("xp","desc").limit(20).get();
+if(snap.empty){$("leaderboardStatus").textContent="No leaderboard entries yet. Sign in and earn XP!";$("leaderboardList").innerHTML="";return}
+$("leaderboardStatus").textContent="Top players by XP";
+$("leaderboardList").innerHTML=snap.docs.map((doc,i)=>{const p=doc.data();return `<div class="profile"><div class="avatar">${i===0?"👑":i===1?"🥈":i===2?"🥉":"🏅"}</div><div class="profileinfo"><strong>${i+1}. ${safe(p.name||"Quiz Player")}</strong><span class="muted small">Level ${Number(p.level)||1}</span></div><span class="tag">⭐ ${Number(p.xp)||0}</span></div>`}).join("");
+}catch(e){$("leaderboardStatus").textContent="Could not load leaderboard: "+firebaseError(e)}
+}
+function init(){if(game.dailyDate!==today())game.dailyDone=false;renderAll()}
 init();
 </script>
 </body>
-</html>'''
-
-
+</html>
