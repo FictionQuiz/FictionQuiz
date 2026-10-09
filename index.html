@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -105,6 +106,35 @@ label{display:block;font-size:12px;color:var(--muted);margin:10px 0 5px}
 .burst{position:fixed;z-index:55;inset:0;pointer-events:none;overflow:hidden}
 .burst span{position:absolute;top:-40px;font-size:25px;animation:fall 2.5s linear forwards}
 @keyframes fall{to{transform:translateY(115vh) rotate(600deg);opacity:.2}}
+.gift-dragon{animation:dragonEntrance 2.7s ease-out both;filter:drop-shadow(0 0 18px #ff9b42)}
+.gift-heart{animation:heartBeat 1.1s ease-in-out 2;filter:drop-shadow(0 0 16px #ff4f9a)}
+.gift-crystal{animation:crystalGlow 2.4s ease-in-out both;filter:drop-shadow(0 0 16px #83f5ff)}
+.gift-phoenix{animation:phoenixRise 2.7s ease-out both;filter:drop-shadow(0 0 18px #ff8b38)}
+@keyframes dragonEntrance{0%{transform:translateY(80px) scale(.2) rotate(-12deg);opacity:0}35%{transform:translateY(-8px) scale(1.2) rotate(5deg);opacity:1}65%{transform:translateY(0) scale(1)}100%{transform:translateY(-12px) scale(1.03);opacity:1}}
+@keyframes heartBeat{0%,100%{transform:scale(1)}15%{transform:scale(1.25)}30%{transform:scale(1)}45%{transform:scale(1.18)}60%{transform:scale(1)}}
+@keyframes crystalGlow{0%{transform:scale(.45) rotate(-25deg);opacity:0}50%{transform:scale(1.18) rotate(8deg);opacity:1}100%{transform:scale(1) rotate(0)}}
+@keyframes phoenixRise{0%{transform:translateY(70px) scale(.35);opacity:0}55%{transform:translateY(-12px) scale(1.2);opacity:1}100%{transform:translateY(0) scale(1)}}
+
+.player-sidebar{position:fixed;left:14px;top:104px;width:218px;z-index:15;padding:15px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(145deg,#241c3df5,#151126f5);box-shadow:0 12px 35px #0004;backdrop-filter:blur(12px)}
+.sidebar-head{display:flex;align-items:center;gap:9px;min-width:0}.sidebar-head strong{display:block;overflow-wrap:anywhere}.sidebar-avatar{width:43px;height:43px;border-radius:50%;display:grid;place-items:center;flex-shrink:0;background:linear-gradient(135deg,#553c79,#a94d9e);border:2px solid var(--gold);font-size:23px;overflow:hidden}.sidebar-avatar img{width:100%;height:100%;object-fit:cover}.sidebar-level{display:flex;justify-content:space-between;gap:5px;margin-top:15px;font-size:12px}.sidebar-level span{color:var(--muted)}.sidebar-stats{display:grid;grid-template-columns:1fr 1fr;gap:5px;font-size:12px;margin:12px 0}.sidebar-inventory-title{font-size:12px;font-weight:800;margin:13px 0 7px;color:var(--gold)}.sidebar-inventory{display:flex;gap:5px;flex-wrap:wrap;min-height:28px;margin-bottom:12px}.inventory-item{font-size:20px;background:#ffffff0b;border:1px solid var(--line);border-radius:8px;padding:3px 6px}.inventory-empty{font-size:11px;color:var(--muted)}.player-sidebar>button{width:100%}
+.level-meta{display:flex;justify-content:space-between;align-items:center;gap:6px;margin:6px 0 10px}.level-pill{font-size:11px;color:var(--gold);border:1px solid #ffd47755;border-radius:99px;padding:4px 8px}.category-card .progress{margin:8px 0}
+@media(max-width:1450px){.player-sidebar{position:static;width:auto;margin:0 15px 12px;display:block}.sidebar-inventory{margin-bottom:5px}.player-sidebar>button{width:auto}.sidebar-head{display:inline-flex;vertical-align:middle;margin-right:14px}.sidebar-level{display:inline-flex;vertical-align:middle;margin:0 10px 0 0}.player-sidebar>.progress{max-width:320px;display:inline-block;width:30%;vertical-align:middle}.sidebar-stats{display:inline-flex;gap:12px;margin:8px 12px}.sidebar-inventory-title{display:inline-block;margin:6px 8px 6px 0}.sidebar-inventory{display:inline-flex;vertical-align:middle}}
+@media(max-width:600px){
+ .player-sidebar{position:fixed;left:10px;top:72px;bottom:12px;width:min(310px,calc(100vw - 20px));margin:0;padding:14px;overflow-y:auto;z-index:101;transform:translateX(calc(-100% - 20px));transition:transform .22s ease;display:block;background:#1a1329;border:1px solid var(--line);box-shadow:0 16px 45px #0009}
+ .player-sidebar.sidebar-open{transform:translateX(0)}
+ .sidebar-head{display:flex;vertical-align:initial;margin-right:0}
+ .sidebar-level{display:flex;margin-top:15px;font-size:12px}
+ .player-sidebar>.progress{display:block;width:100%;max-width:none}
+ .sidebar-stats{display:grid;grid-template-columns:1fr 1fr;font-size:12px;gap:5px;margin:12px 0}
+ .sidebar-inventory-title{display:block;font-size:12px;margin:13px 0 7px}
+ .sidebar-inventory{display:flex;margin-bottom:12px}
+ .player-sidebar>button{width:100%}
+ .mobile-profile-toggle{display:flex!important}
+ .sidebar-scrim.visible{display:block}
+}
+.mobile-profile-toggle{display:none;position:fixed;z-index:100;left:10px;top:72px;align-items:center;gap:6px;border:1px solid var(--line);border-radius:999px;padding:9px 12px;background:#251a3b;color:var(--text);box-shadow:0 5px 18px #0005;font-weight:800}
+.sidebar-scrim{display:none;position:fixed;z-index:99;inset:0;background:#080610a8}
+
 .footer{text-align:center;color:#8d82a7;font-size:11px;padding:18px}
 [dir="rtl"] body{text-align:right}
 [dir="rtl"] .answer{text-align:right}
@@ -139,6 +169,16 @@ label{display:block;font-size:12px;color:var(--muted);margin:10px 0 5px}
   </div>
 </header>
 
+<aside class="player-sidebar" id="playerSidebar" aria-label="Player quick profile">
+  <div class="sidebar-head"><div class="sidebar-avatar" id="sideAvatar">🌙</div><div><strong id="sideName">Quiz Lover</strong><div class="muted" id="sideRank">🌱 Novice</div></div></div>
+  <div class="sidebar-level"><strong id="sideLevel">Level 1</strong><span id="sideXP">0 / 100 XP</span></div>
+  <div class="progress"><span id="sideProgress"></span></div>
+  <div class="sidebar-stats"><span>⭐ <b id="sideXPAll">0</b> XP</span><span>🪙 <b id="sideCoins">100</b></span></div>
+  <div class="sidebar-inventory-title">🎁 Gift inventory</div><div id="sideInventory" class="sidebar-inventory"></div>
+  <button class="ghost small" type="button" onclick="goTo('profile')">⚙️ Profile</button>
+</aside>
+<div class="sidebar-scrim" id="sidebarScrim" onclick="toggleSidebar(false)" aria-hidden="true"></div>
+<button class="mobile-profile-toggle" id="mobileProfileToggle" type="button" onclick="toggleSidebar()" aria-controls="playerSidebar" aria-expanded="false">👤 Profile / Gifts</button>
 <main>
   <section class="hero" id="home">
     <div class="eyebrow" data-i18n="tagline">YOUR NEXT FAVOURITE QUIZ</div>
@@ -179,6 +219,21 @@ label{display:block;font-size:12px;color:var(--muted);margin:10px 0 5px}
   <section class="panel" id="quizzes">
     <div class="section-head"><h2 data-i18n="quizTitle">🧠 Explore Quizzes</h2><span class="pill" id="questionPoolLabel">Fresh questions</span></div>
     <div class="grid" id="categoryGrid"></div>
+  </section>
+
+  <section class="panel" id="customChallenge">
+    <div class="section-head"><h2>🧩 Custom Challenge Studio</h2><span class="pill">Create & share</span></div>
+    <p>Choose a quiz style and difficulty, then create a link to send your challenge to friends on WhatsApp or another app.</p>
+    <div class="form-grid">
+      <div><label for="customMode">Challenge type</label><select id="customMode"><option value="knowledge">Knowledge test</option><option value="rating">Rating / personality test</option><option value="relationship">Friendship / relationship test</option></select></div>
+      <div><label for="customCategory">Topic</label><select id="customCategory"><option value="knowledge">General knowledge</option><option value="science">Science</option><option value="history">History</option><option value="fantasy">Fantasy & myths</option><option value="literature">Literature</option><option value="islamic">Islamic Knowledge</option></select></div>
+      <div><label for="customDifficulty">Difficulty</label><select id="customDifficulty"><option value="easy">Easy</option><option value="medium" selected>Medium</option><option value="hard">Hard</option><option value="expert">Expert</option></select></div>
+      <div><label for="customCount">Questions (factual quizzes)</label><select id="customCount"><option value="10" selected>10 questions</option><option value="5">5 questions</option></select></div>
+      <div class="full"><label for="customTitle">Challenge title</label><input id="customTitle" maxlength="60" placeholder="e.g. Dragon Scholar Challenge"></div>
+      <div class="full row"><button class="primary" type="button" onclick="createCustomChallenge()">✨ Create challenge link</button><button class="ghost" type="button" onclick="shareLastChallenge()">Share last link</button></div>
+      <div class="full"><input id="customLink" readonly placeholder="Your shareable challenge link will appear here"></div>
+    </div>
+    <p class="muted">Current included starter bank: 35 questions. The level engine supports 100 levels and 10-question rounds, but the full 6,000 verified unique-question bank is not included yet; until expanded, some rounds use mixed-topic questions. Note: links carry the challenge settings, not a live multiplayer room. Each friend plays on their own device. For public competition, secure server-side score validation is needed.</p>
   </section>
 
   <section class="panel" id="friendship">
@@ -298,7 +353,7 @@ const defaultGame = () => ({
   xp:0, coins:100, quizzesDone:0, bestScore:0,
   completed:[], seenQuestions:[], ownedCards:["moon-sticker"],
   openedBoxes:0, dailyDate:"", dailyStreak:0, lastDailyDate:"",
-  eventCount:0, eventClaimed:false, achievements:[],
+  eventCount:0, eventClaimed:false, achievements:[], categoryLevels:{}, rewardedQuestions:[],
   sound:true, music:false, lastLogin:"", friendPlays:0
 });
 let game = loadSave();
@@ -316,9 +371,10 @@ function loadSave(){
     const parsed = JSON.parse(raw);
     const base = defaultGame();
     const merged = {...base,...parsed};
-    ["completed","seenQuestions","ownedCards","achievements"].forEach(k=>{
+    ["completed","seenQuestions","ownedCards","achievements","rewardedQuestions"].forEach(k=>{
       if(!Array.isArray(merged[k])) merged[k]=[];
     });
+    if(!merged.categoryLevels || typeof merged.categoryLevels!=="object") merged.categoryLevels={};
     merged.xp = Math.max(0,Number(merged.xp)||0);
     merged.coins = Math.max(0,Number(merged.coins)||0);
     return merged;
@@ -482,7 +538,17 @@ Q("p1","personality","You have a free afternoon. What sounds best?","آپ کے �
 Q("p2","personality","In a group project, you usually...","گروپ پراجیکٹ میں آپ عموماً...",["Organise the plan / منصوبہ بناتے ہیں","Share creative ideas / نئے خیالات دیتے ہیں","Support everyone / سب کی مدد کرتے ہیں","Research details / معلومات تلاش کرتے ہیں"],0),
 Q("p3","personality","Choose a magical companion.","ایک جادوئی ساتھی منتخب کریں۔",["A wise owl / دانا الو","A loyal dragon / وفادار ڈریگن","A tiny fairy / ننھی پری","A moon cat / چاند جیسی بلی"],3),
 Q("p4","personality","Which quality matters most in a friend?","دوست میں سب سے اہم خوبی کیا ہے؟",["Honesty / سچائی","Humour / مزاح","Loyalty / وفاداری","Kindness / مہربانی"],0),
-Q("p5","personality","Pick a place for a story adventure.","کہانی کی مہم کے لیے جگہ منتخب کریں۔",["Ancient library / قدیم کتب خانہ","Enchanted forest / جادوئی جنگل","A floating city / ہوا میں تیرتا شہر","A seaside town / ساحلی قصبہ"],1)
+Q("p5","personality","Pick a place for a story adventure.","کہانی کی مہم کے لیے جگہ منتخب کریں۔",["Ancient library / قدیم کتب خانہ","Enchanted forest / جادوئی جنگل","A floating city / ہوا میں تیرتا شہر","A seaside town / ساحلی قصبہ"],1),
+Q("i1","islamic","What is the holy book of Islam?","اسلام کی مقدس کتاب کون سی ہے؟",["The Qur’an / قرآن مجید","The Torah / تورات","The Psalms / زبور","The Gospel / انجیل"],0),
+Q("i2","islamic","How many pillars of Islam are traditionally taught?","اسلام کے کتنے ارکان ہیں؟",["Three / تین","Four / چار","Five / پانچ","Six / چھ"],2),
+Q("i3","islamic","In which month do Muslims fast?","مسلمان کس مہینے میں روزے رکھتے ہیں؟",["Muharram / محرم","Ramadan / رمضان","Shawwal / شوال","Safar / صفر"],1),
+Q("i4","islamic","What is the direction Muslims face during salah called?","نماز میں جس سمت رخ کیا جاتا ہے اسے کیا کہتے ہیں؟",["Mihrab / محراب","Qibla / قبلہ","Minbar / منبر","Hijrah / ہجرت"],1),
+Q("i5","islamic","Which city is the destination of the Hajj pilgrimage?","حج کی ادائیگی کے لیے مسلمان کس شہر جاتے ہیں؟",["Madinah / مدینہ","Jerusalem / بیت المقدس","Makkah / مکہ","Cairo / قاہرہ"],2),
+Q("i6","islamic","Which angel brought revelation to Prophet Muhammad (peace be upon him)?","حضرت محمد ﷺ پر وحی کون سے فرشتے لائے؟",["Mikail / میکائیل","Jibril / جبرائیل","Israfil / اسرافیل","Azrail / عزرائیل"],1),
+Q("i7","islamic","What is the obligatory charity in Islam called?","اسلام میں فرض صدقے کو کیا کہتے ہیں؟",["Zakat / زکوٰۃ","Sadaqah / صدقہ","Fidyah / فدیہ","Waqf / وقف"],0),
+Q("i8","islamic","Which celebration marks the end of Ramadan?","رمضان کے اختتام پر کون سی عید منائی جاتی ہے؟",["Eid al-Adha / عید الاضحیٰ","Eid al-Fitr / عید الفطر","Mawlid / میلاد","Ashura / عاشورہ"],1),
+Q("i9","islamic","What is the washing ritual before salah commonly called?","نماز سے پہلے طہارت کے لیے کیے جانے والے وضو کو کیا کہتے ہیں؟",["Wudu / وضو","Tawaf / طواف","Sa’i / سعی","I’tikaf / اعتکاف"],0),
+Q("i10","islamic","Which city did Prophet Muhammad (peace be upon him) migrate to from Makkah?","رسول اللہ ﷺ نے مکہ سے کس شہر کی طرف ہجرت فرمائی؟",["Taif / طائف","Madinah / مدینہ","Damascus / دمشق","Baghdad / بغداد"],1)
 ];
 
 const CATEGORIES=[
@@ -491,7 +557,8 @@ const CATEGORIES=[
 {id:"history",emoji:"🏛️",title:"History",desc:"Civilisations & the past"},
 {id:"fantasy",emoji:"🐉",title:"Fantasy",desc:"Magic, myths & creatures"},
 {id:"literature",emoji:"📚",title:"Literature",desc:"Stories, books & writing"},
-{id:"personality",emoji:"🔮",title:"Personality",desc:"Discover your quiz vibe"}
+{id:"personality",emoji:"🔮",title:"Personality",desc:"Discover your quiz vibe"},
+{id:"islamic",emoji:"🕌",title:"Islamic Knowledge",desc:"Qur’an, worship & Islamic history"}
 ];
 const CARDS=[
 {id:"moon-sticker",emoji:"🌙",name:"Moon Sticker",type:"Sticker",price:0},
@@ -542,9 +609,10 @@ function renderCategories(){
   $("categoryGrid").innerHTML="";
   CATEGORIES.forEach(cat=>{
     const count=QUESTIONS.filter(q=>q.category===cat.id).length;
+    const unlocked=Math.max(1,Math.min(100,Number(game.categoryLevels[cat.id])||1));
     const card=document.createElement("article");card.className="category-card";
-    card.innerHTML=`<span class="emoji">${cat.emoji}</span><h3>${cat.title}</h3><p>${cat.desc} · ${count} questions</p><button class="primary" type="button">${t("start")}</button>`;
-    card.querySelector("button").addEventListener("click",()=>startQuiz(cat.id));
+    card.innerHTML=`<span class="emoji">${cat.emoji}</span><h3>${cat.title}</h3><p>${cat.desc}</p><div class="level-meta"><span class="level-pill">Level ${unlocked} / 100</span><span class="muted">${count} current bank</span></div><div class="progress"><span style="width:${(unlocked-1)}%"></span></div><button class="primary" type="button">▶ ${t("start")} Level ${unlocked}</button><p class="muted">Finish a level to unlock the next one.</p>`;
+    card.querySelector("button").addEventListener("click",()=>startQuiz(cat.id,unlocked));
     $("categoryGrid").appendChild(card);
   });
 }
@@ -604,6 +672,19 @@ function renderAll(){
   $("quizStat").textContent=game.quizzesDone;
   $("cardStat").textContent=game.ownedCards.length;
   $("shopCoins").textContent=game.coins;
+  $("sideName").textContent=game.name||"Quiz Lover";
+  $("sideRank").textContent=rank();
+  $("sideLevel").textContent="Level "+level();
+  $("sideXP").textContent=levelXP()+" / 100 XP";
+  $("sideProgress").style.width=levelXP()+"%";
+  $("sideXPAll").textContent=game.xp;
+  $("sideCoins").textContent=game.coins;
+  $("sideAvatar").innerHTML="";
+  if(game.photo){const sideImg=document.createElement("img");sideImg.src=game.photo;sideImg.alt="";$("sideAvatar").appendChild(sideImg);}else $("sideAvatar").textContent=game.avatar||"🌙";
+  const inv=$("sideInventory");inv.innerHTML="";
+  const inventory=CARDS.filter(c=>game.ownedCards.includes(c.id)).slice(0,8);
+  if(inventory.length){inventory.forEach(c=>{const item=document.createElement("span");item.className="inventory-item";item.title=c.name;item.textContent=c.emoji;inv.appendChild(item);});}
+  else {const empty=document.createElement("span");empty.className="inventory-empty";empty.textContent="No gifts yet";inv.appendChild(empty);}
   $("rankPill").textContent=rank();
   $("levelPill").textContent="Level "+level();
   $("levelProgress").style.width=levelXP()+"%";
@@ -656,17 +737,17 @@ function openBox(id){
   const box=BOXES.find(b=>b.id===id);if(!box)return;
   if(game.coins<box.price){toast(t("notEnough"));return;}
   game.coins-=box.price;game.openedBoxes++;
-  let reward;
+  let reward,effect=box.id==="epic"?"fireworks":"gift",rewardEmoji=box.emoji;
   const roll=Math.random();
   if(roll<.48){const coins=box.id==="epic"?250:box.id==="rare"?100:50;game.coins+=coins;reward="🪙 +"+coins+" coins";}
   else if(roll<.76){const xp=box.id==="epic"?100:box.id==="rare"?50:25;addXP(xp);reward="⭐ +"+xp+" XP";}
   else{
     const card=randomUnownedCard();
-    if(card){awardCard(card.id);reward=card.emoji+" "+card.name;showGift(card.emoji,t("cardReward"),card.name,card.type==="Character"?"car":"roses");}
+    if(card){awardCard(card.id);rewardEmoji=card.emoji;reward=card.emoji+" "+card.name;effect=card.id==="dragon"?"dragon":card.id==="unicorn"?"heart":card.id==="crystal"?"crystal":card.id==="phoenix"?"phoenix":card.id.includes("rose")?"roses":"gift";}
     else{game.coins+=100;reward="🪙 +100 bonus coins";}
   }
-  saveGame();playSound("gift");
-  showGift(box.emoji,box.name+" opened!",reward,box.id==="epic"?"fireworks":"gift");
+  saveGame();
+  showGift(rewardEmoji,box.name+" opened!",reward,effect);
 }
 function buyCard(id){
   const item=SHOP_ITEMS.find(i=>i.id===id);
@@ -674,13 +755,17 @@ function buyCard(id){
   if(game.ownedCards.includes(id)){toast(t("alreadyOwned"));return;}
   if(game.coins<item.price){toast(t("notEnough"));return;}
   game.coins-=item.price;awardCard(id);saveGame();playSound("correct");
-  showGift(item.emoji,t("bought"),item.name,"gift");
+  showGift(item.emoji,t("bought"),item.name,item.id==="dragon"?"dragon":item.id==="unicorn"?"heart":item.id==="crystal"?"crystal":item.id==="phoenix"?"phoenix":item.id.includes("rose")?"roses":"gift");
 }
 function showGift(emoji,title,description,effect="gift"){
   $("modalRoot").innerHTML="";
   const overlay=document.createElement("div");overlay.className="overlay";
   const modal=document.createElement("div");modal.className="modal";
   const big=document.createElement("div");big.className="big";big.textContent=emoji;
+  if(effect==="dragon")big.classList.add("gift-dragon");
+  if(effect==="heart")big.classList.add("gift-heart");
+  if(effect==="crystal")big.classList.add("gift-crystal");
+  if(effect==="phoenix")big.classList.add("gift-phoenix");
   const h=document.createElement("h2");h.textContent=title;
   const p=document.createElement("p");p.textContent=description;
   const btn=document.createElement("button");btn.className="primary";btn.textContent=t("close");
@@ -689,8 +774,13 @@ function showGift(emoji,title,description,effect="gift"){
   if(effect==="car")animateBurst(["🏎️","✨","⭐","💨"]);
   else if(effect==="fireworks")animateBurst(["🎆","✨","🎇","⭐","💫"]);
   else if(effect==="roses")animateBurst(["🌹","🌸","💗","🌹","🌺"]);
+  else if(effect==="dragon")animateBurst(["🐉","🔥","✨","💨"]);
+  else if(effect==="heart")animateBurst(["💗","💖","💕","💓"]);
+  else if(effect==="crystal")animateBurst(["💎","✨","🔮","⭐"]);
+  else if(effect==="phoenix")animateBurst(["🔥","🪽","✨","🌟"]);
   else if(effect==="gift")animateBurst(["🎁","✨","⭐","💖"]);
-  playSound("gift");
+  playSound(effect==="heart"?"heart":effect==="dragon"?"dragon":"gift");
+  if(["dragon","heart","crystal","phoenix"].includes(effect))setTimeout(()=>{if(big.isConnected)big.classList.remove("gift-dragon","gift-heart","gift-crystal","gift-phoenix");},2800);
 }
 function animateBurst(items){
   const root=$("burstRoot");root.innerHTML="";
@@ -702,19 +792,60 @@ function animateBurst(items){
   setTimeout(()=>root.innerHTML="",3500);
 }
 
+/* Custom share links. A link shares settings; each recipient plays locally on their own device. */
+let lastChallengeUrl="";
+function difficultyForLevel(n){return n<=20?"easy":n<=45?"medium":n<=70?"hard":"expert";}
+function shareChallenge(config){
+  const clean={mode:config.mode||"knowledge",category:config.category||"knowledge",difficulty:config.difficulty||"medium",count:Math.max(5,Math.min(10,Number(config.count)||10)),title:safeText(config.title||"FictionQuiz Challenge",60)};
+  const encoded=btoa(unescape(encodeURIComponent(JSON.stringify(clean)))).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/g,"");
+  lastChallengeUrl=location.origin+location.pathname+"#challenge="+encoded;
+  const field=$("customLink");if(field)field.value=lastChallengeUrl;
+  if(navigator.share){navigator.share({title:clean.title,text:"Play my FictionQuiz challenge!",url:lastChallengeUrl}).catch(()=>{});}
+  else if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(lastChallengeUrl).then(()=>toast("Challenge link copied. Share it on WhatsApp or any app." )).catch(()=>toast("Challenge link created below; copy it manually."));}
+  else toast("Challenge link created below; copy it manually.");
+  return lastChallengeUrl;
+}
+function createCustomChallenge(){
+  const config={mode:$("customMode").value,category:$("customCategory").value,difficulty:$("customDifficulty").value,count:Number($("customCount").value),title:safeText($("customTitle").value||"FictionQuiz Challenge",60)};
+  const url=shareChallenge(config);$("customLink").value=url;
+  if(config.mode==="knowledge")startQuiz(config.category,Math.max(1,Number(game.categoryLevels[config.category])||1),config);
+  else startFriendQuiz(config.mode,config);
+}
+function shareLastChallenge(){if(!lastChallengeUrl){createCustomChallenge();return;}shareChallengeFromUrl(lastChallengeUrl);}
+function shareChallengeFromUrl(url){if(navigator.share)navigator.share({title:"FictionQuiz Challenge",text:"Play my challenge!",url}).catch(()=>{});else if(navigator.clipboard)navigator.clipboard.writeText(url).then(()=>toast("Link copied!"));else toast("Copy the link from the box.");}
+function loadIncomingChallenge(){
+  const m=location.hash.match(/challenge=([A-Za-z0-9_-]+)/);if(!m)return;
+  try{let raw=m[1].replace(/-/g,"+").replace(/_/g,"/");raw+="===".slice((raw.length+3)%4);const config=JSON.parse(decodeURIComponent(escape(atob(raw))));
+    setTimeout(()=>{if(config.mode==="knowledge")startQuiz(config.category||"knowledge",Math.max(1,Number(game.categoryLevels[config.category])||1),config);else startFriendQuiz(config.mode,config);},500);
+  }catch(e){console.warn("Invalid FictionQuiz challenge link",e);}
+}
+
 /* Quiz flow */
-function startQuiz(category){
+function startQuiz(category,requestedLevel,customConfig){
+  const unlocked=Math.max(1,Math.min(100,Number(game.categoryLevels[category])||1));
+  const targetLevel=Math.max(1,Math.min(100,Number(requestedLevel)||unlocked));
+  if(targetLevel>unlocked){toast("Finish the previous level to unlock this one.");return;}
+  const categoryBank=QUESTIONS.filter(q=>q.category===category);
+  if(!categoryBank.length){toast("No questions are available in this category yet.");return;}
   const seen=new Set(game.seenQuestions);
-  let pool=QUESTIONS.filter(q=>q.category===category&&!seen.has(q.id));
-  if(pool.length===0){
-    const remaining=QUESTIONS.filter(q=>q.category===category);
-    if(!remaining.length){toast("No questions available.");return;}
-    toast(t("noQuestions"));return;
+  let fresh=categoryBank.filter(q=>!seen.has(q.id)).sort(()=>Math.random()-.5);
+  let used=[...fresh];
+  // Ten distinct questions per round when the bank contains ten; smaller current banks
+  // use all their unique questions, then fill the round without duplicating within that round.
+  if(used.length<10){
+    const leftovers=categoryBank.filter(q=>!used.some(x=>x.id===q.id)).sort(()=>Math.random()-.5);
+    used.push(...leftovers);
   }
-  // Slightly increase difficulty by mixing questions; no repeated questions until history reset.
-  pool=pool.sort(()=>Math.random()-.5).slice(0,Math.min(10,pool.length));
-  currentQuiz={category,questions:pool,index:0,score:0,answered:0,friend:false};
-  pool.forEach(q=>game.seenQuestions.push(q.id));
+  if(used.length<10){
+    const mixed=QUESTIONS.filter(q=>q.category!==category&&!used.some(x=>x.id===q.id)).sort(()=>Math.random()-.5);
+    used.push(...mixed.slice(0,10-used.length));
+  }
+  const desiredCount=customConfig?Math.max(5,Math.min(10,Number(customConfig.count)||10)):10;
+  pool=used.slice(0,desiredCount);
+  // Current starter bank has fewer than 10 questions in some categories; mixed-topic questions
+  // fill those rounds until a full category-specific verified bank is added.
+  currentQuiz={category,level:targetLevel,questions:pool,index:0,score:0,answered:0,friend:false,mode:"knowledge",difficulty:(customConfig&&customConfig.difficulty)||difficultyForLevel(targetLevel),title:customConfig&&customConfig.title};
+  pool.forEach(q=>{if(!game.seenQuestions.includes(q.id))game.seenQuestions.push(q.id);});
   saveGame();showQuestion();
 }
 function showQuestion(){
@@ -727,7 +858,7 @@ function showQuestion(){
   const modal=document.createElement("div");modal.className="modal quiz-shell";modal.style.textAlign="start";
   const top=document.createElement("div");top.className="quiz-top";
   const count=document.createElement("span");count.className="pill";count.textContent=(currentQuiz.index+1)+" / "+currentQuiz.questions.length;
-  const cat=document.createElement("span");cat.className="pill";cat.textContent=currentQuiz.category;
+  const cat=document.createElement("span");cat.className="pill";cat.textContent=currentQuiz.category+" · Level "+currentQuiz.level+" · "+(currentQuiz.difficulty||"custom");
   top.append(count,cat);
   const prog=document.createElement("div");prog.className="progress";
   const progIn=document.createElement("span");progIn.style.width=(currentQuiz.index/currentQuiz.questions.length*100)+"%";prog.appendChild(progIn);
@@ -745,6 +876,7 @@ function answerQuestion(index,button,answers,q){
   if(quizAnswerLock)return;quizAnswerLock=true;
   const all=[...answers.querySelectorAll("button")];
   all.forEach(b=>b.disabled=true);
+  currentQuiz.userAnswers=currentQuiz.userAnswers||{};currentQuiz.userAnswers[q.id]=index;
   if(index===q.correct){
     button.classList.add("correct");currentQuiz.score++;playSound("correct");toast(t("correct"));
   }else{
@@ -766,12 +898,20 @@ function finishQuiz(){
   const score=result.score;
   const percent=total?Math.round(score/total*100):0;
   const firstTime=!game.completed.includes(result.category);
-  // Rewards are game convenience rewards, not secure or verified scores.
-  const xp=score*10+(percent===100?10:0);
-  const coins=score*5;
+  // Only correct answers to question IDs never rewarded before can earn XP/coins.
+  // Local browser storage is convenience protection, not anti-cheat security.
+  const rewarded=new Set(game.rewardedQuestions||[]);
+  const newQuestionIds=result.questions.filter(q=>!rewarded.has(q.id)).map(q=>q.id);
+  const earnedCorrect = result.questions.reduce((n,q,i)=>n + ((result.userAnswers?.[q.id]===q.correct && !rewarded.has(q.id))?1:0),0);
+  const xp=earnedCorrect*10+(percent===100&&newQuestionIds.length===result.questions.length?10:0);
+  const coins=earnedCorrect*5;
+  newQuestionIds.forEach(id=>rewarded.add(id));game.rewardedQuestions=[...rewarded];
   addXP(xp);game.coins+=coins;
   game.quizzesDone++;game.bestScore=Math.max(game.bestScore,percent);
   if(firstTime)game.completed.push(result.category);
+  const currentUnlocked=Math.max(1,Number(game.categoryLevels[result.category])||1);
+  if(result.level>=currentUnlocked&&currentUnlocked<100)game.categoryLevels[result.category]=currentUnlocked+1;
+  else game.categoryLevels[result.category]=Math.max(currentUnlocked,Math.min(100,result.level));
   if(result.category==="fantasy"&&score>0)game.eventCount=Math.min(3,game.eventCount+1);
   if(result.friend)game.friendPlays++;
   saveGame();currentQuiz=null;
@@ -781,13 +921,20 @@ function finishQuiz(){
   const big=document.createElement("div");big.className="big";big.textContent=percent===100?"🏆":percent>=60?"🌟":"💪";
   const h=document.createElement("h2");h.textContent=t("quizComplete");
   const p=document.createElement("p");p.textContent=t("yourScore")+": "+score+" / "+total+" ("+percent+"%)";
-  const reward=document.createElement("p");reward.className="reward-line";reward.textContent="⭐ +"+xp+" XP · 🪙 +"+coins+" coins";
+  const reward=document.createElement("p");reward.className="reward-line";reward.textContent="⭐ +"+xp+" XP · 🪙 +"+coins+" coins"+(newQuestionIds.length<total?" · Repeat questions earn no rewards":" · New questions rewarded");
   const btn=document.createElement("button");btn.className="primary";btn.textContent=t("close");
   btn.addEventListener("click",()=>{$("modalRoot").innerHTML="";});
   const again=document.createElement("button");again.className="ghost";again.style.marginLeft="7px";again.textContent=t("playAgain");
-  again.addEventListener("click",()=>{$("modalRoot").innerHTML="";startQuiz(result.category);});
+  again.addEventListener("click",()=>{$("modalRoot").innerHTML="";startQuiz(result.category,Math.max(1,Number(game.categoryLevels[result.category])||1));});
+  const share=document.createElement("button");share.className="ghost";share.style.margin="8px 0 0 7px";share.textContent="🔗 Share challenge";
+  share.addEventListener("click",()=>shareChallenge({mode:"knowledge",category:result.category,difficulty:result.difficulty||difficultyForLevel(result.level),count:10,title:result.category+" Level "+result.level}));
+  const next=document.createElement("button");next.className="gold-btn";next.style.margin="8px 0 0 7px";
+  const nextLevel=Math.max(1,Number(game.categoryLevels[result.category])||1);
+  next.textContent=nextLevel>result.level&&result.level<100?"➡ Next Level "+nextLevel:(result.level>=100?"🏆 Category Complete":"➡ Continue Level "+nextLevel);
+  next.disabled=result.level>=100;
+  next.addEventListener("click",()=>{if(result.level<100){$("modalRoot").innerHTML="";startQuiz(result.category,nextLevel);}});
   modal.append(big,h,p,reward);if(percent===100){const perfect=document.createElement("p");perfect.textContent=t("perfect");modal.appendChild(perfect);}
-  modal.append(btn,again);overlay.appendChild(modal);$("modalRoot").appendChild(overlay);
+  modal.append(btn,again,next,share);overlay.appendChild(modal);$("modalRoot").appendChild(overlay);
   playSound(percent===100?"gift":"correct");
 }
 function resetQuestionHistory(){
@@ -796,15 +943,21 @@ function resetQuestionHistory(){
 }
 
 /* Friendship quiz uses a fun compatibility-style score, not a scientific assessment. */
-function startFriendQuiz(type){
-  const title=type==="friend"?"Best Friend":type==="sibling"?"Sibling Quiz":"Compatibility Quiz";
+function startFriendQuiz(type,customConfig){
+  const title=(customConfig&&customConfig.title)|| (type==="friend"?"Best Friend":type==="sibling"?"Sibling Quiz":"Compatibility Quiz");
   const questions=[
     {q:"Which activity sounds most fun?",a:["A movie night","An outdoor adventure","A creative project","A relaxing day"]},
     {q:"What makes a good teammate?",a:["Honesty","Humour","Reliability","Kindness"]},
     {q:"Choose a dream hangout.",a:["Book café","Amusement park","Beach sunset","Game night"]},
     {q:"How do you solve a disagreement?",a:["Talk it out","Take a short break","Ask for advice","Write down thoughts"]},
-    {q:"Pick a shared challenge.",a:["Trivia quiz","Puzzle room","Cooking together","Creative contest"]}
+    {q:"Pick a shared challenge.",a:["Trivia quiz","Puzzle room","Cooking together","Creative contest"]},
+    {q:"How do you prefer to celebrate good news?",a:["Tell everyone","Share with one close person","Plan a fun activity","Enjoy a quiet moment"]},
+    {q:"What kind of gift feels most meaningful?",a:["Something handmade","An experience together","Something useful","A thoughtful note"]},
+    {q:"When plans change, you usually...",a:["Adapt quickly","Ask everyone what they prefer","Suggest a new plan","Need a moment to adjust"]},
+    {q:"Which shared memory would you choose?",a:["A funny mistake","A trip together","Helping each other","A small everyday moment"]},
+    {q:"What helps a friendship grow?",a:["Honest conversations","Shared adventures","Being dependable","Respecting space"]}
   ];
+  if(customConfig&&Number(customConfig.count)===5)questions.splice(5);
   let i=0,answers=[];
   const render=()=>{
     const root=$("modalRoot");root.innerHTML="";
@@ -824,7 +977,7 @@ function startFriendQuiz(type){
   const showResult=()=>{
     const sum=answers.reduce((a,b)=>a+b,0);
     const percent=Math.round((1-Math.abs(sum-7.5)/15)*100);
-    game.friendPlays++;addXP(10);saveGame();
+    game.friendPlays++;saveGame();
     $("modalRoot").innerHTML="";
     const overlay=document.createElement("div");overlay.className="overlay";
     const modal=document.createElement("div");modal.className="modal";
@@ -832,7 +985,8 @@ function startFriendQuiz(type){
     const h=document.createElement("h2");h.textContent=t("friendResult");
     const p=document.createElement("p");p.textContent="Your fun compatibility vibe: "+Math.max(50,Math.min(99,percent))+"%. This is just a playful quiz, not a real measure of a relationship.";
     const btn=document.createElement("button");btn.className="primary";btn.textContent=t("close");btn.onclick=()=>{$("modalRoot").innerHTML="";};
-    modal.append(big,h,p,btn);overlay.appendChild(modal);$("modalRoot").appendChild(overlay);
+    const share=document.createElement("button");share.className="ghost";share.style.marginLeft="7px";share.textContent="🔗 Share this test";share.onclick=()=>shareChallenge({mode:type,category:"knowledge",difficulty:(customConfig&&customConfig.difficulty)||"medium",count:questions.length,title:title});
+    modal.append(big,h,p,btn,share);overlay.appendChild(modal);$("modalRoot").appendChild(overlay);
     playSound("gift");
   };
   render();
@@ -883,7 +1037,7 @@ function audio(){
 function playSound(kind){
   if(!game.sound)return;
   const ctx=audio();if(!ctx)return;
-  const notes=kind==="correct"?[660,880]:kind==="wrong"?[220,160]:[523,659,784];
+  const notes=kind==="correct"?[660,880]:kind==="wrong"?[220,160]:kind==="heart"?[440,660,440,660]:kind==="dragon"?[110,165,220,330]:[523,659,784];
   let start=ctx.currentTime;
   notes.forEach((freq,i)=>{
     const osc=ctx.createOscillator(),gain=ctx.createGain();
@@ -1006,9 +1160,23 @@ async function loadLeaderboard(){
   }
 }
 
+/* Mobile profile drawer */
+function toggleSidebar(force){
+  const sidebar=$("playerSidebar"),scrim=$("sidebarScrim"),toggle=$("mobileProfileToggle");
+  if(!sidebar||!scrim||!toggle)return;
+  const open=typeof force==="boolean"?force:!sidebar.classList.contains("sidebar-open");
+  sidebar.classList.toggle("sidebar-open",open);
+  scrim.classList.toggle("visible",open);
+  toggle.setAttribute("aria-expanded",String(open));
+  toggle.textContent=open?"✕ Close Profile":"👤 Profile / Gifts";
+}
+document.addEventListener("keydown",e=>{if(e.key==="Escape")toggleSidebar(false);});
+window.addEventListener("resize",()=>{if(window.innerWidth>600)toggleSidebar(false);});
+
 /* Startup */
 renderAll();
 initFirebase();
+loadIncomingChallenge();
 if(game.music)stopAmbient(); // Ambient sound only starts after a user gesture.
 </script>
 </body>
