@@ -624,7 +624,59 @@ Q("i7","islamic","What is the obligatory charity in Islam called?","اسلام �
 Q("i8","islamic","Which celebration marks the end of Ramadan?","رمضان کے اختتام پر کون سی عید منائی جاتی ہے؟",["Eid al-Adha / عید الاضحیٰ","Eid al-Fitr / عید الفطر","Mawlid / میلاد","Ashura / عاشورہ"],1),
 Q("i9","islamic","What is the washing ritual before salah commonly called?","نماز سے پہلے طہارت کے لیے کیے جانے والے وضو کو کیا کہتے ہیں؟",["Wudu / وضو","Tawaf / طواف","Sa’i / سعی","I’tikaf / اعتکاف"],0),
 Q("i10","islamic","Which city did Prophet Muhammad (peace be upon him) migrate to from Makkah?","رسول اللہ ﷺ نے مکہ سے کس شہر کی طرف ہجرت فرمائی؟",["Taif / طائف","Madinah / مدینہ","Damascus / دمشق","Baghdad / بغداد"],1)
+ ];
+
+// Extra category questions: tier 1 introductory, tier 2+ progressively more challenging.
+const EXTRA_QUESTIONS=[
+Q("k11","knowledge","Which continent is Pakistan in?","پاکستان کس براعظم میں واقع ہے؟",["Asia / ایشیا","Europe / یورپ","Africa / افریقہ","Australia / آسٹریلیا"],0),
+Q("k12","knowledge","How many colours are traditionally named in a rainbow?","قوسِ قزح کے روایتی طور پر کتنے رنگ بتائے جاتے ہیں؟",["Five / پانچ","Six / چھ","Seven / سات","Eight / آٹھ"],2),
+Q("k13","knowledge","Which instrument measures temperature?","درجہ حرارت ناپنے کا آلہ کون سا ہے؟",["Barometer / بیرومیٹر","Thermometer / تھرمامیٹر","Compass / قطب نما","Hygrometer / نمی پیما"],1),
+Q("k14","knowledge","Which country is famous for Kyoto?","کیوٹو شہر کس ملک میں ہے؟",["China / چین","Japan / جاپان","Thailand / تھائی لینڈ","Nepal / نیپال"],1),
+Q("k15","knowledge","What is the smallest prime number?","سب سے چھوٹا اوّلی عدد کون سا ہے؟",["0","1","2","3"],2),
+Q("k16","knowledge","Which line divides Earth into Northern and Southern Hemispheres?","زمین کو شمالی اور جنوبی نصف کروں میں کون سی لکیر تقسیم کرتی ہے؟",["Equator / خطِ استوا","Prime Meridian / خطِ نصف النہار","Tropic of Cancer / مدارِ سرطان","Arctic Circle / دائرۂ قطب شمالی"],0),
+Q("k17","knowledge","What is a word that reads the same backwards called?","ایسے لفظ کو کیا کہتے ہیں جو الٹا پڑھنے پر بھی وہی رہے؟",["Acronym / مخفف","Palindrome / معکوس لفظ","Synonym / ہم معنی","Anagram / حروف کی نئی ترتیب"],1),
+Q("k18","knowledge","Which number system uses only 0 and 1?","کون سا عددی نظام صرف صفر اور ایک استعمال کرتا ہے؟",["Decimal / اعشاری","Roman / رومی","Binary / ثنائی","Hexadecimal / شش عشری"],2),
+Q("s9","science","What is the basic unit of life?","زندگی کی بنیادی اکائی کیا ہے؟",["Atom / ایٹم","Cell / خلیہ","Tissue / بافت","Organ / عضو"],1),
+Q("s10","science","Which vitamin can the body make with sunlight?","دھوپ کی مدد سے جسم کون سا وٹامن بنا سکتا ہے؟",["A","B12","C","D"],3),
+Q("s11","science","Which blood cells carry most oxygen?","خون کے کون سے خلیے زیادہ تر آکسیجن پہنچاتے ہیں؟",["Red blood cells / سرخ خلیے","White blood cells / سفید خلیے","Platelets / پلیٹ لیٹس","Neurons / عصبی خلیے"],0),
+Q("s12","science","What is the chemical symbol for gold?","سونے کی کیمیائی علامت کیا ہے؟",["Ag","Au","Gd","Go"],1),
+Q("s13","science","Which cell structure contains most genetic material?","خلیے کے کس حصے میں زیادہ تر جینیاتی مادہ ہوتا ہے؟",["Nucleus / مرکزہ","Cell wall / خلوی دیوار","Ribosome / رائبوسوم","Membrane / جھلی"],0),
+Q("s14","science","What is the process plants use to make food with light?","پودے روشنی سے خوراک بنانے کے عمل کو کیا کہتے ہیں؟",["Respiration / تنفس","Fermentation / تخمیر","Photosynthesis / ضیائی تالیف","Evaporation / تبخیر"],2),
+Q("s15","science","Which particle has a negative electric charge?","کس ذرّے پر منفی برقی چارج ہوتا ہے؟",["Proton / پروٹون","Neutron / نیوٹران","Electron / الیکٹران","Photon / فوٹون"],2),
+Q("s16","science","What does DNA stand for?","DNA کا مکمل نام کیا ہے؟",["Deoxyribonucleic acid / ڈی آکسی رائبو نیوکلک ایسڈ","Dynamic nuclear atom","Dual nitrogen acid","Deoxygenated natural acid"],0),
+Q("h6","history","Who was the first woman to fly solo across the Atlantic?","بحرِ اوقیانوس کے پار تنہا پرواز کرنے والی پہلی خاتون کون تھیں؟",["Amelia Earhart / امیلیا ایئرہارٹ","Marie Curie / میری کیوری","Ada Lovelace / ایڈا لولیس","Rosa Parks / روزا پارکس"],0),
+Q("h7","history","Machu Picchu was built by which civilisation?","ماچو پچو کس تہذیب نے تعمیر کیا؟",["Maya / مایا","Inca / انکا","Roman / رومی","Egyptian / مصری"],1),
+Q("h8","history","Which 1215 document limited the English king's power?","1215ء کی کس دستاویز نے انگلستان کے بادشاہ کے اختیارات محدود کیے؟",["Magna Carta / میگنا کارٹا","Bill of Rights / بل آف رائٹس","Domesday Book / ڈومزڈے بک","Treaty of Paris / معاہدۂ پیرس"],0),
+Q("h9","history","The Silk Road connected East Asia with which broad region?","شاہراہِ ریشم نے مشرقی ایشیا کو بنیادی طور پر کس خطے سے جوڑا؟",["Northern Europe / شمالی یورپ","Mediterranean world / بحیرہ روم کا خطہ","Southern Africa / جنوبی افریقہ","Arctic region / قطبی خطہ"],1),
+Q("h10","history","Which empire was ruled from Constantinople?","قسطنطنیہ سے کس سلطنت کی حکومت رہی؟",["Byzantine Empire / بازنطینی سلطنت","Mali Empire / مالی سلطنت","Mughal Empire / مغلیہ سلطنت","Inca Empire / انکا سلطنت"],0),
+Q("h11","history","The Rosetta Stone helped decipher which writing system?","روزٹہ اسٹون نے کس رسم الخط کو سمجھنے میں مدد دی؟",["Cuneiform / میخی","Egyptian hieroglyphs / مصری تصویری رسم الخط","Runes / رونی","Linear B / لائنر بی"],1),
+Q("h12","history","Which 1648 settlement is linked with state sovereignty in Europe?","یورپ میں ریاستی خودمختاری کے تصور سے 1648ء کا کون سا معاہدہ وابستہ ہے؟",["Peace of Westphalia / صلحِ ویسٹ فیلیا","Treaty of Versailles / معاہدۂ ورسائے","Congress of Vienna / کانگریس آف ویانا","Treaty of Utrecht / معاہدۂ یوٹریخت"],0),
+Q("h13","history","Which city was buried by Mount Vesuvius in 79 CE?","79ء میں کوہِ ویسوویئس کے آتش فشاں سے کون سا شہر دب گیا تھا؟",["Pompeii / پومپئی","Sparta / اسپارٹا","Carthage / کارتھیج","Troy / ٹرائے"],0),
+Q("f5","fantasy","Which creature often guards treasure in fantasy tales?","فینٹسی کہانیوں میں خزانے کی حفاظت کون سی مخلوق کرتی ہے؟",["Dragon / ڈریگن","Dove / فاختہ","Deer / ہرن","Otter / اودبلاؤ"],0),
+Q("f6","fantasy","What is a magical mirror used to see distant places called?","دور دراز مقامات دکھانے والے جادوئی آئینے کو کیا کہا جا سکتا ہے؟",["Scrying mirror / غیبی آئینہ","Hourglass / ریت گھڑی","Lantern / لالٹین","Quill / قلم"],0),
+Q("f7","fantasy","A centaur combines a human with which animal?","سینٹور انسان کے ساتھ کس جانور کی ساخت رکھتا ہے؟",["Horse / گھوڑا","Lion / شیر","Eagle / عقاب","Wolf / بھیڑیا"],0),
+Q("f8","fantasy","A story explaining the origin of a natural phenomenon is a what?","قدرتی مظہر کی ابتدا بیان کرنے والی کہانی کو کیا کہتے ہیں؟",["Myth / دیومالا","Manual / ہدایت نامہ","Biography / سوانح","Satire / طنز"],0),
+Q("f9","fantasy","Which mythical bird is famous in Arabian Nights tradition?","الف لیلہ کی روایت میں کون سا دیومالائی پرندہ مشہور ہے؟",["Roc / رُخ","Kiwi / کیوی","Penguin / پینگوئن","Swan / ہنس"],0),
+Q("f10","fantasy","What is a labyrinth?","بھول بھلیاں کس چیز کو کہتے ہیں؟",["A maze / پیچیدہ راستوں کا جال","A flying ship / اڑنے والا جہاز","A potion / جادوئی شربت","A crystal / قلمی پتھر"],0),
+Q("l3","literature","Who writes a biography?","سوانح عمری کون لکھتا ہے؟",["The subject only / صرف متعلقہ شخص","A biographer / سوانح نگار","A cartographer / نقشہ ساز","A translator only / صرف مترجم"],1),
+Q("l4","literature","What is the turning point of a story called?","کہانی کے فیصلہ کن موڑ کو کیا کہتے ہیں؟",["Climax / نقطۂ عروج","Preface / دیباچہ","Index / فہرست","Footnote / حاشیہ"],0),
+Q("l5","literature","A metaphor describes one thing as what?","استعارے میں ایک چیز کو دوسری چیز کیا قرار دیا جاتا ہے؟",["Exactly itself / بعینہٖ وہی","Another thing / دوسری چیز","A question / سوال","A sound / آواز"],1),
+Q("l6","literature","What is the list of performers in a play called?","ڈرامے کے اداکاروں کی فہرست کو کیا کہتے ہیں؟",["Cast / کاسٹ","Glossary / فرہنگ","Appendix / ضمیمہ","Abstract / خلاصہ"],0),
+Q("l7","literature","A hint about a future event in a story is called what?","کہانی میں آنے والے واقعے کا پیشگی اشارہ کیا کہلاتا ہے؟",["Foreshadowing / پیشگی اشارہ","Flashback / ماضی کی جھلک","Alliteration / تکرارِ صوت","Irony / طنز"],0),
+Q("l8","literature","What is an unreliable narrator?","غیر معتبر راوی سے کیا مراد ہے؟",["A narrator whose account may be biased or inaccurate / ایسا راوی جس کی بات جانبدار یا غلط ہو سکتی ہے","The author / مصنف","A silent character / خاموش کردار","A reviewer / تبصرہ نگار"],0),
+Q("l9","literature","Which poetic form traditionally has fourteen lines?","روایتی طور پر کس شعری صنف میں چودہ مصرعے ہوتے ہیں؟",["Sonnet / سانیٹ","Haiku / ہائیکو","Epic / رزمیہ","Ode / قصیدہ"],0),
+Q("l10","literature","What is the contrast between expectation and reality called?","توقع اور حقیقت کے تضاد کو کیا کہتے ہیں؟",["Irony / تضاد یا طنز","Rhyme / قافیہ","Meter / وزن","Allusion / تلمیح"],0),
+Q("i1","islamic","How many pillars of Islam are commonly taught?","اسلام کے بنیادی ارکان کتنے ہیں؟",["Four / چار","Five / پانچ","Six / چھ","Seven / سات"],1),
+Q("i2","islamic","In which month do Muslims fast?","مسلمان کس مہینے میں روزے رکھتے ہیں؟",["Muharram / محرم","Ramadan / رمضان","Shawwal / شوال","Safar / صفر"],1),
+Q("i3","islamic","In which city is the Kaaba located?","خانہ کعبہ کس شہر میں واقع ہے؟",["Madinah / مدینہ","Makkah / مکہ","Jerusalem / یروشلم","Taif / طائف"],1),
+Q("i4","islamic","What is the night journey in Islamic tradition called?","اسلامی روایت میں رات کے سفر کو کیا کہا جاتا ہے؟",["Hijrah / ہجرت","Isra and Mi'raj / اسراء و معراج","Badr / بدر","Hudaibiyah / حدیبیہ"],1),
+Q("i5","islamic","Which angel is associated with bringing revelation?","وحی پہنچانے کے حوالے سے کون سے فرشتے کا نام معروف ہے؟",["Jibril / جبرائیل","Mikail / میکائیل","Israfil / اسرافیل","Malak al-Mawt / ملک الموت"],0),
+Q("i6","islamic","What is the direction Muslims face during prayer called?","نماز میں مسلمان جس سمت رخ کرتے ہیں اسے کیا کہتے ہیں؟",["Qibla / قبلہ","Mihrab / محراب","Minbar / منبر","Safa / صفا"],0),
+Q("i7","islamic","Which month comes after Ramadan?","رمضان کے فوراً بعد کون سا مہینہ آتا ہے؟",["Dhul Hijjah / ذوالحجہ","Shawwal / شوال","Rajab / رجب","Rabi al-Awwal / ربیع الاول"],1),
+Q("i8","islamic","What is the pilgrimage to Makkah called?","مکہ مکرمہ کے مخصوص حج کو کیا کہتے ہیں؟",["Zakat / زکوٰۃ","Hajj / حج","Sawm / صوم","Sadaqah / صدقہ"],1)
 ];
+QUESTIONS.push(...EXTRA_QUESTIONS);
+
 
 const CATEGORIES=[
 {id:"knowledge",emoji:"🌍",title:"Knowledge",desc:"General knowledge & facts"},
@@ -920,14 +972,17 @@ function startQuiz(category,requestedLevel,customConfig){
   const unlocked=Math.max(1,Math.min(100,Number(game.categoryLevels[category])||1));
   const targetLevel=Math.max(1,Math.min(100,Number(requestedLevel)||unlocked));
   if(targetLevel>unlocked){toast("Finish the previous level to unlock this one.");return;}
-  const categoryBank=QUESTIONS.filter(q=>q.category===category);
-  if(!categoryBank.length){toast("No questions are available in this category yet.");return;}
+  const tier=targetLevel<=10?1:targetLevel<=25?2:targetLevel<=45?3:targetLevel<=70?4:5;
+  const categoryAll=QUESTIONS.filter(q=>q.category===category);
+  const categoryBank=categoryAll.filter(q=>(q.tier||1)<=tier && (q.tier||1)>=Math.max(1,tier-1));
+  const activeBank=categoryBank.length?categoryBank:categoryAll;
+  if(!activeBank.length){toast("No questions are available in this category yet.");return;}
   let seen=new Set(game.seenQuestions);
-  let fresh=categoryBank.filter(q=>!seen.has(q.id)).sort(()=>Math.random()-.5);
+  let fresh=activeBank.filter(q=>!seen.has(q.id)).sort(()=>Math.random()-.5);
   // Do not repeat a category question until its unseen bank is exhausted.
   if(!fresh.length){
-    game.seenQuestions=game.seenQuestions.filter(id=>!categoryBank.some(q=>q.id===id));
-    fresh=categoryBank.slice().sort(()=>Math.random()-.5);
+    game.seenQuestions=game.seenQuestions.filter(id=>!activeBank.some(q=>q.id===id));
+    fresh=activeBank.slice().sort(()=>Math.random()-.5);
   }
   const desiredCount=customConfig?Math.max(5,Math.min(10,Number(customConfig.count)||10)):10;
   pool=fresh.slice(0,Math.min(desiredCount,fresh.length));
@@ -1007,7 +1062,7 @@ function finishQuiz(){
   const currentUnlocked=Math.max(1,Number(game.categoryLevels[result.category])||1);
   if(result.level>=currentUnlocked&&currentUnlocked<100)game.categoryLevels[result.category]=currentUnlocked+1;
   else game.categoryLevels[result.category]=Math.max(currentUnlocked,Math.min(100,result.level));
-  if(result.category==="fantasy"&&score>0)game.eventCount=Math.min(3,game.eventCount+1);
+  if(result.category==="fantasy"&&score>0&&newQuestionIds.length>0&&!game.eventClaimed)game.eventCount=Math.min(3,game.eventCount+1);
   if(result.friend)game.friendPlays++;
   saveGame();currentQuiz=null;
   $("modalRoot").innerHTML="";
