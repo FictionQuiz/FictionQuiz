@@ -482,7 +482,8 @@ function goTo(id,button){
   const viewMap={
     home:["home","playerPanel","daily","event"],
     quizzes:["quizzes","customChallenge","friendship"],
-    collection:["collection","gifts","shop"],
+    collection:["collection"],
+    gifts:["gifts","shop"],
     profile:["achievements","leaderboard","profile"]
   };
   const view=Object.keys(viewMap).find(key=>viewMap[key].includes(id))||id;
@@ -491,7 +492,7 @@ function goTo(id,button){
   });
   document.querySelectorAll(".bottom-nav button").forEach(b=>b.classList.remove("active"));
   const nav=document.querySelectorAll(".bottom-nav button");
-  const index={home:0,quizzes:1,collection:2,profile:4}[view];
+  const index={home:0,quizzes:1,collection:2,gifts:3,profile:4}[view];
   if(button)button.classList.add("active");else if(index!==undefined&&nav[index])nav[index].classList.add("active");
   window.scrollTo({top:0,behavior:"smooth"});
 }
