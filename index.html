@@ -37,6 +37,17 @@ button,.btn{border:0;border-radius:12px;padding:10px 14px;background:var(--panel
 .small{font-size:12px;padding:7px 10px}
 main{max-width:1100px;margin:auto;padding:18px 15px 100px}
 section{scroll-margin-top:90px}
+main>section.view-hidden{display:none!important}
+.collect-card{min-height:185px;padding:18px 10px;display:flex;flex-direction:column;justify-content:center;gap:7px;border:1px solid #826dff;box-shadow:inset 0 0 22px #7657ff18,0 8px 24px #0004}
+.collect-card .emoji{font-size:52px;filter:drop-shadow(0 0 12px #c48aff)}
+.collect-card strong{font-size:15px;color:#fff}
+.collect-card .pill{align-self:center}
+.achievement{min-height:92px;padding:14px;border:1px solid #b58aff66;box-shadow:0 5px 18px #0003}
+.achievement .emoji{font-size:38px;filter:drop-shadow(0 0 10px #ffd477)}
+.frame-preview-label{font-size:12px;color:var(--gold);font-weight:800;margin:10px 0}
+#profileRing{width:92px;height:92px;display:grid;place-items:center;flex-shrink:0}
+#profileRing .avatar{width:80px;height:80px;font-size:40px}
+.test-mode-note{border:1px dashed #ffd47788;background:#ffd47712;padding:12px;border-radius:14px;margin:12px 0}
 .hero{position:relative;overflow:hidden;border:1px solid #ffffff1c;border-radius:26px;padding:27px 22px;background:linear-gradient(120deg,#382151,#211a3b 65%,#30204a);margin-bottom:17px}
 .hero:after{content:"✦";position:absolute;right:18px;top:0;font-size:130px;color:#ffffff0a;pointer-events:none}
 .eyebrow{color:var(--gold);font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:2px}
@@ -327,6 +338,7 @@ input,select{background:#07112b;border-color:#3155a6}
 
   <section class="panel" id="gifts">
     <div class="section-head"><h2 data-i18n="giftsTitle">🎁 Mystery Gift Boxes</h2></div>
+    <div class="test-mode-note"><strong>🧪 Free Preview Mode</strong><p>Try gift animations and card reveals without spending coins or changing your saved progress.</p><button class="gold-btn" type="button" onclick="previewAllRewards()">✨ Preview all gifts & effects</button></div>
     <p data-i18n="giftsDesc">Open a box to win coins, XP or collectible cards. Rewards are random and not guaranteed.</p>
     <div class="gift-grid" id="giftGrid"></div>
   </section>
@@ -467,9 +479,21 @@ function toast(message){
   toast.timer=setTimeout(()=>el.classList.add("hidden"),2600);
 }
 function goTo(id,button){
-  const el=$(id);if(el)el.scrollIntoView({behavior:"smooth",block:"start"});
+  const viewMap={
+    home:["home","playerPanel","daily","event"],
+    quizzes:["quizzes","customChallenge","friendship"],
+    collection:["collection","gifts","shop"],
+    profile:["achievements","leaderboard","profile"]
+  };
+  const view=Object.keys(viewMap).find(key=>viewMap[key].includes(id))||id;
+  document.querySelectorAll("main>section").forEach(section=>{
+    section.classList.toggle("view-hidden",!viewMap[view]?.includes(section.id));
+  });
   document.querySelectorAll(".bottom-nav button").forEach(b=>b.classList.remove("active"));
-  if(button)button.classList.add("active");
+  const nav=document.querySelectorAll(".bottom-nav button");
+  const index={home:0,quizzes:1,collection:2,profile:4}[view];
+  if(button)button.classList.add("active");else if(index!==undefined&&nav[index])nav[index].classList.add("active");
+  window.scrollTo({top:0,behavior:"smooth"});
 }
 function level(){return Math.floor(game.xp/100)+1;}
 function levelXP(){return game.xp%100;}
@@ -778,16 +802,17 @@ function renderShop(){
 }
 function renderAchievements(){
   $("achievementGrid").innerHTML="";
+  const newlyUnlocked=[];
   ACHIEVEMENTS.forEach(a=>{
     const earned=a.test();
     if(earned&&!game.achievements.includes(a.id)){
-      game.achievements.push(a.id);
-      // Achievements are cosmetic; no extra currency is silently awarded.
+      game.achievements.push(a.id);newlyUnlocked.push(a);
     }
     const el=document.createElement("article");el.className="achievement";
     el.innerHTML=`<span class="emoji">${earned?a.emoji:"🔒"}</span><div><strong>${a.name}</strong><p>${a.desc}</p><span class="pill">${earned?t("unlocked"):t("locked")}</span></div>`;
     $("achievementGrid").appendChild(el);
   });
+  if(newlyUnlocked.length){localStorage.setItem(SAVE_KEY,JSON.stringify(game));newlyUnlocked.forEach((a,i)=>setTimeout(()=>showGift(a.emoji,"Achievement unlocked!",a.name+" — "+a.desc,"fireworks"),i*900));}
 }
 function renderAll(){
   applyTheme();$("frameInput").value=game.profileFrame||"gold";previewFrame(game.profileFrame||"gold");
@@ -865,8 +890,9 @@ function claimEvent(){
   const card=randomUnownedCard();if(card)awardCard(card.id);
   saveGame();showGift("🌌",t("eventDone"),"+100 coins · +40 XP"+(card?" · "+card.name:""),"fireworks");
 }
-function openBox(id){
+function openBox(id,preview=false){
   const box=BOXES.find(b=>b.id===id);if(!box)return;
+  if(preview){const card=CARDS.find(c=>c.id==="dragon")||CARDS[0];showGift(card.emoji,"Preview: "+box.name,card.name+" · Demo only",box.id==="epic"?"fireworks":card.id==="dragon"?"dragon":"gift");return;}
   if(game.coins<box.price){toast(t("notEnough"));return;}
   game.coins-=box.price;game.openedBoxes++;
   let reward,effect=box.id==="epic"?"fireworks":"gift",rewardEmoji=box.emoji;
@@ -880,6 +906,17 @@ function openBox(id){
   }
   saveGame();
   showGift(rewardEmoji,box.name+" opened!",reward,effect);
+}
+function previewAllRewards(){
+  const samples=[
+    {emoji:"🏎️",title:"Royal Car Arrival",desc:"Full-screen zoom entrance",effect:"car"},
+    {emoji:"🐉",title:"Dragon Guardian",desc:"Dragon reveal animation",effect:"dragon"},
+    {emoji:"🌹",title:"Rose Shower",desc:"Rose rain effect",effect:"roses"},
+    {emoji:"💎",title:"Crystal Burst",desc:"Crystal glow reveal",effect:"crystal"},
+    {emoji:"🎆",title:"Legendary Fireworks",desc:"Full-screen celebration",effect:"fireworks"},
+    {emoji:"🔥",title:"Phoenix Rising",desc:"Phoenix reveal animation",effect:"phoenix"}
+  ];let i=0;
+  const next=()=>{if(i>=samples.length){toast("Preview finished. Your coins and saved rewards were not changed.");return;}const x=samples[i++];showGift(x.emoji,x.title,x.desc,x.effect);const close=$("modalRoot").querySelector(".modal button");if(close)close.addEventListener("click",()=>setTimeout(next,250),{once:true});};next();
 }
 function buyCard(id){
   const item=SHOP_ITEMS.find(i=>i.id===id);
@@ -920,13 +957,16 @@ function showGift(emoji,title,description,effect="gift"){
 function animateBurst(items){
   const root=$("burstRoot");root.innerHTML="";
   const effect=document.createElement("div");effect.className="gift-effect-layer";root.appendChild(effect);
-  const kind=items.includes("🏎️")?"car":items.includes("🐉")?"dragon":items.includes("🎆")?"fireworks":items.includes("🌹")?"roses":items.includes("🪙")?"gold":"gift";
+  const kind=items.includes("🏎️")?"car":items.includes("🐉")?"dragon":items.includes("🎆")?"fireworks":items.includes("🌹")?"roses":items.includes("💎")?"crystal":items.includes("🔥")?"phoenix":items.includes("🪙")?"gold":"gift";
   if(kind==="car"){
     const car=document.createElement("span");car.className="gift-car";car.textContent="🏎️💨";effect.appendChild(car);
     ["✨","💫","⚡"].forEach((v,i)=>{const t=document.createElement("span");t.className="gift-firework";t.textContent=v;t.style.left=(15+i*30)+"%";t.style.top=(28+i*16)+"%";t.style.animationDelay=(i*.18)+"s";effect.appendChild(t);});
   }else if(kind==="dragon"){
     const dragon=document.createElement("span");dragon.className="gift-dragon-fx";dragon.textContent="🐉🔥";effect.appendChild(dragon);
     for(let i=0;i<18;i++){const f=document.createElement("span");f.className="gift-fall";f.textContent=["🔥","✨","💨"][i%3];f.style.left=Math.random()*100+"%";f.style.animationDelay=(Math.random()*.8)+"s";effect.appendChild(f);}
+  }else if(kind==="crystal"||kind==="phoenix"){
+    const symbols=kind==="crystal"?["💎","🔷","✨","❄️"]:["🔥","🪽","✨","🌟"];
+    for(let i=0;i<26;i++){const p=document.createElement("span");p.className="gift-fall";p.textContent=symbols[i%symbols.length];p.style.left=Math.random()*100+"%";p.style.animationDelay=(Math.random()*.8)+"s";effect.appendChild(p);}
   }else{
     const symbols=kind==="fireworks"?["🎆","🎇","✨","🌟"]:kind==="roses"?["🌹","🌸","💗","🌺"]:["🎁","✨","⭐","💖"];
     for(let i=0;i<34;i++){
@@ -1340,6 +1380,7 @@ window.addEventListener("resize",()=>{if(window.innerWidth>600)toggleSidebar(fal
 
 /* Startup */
 renderAll();
+goTo("home");
 initFirebase();
 loadIncomingChallenge();
 if(game.music)stopAmbient(); // Ambient sound only starts after a user gesture.
