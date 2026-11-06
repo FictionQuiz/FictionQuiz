@@ -1024,17 +1024,22 @@ function startQuiz(category,requestedLevel,customConfig){
   const activeBank=categoryBank.length?categoryBank:categoryAll;
   if(!activeBank.length){toast("No questions are available in this category yet.");return;}
   let seen=new Set(game.seenQuestions);
-  let fresh=activeBank.filter(q=>!seen.has(q.id)).sort(()=>Math.random()-.5);
-  // Do not repeat a category question until its unseen bank is exhausted.
+  const shuffle=list=>list.slice().sort(()=>Math.random()-.5);
+  let fresh=shuffle(activeBank.filter(q=>!seen.has(q.id)));
+  // Fill short difficulty tiers with other unseen questions from this category.
+  if(fresh.length<10){
+    const extra=shuffle(categoryAll.filter(q=>!seen.has(q.id)&&!fresh.some(x=>x.id===q.id)));
+    fresh=fresh.concat(extra);
+  }
+  // Reset only after every question in this category has been completed.
   if(!fresh.length){
-    game.seenQuestions=game.seenQuestions.filter(id=>!activeBank.some(q=>q.id===id));
-    fresh=activeBank.slice().sort(()=>Math.random()-.5);
+    game.seenQuestions=game.seenQuestions.filter(id=>!categoryAll.some(q=>q.id===id));
+    fresh=shuffle(categoryAll);
   }
   const desiredCount=customConfig?Math.max(5,Math.min(10,Number(customConfig.count)||10)):10;
   pool=fresh.slice(0,Math.min(desiredCount,fresh.length));
-  if(!pool.length){toast("No new questions are available in this category.");return;}
+  if(!pool.length){toast("No questions are available in this category yet.");return;}
   currentQuiz={category,level:targetLevel,questions:pool,index:0,score:0,answered:0,friend:false,mode:"knowledge",difficulty:(customConfig&&customConfig.difficulty)||difficultyForLevel(targetLevel),title:customConfig&&customConfig.title};
-  pool.forEach(q=>{if(!game.seenQuestions.includes(q.id))game.seenQuestions.push(q.id);});
   saveGame();showQuestion();
   }catch(error){
     console.error("FictionQuiz could not start this quiz:",error);
@@ -1097,6 +1102,10 @@ function finishQuiz(){
   // Only correct answers to question IDs never rewarded before can earn XP/coins.
   // Local browser storage is convenience protection, not anti-cheat security.
   const rewarded=new Set(game.rewardedQuestions||[]);
+  // Mark questions as seen only after a completed round, not when a round is merely opened.
+  const seenAfterRound=new Set(game.seenQuestions||[]);
+  result.questions.forEach(q=>seenAfterRound.add(q.id));
+  game.seenQuestions=[...seenAfterRound];
   const newQuestionIds=result.questions.filter(q=>!rewarded.has(q.id)).map(q=>q.id);
   const earnedCorrect = result.questions.reduce((n,q,i)=>n + ((result.userAnswers?.[q.id]===q.correct && !rewarded.has(q.id))?1:0),0);
   const xp=earnedCorrect*10+(percent===100&&newQuestionIds.length===result.questions.length?10:0);
