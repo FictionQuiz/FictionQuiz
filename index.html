@@ -376,7 +376,7 @@ input,select{background:#07112b;border-color:#3155a6}
       <div class="full"><label for="nameInput" data-i18n="displayName">Display name</label><input id="nameInput" maxlength="24" placeholder="Quiz Lover" autocomplete="nickname"></div>
       <div><label for="avatarInput" data-i18n="avatarEmoji">Avatar emoji</label><select id="avatarInput"><option>🌙</option><option>🦋</option><option>🐱</option><option>🦊</option><option>🐼</option><option>🐉</option><option>⭐</option><option>🌸</option><option>🦄</option><option>🪄</option></select></div>
       <div><label for="photoInput" data-i18n="profilePhoto">Optional profile photo</label><input type="file" id="photoInput" accept="image/png,image/jpeg,image/webp"></div>
-      <div><label for="frameInput">Avatar frame</label><select id="frameInput" onchange="previewFrame(this.value)"><option value="gold">Royal Gold</option><option value="rose">Rose Glow</option><option value="ice">Ice Crystal</option><option value="galaxy">Galaxy</option><option value="emerald">Emerald</option></select></div>
+      <div><label for="frameInput">Avatar frame</label><select id="frameInput" onchange="previewFrame(this.value)"><option value="gold">Royal Gold</option><option value="rose">Rose Glow</option><option value="ice">Ice Crystal</option><option value="galaxy">Galaxy</option><option value="emerald">Emerald</option></select><div class="frame-preview-label">Live frame preview</div><div id="frameDemo" class="ring frame-gold" style="width:92px;height:92px;display:grid;place-items:center;margin:8px auto"><div class="avatar" style="width:80px;height:80px;font-size:40px">🌙</div></div></div>
       <div class="full"><button class="primary" onclick="saveProfile()" data-i18n="saveProfile">Save Profile</button><button class="ghost" onclick="removePhoto()" data-i18n="removePhoto">Remove photo</button></div>
       <div class="full"><label for="emailInput">Email (Firebase account)</label><input id="emailInput" type="email" autocomplete="email" placeholder="you@example.com"></div>
       <div class="full"><label for="passwordInput" data-i18n="password">Password</label><input id="passwordInput" type="password" autocomplete="current-password" placeholder="At least 6 characters"></div>
@@ -725,6 +725,7 @@ const CARDS=[
 {id:"galaxy-theme",emoji:"🌌",name:"Galaxy Theme",type:"Theme",price:500},
 {id:"magic-wand",emoji:"🪄",name:"Magic Wand",type:"Sticker",price:150},
 {id:"crystal",emoji:"💎",name:"Crystal Keeper",type:"Character",price:600},
+{id:"supercar",emoji:"🏎️",name:"Velocity Supercar",type:"Legendary Gift",price:700},
 {id:"butterfly",emoji:"🦋",name:"Dream Butterfly",type:"Sticker",price:200},
 {id:"forest-theme",emoji:"🌲",name:"Enchanted Forest",type:"Theme",price:350},
 {id:"unicorn",emoji:"🦄",name:"Unicorn Dream",type:"Character",price:400}
@@ -744,7 +745,8 @@ const SHOP_ITEMS=[
 {id:"unicorn",emoji:"🦄",name:"Unicorn Dream",price:400},
 {id:"phoenix",emoji:"🔥",name:"Phoenix Spirit",price:450},
 {id:"galaxy-theme",emoji:"🌌",name:"Galaxy Theme",price:500},
-{id:"crystal",emoji:"💎",name:"Crystal Keeper",price:600}
+{id:"crystal",emoji:"💎",name:"Crystal Keeper",price:600},
+{id:"supercar",emoji:"🏎️",name:"Velocity Supercar",price:700}
 ];
 const ACHIEVEMENTS=[
 {id:"first",emoji:"🌱",name:"First Steps",desc:"Complete your first quiz",test:()=>game.quizzesDone>=1},
@@ -901,7 +903,7 @@ function openBox(id,preview=false){
   else if(roll<.76){const xp=box.id==="epic"?100:box.id==="rare"?50:25;addXP(xp);reward="⭐ +"+xp+" XP";}
   else{
     const card=randomUnownedCard();
-    if(card){awardCard(card.id);rewardEmoji=card.emoji;reward=card.emoji+" "+card.name;effect=card.id==="dragon"?"dragon":card.id==="unicorn"?"heart":card.id==="crystal"?"crystal":card.id==="phoenix"?"phoenix":card.id.includes("rose")?"roses":"gift";}
+    if(card){awardCard(card.id);rewardEmoji=card.emoji;reward=card.emoji+" "+card.name;effect=card.id==="supercar"?"car":card.id==="dragon"?"dragon":card.id==="unicorn"?"heart":card.id==="crystal"?"crystal":card.id==="phoenix"?"phoenix":card.id.includes("rose")?"roses":"gift";}
     else{game.coins+=100;reward="🪙 +100 bonus coins";}
   }
   saveGame();
@@ -924,7 +926,7 @@ function buyCard(id){
   if(game.ownedCards.includes(id)){toast(t("alreadyOwned"));return;}
   if(game.coins<item.price){toast(t("notEnough"));return;}
   game.coins-=item.price;awardCard(id);saveGame();playSound("correct");
-  showGift(item.emoji,t("bought"),item.name,item.id==="dragon"?"dragon":item.id==="unicorn"?"heart":item.id==="crystal"?"crystal":item.id==="phoenix"?"phoenix":item.id.includes("rose")?"roses":"gift");
+  showGift(item.emoji,t("bought"),item.name,item.id==="supercar"?"car":item.id==="dragon"?"dragon":item.id==="unicorn"?"heart":item.id==="crystal"?"crystal":item.id==="phoenix"?"phoenix":item.id.includes("rose")?"roses":"gift");
 }
 function showGift(emoji,title,description,effect="gift"){
   $("modalRoot").innerHTML="";
@@ -951,7 +953,7 @@ function showGift(emoji,title,description,effect="gift"){
   else if(effect==="crystal")animateBurst(["💎","✨","🔮","⭐"]);
   else if(effect==="phoenix")animateBurst(["🔥","🪽","✨","🌟"]);
   else if(effect==="gift")animateBurst(["🎁","✨","⭐","💖"]);
-  playSound(effect==="heart"?"heart":effect==="dragon"?"dragon":"gift");
+  playSound(effect==="heart"?"heart":effect==="dragon"?"dragon":effect==="car"?"car":"gift");
   if(["dragon","heart","crystal","phoenix"].includes(effect))setTimeout(()=>{if(big.isConnected)big.classList.remove("gift-dragon","gift-heart","gift-crystal","gift-phoenix");},2800);
 }
 function animateBurst(items){
@@ -1195,7 +1197,7 @@ function applyTheme(){
 }
 function previewFrame(frame){
   const allowed=["gold","rose","ice","galaxy","emerald"],ring=$("profileRing");
-  if(ring)ring.className="ring frame-"+(allowed.includes(frame)?frame:"gold");
+  const chosen=allowed.includes(frame)?frame:"gold";if(ring)ring.className="ring frame-"+chosen;const demo=$("frameDemo");if(demo)demo.className="ring frame-"+chosen;
 }
 /* Profile settings: photos stay local and are resized before saving. */
 function saveProfile(){
@@ -1242,7 +1244,7 @@ function audio(){
 function playSound(kind){
   if(!game.sound)return;
   const ctx=audio();if(!ctx)return;
-  const notes=kind==="correct"?[660,880,990]:kind==="wrong"?[180,125,85,125]:kind==="heart"?[440,660,440,660]:kind==="dragon"?[110,165,220,330]:[523,659,784];
+  const notes=kind==="correct"?[660,880,990]:kind==="wrong"?[180,125,85,125]:kind==="heart"?[440,660,440,660]:kind==="dragon"?[110,165,220,330]:kind==="car"?[180,420,760,1100,1500]:kind==="gift"?[520,740,1040,1480]:[523,659,784];
   let start=ctx.currentTime;
   notes.forEach((freq,i)=>{
     const osc=ctx.createOscillator(),gain=ctx.createGain();
