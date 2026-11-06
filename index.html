@@ -1114,7 +1114,7 @@ function authError(e){
   };
   return messages[code]||"Could not complete the account action. Check Firebase Authentication settings.";
 }
-async async function syncPublicProfile(){
+async function syncPublicProfile(){
   if(!currentUser||!db)return;
   try{
     // Only basic profile metadata is sent. XP, coins and local photo are not uploaded.
@@ -1137,7 +1137,7 @@ async function loadCloudProfile(){
     }else await syncPublicProfile();
   }catch(e){console.warn("Cloud profile read blocked by Firestore rules.");}
 }
-async async function loadLeaderboard(){
+async function loadLeaderboard(){
   const root=$("leaderboardList");root.innerHTML="";
   if(!db){
     const p=document.createElement("p");p.className="muted";p.textContent=t("noLeaderboard");root.appendChild(p);return;
