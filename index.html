@@ -236,6 +236,38 @@ input,select{background:#07112b;border-color:#3155a6}
 @keyframes dragonReveal{0%{opacity:0;transform:translate(-50%,80%) scale(.2)}35%{opacity:1;transform:translate(-50%,-55%) scale(1.25)}65%{transform:translate(-50%,-50%) scale(1)}100%{transform:translate(-50%,-60%) scale(1.05);opacity:0}}
 @media(max-width:700px){main{padding-left:10px;padding-right:10px}.hero:after{font-size:42px;right:10px}.gift-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
+
+/* Luxury cinematic gift and profile upgrade */
+.gift-effect-layer{position:fixed;inset:0;z-index:9998;pointer-events:none;overflow:hidden;background:radial-gradient(ellipse at center,rgba(23,12,35,.08),rgba(5,3,12,.42))}
+.gift-effect-layer .cinema-art{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);filter:drop-shadow(0 20px 35px #0009)}
+.cinema-car{width:min(78vw,760px);animation:cinemaCar 3.1s cubic-bezier(.18,.72,.25,1) both}
+@keyframes cinemaCar{0%{transform:translate(-145vw,25vh) scale(.45);opacity:0}18%{opacity:1}48%{transform:translate(-50%,-50%) scale(1.08)}64%{transform:translate(-50%,-50%) scale(1)}100%{transform:translate(150vw,-35vh) scale(1.16);opacity:0}}
+.rose-petal{position:absolute;top:-8vh;width:17px;height:24px;border-radius:85% 12% 85% 12%;background:linear-gradient(135deg,#ffd0df 0%,#d51e62 48%,#650c36 100%);box-shadow:0 3px 8px #0005;animation:petalDrift var(--dur) linear var(--delay) forwards;transform:rotate(var(--rot))}
+@keyframes petalDrift{0%{transform:translate3d(0,-8vh,0) rotate(0) scale(.65);opacity:0}8%{opacity:1}75%{opacity:1}100%{transform:translate3d(var(--drift),108vh,0) rotate(780deg) scale(1);opacity:0}}
+.rose-footer-glow{position:absolute;left:0;right:0;bottom:0;height:24vh;background:linear-gradient(0deg,#a90e4d55,transparent);animation:footerFade 5s ease-out forwards}
+@keyframes footerFade{0%,65%{opacity:1}100%{opacity:0}}
+.firework-burst{position:absolute;width:5px;height:5px;border-radius:50%;left:var(--x);top:var(--y);background:#fff;box-shadow:0 0 9px 3px #ffd58a;animation:fireworkLaunch 1.5s ease-out var(--delay) both}
+.firework-burst:before{content:"";position:absolute;inset:-2px;border-radius:50%;box-shadow:0 -62px 0 1px #ffd68b,22px -54px 0 1px #ff7bb8,45px -42px 0 1px #fff1a6,60px 0 0 1px #c9a4ff,43px 43px 0 1px #ff8b65,0 62px 0 1px #fff, -44px 44px 0 1px #ff7bb8,-62px 0 0 1px #d6b6ff,-43px -43px 0 1px #ffcf70,-22px -54px 0 1px #fff;animation:fireworkRays 1.5s ease-out var(--delay) both}
+@keyframes fireworkLaunch{0%{transform:scale(.1);opacity:0}15%{opacity:1}100%{transform:scale(1);opacity:0}}
+@keyframes fireworkRays{0%{transform:scale(.08);opacity:0}18%{opacity:1}100%{transform:scale(1.7);opacity:0}}
+.dragon-art{width:min(76vw,600px);animation:dragonEntrance 4.2s ease-out both;filter:drop-shadow(0 0 35px #ff4a12)}
+@keyframes dragonEntrance{0%{transform:translate(-50%,65%) scale(.22) rotate(-8deg);opacity:0}28%{opacity:1;transform:translate(-50%,-50%) scale(1.12)}48%{transform:translate(-50%,-50%) scale(1)}78%{opacity:1}100%{transform:translate(-42%,-55%) scale(1.15);opacity:0}}
+.dragon-flame{position:absolute;width:12px;height:42px;border-radius:60% 20% 60% 20%;background:linear-gradient(#fff8a8,#ff9b22,#ed2e13,transparent);filter:blur(1px);animation:flameRise 1.1s ease-out var(--delay) infinite;left:var(--x);top:var(--y)}
+@keyframes flameRise{0%{transform:translateY(20px) scale(.5) rotate(-25deg);opacity:0}25%{opacity:1}100%{transform:translateY(-95px) scale(1.5) rotate(25deg);opacity:0}}
+/* Profile prestige frame: large, animated and earned-looking */
+.avatar{width:104px;height:104px;font-size:48px;border:0;padding:5px;position:relative;isolation:isolate;background:conic-gradient(from 0deg,#fff0a6,#a65cff,#ff62b2,#fff0a6);box-shadow:0 0 0 2px #f4d58a,0 0 28px #bd74ff80}
+.avatar:before{content:"";position:absolute;inset:-6px;border-radius:50%;z-index:-1;background:conic-gradient(from 0deg,#f8e7a1,#ff4fa8,#7d5cff,#6fffe2,#f8e7a1);filter:blur(7px);animation:prestigeSpin 5s linear infinite}
+.avatar img{border:2px solid #21162f}
+.ring{padding:6px;box-shadow:0 0 0 1px #ffe7a1,0 0 22px #d18cff80;animation:prestigeSpin 9s linear infinite}
+.frame-gold,.frame-galaxy,.frame-rose,.frame-ice,.frame-emerald{background:conic-gradient(#fff0a6,#b87826,#fff5c4,#9a55d9,#fff0a6)!important}
+.frame-galaxy{background:conic-gradient(#72eaff,#5332b9,#f45bce,#72eaff)!important}
+.frame-rose{background:conic-gradient(#ffe1e9,#c52c70,#ff9fce,#ffe1e9)!important}
+.frame-ice{background:conic-gradient(#fff,#70dfff,#607eea,#fff)!important}
+.frame-emerald{background:conic-gradient(#d4ffe4,#159d76,#d4ffe4,#b8a05a)!important}
+@keyframes prestigeSpin{to{filter:hue-rotate(360deg)}}
+.collect-card{min-height:168px;border-color:#b99b65;background:linear-gradient(145deg,#332444,#171020 65%,#44304d);box-shadow:inset 0 1px #ffffff24,0 9px 22px #0005}
+.collect-card .emoji{font-size:42px;filter:drop-shadow(0 4px 9px #0008)}
+@media(max-width:700px){.avatar{width:92px;height:92px}.rose-petal{width:13px;height:19px}}
 </style>
 </head>
 
@@ -603,7 +635,7 @@ function applyLanguage(){
 /* Question bank. Seen question IDs are saved so questions are not repeated until the user resets history. */
 const Q=(id,category,en,ur,answers,correct)=>{
   const number=Number(String(id).replace(/^[a-z]+/i,""))||1;
-  const tier=number<=10?1:number<=12?2:number<=14?3:number<=16?4:5;
+  const tier=number<=20?1:number<=40?2:number<=60?3:number<=80?4:5;
   return {id,category,en,ur,answers,correct,tier};
 };
 const QUESTIONS=[
@@ -705,6 +737,45 @@ Q("i7","islamic","Which month comes after Ramadan?","رمضان کے فوراً 
 Q("i8","islamic","What is the pilgrimage to Makkah called?","مکہ مکرمہ کے مخصوص حج کو کیا کہتے ہیں؟",["Zakat / زکوٰۃ","Hajj / حج","Sawm / صوم","Sadaqah / صدقہ"],1)
 ];
 QUESTIONS.push(...EXTRA_QUESTIONS);
+// Original expansion pack: 35 new bilingual questions across all categories.
+QUESTIONS.push(
+Q("k19","knowledge","Which country has the city of Marrakech?","مراکش شہر کس ملک میں واقع ہے؟",["Morocco / مراکش","Egypt / مصر","Jordan / اردن","Tunisia / تیونس"],0),
+Q("k20","knowledge","What is the largest mammal on Earth?","زمین پر سب سے بڑا ممالیہ کون سا ہے؟",["African elephant / افریقی ہاتھی","Blue whale / نیلی وہیل","Giraffe / زرافہ","Hippopotamus / دریائی گھوڑا"],1),
+Q("k21","knowledge","Which device is used to find direction?","سمت معلوم کرنے کے لیے کون سا آلہ استعمال ہوتا ہے؟",["Compass / قطب نما","Thermometer / تھرمامیٹر","Microscope / خوردبین","Stopwatch / اسٹاپ واچ"],0),
+Q("k22","knowledge","Which is the official language of Brazil?","برازیل کی سرکاری زبان کون سی ہے؟",["Spanish / ہسپانوی","Portuguese / پرتگالی","French / فرانسیسی","English / انگریزی"],1),
+Q("k23","knowledge","How many players from one team are on a football field at kickoff?","فٹ بال کے آغاز میں ایک ٹیم کے کتنے کھلاڑی میدان میں ہوتے ہیں؟",["9","10","11","12"],2),
+Q("s19","science","Which part of a plant mainly absorbs water from soil?","پودے کا کون سا حصہ مٹی سے پانی جذب کرتا ہے؟",["Leaves / پتے","Roots / جڑیں","Flowers / پھول","Stem tip / تنے کی نوک"],1),
+Q("s20","science","What is the chemical symbol for gold?","سونے کی کیمیائی علامت کیا ہے؟",["Ag","Au","Fe","Go"],1),
+Q("s21","science","Which force pulls objects toward Earth?","کون سی قوت چیزوں کو زمین کی طرف کھینچتی ہے؟",["Friction / رگڑ","Magnetism / مقناطیسیت","Gravity / کششِ ثقل","Pressure / دباؤ"],2),
+Q("s22","science","Which organ pumps blood around the human body?","انسانی جسم میں خون پمپ کرنے والا عضو کون سا ہے؟",["Lungs / پھیپھڑے","Heart / دل","Liver / جگر","Kidneys / گردے"],1),
+Q("s23","science","At sea level, water usually boils at what temperature?","سطحِ سمندر پر پانی عموماً کس درجہ حرارت پر ابلتا ہے؟",["50°C","75°C","100°C","125°C"],2),
+Q("h19","history","Which ancient civilisation built the pyramids at Giza?","جیزہ کے اہرام کس قدیم تہذیب نے تعمیر کیے؟",["Romans / رومی","Ancient Egyptians / قدیم مصری","Greeks / یونانی","Persians / فارسی"],1),
+Q("h20","history","The ancient city of Petra is in which present-day country?","قدیم شہر پیٹرا موجودہ دور کے کس ملک میں ہے؟",["Lebanon / لبنان","Jordan / اردن","Iraq / عراق","Turkey / ترکی"],1),
+Q("h21","history","Who was the first person to walk on the Moon?","چاند پر قدم رکھنے والا پہلا انسان کون تھا؟",["Yuri Gagarin / یوری گاگارین","Neil Armstrong / نیل آرمسٹرانگ","Buzz Aldrin / بز آلڈرن","John Glenn / جان گلین"],1),
+Q("h22","history","The Renaissance began in which European country?","نشاۃِ ثانیہ کا آغاز کس یورپی ملک سے ہوا؟",["Italy / اٹلی","Germany / جرمنی","Portugal / پرتگال","Sweden / سویڈن"],0),
+Q("h23","history","Mohenjo-daro belonged to which ancient civilisation?","موئن جو دڑو کس قدیم تہذیب کا حصہ تھا؟",["Maya / مایا","Indus Valley / وادیٔ سندھ","Mesopotamian / بین النہرین","Chinese / چینی"],1),
+Q("f19","fantasy","In mythology, a phoenix is known for rising from what?","اساطیر میں فینکس کس چیز سے دوبارہ جنم لینے کے لیے مشہور ہے؟",["Ocean / سمندر","Ashes / راکھ","Ice / برف","Stone / پتھر"],1),
+Q("f20","fantasy","What is a creature that is half horse and half human called?","آدھا گھوڑا اور آدھا انسان مخلوق کیا کہلاتی ہے؟",["Centaur / سینٹور","Griffin / گرفن","Goblin / گوبلن","Sprite / اسپرائٹ"],0),
+Q("f21","fantasy","Which mythical creature is traditionally guarded by a riddle in Greek legend?","یونانی روایت میں کون سی اساطیری مخلوق پہیلی پوچھنے کے لیے مشہور ہے؟",["Sphinx / سفنکس","Mermaid / جل پری","Unicorn / یک شاخی گھوڑا","Hydra / ہائیڈرا"],0),
+Q("f22","fantasy","A person who studies or practises alchemy is called what?","کیمیا گری کا مطالعہ یا عمل کرنے والے کو کیا کہتے ہیں؟",["Alchemist / کیمیا گر","Cartographer / نقشہ نویس","Astronomer / ماہرِ فلکیات","Herald / منادی کرنے والا"],0),
+Q("f23","fantasy","In folklore, a griffin traditionally combines an eagle with which animal?","لوک داستانوں میں گرفن عقاب کے ساتھ کس جانور کا امتزاج ہے؟",["Horse / گھوڑا","Lion / شیر","Wolf / بھیڑیا","Deer / ہرن"],1),
+Q("l19","literature","What is the term for the main character of a story?","کہانی کے مرکزی کردار کو کیا کہتے ہیں؟",["Antagonist / مخالف کردار","Protagonist / مرکزی کردار","Narrator / راوی","Editor / مدیر"],1),
+Q("l20","literature","A story told by a narrator using “I” is usually written in which person?","وہ کہانی جس کا راوی “میں” کہے، عموماً کس صیغے میں ہوتی ہے؟",["First person / متکلم","Second person / مخاطب","Third person / غائب","Omniscient only / ہمہ داں"],0),
+Q("l21","literature","What do we call the time and place in which a story happens?","کہانی کے وقت اور مقام کو کیا کہتے ہیں؟",["Plot / پلاٹ","Setting / ماحول و مقام","Theme / موضوع","Conflict / کشمکش"],1),
+Q("l22","literature","Which literary device gives human qualities to non-human things?","غیر انسانی چیزوں کو انسانی صفات دینے کے ادبی حربے کو کیا کہتے ہیں؟",["Personification / تشخیص","Alliteration / تجنیسِ حرفی","Irony / طنز","Hyperbole / مبالغہ"],0),
+Q("l23","literature","What is a short traditional story that teaches a lesson called?","سبق دینے والی مختصر روایتی کہانی کیا کہلاتی ہے؟",["Fable / حکایت","Epic / رزمیہ","Tragedy / المیہ","Memoir / خودنوشت"],0),
+Q("p19","personality","Which quality helps someone consider another person's feelings?","کسی دوسرے کے احساسات سمجھنے میں کون سی خوبی مدد دیتی ہے؟",["Empathy / ہمدردی","Impatience / بے صبری","Carelessness / لاپروائی","Pride / غرور"],0),
+Q("p20","personality","Which habit best supports thoughtful decision-making?","سوچ سمجھ کر فیصلہ کرنے میں کون سی عادت مدد دیتی ہے؟",["Rushing / جلد بازی","Considering options / امکانات پر غور","Ignoring facts / حقائق نظر انداز کرنا","Guessing every time / ہر بار اندازہ لگانا"],1),
+Q("p21","personality","What is active listening?","فعال انداز میں سننے سے کیا مراد ہے؟",["Planning your reply only / صرف جواب سوچنا","Giving full attention / پوری توجہ دینا","Interrupting often / بار بار بات کاٹنا","Changing the topic / موضوع بدلنا"],1),
+Q("p22","personality","Which response is most constructive after a mistake?","غلطی کے بعد کون سا ردِعمل زیادہ تعمیری ہے؟",["Blame others / دوسروں کو الزام دینا","Reflect and learn / جائزہ لے کر سیکھنا","Hide the facts / حقیقت چھپانا","Give up immediately / فوراً ہار ماننا"],1),
+Q("p23","personality","Which skill helps resolve disagreements respectfully?","اختلاف کو احترام سے حل کرنے میں کون سی مہارت مدد دیتی ہے؟",["Clear communication / واضح گفتگو","Shouting / چیخنا","Avoiding every discussion / ہر گفتگو سے بچنا","Making assumptions / قیاس آرائی"],0),
+Q("i19","islamic","What is the first month of the Islamic lunar calendar?","اسلامی قمری تقویم کا پہلا مہینہ کون سا ہے؟",["Ramadan / رمضان","Muharram / محرم","Safar / صفر","Shawwal / شوال"],1),
+Q("i20","islamic","What is the name of the night journey of Prophet Muhammad ﷺ?","نبی کریم ﷺ کے رات کے سفر کو کیا کہا جاتا ہے؟",["Hijrah / ہجرت","Isra / اسراء","Badr / بدر","Hudaibiyah / حدیبیہ"],1),
+Q("i21","islamic","Which angel brought revelation to Prophet Muhammad ﷺ?","نبی کریم ﷺ پر وحی کون سے فرشتے لاتے تھے؟",["Mikail / میکائیل","Jibril / جبرائیل","Israfil / اسرافیل","Malik / مالک"],1),
+Q("i22","islamic","What is the direction Muslims face during salah called?","نماز کے دوران مسلمان جس سمت رخ کرتے ہیں اسے کیا کہتے ہیں؟",["Qibla / قبلہ","Minbar / منبر","Mihrab / محراب","Safa / صفا"],0),
+Q("i23","islamic","Which city did Prophet Muhammad ﷺ migrate to from Makkah?","نبی کریم ﷺ نے مکہ سے ہجرت کر کے کس شہر تشریف لے گئے؟",["Taif / طائف","Madinah / مدینہ","Jerusalem / بیت المقدس","Damascus / دمشق"],1)
+);
+
 
 
 const CATEGORIES=[
@@ -982,6 +1053,39 @@ function animateBurst(items){
   setTimeout(()=>{root.innerHTML="";},3800);
 }
 
+/* Cinematic reward effects: CSS/SVG visuals, no emoji art. */
+function showGift(emoji,title,description,effect="gift"){
+  $("modalRoot").innerHTML="";
+  const overlay=document.createElement("div");overlay.className="overlay";
+  const modal=document.createElement("div");modal.className="modal";
+  const art=document.createElement("div");art.className="gift-modal-art";art.textContent=effect==="car"?"VELOCITY":effect==="roses"?"ROSE RAIN":effect==="dragon"?"DRAGON ASCENDANT":effect==="fireworks"?"CELESTIAL FIREWORKS":title;
+  art.style.cssText="font-size:clamp(22px,5vw,38px);font-weight:900;letter-spacing:3px;color:#f7d995;text-shadow:0 0 22px #d58cff;text-align:center;padding:22px 5px";
+  const h=document.createElement("h2");h.textContent=title;const p=document.createElement("p");p.textContent=description;
+  const btn=document.createElement("button");btn.className="primary";btn.textContent=t("close");btn.addEventListener("click",()=>{$("modalRoot").innerHTML="";});
+  modal.append(art,h,p,btn);overlay.appendChild(modal);$("modalRoot").appendChild(overlay);
+  animateBurst(effect);playSound(effect==="car"?"car":effect==="dragon"?"dragon":effect==="fireworks"?"fireworks":effect==="roses"?"roses":"gift");
+}
+function animateBurst(kind){
+  const root=$("burstRoot");root.innerHTML="";const layer=document.createElement("div");layer.className="gift-effect-layer";root.appendChild(layer);
+  if(kind==="car"){
+    const car=document.createElement("div");car.className="cinema-art cinema-car";
+    car.innerHTML='<svg viewBox="0 0 900 360" role="img" aria-label="Luxury sports car"><defs><linearGradient id="carPaint" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff0ba"/><stop offset=".25" stop-color="#d9a63c"/><stop offset=".6" stop-color="#7e3d1e"/><stop offset="1" stop-color="#f8d77b"/></linearGradient><linearGradient id="glass" x2="0" y2="1"><stop stop-color="#c9efff"/><stop offset="1" stop-color="#26384c"/></linearGradient></defs><ellipse cx="460" cy="286" rx="390" ry="35" fill="#0009"/><path d="M90 235 Q125 195 230 183 L335 95 Q370 66 445 68 L590 78 Q640 82 694 150 L792 184 Q830 198 835 239 L810 268 L95 268Z" fill="url(#carPaint)" stroke="#fff0ba" stroke-width="8"/><path d="M278 176 L363 101 Q385 85 438 88 L570 97 Q610 101 650 174Z" fill="url(#glass)" stroke="#f6d78c" stroke-width="8"/><path d="M455 91 L460 177 M120 224 L790 224" stroke="#fff2c2" stroke-width="5" opacity=".7"/><path d="M90 236 L25 225 L18 244 L82 259 M815 222 L878 208 L880 234 L828 257" fill="#fff0ba"/><circle cx="245" cy="264" r="58" fill="#111018" stroke="#b9a17b" stroke-width="12"/><circle cx="245" cy="264" r="25" fill="#c5c9d0"/><circle cx="690" cy="264" r="58" fill="#111018" stroke="#b9a17b" stroke-width="12"/><circle cx="690" cy="264" r="25" fill="#c5c9d0"/><path d="M100 207 L165 194 M760 199 L816 218" stroke="#fff" stroke-width="10" stroke-linecap="round"/></svg>';
+    layer.appendChild(car);
+  }else if(kind==="roses"){
+    const glow=document.createElement("div");glow.className="rose-footer-glow";layer.appendChild(glow);
+    for(let i=0;i<92;i++){const petal=document.createElement("i");petal.className="rose-petal";petal.style.left=Math.random()*100+"%";petal.style.setProperty("--dur",(3.5+Math.random()*3.5)+"s");petal.style.setProperty("--delay",(Math.random()*2.4)+"s");petal.style.setProperty("--drift",(Math.random()*180-90)+"px");petal.style.setProperty("--rot",Math.random()*360+"deg");layer.appendChild(petal);}
+  }else if(kind==="fireworks"){
+    for(let i=0;i<12;i++){const burst=document.createElement("i");burst.className="firework-burst";burst.style.setProperty("--x",(8+Math.random()*84)+"%");burst.style.setProperty("--y",(10+Math.random()*65)+"%");burst.style.setProperty("--delay",(Math.random()*1.9)+"s");layer.appendChild(burst);}
+  }else if(kind==="dragon"){
+    const dragon=document.createElement("div");dragon.className="cinema-art dragon-art";
+    dragon.innerHTML='<svg viewBox="0 0 700 560" role="img" aria-label="Fantasy dragon"><defs><linearGradient id="dragonScale" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffe2a0"/><stop offset=".35" stop-color="#a94b25"/><stop offset=".75" stop-color="#451c35"/><stop offset="1" stop-color="#e5a34b"/></linearGradient></defs><path d="M340 300 Q205 260 105 85 Q230 115 330 215 Q315 95 420 35 Q405 170 450 235 Q535 145 640 155 Q560 260 470 315 Q430 390 350 450 Q260 390 240 320Z" fill="url(#dragonScale)" stroke="#ffcf7b" stroke-width="9"/><path d="M300 280 Q160 250 70 175 Q190 180 300 250 M390 270 Q485 190 625 205 Q530 270 420 315" fill="#54213d" stroke="#f4b35d" stroke-width="8"/><path d="M310 335 Q180 400 105 500 Q260 470 350 405 Q440 475 590 490 Q500 390 410 330" fill="#7b2c28" stroke="#ffca76" stroke-width="8"/><path d="M405 220 Q490 170 540 220 L500 270 L430 270Z" fill="#a64c28"/><circle cx="478" cy="226" r="10" fill="#fff2a6"/><circle cx="481" cy="226" r="4" fill="#24111c"/><path d="M515 260 Q590 270 670 245 Q620 300 540 295" fill="#ff9b28"/><path d="M540 275 Q610 300 660 275" stroke="#fff1a5" stroke-width="18" stroke-linecap="round" opacity=".8"/></svg>';
+    layer.appendChild(dragon);
+    for(let i=0;i<22;i++){const flame=document.createElement("i");flame.className="dragon-flame";flame.style.setProperty("--x",(38+Math.random()*34)+"%");flame.style.setProperty("--y",(42+Math.random()*28)+"%");flame.style.setProperty("--delay",(Math.random()*1.2)+"s");layer.appendChild(flame);}
+  }else{
+    for(let i=0;i<30;i++){const spark=document.createElement("i");spark.className="firework-burst";spark.style.setProperty("--x",Math.random()*100+"%");spark.style.setProperty("--y",Math.random()*85+"%");spark.style.setProperty("--delay",Math.random()+"s");layer.appendChild(spark);}
+  }
+  setTimeout(()=>{if(layer.isConnected)layer.remove();},kind==="roses"?7600:kind==="dragon"?4600:kind==="car"?3400:5200);
+}
 /* Custom share links. A link shares settings; each recipient plays locally on their own device. */
 let lastChallengeUrl="";
 function difficultyForLevel(n){return n<=20?"easy":n<=45?"medium":n<=70?"hard":"expert";}
@@ -1254,7 +1358,7 @@ function audio(){
 function playSound(kind){
   if(!game.sound)return;
   const ctx=audio();if(!ctx)return;
-  const notes=kind==="correct"?[660,880,990]:kind==="wrong"?[180,125,85,125]:kind==="heart"?[440,660,440,660]:kind==="dragon"?[110,165,220,330]:kind==="car"?[180,420,760,1100,1500]:kind==="gift"?[520,740,1040,1480]:[523,659,784];
+  const notes=kind==="correct"?[660,880,990]:kind==="wrong"?[180,125,85,125]:kind==="heart"?[440,660,440,660]:kind==="dragon"?[110,165,220,330]:kind==="car"?[75,110,165,260,420,680,980,1450]:kind==="fireworks"?[95,220,510,880,1320,1760]:kind==="roses"?[392,523,659,784,988]:kind==="gift"?[520,740,1040,1480]:[523,659,784];
   let start=ctx.currentTime;
   notes.forEach((freq,i)=>{
     const osc=ctx.createOscillator(),gain=ctx.createGain();
