@@ -576,7 +576,11 @@ function applyLanguage(){
 }
 
 /* Question bank. Seen question IDs are saved so questions are not repeated until the user resets history. */
-const Q=(id,category,en,ur,answers,correct)=>({id,category,en,ur,answers,correct});
+const Q=(id,category,en,ur,answers,correct)=>{
+  const number=Number(String(id).replace(/^[a-z]+/i,""))||1;
+  const tier=number<=10?1:number<=12?2:number<=14?3:number<=16?4:5;
+  return {id,category,en,ur,answers,correct,tier};
+};
 const QUESTIONS=[
 Q("k1","knowledge","Which planet is known as the Red Planet?","کس سیارے کو سرخ سیارہ کہا جاتا ہے؟",["Mars / مریخ","Venus / زہرہ","Jupiter / مشتری","Mercury / عطارد"],0),
 Q("k2","knowledge","How many sides does a hexagon have?","مسدس کے کتنے اضلاع ہوتے ہیں؟",["Five / پانچ","Six / چھ","Seven / سات","Eight / آٹھ"],1),
