@@ -5,6 +5,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#17122f">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;600;700&display=swap" rel="stylesheet">
 <meta name="description" content="Play personality, friendship, knowledge, fantasy and culture quizzes on FictionQuiz. Earn XP, collect cards and unlock rewards.">
 <title>FictionQuiz — Play, Collect & Unlock</title>
 
@@ -155,6 +158,27 @@ label{display:block;font-size:12px;color:var(--muted);margin:10px 0 5px}
  .form-grid .full{grid-column:auto}
 }
 
+/* Urdu Nastaliq + day mode + avatar frames + answer feedback */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;600;700&display=swap");
+html[lang="ur"] body,html[lang="ur"] button,html[lang="ur"] input,html[lang="ur"] select,html[lang="ur"] .question,html[lang="ur"] .answer{font-family:"Noto Nastaliq Urdu",serif;line-height:2.05}
+body.day-mode{--bg:#f4f2ff;--panel:#fff;--panel2:#e8e5ff;--text:#211b3b;--muted:#5e5877;--line:#9c8ed655;background:linear-gradient(145deg,#f8f5ff,#e8edff 60%,#fff0fa);color:var(--text)}
+body.day-mode header,body.day-mode .top-strip{background:#ffffffed;color:#30264f;border-color:#c9c1ed}
+body.day-mode .panel,body.day-mode .stat,body.day-mode .category-card,body.day-mode .quiz-card,body.day-mode .collect-card,body.day-mode .gift-card{background:linear-gradient(145deg,#fff,#f0edff);color:#211b3b;border-color:#c5b9ef}
+body.day-mode input,body.day-mode select{background:#fff;color:#211b3b;border-color:#c5b9ef}
+body.day-mode .answer{background:#fff;color:#211b3b;border-color:#bcb0e6}
+body.day-mode .bottom-nav{background:#fff;color:#211b3b}
+body.day-mode .ghost{color:#30264f;background:#ffffffaa}
+.frame-gold{background:conic-gradient(#fff0a6,#d89a28,#fff4bd,#9e6517,#fff0a6);box-shadow:0 0 18px #ffc94b88}
+.frame-rose{background:conic-gradient(#ffe0f1,#ff4fa2,#fff0f8,#a92c78,#ffe0f1);box-shadow:0 0 20px #ff58b588}
+.frame-ice{background:conic-gradient(#efffff,#49dfff,#fff,#668dff,#efffff);box-shadow:0 0 20px #53dfff88}
+.frame-galaxy{background:conic-gradient(#fff,#a55cff,#1c1b75,#ff5dc8,#fff);box-shadow:0 0 22px #9b5cff99}
+.frame-emerald{background:conic-gradient(#d8ffe9,#21c981,#effff5,#087b58,#d8ffe9);box-shadow:0 0 18px #22d69a88}
+.answer.wrong{animation:wrongFlash .72s ease-in-out 2;box-shadow:0 0 0 2px #ff436b55,0 0 28px #ff174c99}
+@keyframes wrongFlash{0%,100%{filter:brightness(1);transform:translateX(0)}20%,60%{filter:brightness(1.8);transform:translateX(-5px)}40%,80%{filter:brightness(.72);transform:translateX(5px)}}
+.gift-screen-blast{position:fixed;inset:0;z-index:58;pointer-events:none;background:radial-gradient(circle at center,#fff8b8 0,#ffb8ef88 10%,#9c62ff44 30%,transparent 68%);animation:screenBlast 1.15s ease-out forwards}
+@keyframes screenBlast{0%{opacity:0;transform:scale(.1)}22%{opacity:1}65%{opacity:.9;transform:scale(1.5)}100%{opacity:0;transform:scale(2.4)}}
+.gift-shockwave{position:fixed;left:50%;top:50%;width:30px;height:30px;border:4px solid #ffe78a;border-radius:50%;z-index:59;pointer-events:none;transform:translate(-50%,-50%);animation:shockwave 1s ease-out forwards}
+@keyframes shockwave{to{width:150vmax;height:150vmax;border-width:1px;opacity:0}}
 /* FictionQuiz fantasy dashboard refresh */
 :root{--bg:#070d24;--panel:#0d1837;--panel2:#14265a;--pink:#e56bff;--purple:#7657ff;--gold:#ffd45e;--text:#f7f4ff;--muted:#b9c8f4;--green:#3ee6a1;--line:#3155a6aa;--radius:16px}
 body{background:radial-gradient(ellipse at 50% -15%,#312079 0,#0a1230 44%,#050a1b 100%);background-attachment:fixed}
@@ -210,6 +234,7 @@ input,select{background:#07112b;border-color:#3155a6}
   <div class="nav">
     <div class="brand">Fiction<span>Quiz</span> ✦</div>
     <div class="nav-right">
+      <button class="ghost small" id="themeBtn" type="button" onclick="toggleTheme()">☀️ Day</button>
       <button class="ghost small" id="languageBtn" type="button">اردو</button>
       <button class="ghost small" id="soundBtn" type="button" aria-pressed="false">🔊 Sound</button>
     </div>
@@ -222,7 +247,8 @@ input,select{background:#07112b;border-color:#3155a6}
   <div class="progress"><span id="sideProgress"></span></div>
   <div class="sidebar-stats"><span>⭐ <b id="sideXPAll">0</b> XP</span><span>🪙 <b id="sideCoins">100</b></span></div>
   <div class="sidebar-inventory-title">🎁 Gift inventory</div><div id="sideInventory" class="sidebar-inventory"></div>
-  <button class="ghost small" type="button" onclick="goTo('profile')">⚙️ Profile</button>
+  <button class="ghost small" type="button" onclick="goTo('collection')">🎒 Open Inventory</button>
+  <button class="ghost small" type="button" onclick="goTo('profile')">⚙️ Profile & Frames</button>
 </aside>
 <div class="sidebar-scrim" id="sidebarScrim" onclick="toggleSidebar(false)" aria-hidden="true"></div>
 <button class="mobile-profile-toggle" id="mobileProfileToggle" type="button" onclick="toggleSidebar()" aria-controls="playerSidebar" aria-expanded="false">👤 Profile / Gifts</button>
@@ -239,7 +265,7 @@ input,select{background:#07112b;border-color:#3155a6}
 
   <section class="panel" id="playerPanel">
     <div class="profile-row">
-      <div class="ring"><div class="avatar" id="avatarView">🌙</div></div>
+      <div class="ring frame-gold" id="profileRing"><div class="avatar" id="avatarView">🌙</div></div>
       <div style="flex:1">
         <div class="eyebrow" data-i18n="playerProfile">PLAYER PROFILE</div>
         <h2 id="playerName" style="margin:4px 0">Quiz Lover</h2>
@@ -338,6 +364,7 @@ input,select{background:#07112b;border-color:#3155a6}
       <div class="full"><label for="nameInput" data-i18n="displayName">Display name</label><input id="nameInput" maxlength="24" placeholder="Quiz Lover" autocomplete="nickname"></div>
       <div><label for="avatarInput" data-i18n="avatarEmoji">Avatar emoji</label><select id="avatarInput"><option>🌙</option><option>🦋</option><option>🐱</option><option>🦊</option><option>🐼</option><option>🐉</option><option>⭐</option><option>🌸</option><option>🦄</option><option>🪄</option></select></div>
       <div><label for="photoInput" data-i18n="profilePhoto">Optional profile photo</label><input type="file" id="photoInput" accept="image/png,image/jpeg,image/webp"></div>
+      <div><label for="frameInput">Avatar frame</label><select id="frameInput" onchange="previewFrame(this.value)"><option value="gold">Royal Gold</option><option value="rose">Rose Glow</option><option value="ice">Ice Crystal</option><option value="galaxy">Galaxy</option><option value="emerald">Emerald</option></select></div>
       <div class="full"><button class="primary" onclick="saveProfile()" data-i18n="saveProfile">Save Profile</button><button class="ghost" onclick="removePhoto()" data-i18n="removePhoto">Remove photo</button></div>
       <div class="full"><label for="emailInput">Email (Firebase account)</label><input id="emailInput" type="email" autocomplete="email" placeholder="you@example.com"></div>
       <div class="full"><label for="passwordInput" data-i18n="password">Password</label><input id="passwordInput" type="password" autocomplete="current-password" placeholder="At least 6 characters"></div>
@@ -396,7 +423,7 @@ const todayKey = () => {
   return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
 };
 const defaultGame = () => ({
-  name:"Quiz Lover", avatar:"🌙", photo:"", language:"en",
+  name:"Quiz Lover", avatar:"🌙", photo:"", language:"en", theme:"dark", profileFrame:"gold",
   xp:0, coins:100, quizzesDone:0, bestScore:0,
   completed:[], seenQuestions:[], ownedCards:["moon-sticker"],
   openedBoxes:0, dailyDate:"", dailyStreak:0, lastDailyDate:"",
@@ -707,6 +734,7 @@ function renderAchievements(){
   });
 }
 function renderAll(){
+  applyTheme();$("frameInput").value=game.profileFrame||"gold";previewFrame(game.profileFrame||"gold");
   $("playerName").textContent=game.name||"Quiz Lover";
   $("nameInput").value=game.name||"Quiz Lover";
   $("avatarInput").value=game.avatar||"🌙";
@@ -807,6 +835,9 @@ function buyCard(id){
 }
 function showGift(emoji,title,description,effect="gift"){
   $("modalRoot").innerHTML="";
+  const blast=document.createElement("div");blast.className="gift-screen-blast";document.body.appendChild(blast);
+  const wave=document.createElement("div");wave.className="gift-shockwave";document.body.appendChild(wave);
+  setTimeout(()=>{blast.remove();wave.remove();},1300);
   const overlay=document.createElement("div");overlay.className="overlay";
   const modal=document.createElement("div");modal.className="modal";
   const big=document.createElement("div");big.className="gift-modal-art";big.textContent=emoji;
@@ -891,23 +922,16 @@ function startQuiz(category,requestedLevel,customConfig){
   if(targetLevel>unlocked){toast("Finish the previous level to unlock this one.");return;}
   const categoryBank=QUESTIONS.filter(q=>q.category===category);
   if(!categoryBank.length){toast("No questions are available in this category yet.");return;}
-  const seen=new Set(game.seenQuestions);
+  let seen=new Set(game.seenQuestions);
   let fresh=categoryBank.filter(q=>!seen.has(q.id)).sort(()=>Math.random()-.5);
-  let used=[...fresh];
-  // Ten distinct questions per round when the bank contains ten; smaller current banks
-  // use all their unique questions, then fill the round without duplicating within that round.
-  if(used.length<10){
-    const leftovers=categoryBank.filter(q=>!used.some(x=>x.id===q.id)).sort(()=>Math.random()-.5);
-    used.push(...leftovers);
-  }
-  if(used.length<10){
-    const mixed=QUESTIONS.filter(q=>q.category!==category&&!used.some(x=>x.id===q.id)).sort(()=>Math.random()-.5);
-    used.push(...mixed.slice(0,10-used.length));
+  // Do not repeat a category question until its unseen bank is exhausted.
+  if(!fresh.length){
+    game.seenQuestions=game.seenQuestions.filter(id=>!categoryBank.some(q=>q.id===id));
+    fresh=categoryBank.slice().sort(()=>Math.random()-.5);
   }
   const desiredCount=customConfig?Math.max(5,Math.min(10,Number(customConfig.count)||10)):10;
-  pool=used.slice(0,desiredCount);
-  // Current starter bank has fewer than 10 questions in some categories; mixed-topic questions
-  // fill those rounds until a full category-specific verified bank is added.
+  pool=fresh.slice(0,Math.min(desiredCount,fresh.length));
+  if(!pool.length){toast("No new questions are available in this category.");return;}
   currentQuiz={category,level:targetLevel,questions:pool,index:0,score:0,answered:0,friend:false,mode:"knowledge",difficulty:(customConfig&&customConfig.difficulty)||difficultyForLevel(targetLevel),title:customConfig&&customConfig.title};
   pool.forEach(q=>{if(!game.seenQuestions.includes(q.id))game.seenQuestions.push(q.id);});
   saveGame();showQuestion();
@@ -950,7 +974,9 @@ function answerQuestion(index,button,answers,q){
     button.classList.add("correct");currentQuiz.score++;playSound("correct");toast(t("correct"));
   }else{
     button.classList.add("wrong");if(all[q.correct])all[q.correct].classList.add("correct");
-    playSound("wrong");toast(t("incorrect"));
+    playSound("wrong");
+    const shell=button.closest(".quiz-shell");if(shell){shell.classList.remove("wrong-screen-flash");void shell.offsetWidth;shell.classList.add("wrong-screen-flash");}
+    toast(t("incorrect"));
   }
   currentQuiz.answered++;
   setTimeout(()=>{
@@ -1061,11 +1087,22 @@ function startFriendQuiz(type,customConfig){
   render();
 }
 
+function toggleTheme(){
+  game.theme=game.theme==="day"?"dark":"day";applyTheme();saveGame();
+}
+function applyTheme(){
+  const day=game.theme==="day";document.body.classList.toggle("day-mode",day);
+  const btn=$("themeBtn");if(btn)btn.textContent=day?"🌙 Night":"☀️ Day";
+}
+function previewFrame(frame){
+  const allowed=["gold","rose","ice","galaxy","emerald"],ring=$("profileRing");
+  if(ring)ring.className="ring frame-"+(allowed.includes(frame)?frame:"gold");
+}
 /* Profile settings: photos stay local and are resized before saving. */
 function saveProfile(){
   const name=safeText($("nameInput").value,24);
   if(!name){toast(t("chooseName"));return;}
-  game.name=name;game.avatar=$("avatarInput").value;
+  game.name=name;game.avatar=$("avatarInput").value;game.profileFrame=$("frameInput").value;previewFrame(game.profileFrame);
   saveGame();toast(t("profileSaved"));syncPublicProfile();
 }
 function removePhoto(){game.photo="";saveGame();toast(t("profileSaved"));}
@@ -1106,7 +1143,7 @@ function audio(){
 function playSound(kind){
   if(!game.sound)return;
   const ctx=audio();if(!ctx)return;
-  const notes=kind==="correct"?[660,880]:kind==="wrong"?[220,160]:kind==="heart"?[440,660,440,660]:kind==="dragon"?[110,165,220,330]:[523,659,784];
+  const notes=kind==="correct"?[660,880,990]:kind==="wrong"?[180,125,85,125]:kind==="heart"?[440,660,440,660]:kind==="dragon"?[110,165,220,330]:[523,659,784];
   let start=ctx.currentTime;
   notes.forEach((freq,i)=>{
     const osc=ctx.createOscillator(),gain=ctx.createGain();
