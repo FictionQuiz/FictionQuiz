@@ -154,6 +154,53 @@ label{display:block;font-size:12px;color:var(--muted);margin:10px 0 5px}
  .form-grid{grid-template-columns:1fr}
  .form-grid .full{grid-column:auto}
 }
+
+/* FictionQuiz fantasy dashboard refresh */
+:root{--bg:#070d24;--panel:#0d1837;--panel2:#14265a;--pink:#e56bff;--purple:#7657ff;--gold:#ffd45e;--text:#f7f4ff;--muted:#b9c8f4;--green:#3ee6a1;--line:#3155a6aa;--radius:16px}
+body{background:radial-gradient(ellipse at 50% -15%,#312079 0,#0a1230 44%,#050a1b 100%);background-attachment:fixed}
+header{background:#07112bed;border-color:#23427c}
+.top-strip{background:linear-gradient(90deg,#101c55,#36146b,#101c55);color:#f4ddff}
+main{max-width:1240px}
+.brand{font-family:Georgia,serif;font-style:italic;text-shadow:0 0 16px #8e60ff}
+.hero{background:linear-gradient(115deg,#24117a 0%,#152b89 52%,#48118a 100%);border:1px solid #7b6dff;box-shadow:0 0 24px #432cff40;min-height:175px}
+.hero:after{content:"🌙 ✦";font-size:72px;right:25px;top:45px;color:#ffffff55}
+.panel{background:linear-gradient(145deg,#0c1a3b,#0a1230);border:1px solid #284d91;box-shadow:0 10px 28px #02081755}
+.stat,.category-card,.quiz-card,.collect-card,.achievement,.gift-card{background:linear-gradient(145deg,#12265a,#0b1536);border:1px solid #315db5;box-shadow:inset 0 1px #ffffff12}
+.category-card,.gift-card,.collect-card{transition:transform .2s,border-color .2s,box-shadow .2s}
+.category-card:hover,.gift-card:hover,.collect-card:hover{transform:translateY(-4px);border-color:#c17aff;box-shadow:0 0 22px #794dff44}
+.primary{background:linear-gradient(110deg,#d32cff,#744cff 55%,#4b7bff);box-shadow:0 5px 20px #743cff55}
+.gold-btn{background:linear-gradient(110deg,#ffe78c,#ffb82f);color:#261447}
+button,.btn{background-color:#14265a}
+input,select{background:#07112b;border-color:#3155a6}
+.bottom-nav{background:#07112bf5;border-color:#294b91}
+.modal{background:linear-gradient(145deg,#17194b,#10132f);border-color:#7657ff;box-shadow:0 0 45px #6545ff55}
+.event-banner{background:linear-gradient(115deg,#26116e,#641c87,#172c76);border-color:#a25dff;box-shadow:0 0 22px #823cff33}
+.gift-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.gift-card{position:relative;overflow:hidden}
+.gift-card:before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent,#ffffff0a,transparent);transform:translateX(-110%);animation:giftShine 4s infinite}
+@keyframes giftShine{55%,100%{transform:translateX(110%)}}
+.category-card .emoji,.gift-emoji,.collect-card .emoji{filter:drop-shadow(0 0 8px #9b7cff66)}
+.answer{background:#0b1940;border-color:#536bb5}
+.answer:hover{border-color:#c16dff;box-shadow:0 0 14px #895aff55}
+.answer.correct{background:#075c48;border-color:#40f0aa}
+.answer.wrong{background:#612342;border-color:#ff668b}
+.burst span{top:auto;animation-duration:3.1s;text-shadow:0 0 14px #fff}
+.gift-modal-art{font-size:82px;line-height:1.15;filter:drop-shadow(0 0 20px #ffb84f);animation:giftPop .8s cubic-bezier(.2,1.5,.4,1) both}
+@keyframes giftPop{0%{transform:scale(.1) rotate(-18deg);opacity:0}75%{transform:scale(1.18) rotate(5deg);opacity:1}100%{transform:scale(1)}}
+.gift-effect-layer{position:fixed;inset:0;z-index:56;pointer-events:none;overflow:hidden}
+.gift-effect-layer span{position:absolute;display:block;will-change:transform,opacity}
+.gift-car{font-size:clamp(70px,18vw,150px);left:-45%;top:42%;animation:carZoom 2.4s cubic-bezier(.2,.75,.25,1) forwards;filter:drop-shadow(0 0 22px #ff4d8d)}
+@keyframes carZoom{0%{transform:translateX(0) scale(.45);opacity:0}18%{opacity:1}72%{transform:translateX(110vw) scale(1.5);opacity:1}100%{transform:translateX(150vw) scale(1.7);opacity:0}}
+.gift-firework{font-size:38px;animation:fireworkPop 1.8s ease-out forwards}
+@keyframes fireworkPop{0%{transform:scale(.1);opacity:0}20%{opacity:1}70%{transform:scale(1.7) rotate(25deg);opacity:1}100%{transform:scale(2.2) translateY(-90px);opacity:0}}
+.gift-fall{font-size:30px;animation:giftFall 3.4s linear forwards}
+@keyframes giftFall{0%{transform:translateY(-12vh) rotate(0);opacity:0}10%{opacity:1}100%{transform:translateY(112vh) rotate(520deg);opacity:0}}
+.gift-gold{font-size:32px;animation:goldRain 2.8s ease-in forwards}
+@keyframes goldRain{0%{transform:translateY(-10vh) scale(.3) rotate(0);opacity:0}15%{opacity:1}100%{transform:translateY(110vh) scale(1.2) rotate(300deg);opacity:0}}
+.gift-dragon-fx{font-size:clamp(65px,15vw,120px);left:50%;top:40%;transform:translate(-50%,-50%);animation:dragonReveal 2.7s ease-out forwards;filter:drop-shadow(0 0 25px #ff7a28)}
+@keyframes dragonReveal{0%{opacity:0;transform:translate(-50%,80%) scale(.2)}35%{opacity:1;transform:translate(-50%,-55%) scale(1.25)}65%{transform:translate(-50%,-50%) scale(1)}100%{transform:translate(-50%,-60%) scale(1.05);opacity:0}}
+@media(max-width:700px){main{padding-left:10px;padding-right:10px}.hero:after{font-size:42px;right:10px}.gift-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
 </style>
 </head>
 
@@ -762,7 +809,7 @@ function showGift(emoji,title,description,effect="gift"){
   $("modalRoot").innerHTML="";
   const overlay=document.createElement("div");overlay.className="overlay";
   const modal=document.createElement("div");modal.className="modal";
-  const big=document.createElement("div");big.className="big";big.textContent=emoji;
+  const big=document.createElement("div");big.className="gift-modal-art";big.textContent=emoji;
   if(effect==="dragon")big.classList.add("gift-dragon");
   if(effect==="heart")big.classList.add("gift-heart");
   if(effect==="crystal")big.classList.add("gift-crystal");
@@ -785,12 +832,24 @@ function showGift(emoji,title,description,effect="gift"){
 }
 function animateBurst(items){
   const root=$("burstRoot");root.innerHTML="";
-  for(let i=0;i<22;i++){
-    const s=document.createElement("span");s.textContent=items[Math.floor(Math.random()*items.length)];
-    s.style.left=Math.random()*100+"%";s.style.animationDelay=Math.random()*.8+"s";
-    s.style.fontSize=(18+Math.random()*20)+"px";root.appendChild(s);
+  const effect=document.createElement("div");effect.className="gift-effect-layer";root.appendChild(effect);
+  const kind=items.includes("🏎️")?"car":items.includes("🐉")?"dragon":items.includes("🎆")?"fireworks":items.includes("🌹")?"roses":items.includes("🪙")?"gold":"gift";
+  if(kind==="car"){
+    const car=document.createElement("span");car.className="gift-car";car.textContent="🏎️💨";effect.appendChild(car);
+    ["✨","💫","⚡"].forEach((v,i)=>{const t=document.createElement("span");t.className="gift-firework";t.textContent=v;t.style.left=(15+i*30)+"%";t.style.top=(28+i*16)+"%";t.style.animationDelay=(i*.18)+"s";effect.appendChild(t);});
+  }else if(kind==="dragon"){
+    const dragon=document.createElement("span");dragon.className="gift-dragon-fx";dragon.textContent="🐉🔥";effect.appendChild(dragon);
+    for(let i=0;i<18;i++){const f=document.createElement("span");f.className="gift-fall";f.textContent=["🔥","✨","💨"][i%3];f.style.left=Math.random()*100+"%";f.style.animationDelay=(Math.random()*.8)+"s";effect.appendChild(f);}
+  }else{
+    const symbols=kind==="fireworks"?["🎆","🎇","✨","🌟"]:kind==="roses"?["🌹","🌸","💗","🌺"]:["🎁","✨","⭐","💖"];
+    for(let i=0;i<34;i++){
+      const p=document.createElement("span");p.className=kind==="fireworks"?"gift-firework":"gift-fall";
+      p.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+      p.style.left=Math.random()*100+"%";p.style.top=kind==="fireworks"?(15+Math.random()*65)+"%":"-10%";
+      p.style.animationDelay=(Math.random()*.9)+"s";effect.appendChild(p);
+    }
   }
-  setTimeout(()=>root.innerHTML="",3500);
+  setTimeout(()=>{root.innerHTML="";},3800);
 }
 
 /* Custom share links. A link shares settings; each recipient plays locally on their own device. */
@@ -823,6 +882,10 @@ function loadIncomingChallenge(){
 
 /* Quiz flow */
 function startQuiz(category,requestedLevel,customConfig){
+  try{
+  if(!Array.isArray(QUESTIONS)||!Array.isArray(CATEGORIES))throw new Error("Question bank did not load");
+  const knownCategory=CATEGORIES.some(c=>c.id===category);
+  if(!knownCategory){toast("This quiz category is not available yet.");return;}
   const unlocked=Math.max(1,Math.min(100,Number(game.categoryLevels[category])||1));
   const targetLevel=Math.max(1,Math.min(100,Number(requestedLevel)||unlocked));
   if(targetLevel>unlocked){toast("Finish the previous level to unlock this one.");return;}
@@ -848,6 +911,11 @@ function startQuiz(category,requestedLevel,customConfig){
   currentQuiz={category,level:targetLevel,questions:pool,index:0,score:0,answered:0,friend:false,mode:"knowledge",difficulty:(customConfig&&customConfig.difficulty)||difficultyForLevel(targetLevel),title:customConfig&&customConfig.title};
   pool.forEach(q=>{if(!game.seenQuestions.includes(q.id))game.seenQuestions.push(q.id);});
   saveGame();showQuestion();
+  }catch(error){
+    console.error("FictionQuiz could not start this quiz:",error);
+    currentQuiz=null;pool=[];$("modalRoot").innerHTML="";
+    toast("Quiz could not open. Please reload and try again.");
+  }
 }
 function showQuestion(){
   if(!currentQuiz)return;
