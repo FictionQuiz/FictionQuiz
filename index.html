@@ -363,6 +363,7 @@ let musicOscillator = null;
 let musicGain = null;
 let auth = null, db = null, currentUser = null;
 let quizAnswerLock = false;
+let pool = []; // Active quiz question list.
 
 function loadSave(){
   try{
