@@ -1000,58 +1000,8 @@ function buyCard(id){
   game.coins-=item.price;awardCard(id);saveGame();playSound("correct");
   showGift(item.emoji,t("bought"),item.name,item.id==="supercar"?"car":item.id==="dragon"?"dragon":item.id==="unicorn"?"heart":item.id==="crystal"?"crystal":item.id==="phoenix"?"phoenix":item.id.includes("rose")?"roses":"gift");
 }
-function showGift(emoji,title,description,effect="gift"){
-  $("modalRoot").innerHTML="";
-  const blast=document.createElement("div");blast.className="gift-screen-blast";document.body.appendChild(blast);
-  const wave=document.createElement("div");wave.className="gift-shockwave";document.body.appendChild(wave);
-  setTimeout(()=>{blast.remove();wave.remove();},1300);
-  const overlay=document.createElement("div");overlay.className="overlay";
-  const modal=document.createElement("div");modal.className="modal";
-  const big=document.createElement("div");big.className="gift-modal-art";big.textContent=emoji;
-  if(effect==="dragon")big.classList.add("gift-dragon");
-  if(effect==="heart")big.classList.add("gift-heart");
-  if(effect==="crystal")big.classList.add("gift-crystal");
-  if(effect==="phoenix")big.classList.add("gift-phoenix");
-  const h=document.createElement("h2");h.textContent=title;
-  const p=document.createElement("p");p.textContent=description;
-  const btn=document.createElement("button");btn.className="primary";btn.textContent=t("close");
-  btn.addEventListener("click",()=>{$("modalRoot").innerHTML="";});
-  modal.append(big,h,p,btn);overlay.appendChild(modal);$("modalRoot").appendChild(overlay);
-  if(effect==="car")animateBurst(["🏎️","✨","⭐","💨"]);
-  else if(effect==="fireworks")animateBurst(["🎆","✨","🎇","⭐","💫"]);
-  else if(effect==="roses")animateBurst(["🌹","🌸","💗","🌹","🌺"]);
-  else if(effect==="dragon")animateBurst(["🐉","🔥","✨","💨"]);
-  else if(effect==="heart")animateBurst(["💗","💖","💕","💓"]);
-  else if(effect==="crystal")animateBurst(["💎","✨","🔮","⭐"]);
-  else if(effect==="phoenix")animateBurst(["🔥","🪽","✨","🌟"]);
-  else if(effect==="gift")animateBurst(["🎁","✨","⭐","💖"]);
-  playSound(effect==="heart"?"heart":effect==="dragon"?"dragon":effect==="car"?"car":"gift");
-  if(["dragon","heart","crystal","phoenix"].includes(effect))setTimeout(()=>{if(big.isConnected)big.classList.remove("gift-dragon","gift-heart","gift-crystal","gift-phoenix");},2800);
-}
-function animateBurst(items){
-  const root=$("burstRoot");root.innerHTML="";
-  const effect=document.createElement("div");effect.className="gift-effect-layer";root.appendChild(effect);
-  const kind=items.includes("🏎️")?"car":items.includes("🐉")?"dragon":items.includes("🎆")?"fireworks":items.includes("🌹")?"roses":items.includes("💎")?"crystal":items.includes("🔥")?"phoenix":items.includes("🪙")?"gold":"gift";
-  if(kind==="car"){
-    const car=document.createElement("span");car.className="gift-car";car.textContent="🏎️💨";effect.appendChild(car);
-    ["✨","💫","⚡"].forEach((v,i)=>{const t=document.createElement("span");t.className="gift-firework";t.textContent=v;t.style.left=(15+i*30)+"%";t.style.top=(28+i*16)+"%";t.style.animationDelay=(i*.18)+"s";effect.appendChild(t);});
-  }else if(kind==="dragon"){
-    const dragon=document.createElement("span");dragon.className="gift-dragon-fx";dragon.textContent="🐉🔥";effect.appendChild(dragon);
-    for(let i=0;i<18;i++){const f=document.createElement("span");f.className="gift-fall";f.textContent=["🔥","✨","💨"][i%3];f.style.left=Math.random()*100+"%";f.style.animationDelay=(Math.random()*.8)+"s";effect.appendChild(f);}
-  }else if(kind==="crystal"||kind==="phoenix"){
-    const symbols=kind==="crystal"?["💎","🔷","✨","❄️"]:["🔥","🪽","✨","🌟"];
-    for(let i=0;i<26;i++){const p=document.createElement("span");p.className="gift-fall";p.textContent=symbols[i%symbols.length];p.style.left=Math.random()*100+"%";p.style.animationDelay=(Math.random()*.8)+"s";effect.appendChild(p);}
-  }else{
-    const symbols=kind==="fireworks"?["🎆","🎇","✨","🌟"]:kind==="roses"?["🌹","🌸","💗","🌺"]:["🎁","✨","⭐","💖"];
-    for(let i=0;i<34;i++){
-      const p=document.createElement("span");p.className=kind==="fireworks"?"gift-firework":"gift-fall";
-      p.textContent=symbols[Math.floor(Math.random()*symbols.length)];
-      p.style.left=Math.random()*100+"%";p.style.top=kind==="fireworks"?(15+Math.random()*65)+"%":"-10%";
-      p.style.animationDelay=(Math.random()*.9)+"s";effect.appendChild(p);
-    }
-  }
-  setTimeout(()=>{root.innerHTML="";},3800);
-}
+
+
 
 /* Cinematic reward effects: CSS/SVG visuals, no emoji art. */
 function showGift(emoji,title,description,effect="gift"){
@@ -1358,18 +1308,56 @@ function audio(){
 function playSound(kind){
   if(!game.sound)return;
   const ctx=audio();if(!ctx)return;
-  const notes=kind==="correct"?[660,880,990]:kind==="wrong"?[180,125,85,125]:kind==="heart"?[440,660,440,660]:kind==="dragon"?[110,165,220,330]:kind==="car"?[75,110,165,260,420,680,980,1450]:kind==="fireworks"?[95,220,510,880,1320,1760]:kind==="roses"?[392,523,659,784,988]:kind==="gift"?[520,740,1040,1480]:[523,659,784];
-  let start=ctx.currentTime;
-  notes.forEach((freq,i)=>{
-    const osc=ctx.createOscillator(),gain=ctx.createGain();
-    osc.type="sine";osc.frequency.value=freq;
-    gain.gain.setValueAtTime(.0001,start+i*.09);
-    gain.gain.exponentialRampToValueAtTime(.08,start+i*.09+.02);
-    gain.gain.exponentialRampToValueAtTime(.0001,start+i*.09+.14);
-    osc.connect(gain);gain.connect(ctx.destination);
-    osc.start(start+i*.09);osc.stop(start+i*.09+.16);
-  });
+  const now=ctx.currentTime;
+  const tone=(freq,endFreq,duration,volume,type="sawtooth",delay=0)=>{
+    const osc=ctx.createOscillator(),gain=ctx.createGain(),filter=ctx.createBiquadFilter();
+    osc.type=type;osc.frequency.setValueAtTime(Math.max(1,freq),now+delay);
+    if(endFreq)osc.frequency.exponentialRampToValueAtTime(Math.max(1,endFreq),now+delay+duration);
+    filter.type="lowpass";filter.frequency.value=type==="sawtooth"?1800:4200;
+    gain.gain.setValueAtTime(.0001,now+delay);
+    gain.gain.exponentialRampToValueAtTime(volume,now+delay+.035);
+    gain.gain.exponentialRampToValueAtTime(.0001,now+delay+duration);
+    osc.connect(filter);filter.connect(gain);gain.connect(ctx.destination);
+    osc.start(now+delay);osc.stop(now+delay+duration+.03);
+  };
+  const noise=(duration,volume,filterType,frequency,delay=0)=>{
+    const length=Math.max(1,Math.floor(ctx.sampleRate*duration));
+    const buffer=ctx.createBuffer(1,length,ctx.sampleRate),data=buffer.getChannelData(0);
+    for(let n=0;n<length;n++)data[n]=(Math.random()*2-1)*(1-n/length);
+    const src=ctx.createBufferSource(),filter=ctx.createBiquadFilter(),gain=ctx.createGain();
+    src.buffer=buffer;filter.type=filterType;filter.frequency.value=frequency;
+    gain.gain.setValueAtTime(.0001,now+delay);
+    gain.gain.exponentialRampToValueAtTime(volume,now+delay+.025);
+    gain.gain.exponentialRampToValueAtTime(.0001,now+delay+duration);
+    src.connect(filter);filter.connect(gain);gain.connect(ctx.destination);
+    src.start(now+delay);
+  };
+  if(kind==="car"){
+    // Original synthesized supercar rev, turbo sweep and tyre pass-by.
+    tone(58,420,.9,.19,"sawtooth",0);tone(95,980,1.05,.11,"sawtooth",.62);
+    tone(140,48,.8,.075,"triangle",1.55);noise(.85,.075,"lowpass",620,.95);
+    noise(.22,.045,"highpass",2200,1.45);
+  }else if(kind==="dragon"){
+    // Layered low roar, breath and flame-like filtered noise.
+    tone(72,38,1.25,.22,"sawtooth",0);tone(46,115,.9,.12,"triangle",.18);
+    noise(1.35,.16,"lowpass",480,.12);noise(.85,.09,"bandpass",1250,.55);
+  }else if(kind==="fireworks"){
+    // Rising launch whistles followed by wide noise bursts.
+    tone(280,1450,.72,.07,"sine",0);noise(.95,.18,"highpass",900,.68);
+    noise(.55,.12,"lowpass",360,.78);tone(110,42,.5,.09,"sine",.72);
+    noise(.8,.13,"highpass",1500,1.35);tone(520,180,.65,.055,"sine",1.4);
+  }else if(kind==="roses"||kind==="heart"){
+    [523,659,784,988].forEach((f,n)=>tone(f,f*.72,.75,.045,"sine",n*.16));
+    noise(.45,.018,"highpass",5000,.2);
+  }else if(kind==="wrong"){
+    tone(220,95,.34,.12,"triangle");tone(155,75,.3,.08,"sine",.22);
+  }else if(kind==="correct"){
+    [660,880,1100].forEach((f,n)=>tone(f,f*1.08,.22,.055,"sine",n*.1));
+  }else{
+    [520,740,1040,1480].forEach((f,n)=>tone(f,f*.92,.24,.045,"sine",n*.11));
+  }
 }
+
 function startAmbient(){
   const ctx=audio();if(!ctx||musicOscillator)return;
   musicOscillator=ctx.createOscillator();musicGain=ctx.createGain();
