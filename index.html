@@ -1380,6 +1380,97 @@ const ACHIEVEMENTS=[
  ],3);
 })();
  
+/* Original question batch 5: 70 distinct bilingual MCQs. */
+(()=>{
+ const add=(cat,prefix,rows,tier)=>rows.forEach((x,i)=>{
+  const q=Q(prefix+(601+i),cat,x[0],x[1],x[2],x[3]);q.tier=tier;QUESTIONS.push(q);
+ });
+ add("knowledge","kn",[
+ ["Which language has the largest number of native speakers worldwide?","دنیا میں مادری زبان بولنے والوں کی تعداد کے لحاظ سے کون سی زبان سب سے بڑی ہے؟",["Mandarin Chinese / مینڈارن چینی","English / انگریزی","Spanish / ہسپانوی","Arabic / عربی"],0],
+ ["What is the name of the imaginary line at 0 degrees longitude?","صفر درجے طول البلد کی فرضی لکیر کو کیا کہتے ہیں؟",["Prime Meridian / خطِ نصف النہارِ اوّل","Equator / خطِ استوا","Tropic of Cancer / مدارِ سرطان","International Date Line / خطِ تاریخ"],0],
+ ["Which unit is commonly used to measure the loudness level of sound?","آواز کی شدت کی سطح ناپنے کے لیے عام طور پر کون سی اکائی استعمال ہوتی ہے؟",["Decibel / ڈیسی بل","Joule / جول","Watt / واٹ","Pascal / پاسکل"],0],
+ ["What is the official currency of South Korea?","جنوبی کوریا کی سرکاری کرنسی کیا ہے؟",["Won / وون","Yen / ین","Baht / بھات","Ringgit / رنگٹ"],0],
+ ["Which map projection is famous for preserving local angles but distorting area near the poles?","کون سا نقشہ جاتی طریقہ مقامی زاویے محفوظ رکھتا ہے مگر قطبین کے قریب رقبہ بگاڑ دیتا ہے؟",["Mercator projection / مرکٹر پروجیکشن","Robinson projection / رابنسن پروجیکشن","Mollweide projection / مول وائیڈ پروجیکشن","Azimuthal equidistant / سمتی مساوی فاصلہ"],0],
+ ["What is the term for a word formed from the initial letters of a phrase and pronounced as a word?","کسی عبارت کے ابتدائی حروف سے بننے اور بطور لفظ پڑھے جانے والے لفظ کو کیا کہتے ہیں؟",["Acronym / مخففِ لفظی","Palindrome / معکوس لفظ","Homonym / ہم نام","Euphemism / نرم تعبیر"],0],
+ ["Which country is home to the ancient city of Petra?","قدیم شہر پیٹرا کس ملک میں واقع ہے؟",["Jordan / اردن","Lebanon / لبنان","Egypt / مصر","Oman / عمان"],0],
+ ["What is the study of flags called?","جھنڈوں کے مطالعے کو کیا کہتے ہیں؟",["Vexillology / ویکسیلولوجی","Heraldry / علمُ الشعار","Numismatics / علمُ سکّہ","Cartography / نقشہ سازی"],0],
+ ["Which ocean current helps warm western Europe?","کون سا سمندری دھارا مغربی یورپ کو نسبتاً گرم رکھنے میں مدد دیتا ہے؟",["Gulf Stream / گلف اسٹریم","Labrador Current / لیبراڈور دھارا","Humboldt Current / ہمبولٹ دھارا","Oyashio Current / اویاشیو دھارا"],0],
+ ["What is the smallest independent country by area?","رقبے کے لحاظ سے سب سے چھوٹا خودمختار ملک کون سا ہے؟",["Vatican City / ویٹیکن سٹی","Monaco / موناکو","Nauru / ناورو","San Marino / سان مارینو"],0]
+ ],4);
+ add("science","sn",[
+ ["Which part of the human brain helps regulate balance and coordination?","انسانی دماغ کا کون سا حصہ توازن اور حرکات میں ہم آہنگی برقرار رکھنے میں مدد دیتا ہے؟",["Cerebellum / مخیخ","Medulla / میڈولا","Hypothalamus / ہائپوتھیلمس","Hippocampus / ہپوکیمپس"],0],
+ ["What is the SI unit of electrical resistance?","برقی مزاحمت کی ایس آئی اکائی کیا ہے؟",["Ohm / اوہم","Ampere / ایمپیئر","Volt / وولٹ","Coulomb / کولم"],0],
+ ["Which element has the chemical symbol W?","کس عنصر کی کیمیائی علامت W ہے؟",["Tungsten / ٹنگسٹن","Tin / ٹِن","Titanium / ٹائٹینیم","Tellurium / ٹیلوریم"],0],
+ ["What is the name of the pigment that gives plants their green colour?","پودوں کو سبز رنگ دینے والے مادے کو کیا کہتے ہیں؟",["Chlorophyll / کلوروفل","Melanin / میلانن","Keratin / کیراٹِن","Hemoglobin / ہیموگلوبن"],0],
+ ["Which layer of Earth's atmosphere contains most of the ozone layer?","زمین کے ماحول کی کون سی تہہ میں اوزون کی زیادہ تر تہہ موجود ہے؟",["Stratosphere / اسٹراٹوسفیئر","Troposphere / ٹروپوسفیئر","Mesosphere / میسوسفیئر","Thermosphere / تھرموسفیئر"],0],
+ ["What is the name of the phenomenon in which light bends as it enters a different medium?","روشنی کے ایک مادے سے دوسرے مادے میں داخل ہوتے وقت مڑنے کے عمل کو کیا کہتے ہیں؟",["Refraction / انعطافِ نور","Reflection / انعکاس","Diffraction / تفرق","Dispersion only / صرف تجزیہ"],0],
+ ["Which blood cells are primarily responsible for clotting?","خون جمانے میں بنیادی کردار کون سے خلیاتی اجزا ادا کرتے ہیں؟",["Platelets / پلیٹ لیٹس","Red blood cells / سرخ خلیے","Neurons / نیورونز","Lymphocytes only / صرف لمفوسائٹس"],0],
+ ["What is the approximate pH of pure water at room temperature?","کمرے کے درجۂ حرارت پر خالص پانی کی پی ایچ تقریباً کتنی ہوتی ہے؟",["7 / سات","2 / دو","5 / پانچ","10 / دس"],0],
+ ["Which scientist proposed the three laws of planetary motion?","سیاروں کی حرکت کے تین قوانین کس سائنس دان نے پیش کیے؟",["Johannes Kepler / یوہانس کیپلر","Galileo Galilei / گلیلیو گیلیلی","Isaac Newton / آئزک نیوٹن","Niels Bohr / نیلز بوہر"],0],
+ ["What is the name of the smallest unit of a chemical element that retains its properties?","کسی کیمیائی عنصر کی خصوصیات برقرار رکھنے والی سب سے چھوٹی اکائی کیا ہے؟",["Atom / ایٹم","Molecule / سالمہ","Cell / خلیہ","Compound / مرکب"],0]
+ ],4);
+ add("history","hn",[
+ ["Which West African empire was ruled by Mansa Musa in the 14th century?","چودھویں صدی میں مانسا موسیٰ نے مغربی افریقہ کی کس سلطنت پر حکومت کی؟",["Mali Empire / سلطنتِ مالی","Songhai Empire / سلطنتِ سونگھائی","Ghana Empire / سلطنتِ گھانا","Benin Empire / سلطنتِ بینن"],0],
+ ["Which ancient civilization developed the earliest known form of cuneiform writing?","قدیم ترین معلوم میخی رسم الخط کس تہذیب نے تیار کیا؟",["Sumerians / سومیری","Romans / رومی","Phoenicians / فونیقی","Persians / فارسی"],0],
+ ["Who led the Haitian Revolution and became a key leader of independent Haiti?","ہیٹی کے انقلاب کی قیادت کس نے کی اور آزاد ہیٹی کے اہم رہنما بنے؟",["Toussaint Louverture / توسین لوورتیور","Simón Bolívar / سیمون بولیوار","José de San Martín / خوسے دے سان مارٹن","Miguel Hidalgo / میگوئل ہیدالگو"],0],
+ ["Which 1919 treaty formally ended the state of war between Germany and the Allied Powers after World War I?","1919 کے کس معاہدے نے پہلی جنگِ عظیم کے بعد جرمنی اور اتحادی طاقتوں کے درمیان جنگی حالت باضابطہ ختم کی؟",["Treaty of Versailles / معاہدۂ ورسائے","Treaty of Utrecht / معاہدۂ یوٹریخت","Treaty of Brest-Litovsk / معاہدۂ بریسٹ لیٹووسک","Treaty of Lausanne / معاہدۂ لوزان"],0],
+ ["Which ancient civilization built the city of Machu Picchu?","ماچو پیچو شہر کس قدیم تہذیب نے تعمیر کیا؟",["Inca / انکا","Aztec / ایزٹیک","Maya / مایا","Moche / موچے"],0],
+ ["Who was the first woman to fly solo across the Atlantic Ocean?","بحرِ اوقیانوس کے پار تنہا پرواز کرنے والی پہلی خاتون کون تھیں؟",["Amelia Earhart / امیلیا ایئرہارٹ","Bessie Coleman / بیسی کولمین","Harriet Quimby / ہیریئٹ کوئمبی","Valentina Tereshkova / ویلنٹینا تیریشکووا"],0],
+ ["Which city was divided by a wall from 1961 until 1989?","کون سا شہر 1961 سے 1989 تک ایک دیوار کے ذریعے منقسم رہا؟",["Berlin / برلن","Vienna / ویانا","Prague / پراگ","Warsaw / وارسا"],0],
+ ["Which dynasty built much of the Alhambra palace complex in Granada?","غرناطہ کے الحمرا محل کے بڑے حصے کو کس خاندان نے تعمیر کروایا؟",["Nasrid dynasty / بنو نصر","Umayyad dynasty / بنو امیہ","Abbasid dynasty / بنو عباس","Fatimid dynasty / فاطمی"],0],
+ ["Which ancient Greek historian is often called the Father of History?","قدیم یونانی مؤرخ کو عموماً بابائے تاریخ کس نام سے کہا جاتا ہے؟",["Herodotus / ہیروڈوٹس","Thucydides / تھوسی ڈائڈیز","Xenophon / زینوفون","Plutarch / پلوٹارک"],0],
+ ["The Meiji Restoration began in which country in 1868?","1868 میں میجی بحالی کا آغاز کس ملک میں ہوا؟",["Japan / جاپان","China / چین","Thailand / تھائی لینڈ","Vietnam / ویتنام"],0]
+ ],4);
+ add("fantasy","fn",[
+ ["In Norse mythology, what is the name of the world tree?","نورسی اساطیر میں دنیا کے درخت کا نام کیا ہے؟",["Yggdrasil / اگدراسل","Bifrost / بائی فراسٹ","Gungnir / گنگنیر","Valhalla / والہالا"],0],
+ ["Which mythical bird is reborn from its own ashes?","کون سا افسانوی پرندہ اپنی راکھ سے دوبارہ جنم لیتا ہے؟",["Phoenix / فینکس","Roc / رخ","Griffin / گرفن","Thunderbird / تھنڈر برڈ"],0],
+ ["In Arthurian legend, what is the name of King Arthur's sword?","آرتھریائی داستانوں میں بادشاہ آرتھر کی تلوار کا نام کیا ہے؟",["Excalibur / ایکسکیلیبر","Durendal / ڈیورینڈل","Gram / گرام","Caliburn's Shield / کیلیبرن کی ڈھال"],0],
+ ["What is a chimera in Greek mythology?","یونانی اساطیر میں کائمیرا کیا ہے؟",["A fire-breathing hybrid creature / مختلف جانوروں کی ملی جلی آگ اگلنے والی مخلوق","A sea nymph / سمندری پری","A winged horse / پروں والا گھوڑا","A giant serpent only / صرف دیوہیکل سانپ"],0],
+ ["Which realm in Norse mythology is associated with the dead who do not go to Valhalla?","نورسی اساطیر میں وہ کون سا عالم ہے جہاں وہ مردے جاتے ہیں جو والہالا نہیں پہنچتے؟",["Hel / ہیل","Asgard / اسگارڈ","Midgard / مڈگارڈ","Alfheim / الفہائم"],0],
+ ["What is the name of the magical drink that grants immortality in many mythic traditions?","کئی اساطیری روایات میں امر ہونے والا جادوئی مشروب کیا کہلاتا ہے؟",["Elixir of life / آبِ حیات","Lethe / لیتھے","Ambrosia's shadow / امبروزیا کا سایہ","Nectar of sleep / نیند کا امرت"],0],
+ ["Which creature is traditionally depicted with the body of a lion and the head and wings of an eagle?","کون سی مخلوق عموماً شیر کے جسم اور عقاب کے سر اور پروں کے ساتھ دکھائی جاتی ہے؟",["Griffin / گرفن","Basilisk / باسیلسک","Manticore / مینٹیکور","Hippogriff / ہپوگرف"],0],
+ ["In Greek mythology, who ferries souls across the river Styx?","یونانی اساطیر میں دریائے اسٹائکس کے پار روحوں کو کون لے جاتا ہے؟",["Charon / خارون","Atlas / اٹلس","Hermes / ہرمیس","Ares / آریس"],0],
+ ["What is the name of the enchanted forest in many European fairy tales where paths confuse travellers?","یورپی پریوں کی کئی کہانیوں میں اس جادوئی جنگل کو کیا کہتے ہیں جہاں راستے مسافروں کو بھٹکا دیتے ہیں؟",["Forest of enchantment / طلسماتی جنگل","The Glass Desert / شیشے کا صحرا","The Iron Sea / لوہے کا سمندر","The Moon Archive / چاندی کتب خانہ"],0],
+ ["Which legendary creature is commonly described as a horse with a single horn?","کون سی افسانوی مخلوق عموماً ایک سینگ والے گھوڑے کے طور پر بیان ہوتی ہے؟",["Unicorn / یونیکورن","Pegasus / پیگاسس","Kelpie / کیلپی","Centaur / سینٹور"],0]
+ ],4);
+ add("literature","ln",[
+ ["What is the term for a poem mourning the death of a person?","کسی شخص کی وفات پر غم کے اظہار میں لکھی گئی نظم کو کیا کہتے ہیں؟",["Elegy / مرثیہ","Ode / قصیدہ","Ballad / داستانی گیت","Epigram / مختصر طنزیہ نظم"],0],
+ ["Which narrative perspective uses 'I' as the main storytelling voice?","کہانی سنانے کا کون سا زاویہ 'میں' کو بنیادی راوی بناتا ہے؟",["First person / متکلم","Second person / مخاطب","Third-person omniscient / ہمہ دان غائب","Objective third person / غیر جانب دار غائب"],0],
+ ["What is the term for a recurring image, idea, or symbol in a literary work?","ادبی تخلیق میں بار بار آنے والی تصویر، خیال یا علامت کو کیا کہتے ہیں؟",["Motif / تکراری علامت","Plot twist / کہانی کا موڑ","Prologue / دیباچہ","Footnote / حاشیہ"],0],
+ ["Which figure of speech gives human qualities to non-human things?","کون سی صنعت غیر انسانی چیزوں کو انسانی خصوصیات دیتی ہے؟",["Personification / تشخیص","Hyperbole / مبالغہ","Litotes / نفی سے اثبات","Metonymy / مجازِ مرسل"],0],
+ ["What is a dramatic monologue?","ڈرامائی خودکلامی کیا ہوتی ہے؟",["A speech by one character revealing their thoughts / ایک کردار کی تقریر جو اس کے خیالات ظاہر کرے","A dialogue between two narrators / دو راویوں کی گفتگو","A silent stage direction / خاموش اسٹیج ہدایت","A chorus sung by a crowd / ہجوم کا اجتماعی گیت"],0],
+ ["Which term describes the emotional atmosphere created for a reader?","قاری کے لیے پیدا کیے گئے جذباتی ماحول کو کیا کہتے ہیں؟",["Mood / فضا یا کیفیت","Rhyme / قافیہ","Meter / وزن","Syntax / نحوی ترتیب"],0],
+ ["What is an epilogue?","ایپی لاگ کیا ہوتا ہے؟",["A concluding section after the main story / مرکزی کہانی کے بعد اختتامی حصہ","A list before the title / عنوان سے پہلے فہرست","The central conflict / مرکزی کشمکش","A note within a chapter / باب کے اندر نوٹ"],0],
+ ["Which term refers to the central message or underlying idea of a literary work?","ادبی تخلیق کے بنیادی پیغام یا مرکزی خیال کو کیا کہتے ہیں؟",["Theme / موضوع","Setting / ماحول و مقام","Dialogue / مکالمہ","Climax / نقطۂ عروج"],0],
+ ["What is the repetition of consonant sounds at the beginnings of nearby words called?","قریب قریب الفاظ کے آغاز میں یکساں حروفِ صحیح کی آواز دہرانے کو کیا کہتے ہیں؟",["Alliteration / صنعتِ تکرارِ حرف","Assonance / تکرارِ مصوتہ","Consonance / تکرارِ صامت","Enjambment / تسلسلِ مصرع"],0],
+ ["Which form of writing tells a story through a sequence of letters?","خطوط کے سلسلے کے ذریعے کہانی بیان کرنے والی تحریر کو کیا کہتے ہیں؟",["Epistolary narrative / مراسلہ جاتی بیانیہ","Frame narrative / فریم بیانیہ","Stream of consciousness / شعور کی رو","Allegory / تمثیل"],0]
+ ],4);
+ add("personality","pn",[
+ ["You realize you misunderstood someone's message. What is the most constructive next step?","آپ کو احساس ہو کہ کسی کا پیغام غلط سمجھا تو بہتر اگلا قدم کیا ہے؟",["Acknowledge it and ask what they meant / غلط فہمی مان کر اصل مطلب پوچھنا","Insist your interpretation was correct / اپنی تشریح پر اصرار کرنا","Ignore the person / شخص کو نظر انداز کرنا","Repeat the misunderstanding to others / غلط فہمی دوسروں کو بتانا"],0],
+ ["A group task is falling behind. How can you help without taking over?","گروہی کام پیچھے رہ رہا ہو تو سب کچھ اپنے ہاتھ میں لیے بغیر کیسے مدد کریں گے؟",["Ask what support is needed and agree on priorities / پوچھنا کہ کس مدد کی ضرورت ہے اور ترجیحات طے کرنا","Replace everyone's decisions / سب کے فیصلے بدل دینا","Complain without a suggestion / حل دیے بغیر شکایت کرنا","Wait until the deadline passes / آخری تاریخ گزرنے دینا"],0],
+ ["You have several important tasks due soon. What is a useful first step?","کئی اہم کام جلد مکمل کرنے ہوں تو پہلا مفید قدم کیا ہے؟",["List them and rank by urgency and importance / فہرست بنا کر فوری ضرورت اور اہمیت کے مطابق ترتیب دینا","Start whichever looks easiest / جو آسان لگے وہ شروع کرنا","Try to do all at once / سب ایک ساتھ کرنا","Avoid checking deadlines / آخری تاریخیں نہ دیکھنا"],0],
+ ["Someone shares an opinion you strongly disagree with. What supports a respectful discussion?","کوئی ایسی رائے دے جس سے آپ سخت اختلاف رکھتے ہوں تو بااحترام گفتگو کیسے ہوگی؟",["Ask how they reached it and explain your reasons calmly / وجہ پوچھ کر اپنا مؤقف سکون سے بیان کرنا","Attack their character / شخصیت پر حملہ کرنا","Pretend to agree / رضامندی کا دکھاوا کرنا","Turn the discussion into a competition / گفتگو کو مقابلہ بنانا"],0],
+ ["You made a mistake that affected a team. What demonstrates accountability?","آپ کی غلطی سے ٹیم متاثر ہوئی تو ذمہ داری کا ثبوت کیا ہوگا؟",["Explain honestly, help fix it, and learn from it / سچ بتانا، اصلاح میں مدد دینا اور سبق سیکھنا","Hide the mistake / غلطی چھپانا","Blame the newest member / نئے رکن کو قصوروار ٹھہرانا","Wait for someone else to notice / کسی اور کے پکڑنے کا انتظار کرنا"],0],
+ ["A friend asks for advice but seems unsure. What is a helpful approach?","دوست مشورہ مانگے مگر غیر یقینی محسوس ہو تو مددگار طریقہ کیا ہے؟",["Ask whether they want listening or suggestions / پوچھنا کہ اسے صرف سننے والا چاہیے یا مشورہ","Make the decision for them / اس کی جگہ فیصلہ کرنا","Give advice before hearing details / تفصیل سنے بغیر مشورہ دینا","Dismiss the concern / پریشانی کو معمولی کہنا"],0],
+ ["You are learning a difficult skill and progress is slow. What is a realistic strategy?","مشکل مہارت سیکھ رہے ہوں اور پیش رفت سست ہو تو حقیقت پسندانہ حکمتِ عملی کیا ہے؟",["Practice in manageable steps and review progress / چھوٹے مراحل میں مشق اور پیش رفت کا جائزہ","Compare every attempt with experts / ہر کوشش کا ماہرین سے موازنہ","Quit after one setback / ایک رکاوٹ پر چھوڑ دینا","Change the goal every day / روز ہدف بدلنا"],0],
+ ["A team member is quiet during planning. How can you include them?","منصوبہ بندی میں ٹیم کا ایک رکن خاموش ہو تو اسے کیسے شامل کریں گے؟",["Invite their view without putting them on the spot / دباؤ ڈالے بغیر ان کی رائے کی دعوت دینا","Assume they have nothing to add / فرض کرنا کہ ان کے پاس کچھ نہیں","Speak for them / ان کی طرف سے بولنا","Exclude them from decisions / فیصلوں سے باہر رکھنا"],0],
+ ["You discover a claim online that seems surprising. What should you do before sharing it?","آن لائن کوئی حیران کن دعویٰ ملے تو آگے بھیجنے سے پہلے کیا کریں؟",["Check credible independent sources / معتبر آزاد ذرائع سے تصدیق کرنا","Share it because it is popular / مقبول ہونے کی وجہ سے شیئر کرنا","Trust the headline only / صرف سرخی پر یقین کرنا","Remove context to make it shorter / سیاق و سباق ہٹا دینا"],0],
+ ["Plans change unexpectedly. Which response helps a group adapt?","منصوبہ اچانک بدل جائے تو گروہ کو ڈھلنے میں کون سا ردعمل مدد دیتا ہے؟",["Clarify the new goal and revise responsibilities / نیا ہدف واضح کرکے ذمہ داریاں بدلنا","Continue the old plan regardless / پرانے منصوبے پر اصرار","Blame whoever shared the news / خبر دینے والے کو قصوروار کہنا","Stop communicating / رابطہ بند کرنا"],0]
+ ],3);
+ add("islamic","in",[
+ ["Which surah is known as Umm al-Kitab, meaning the Mother of the Book?","کون سی سورت ام الکتاب یعنی کتاب کی اصل کہلاتی ہے؟",["Surah Al-Fatihah / سورۃ الفاتحہ","Surah Al-Baqarah / سورۃ البقرہ","Surah Al-Ikhlas / سورۃ الاخلاص","Surah Yasin / سورۃ یٰسین"],0],
+ ["Which prophet is known for interpreting dreams in the account of Prophet Yusuf?","حضرت یوسفؑ کے واقعے میں خوابوں کی تعبیر کے حوالے سے کون سے نبی معروف ہیں؟",["Yusuf / یوسفؑ","Dawud / داؤدؑ","Sulayman / سلیمانؑ","Ayyub / ایوبؑ"],0],
+ ["What is the name of the migration of Prophet Muhammad from Makkah to Madinah?","رسول اللہ ﷺ کی مکہ سے مدینہ ہجرت کو کیا کہتے ہیں؟",["Hijrah / ہجرت","Isra / اسراء","Fath / فتح","Bay'ah / بیعت"],0],
+ ["Which month follows Ramadan in the Islamic lunar calendar?","اسلامی قمری تقویم میں رمضان کے بعد کون سا مہینہ آتا ہے؟",["Shawwal / شوال","Dhul-Qa'dah / ذوالقعدہ","Muharram / محرم","Safar / صفر"],0],
+ ["What is the name of the charity given at the end of Ramadan before Eid prayer?","عید کی نماز سے پہلے رمضان کے اختتام پر دی جانے والی صدقہ کی قسم کیا ہے؟",["Zakat al-Fitr / زکوٰۃ الفطر","Sadaqah Jariyah / صدقۂ جاریہ","Fidyah only / صرف فدیہ","Ushr / عشر"],0],
+ ["Which prophet is associated with the construction of the Ka'bah with his son Ismail?","اپنے بیٹے اسماعیلؑ کے ساتھ کعبہ کی تعمیر کس نبی سے منسوب ہے؟",["Ibrahim / ابراہیمؑ","Nuh / نوحؑ","Yaqub / یعقوبؑ","Idris / ادریسؑ"],0],
+ ["What is the term for the direction Muslims face during salah?","نماز کے دوران مسلمانوں کے رخ کی سمت کو کیا کہتے ہیں؟",["Qiblah / قبلہ","Mihrab / محراب","Minbar / منبر","Maqam / مقام"],0],
+ ["Which angel is traditionally associated with delivering revelation to prophets?","روایتی اسلامی تعلیمات میں انبیاء تک وحی پہنچانے سے کون سا فرشتہ وابستہ ہے؟",["Jibril / جبرائیلؑ","Mikail / میکائیلؑ","Israfil / اسرافیلؑ","Malik / مالکؑ"],0],
+ ["What is the name of the well near the Ka'bah associated with Hajar and Ismail?","کعبہ کے قریب اس کنویں کا نام کیا ہے جو ہاجرہ اور اسماعیلؑ کے واقعے سے وابستہ ہے؟",["Zamzam / زمزم","Salsabil / سلسبیل","Kawthar / کوثر","Tabuk / تبوک"],0],
+ ["Which surah begins with the words 'Alhamdu lillahi Rabbil-'alamin'?","کون سی سورت 'الحمد للہ رب العالمین' کے الفاظ سے شروع ہوتی ہے؟",["Surah Al-Fatihah / سورۃ الفاتحہ","Surah Al-Kahf / سورۃ الکہف","Surah Ar-Rahman / سورۃ الرحمٰن","Surah Al-Mulk / سورۃ الملک"],0]
+ ],3);
+})();
+ 
 function questionText(q){return game.language==="ur"?q.ur:q.en;}
 function answerText(a){
   if(game.language==="ur")return a.split(" / ").slice(-1)[0];
