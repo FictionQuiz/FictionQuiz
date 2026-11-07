@@ -829,6 +829,100 @@ const ACHIEVEMENTS=[
 {id:"quiz10",emoji:"🏆",name:"Quiz Explorer",desc:"Complete 10 quizzes",test:()=>game.quizzesDone>=10}
 ];
 
+
+/* Original question expansion: first curated starter pack for all seven categories.
+   Each item is bilingual and is assigned to the introductory difficulty pool. */
+(()=>{
+ const add=(cat,prefix,rows)=>rows.forEach((x,i)=>{
+   const q=Q(prefix+(101+i),cat,x[0],x[1],x[2],x[3]);
+   q.tier=1;QUESTIONS.push(q);
+ });
+ add("knowledge","kx",[
+ ["Which instrument is used to observe distant stars?","دور دراز ستاروں کا مشاہدہ کرنے کے لیے کون سا آلہ استعمال ہوتا ہے؟",["Telescope / دوربین","Microscope / خوردبین","Periscope / پیرسکوپ","Binocular compass / دوچشمی قطب نما"],0],
+ ["Which country is home to the ancient city of Petra?","قدیم شہر پیٹرا کس ملک میں واقع ہے؟",["Jordan / اردن","Lebanon / لبنان","Oman / عمان","Iraq / عراق"],0],
+ ["What is the largest internal organ in the human body?","انسانی جسم کا سب سے بڑا اندرونی عضو کون سا ہے؟",["Liver / جگر","Lung / پھیپھڑا","Kidney / گردہ","Stomach / معدہ"],0],
+ ["Which unit is commonly used to measure electric current?","برقی رو ناپنے کے لیے عام طور پر کون سی اکائی استعمال ہوتی ہے؟",["Ampere / ایمپیئر","Volt / وولٹ","Watt / واٹ","Ohm / اوہم"],0],
+ ["Which sea lies between Europe and Africa?","یورپ اور افریقہ کے درمیان کون سا سمندر واقع ہے؟",["Mediterranean Sea / بحیرہ روم","Black Sea / بحیرہ اسود","Red Sea / بحیرہ احمر","Caspian Sea / بحیرہ کیسپین"],0],
+ ["Which language has the most native speakers worldwide?","دنیا میں مادری زبان کے طور پر سب سے زیادہ بولی جانے والی زبان کون سی ہے؟",["Mandarin Chinese / مینڈرن چینی","English / انگریزی","Spanish / ہسپانوی","Arabic / عربی"],0],
+ ["What is the name of the boundary around a black hole beyond which light cannot escape?","بلیک ہول کے گرد اس حد کو کیا کہتے ہیں جس سے روشنی بھی باہر نہیں نکل سکتی؟",["Event horizon / افقِ واقعات","Solar corona / شمسی تاج","Asteroid belt / سیارچوں کی پٹی","Magnetosphere / مقناطیسی کرہ"],0],
+ ["Which is the smallest continent by land area?","رقبے کے لحاظ سے سب سے چھوٹا براعظم کون سا ہے؟",["Australia / آسٹریلیا","Europe / یورپ","Antarctica / انٹارکٹیکا","South America / جنوبی امریکا"],0],
+ ["Which document is commonly used to record a country's fundamental laws?","کسی ملک کے بنیادی قوانین عموماً کس دستاویز میں درج ہوتے ہیں؟",["Constitution / آئین","Atlas / اٹلس","Census / مردم شماری","Directory / ڈائریکٹری"],0],
+ ["Which device converts sound waves into electrical signals for recording?","آواز کی لہروں کو ریکارڈنگ کے لیے برقی سگنلز میں کون سا آلہ بدلتا ہے؟",["Microphone / مائیکروفون","Speaker / اسپیکر","Projector / پروجیکٹر","Router / راؤٹر"],0]
+ ]);
+ add("science","sx",[
+ ["What is the chemical symbol for potassium?","پوٹاشیم کی کیمیائی علامت کیا ہے؟",["K","P","Po","Pt"],0],
+ ["Which cell structure contains most of a cell's genetic material?","خلیے کے کس حصے میں زیادہ تر جینیاتی مادہ موجود ہوتا ہے؟",["Nucleus / نیوکلئیس","Ribosome / رائبوسوم","Cell wall / خلیاتی دیوار","Golgi apparatus / گولجی باڈی"],0],
+ ["What type of energy is stored in a stretched spring?","کھینچے ہوئے اسپرنگ میں کس قسم کی توانائی ذخیرہ ہوتی ہے؟",["Elastic potential energy / لچکدار مخزونی توانائی","Sound energy / صوتی توانائی","Nuclear energy / جوہری توانائی","Chemical energy / کیمیائی توانائی"],0],
+ ["Which blood cells are primarily responsible for carrying oxygen?","آکسیجن پہنچانے کی بنیادی ذمہ داری خون کے کن خلیات کی ہے؟",["Red blood cells / سرخ خلیات","White blood cells / سفید خلیات","Platelets / پلیٹ لیٹس","Plasma cells / پلازما خلیات"],0],
+ ["What is the pH of a neutral solution at room temperature, approximately?","کمرے کے درجہ حرارت پر غیر جانبدار محلول کا pH تقریباً کتنا ہوتا ہے؟",["7","2","5","12"],0],
+ ["Which process allows green plants to make sugars using light?","سبز پودے روشنی کی مدد سے شکر کس عمل کے ذریعے بناتے ہیں؟",["Photosynthesis / ضیائی تالیف","Fermentation / تخمیر","Respiration only / صرف تنفس","Transpiration / عملِ تبخیر"],0],
+ ["Which particle has a negative electric charge?","کس ذرّے پر منفی برقی چارج ہوتا ہے؟",["Electron / الیکٹران","Proton / پروٹون","Neutron / نیوٹران","Alpha particle / الفا ذرّہ"],0],
+ ["What is the SI unit of force?","قوت کی ایس آئی اکائی کیا ہے؟",["Newton / نیوٹن","Joule / جول","Pascal / پاسکل","Tesla / ٹیسلا"],0],
+ ["Which layer of Earth is liquid and surrounds the inner core?","زمین کی کون سی تہہ مائع ہے اور اندرونی مرکزے کے گرد موجود ہے؟",["Outer core / بیرونی مرکزہ","Crust / پرت","Mantle / مینٹل","Inner core / اندرونی مرکزہ"],0],
+ ["What is the main function of enzymes in living organisms?","جانداروں میں خامروں کا بنیادی کام کیا ہے؟",["Speed up biochemical reactions / حیاتی کیمیائی عمل تیز کرنا","Store hereditary information / موروثی معلومات محفوظ کرنا","Carry oxygen in blood / خون میں آکسیجن پہنچانا","Form the skeleton / ڈھانچا بنانا"],0]
+ ]);
+ add("history","hx",[
+ ["Which ancient civilisation developed cuneiform writing?","کس قدیم تہذیب نے میخی رسم الخط تیار کیا؟",["Sumerian / سومیری","Minoan / منوائی","Inca / انکا","Aztec / ایزٹک"],0],
+ ["The Magna Carta was sealed in which year?","میگنا کارٹا پر کس سال مہر ثبت ہوئی؟",["1215","1066","1492","1648"],0],
+ ["Which empire was ruled by Mansa Musa?","مانسا موسیٰ کس سلطنت کے حکمران تھے؟",["Mali Empire / سلطنتِ مالی","Roman Empire / رومی سلطنت","Ottoman Empire / سلطنتِ عثمانیہ","Mughal Empire / مغلیہ سلطنت"],0],
+ ["Which city was the capital of the Byzantine Empire?","بازنطینی سلطنت کا دارالحکومت کون سا شہر تھا؟",["Constantinople / قسطنطنیہ","Athens / ایتھنز","Alexandria / اسکندریہ","Rome / روم"],0],
+ ["The Rosetta Stone helped scholars decipher which writing system?","روزٹا اسٹون نے محققین کو کس رسم الخط کو سمجھنے میں مدد دی؟",["Egyptian hieroglyphs / مصری ہیروغلیف","Cuneiform / میخی رسم الخط","Linear B / لینیئر بی","Runes / رونی حروف"],0],
+ ["Which dynasty built much of the Great Wall's best-known Ming-era structure?","دیوارِ چین کے مشہور حصوں کی بڑی تعمیر کس خاندان کے دور میں ہوئی؟",["Ming dynasty / منگ خاندان","Qing dynasty / چنگ خاندان","Tang dynasty / تانگ خاندان","Song dynasty / سونگ خاندان"],0],
+ ["Who was the first woman to fly solo across the Atlantic Ocean?","بحرِ اوقیانوس کے پار تنہا پرواز کرنے والی پہلی خاتون کون تھیں؟",["Amelia Earhart / امیلیا ایئرہارٹ","Bessie Coleman / بیسی کولمین","Harriet Quimby / ہیریٹ کوئمبی","Valentina Tereshkova / ویلنتینا تریشکووا"],0],
+ ["Which civilisation built the city of Machu Picchu?","ماچو پیچو شہر کس تہذیب نے تعمیر کیا؟",["Inca / انکا","Maya / مایا","Olmec / اولمیک","Phoenician / فونیقی"],0],
+ ["In which year did the Berlin Wall fall?","دیوارِ برلن کس سال گری؟",["1989","1975","1991","1961"],0],
+ ["Which 14th-century traveller wrote the Rihla?","چودھویں صدی کے کس سیاح نے رحلہ لکھی؟",["Ibn Battuta / ابن بطوطہ","Al-Biruni / البیرونی","Ibn Sina / ابنِ سینا","Al-Idrisi / الادریسی"],0]
+ ]);
+ add("fantasy","fx",[
+ ["In Greek mythology, who carried messages for the gods?","یونانی اساطیر میں دیوتاؤں کے پیغامات کون پہنچاتا تھا؟",["Hermes / ہرمیس","Ares / آریس","Hephaestus / ہیفیسٹس","Hades / ہیڈیز"],0],
+ ["A phoenix is traditionally associated with which ability?","روایتی کہانیوں میں فینکس کس صلاحیت سے وابستہ ہے؟",["Rebirth from its ashes / اپنی راکھ سے دوبارہ جنم لینا","Turning invisible / غائب ہو جانا","Controlling tides / مدوجزر پر قابو پانا","Speaking every language / ہر زبان بولنا"],0],
+ ["In folklore, a creature that changes shape is called what?","لوک کہانیوں میں شکل بدلنے والی مخلوق کو کیا کہتے ہیں؟",["Shapeshifter / روپ بدلنے والی مخلوق","Alchemist / کیمیاگر","Oracle / غیب گو","Bard / داستان گو"],0],
+ ["Which mythical creature is commonly depicted with a horse's body and a human torso?","کون سی دیومالائی مخلوق عموماً گھوڑے کے جسم اور انسانی دھڑ کے ساتھ دکھائی جاتی ہے؟",["Centaur / سینٹار","Griffin / گریفن","Basilisk / باسیلسک","Minotaur / منوٹار"],0],
+ ["What is an enchanted object said to possess?","جادوئی شے کے بارے میں کیا تصور کیا جاتا ہے؟",["Magical properties / جادوئی خصوصیات","A scientific licence / سائنسی اجازت نامہ","A royal census / شاہی مردم شماری","A natural fossil / قدرتی فوسل"],0],
+ ["In Norse mythology, what is the name of the world tree?","نورسی اساطیر میں عالمگیر درخت کا نام کیا ہے؟",["Yggdrasil / یگدراسل","Bifrost / بائی فراسٹ","Midgard / مڈگارڈ","Valhalla / والہالا"],0],
+ ["Which creature is traditionally said to turn people to stone with its gaze in Greek myth?","یونانی اساطیر میں کس مخلوق کی نگاہ سے انسان پتھر بن جاتا تھا؟",["Medusa / میڈوسا","Nymph / نمف","Siren / سائرن","Dryad / ڈرائیڈ"],0],
+ ["A griffin is usually shown as a combination of which animals?","گریفن کو عموماً کن جانوروں کے امتزاج کے طور پر دکھایا جاتا ہے؟",["Eagle and lion / عقاب اور شیر","Horse and snake / گھوڑا اور سانپ","Wolf and deer / بھیڑیا اور ہرن","Bear and owl / ریچھ اور الو"],0],
+ ["What is the study and crafting of magical transformation often called in fantasy stories?","فینٹسی کہانیوں میں جادوئی تبدیلی کے مطالعے اور فن کو اکثر کیا کہتے ہیں؟",["Alchemy / علمِ کیمیا","Cartography / نقشہ نگاری","Botany / نباتات","Astronomy / فلکیات"],0],
+ ["Which legendary bird is associated with fire and renewal in many traditions?","بہت سی روایات میں کون سا افسانوی پرندہ آگ اور نئی زندگی سے وابستہ ہے؟",["Phoenix / فینکس","Roc / رخ","Harpy / ہارپی","Swan maiden / سوان میڈن"],0]
+ ]);
+ add("literature","lx",[
+ ["What is the term for the central character in a story?","کہانی کے مرکزی کردار کو کیا کہتے ہیں؟",["Protagonist / مرکزی کردار","Antagonist / مخالف کردار","Narrator / راوی","Editor / مدیر"],0],
+ ["A comparison using 'like' or 'as' is called what?","'کی طرح' یا 'جیسے' کے ذریعے کی گئی تشبیہ کو انگریزی میں کیا کہتے ہیں؟",["Simile / تشبیہ","Metaphor / استعارہ","Irony / طنز","Alliteration / تجنیسِ حرفی"],0],
+ ["Which point of view uses 'I' as the narrator?","کس زاویۂ بیان میں راوی 'میں' کا استعمال کرتا ہے؟",["First person / متکلم","Second person / مخاطب","Third person / غائب","Omniscient only / ہمہ دان"],0],
+ ["What is a short traditional story that teaches a moral called?","سبق آموز مختصر روایتی کہانی کو کیا کہتے ہیں؟",["Fable / حکایت","Epic / رزمیہ","Elegy / مرثیہ","Satire / ہجو"],0],
+ ["What do we call the time and place in which a story happens?","کہانی کے وقوع پذیر ہونے کے وقت اور مقام کو کیا کہتے ہیں؟",["Setting / ماحول و مقام","Plot / پلاٹ","Theme / موضوع","Dialogue / مکالمہ"],0],
+ ["A poem of fourteen lines is commonly known as what?","چودہ مصرعوں پر مشتمل نظم کو عام طور پر کیا کہتے ہیں؟",["Sonnet / سانیٹ","Haiku / ہائیکو","Ode / قصیدہ","Limerick / لِمَرِک"],0],
+ ["Which term describes a hint about a future event in a story?","کہانی میں مستقبل کے واقعے کی طرف اشارے کو کیا کہتے ہیں؟",["Foreshadowing / پیش اشارہ","Flashback / ماضی کی جھلک","Resolution / اختتام","Exposition / تمہید"],0],
+ ["What is the main struggle or problem in a narrative called?","بیانیہ کہانی میں بنیادی کشمکش یا مسئلے کو کیا کہتے ہیں؟",["Conflict / کشمکش","Meter / وزن","Rhyme / قافیہ","Appendix / ضمیمہ"],0],
+ ["A story told within another story is called what?","ایک کہانی کے اندر سنائی جانے والی دوسری کہانی کو کیا کہتے ہیں؟",["Frame narrative / فریم بیانیہ","Biography / سوانح عمری","Travelogue / سفرنامہ","Tragedy / المیہ"],0],
+ ["What is the repetition of initial consonant sounds in nearby words called?","قریب قریب الفاظ کے شروع میں یکساں حرفی آواز کی تکرار کو کیا کہتے ہیں؟",["Alliteration / تجنیسِ حرفی","Assonance / تجنیسِ مصوتی","Onomatopoeia / صوتی لفظ","Enjambment / تسلسلِ مصرع"],0]
+ ]);
+ add("personality","px",[
+ ["In a team task, which response best demonstrates active listening?","گروہی کام میں کون سا ردِعمل توجہ سے سننے کی بہترین مثال ہے؟",["Summarising a teammate's point before replying / جواب سے پہلے ساتھی کی بات کا خلاصہ کرنا","Interrupting to give your own idea / اپنی بات کہنے کے لیے ٹوکنا","Ignoring questions / سوالات نظرانداز کرنا","Changing the topic immediately / فوراً موضوع بدل دینا"],0],
+ ["Which action is the clearest example of taking responsibility for a mistake?","اپنی غلطی کی ذمہ داری قبول کرنے کی واضح مثال کون سا عمل ہے؟",["Admitting it and helping correct it / غلطی مان کر اسے درست کرنے میں مدد دینا","Blaming the nearest person / قریب ترین شخص کو الزام دینا","Hiding the result / نتیجہ چھپانا","Pretending it never happened / ظاہر کرنا کہ کچھ ہوا ہی نہیں"],0],
+ ["When a plan fails, which response shows flexible problem-solving?","منصوبہ ناکام ہونے پر کون سا ردِعمل لچکدار مسئلہ حل کرنے کی صلاحیت دکھاتا ہے؟",["Reviewing options and trying a new approach / متبادل دیکھ کر نیا طریقہ آزمانا","Repeating the same step without review / جائزے کے بغیر وہی قدم دہرانا","Giving up before checking / جانچ سے پہلے ہار مان لینا","Refusing all suggestions / ہر تجویز رد کرنا"],0],
+ ["Which behaviour best reflects empathy during a disagreement?","اختلاف کے دوران ہمدردی کا بہترین اظہار کون سا رویہ ہے؟",["Trying to understand the other person's feelings / دوسرے کے احساسات سمجھنے کی کوشش کرنا","Mocking their concern / ان کی پریشانی کا مذاق اڑانا","Assuming their intention / ان کی نیت خود طے کر لینا","Refusing to listen / سننے سے انکار کرنا"],0],
+ ["Which is a constructive way to receive feedback?","رائے یا تنقید سننے کا تعمیری طریقہ کون سا ہے؟",["Ask for a specific example and consider it / واضح مثال مانگ کر اس پر غور کرنا","Reject it without listening / سنے بغیر رد کرنا","Treat it as a personal attack / اسے ذاتی حملہ سمجھنا","Spread it to embarrass the speaker / بولنے والے کو شرمندہ کرنے کے لیے پھیلانا"],0],
+ ["What is the most useful first step when prioritising several tasks?","کئی کاموں کی ترجیح طے کرتے وقت سب سے مفید پہلا قدم کیا ہے؟",["Identify deadlines and importance / آخری تاریخ اور اہمیت معلوم کرنا","Choose the easiest task every time / ہر بار آسان ترین کام چننا","Start randomly / بے ترتیب آغاز کرنا","Ignore the time available / دستیاب وقت نظرانداز کرنا"],0],
+ ["Which choice best shows respectful disagreement?","احترام کے ساتھ اختلاف کرنے کی بہترین مثال کون سی ہے؟",["Explain your reason without insulting anyone / کسی کی توہین کیے بغیر اپنی وجہ بتانا","Raise your voice to win / جیتنے کے لیے آواز بلند کرنا","Dismiss the other view / دوسرے نقطۂ نظر کو بے وقعت کہنا","Use personal labels / ذاتی القاب استعمال کرنا"],0],
+ ["Which habit supports reliable teamwork?","قابلِ اعتماد ٹیم ورک کے لیے کون سی عادت مددگار ہے؟",["Keeping agreed commitments / طے شدہ ذمہ داریاں پوری کرنا","Taking credit for others' work / دوسروں کے کام کا کریڈٹ لینا","Withholding important updates / اہم معلومات روکنا","Changing shared goals alone / مشترکہ اہداف اکیلے بدل دینا"],0],
+ ["When facing a difficult decision, what is a sound approach?","مشکل فیصلہ کرتے وقت مناسب طریقہ کیا ہے؟",["Compare evidence, options and consequences / شواہد، متبادل اور نتائج کا موازنہ کرنا","Follow the loudest opinion / سب سے بلند آواز کی رائے ماننا","Decide only from rumours / صرف افواہوں پر فیصلہ کرنا","Avoid checking relevant facts / متعلقہ حقائق جانچنے سے بچنا"],0],
+ ["Which action is an example of healthy boundary-setting?","صحت مند حدود قائم کرنے کی مثال کون سا عمل ہے؟",["Politely stating what you can and cannot do / شائستگی سے اپنی استطاعت اور حدود بتانا","Agreeing to everything unwillingly / دل نہ ہونے کے باوجود ہر بات ماننا","Sharing another person's private information / دوسرے کی نجی بات بتانا","Using threats to end a discussion / گفتگو ختم کرنے کے لیے دھمکی دینا"],0]
+ ]);
+ add("islamic","ix",[
+ ["Which surah is known as Umm al-Kitab?","کس سورت کو اُمّ الکتاب کہا جاتا ہے؟",["Surah Al-Fatihah / سورۃ الفاتحہ","Surah Al-Ikhlas / سورۃ الاخلاص","Surah Al-Falaq / سورۃ الفلق","Surah An-Nas / سورۃ الناس"],0],
+ ["What is the name of the angel who brought revelation to the Prophets?","انبیاء کرام تک وحی پہنچانے والے فرشتے کا نام کیا ہے؟",["Jibril / جبرائیل","Mikail / میکائیل","Israfil / اسرافیل","Malik / مالک"],0],
+ ["Which month comes immediately after Ramadan in the Islamic calendar?","اسلامی تقویم میں رمضان کے فوراً بعد کون سا مہینہ آتا ہے؟",["Shawwal / شوال","Dhul Qadah / ذوالقعدہ","Muharram / محرم","Safar / صفر"],0],
+ ["What is the direction Muslims face during salah called?","نماز کے دوران مسلمان جس سمت رخ کرتے ہیں اسے کیا کہتے ہیں؟",["Qiblah / قبلہ","Mihrab / محراب","Minbar / منبر","Maqam / مقام"],0],
+ ["Which Prophet is associated with the construction of the Ka'bah with his son Ismail?","کس نبی نے اپنے بیٹے اسماعیل کے ساتھ کعبہ کی تعمیر کی؟",["Ibrahim / ابراہیم","Musa / موسیٰ","Yusuf / یوسف","Yunus / یونس"],0],
+ ["What is the night prayer performed in Ramadan commonly called?","رمضان میں ادا کی جانے والی رات کی نماز کو عام طور پر کیا کہتے ہیں؟",["Tarawih / تراویح","Duha / چاشت","Istisqa / استسقاء","Kusuf / کسوف"],0],
+ ["Which Islamic term refers to the obligatory charity on qualifying wealth?","نصاب کے مطابق مال پر واجب صدقے کو کون سی اصطلاح کہتے ہیں؟",["Zakat / زکوٰۃ","Sadaqah / صدقہ","Waqf / وقف","Fidyah / فدیہ"],0],
+ ["Which city contains Al-Masjid an-Nabawi?","مسجد نبوی کس شہر میں واقع ہے؟",["Madinah / مدینہ","Makkah / مکہ","Jerusalem / یروشلم","Taif / طائف"],0],
+ ["What is the Islamic declaration of faith called?","اسلام کے اقرارِ ایمان کو کیا کہتے ہیں؟",["Shahadah / شہادت","Adhan / اذان","Iqamah / اقامت","Khutbah / خطبہ"],0],
+ ["Which Prophet was given the Zabur?","کس نبی کو زبور عطا کی گئی؟",["Dawud / داؤد","Musa / موسیٰ","Isa / عیسیٰ","Ibrahim / ابراہیم"],0]
+ ]);
+})();
+
 function questionText(q){return game.language==="ur"?q.ur:q.en;}
 function answerText(a){
   if(game.language==="ur")return a.split(" / ").slice(-1)[0];
