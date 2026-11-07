@@ -1198,6 +1198,97 @@ const ACHIEVEMENTS=[
  ],2);
 })();
  
+/* Original question batch 3: 70 distinct bilingual MCQs. */
+(()=>{
+ const add=(cat,prefix,rows,tier)=>rows.forEach((x,i)=>{
+  const q=Q(prefix+(401+i),cat,x[0],x[1],x[2],x[3]);q.tier=tier;QUESTIONS.push(q);
+ });
+ add("knowledge","kn",[
+ ["Which instrument is used to observe distant celestial objects?","دور دراز اجرامِ فلکی دیکھنے کے لیے کون سا آلہ استعمال ہوتا ہے؟",["Telescope / دوربین","Microscope / خوردبین","Periscope / پیرسکوپ","Spectrometer / طیف پیما"],0],
+ ["What is the name of the line on a map joining places of equal height?","نقشے پر یکساں بلندی والے مقامات کو ملانے والی لکیر کیا کہلاتی ہے؟",["Contour line / خطِ ارتفاع","Isobar / ہم دباؤ خط","Meridian / نصف النہار","Latitude / عرض البلد"],0],
+ ["Which country is home to the ancient city of Timbuktu?","قدیم شہر ٹمبکٹو کس ملک میں واقع ہے؟",["Mali / مالی","Niger / نائجر","Chad / چاڈ","Senegal / سینیگال"],0],
+ ["What is the art of beautiful handwriting called?","خوش خطی کے فن کو کیا کہتے ہیں؟",["Calligraphy / خطاطی","Typography / طباعتِ حروف","Cartography / نقشہ سازی","Photography / عکاسی"],0],
+ ["Which metal is the primary component of traditional bronze?","روایتی کانسی میں بنیادی طور پر کون سی دھاتیں شامل ہوتی ہیں؟",["Copper and tin / تانبا اور قلعی","Iron and zinc / لوہا اور جست","Gold and silver / سونا اور چاندی","Lead and nickel / سیسہ اور نکل"],0],
+ ["What is the name of the study of coins and currency?","سکوں اور کرنسی کے مطالعے کو کیا کہتے ہیں؟",["Numismatics / علمِ سکّہ","Genealogy / شجرہ شناسی","Paleography / قدیم رسم الخط کا مطالعہ","Etymology / علمِ اشتقاق"],0],
+ ["Which ocean surrounds the Maldives?","مالدیپ کے گرد کون سا سمندر واقع ہے؟",["Indian Ocean / بحرِ ہند","Pacific Ocean / بحرالکاہل","Atlantic Ocean / بحرِ اوقیانوس","Arctic Ocean / بحرِ منجمد شمالی"],0],
+ ["In music, how many notes are in a standard major scale?","موسیقی کے معیاری میجر اسکیل میں کتنے سُر ہوتے ہیں؟",["Seven / سات","Five / پانچ","Eight / آٹھ","Twelve / بارہ"],0],
+ ["Which architectural style is characterized by pointed arches and flying buttresses?","نوکیلی محرابوں اور بیرونی پشت بندوں والا طرزِ تعمیر کون سا ہے؟",["Gothic / گوتھک","Baroque / باروک","Brutalist / بروٹلسٹ","Neoclassical / نوکلاسیکی"],0],
+ ["What is the term for a word that reads the same forward and backward?","ایسے لفظ کو کیا کہتے ہیں جو آگے اور پیچھے سے ایک جیسا پڑھا جائے؟",["Palindrome / معکوس لفظ","Acronym / مخفف","Homonym / ہم نام","Anagram / حروف کی نئی ترتیب"],0]
+ ],3);
+ add("science","sn",[
+ ["Which part of the brain helps regulate balance and coordination?","دماغ کا کون سا حصہ توازن اور حرکات میں ہم آہنگی برقرار رکھنے میں مدد دیتا ہے؟",["Cerebellum / مخیخ","Medulla / میڈولا","Hypothalamus / ہائپوتھیلمس","Cerebrum / مخ"],0],
+ ["What is the name of the process by which cells divide to form two genetically similar cells?","وہ عمل کیا کہلاتا ہے جس میں خلیہ تقسیم ہو کر دو جینیاتی طور پر ملتے جلتے خلیے بناتا ہے؟",["Mitosis / مائٹوسس","Meiosis / میوسس","Osmosis / اسموسس","Diffusion / انتشار"],0],
+ ["Which gas is most abundant in Earth's atmosphere?","زمین کی فضا میں سب سے زیادہ مقدار کس گیس کی ہے؟",["Nitrogen / نائٹروجن","Oxygen / آکسیجن","Carbon dioxide / کاربن ڈائی آکسائیڈ","Argon / آرگن"],0],
+ ["What is the SI unit of frequency?","فریکوئنسی کی ایس آئی اکائی کیا ہے؟",["Hertz / ہرٹز","Watt / واٹ","Coulomb / کولم","Tesla / ٹیسلا"],0],
+ ["Which type of bond involves the sharing of electron pairs?","کون سا کیمیائی بند الیکٹرانوں کے جوڑوں کی شراکت سے بنتا ہے؟",["Covalent bond / اشتراکی بند","Ionic bond / آئنک بند","Metallic bond / دھاتی بند","Hydrogen bond / ہائیڈروجن بند"],0],
+ ["What is the name of the boundary around a black hole beyond which light cannot escape?","بلیک ہول کے گرد اس حد کو کیا کہتے ہیں جس سے آگے روشنی بھی باہر نہیں نکل سکتی؟",["Event horizon / افقِ واقعات","Photosphere / ضیائی کرہ","Magnetosphere / مقناطیسی کرہ","Ozone layer / اوزون تہہ"],0],
+ ["Which organ produces insulin?","انسولین کون سا عضو پیدا کرتا ہے؟",["Pancreas / لبلبہ","Liver / جگر","Kidney / گردہ","Spleen / تلی"],0],
+ ["What is the name of the scale used to describe mineral hardness?","معدنیات کی سختی بیان کرنے کے لیے کون سا پیمانہ استعمال ہوتا ہے؟",["Mohs scale / موہس پیمانہ","Richter scale / رِختر پیمانہ","Beaufort scale / بیوفورٹ پیمانہ","Fujita scale / فوجیتا پیمانہ"],0],
+ ["Which phenomenon explains why the sky appears blue on a clear day?","صاف دن میں آسمان نیلا کیوں دکھائی دیتا ہے؟",["Rayleigh scattering / ریلے انتشار","Total internal reflection / مکمل داخلی انعکاس","Doppler effect / ڈوپلر اثر","Photoelectric effect / ضیائی برقی اثر"],0],
+ ["What is the main function of alveoli in the lungs?","پھیپھڑوں میں الویولی کا بنیادی کام کیا ہے؟",["Gas exchange / گیسوں کا تبادلہ","Sound production / آواز پیدا کرنا","Blood filtration / خون صاف کرنا","Food digestion / غذا ہضم کرنا"],0]
+ ],4);
+ add("history","hn",[
+ ["Which civilization developed the first known alphabetic writing system in the eastern Mediterranean?","مشرقی بحیرۂ روم میں ابتدائی معروف حروفی رسم الخط کس تہذیب نے تیار کیا؟",["Phoenicians / فونیقی","Sumerians / سومیری","Incas / انکا","Mycenaeans / مائی سینی"],0],
+ ["Who was the first woman to win a Nobel Prize?","نوبیل انعام جیتنے والی پہلی خاتون کون تھیں؟",["Marie Curie / میری کیوری","Bertha von Suttner / برتھا فان زٹنر","Selma Lagerlöf / سیلما لاگرلوف","Jane Addams / جین ایڈمز"],0],
+ ["Which 1453 event marked the end of the Byzantine Empire?","1453 کے کس واقعے سے بازنطینی سلطنت کا خاتمہ ہوا؟",["Fall of Constantinople / قسطنطنیہ کا سقوط","Battle of Hastings / جنگِ ہیسٹنگز","Siege of Vienna / محاصرۂ ویانا","Battle of Tours / جنگِ ٹورز"],0],
+ ["Which ruler commissioned the Taj Mahal?","تاج محل کس حکمران نے تعمیر کروایا؟",["Shah Jahan / شاہ جہاں","Akbar / اکبر","Jahangir / جہانگیر","Aurangzeb / اورنگزیب"],0],
+ ["The Rosetta Stone helped scholars decipher which ancient script?","روزٹہ پتھر نے محققین کو کس قدیم رسم الخط کو سمجھنے میں مدد دی؟",["Egyptian hieroglyphs / مصری تصویری رسم الخط","Cuneiform / میخی رسم الخط","Linear B / لینیئر بی","Runes / رونی حروف"],0],
+ ["Which battle in 1066 led to Norman rule in England?","1066 کی کس جنگ کے نتیجے میں انگلستان میں نارمن حکومت قائم ہوئی؟",["Battle of Hastings / جنگِ ہیسٹنگز","Battle of Agincourt / جنگِ ایجینکورٹ","Battle of Bosworth / جنگِ بوسورتھ","Battle of Bannockburn / جنگِ بینک برن"],0],
+ ["Which ancient civilization is associated with the city of Mohenjo-daro?","موہنجو داڑو کس قدیم تہذیب سے تعلق رکھتا ہے؟",["Indus Valley Civilization / وادیٔ سندھ کی تہذیب","Minoan Civilization / منوائی تہذیب","Olmec Civilization / اولمیک تہذیب","Nubian Civilization / نوبیائی تہذیب"],0],
+ ["Who was the South African president elected in 1994 after the end of apartheid rule?","نسلی امتیاز کے خاتمے کے بعد 1994 میں جنوبی افریقہ کا صدر کون منتخب ہوا؟",["Nelson Mandela / نیلسن منڈیلا","Thabo Mbeki / تھابو ایمبیکی","Desmond Tutu / ڈیسمنڈ ٹوٹو","F. W. de Klerk / ایف ڈبلیو ڈی کلرک"],0],
+ ["Which empire used the administrative system of satrapies?","کس سلطنت میں صوبائی انتظام کے لیے ستراپی نظام استعمال ہوتا تھا؟",["Achaemenid Persian Empire / ہخامنشی فارسی سلطنت","Mughal Empire / مغل سلطنت","Inca Empire / انکا سلطنت","Macedonian Empire / مقدونی سلطنت"],0],
+ ["Which 1815 battle finally defeated Napoleon Bonaparte?","1815 کی کس جنگ میں نپولین بوناپارٹ کو آخری شکست ہوئی؟",["Battle of Waterloo / جنگِ واٹرلو","Battle of Austerlitz / جنگِ آسٹرلٹز","Battle of Leipzig / جنگِ لائپزگ","Battle of Trafalgar / جنگِ ٹرافلگر"],0]
+ ],4);
+ add("fantasy","fn",[
+ ["In folklore, a banshee is traditionally associated with what sound?","لوک داستانوں میں بینشی کس آواز سے منسوب ہے؟",["A mournful wail / درد بھری چیخ","A cheerful flute melody / خوشگوار بانسری","A thunderous laugh / گرج دار قہقہہ","A birdlike whistle / پرندے جیسی سیٹی"],0],
+ ["What is a labyrinth in mythic storytelling?","اساطیری کہانیوں میں بھول بھلیاں کیا ہوتی ہیں؟",["A complex maze of passages / راستوں کا پیچیدہ جال","A floating island / تیرتا ہوا جزیرہ","A book of prophecies / پیش گوئیوں کی کتاب","A magical instrument / جادوئی ساز"],0],
+ ["Which mythical being is commonly depicted as a woman whose lower body is a serpent?","کس افسانوی مخلوق کو عموماً ایسی عورت کے طور پر دکھایا جاتا ہے جس کا نچلا جسم سانپ کا ہو؟",["Naga or serpent spirit / ناگ یا ناگ روح","Dryad / ڈرائیڈ","Sylph / سلف","Gnome / گنوم"],0],
+ ["What is a talisman usually believed to provide in fantasy tales?","فینٹسی داستانوں میں طلسم کو عموماً کس چیز کا ذریعہ سمجھا جاتا ہے؟",["Protection or good fortune / حفاظت یا خوش بختی","A guaranteed royal title / یقینی شاہی خطاب","An ordinary map / عام نقشہ","A musical performance / موسیقی کی محفل"],0],
+ ["In Arthurian legend, what is the name of King Arthur's sword?","آرتھرین داستانوں میں بادشاہ آرتھر کی تلوار کا نام کیا ہے؟",["Excalibur / ایکسکیلیبر","Durendal / ڈیورنڈل","Gram / گرام","Kusanagi / کُساناگی"],0],
+ ["A selkie in northern folklore can transform between a seal and what?","شمالی لوک داستانوں میں سیلکی کس جانور اور کس شکل کے درمیان بدل سکتی ہے؟",["A human / انسان","A wolf / بھیڑیا","A horse / گھوڑا","An eagle / عقاب"],0],
+ ["What is a riddle-keeper often guarding in a fantasy quest?","فینٹسی مہم میں پہیلی پوچھنے والا محافظ عموماً کس چیز کی حفاظت کرتا ہے؟",["A passage, secret, or treasure / راستے، راز یا خزانے","A village recipe / گاؤں کا نسخہ","A weather station / موسمی مرکز","A farming calendar / زرعی کیلنڈر"],0],
+ ["Which creature from Greek mythology has one eye in the middle of its forehead?","یونانی اساطیر کی کس مخلوق کی پیشانی کے درمیان ایک آنکھ ہوتی ہے؟",["Cyclops / سائیکلوپس","Minotaur / مینوتار","Chimera / کائمیرا","Satyr / سیٹائر"],0],
+ ["What is an alchemist in traditional fantasy commonly seeking to discover?","روایتی فینٹسی میں کیمیا گر عموماً کیا دریافت کرنے کی کوشش کرتا ہے؟",["Secrets of transforming matter / مادے کو بدلنے کے راز","A lost royal anthem / گم شدہ شاہی ترانہ","A map of constellations only / صرف ستاروں کا نقشہ","The language of birds only / صرف پرندوں کی زبان"],0],
+ ["Which mythical creature is often described as a horse with a single horn?","کس افسانوی مخلوق کو عموماً ایک سینگ والے گھوڑے کے طور پر بیان کیا جاتا ہے؟",["Unicorn / یک شاخی گھوڑا","Pegasus / پیگاسس","Hippogriff / ہپوگرف","Kelpie / کیلپی"],0]
+ ],3);
+ add("literature","ln",[
+ ["What is a frame narrative?","فریم بیانیہ کسے کہتے ہیں؟",["A story that contains one or more embedded stories / ایسی کہانی جس میں ایک یا زیادہ ضمنی کہانیاں ہوں","A story told only in dialogue / صرف مکالموں میں کہانی","A poem without a stanza / بند کے بغیر نظم","A list of historical dates / تاریخی تاریخوں کی فہرست"],0],
+ ["Which term describes the emotional atmosphere created for a reader?","قاری کے لیے پیدا کی گئی جذباتی فضا کو کیا کہتے ہیں؟",["Mood / فضا یا کیفیت","Plot / پلاٹ","Diction / لفظیات","Conflict / کشمکش"],0],
+ ["What is a novella?","ناولٹ کیا ہوتا ہے؟",["A work of fiction shorter than a novel but longer than a short story / ناول سے مختصر مگر افسانے سے طویل نثری کہانی","A collection of plays / ڈراموں کا مجموعہ","A long lyric poem / طویل غنائی نظم","A factual travel guide / معلوماتی سفری رہنما"],0],
+ ["Which term means the deliberate exaggeration of a statement for effect?","اثر پیدا کرنے کے لیے جان بوجھ کر بات بڑھا چڑھا کر کہنے کو کیا کہتے ہیں؟",["Hyperbole / مبالغہ","Metonymy / مجازِ مرسل","Paradox / متناقضہ","Litotes / نفی کے ذریعے تاکید"],0],
+ ["What is the name for a character who opposes the protagonist?","مرکزی کردار کی مخالفت کرنے والے کردار کو کیا کہتے ہیں؟",["Antagonist / مخالف کردار","Deuteragonist / ثانوی مرکزی کردار","Narrator / راوی","Confidant / رازدار"],0],
+ ["In poetry, what is enjambment?","شاعری میں انجمبمنٹ کیا ہے؟",["A sentence continuing beyond the end of a poetic line / جملے کا مصرع ختم ہونے کے بعد اگلی سطر میں جاری رہنا","A repeated opening phrase / بار بار آنے والا ابتدائی فقرہ","A fixed rhyme at every line / ہر مصرعے میں لازمی قافیہ","A poem's title / نظم کا عنوان"],0],
+ ["What is a motif in a literary work?","ادبی تخلیق میں موٹیف سے کیا مراد ہے؟",["A recurring element or idea / بار بار آنے والا عنصر یا خیال","The final paragraph only / صرف آخری پیراگراف","A list of sources / ماخذ کی فہرست","The author's biography / مصنف کی سوانح"],0],
+ ["Which genre traditionally uses animals as characters to convey a moral lesson?","کون سی صنف اخلاقی سبق دینے کے لیے روایتی طور پر جانوروں کو کردار بناتی ہے؟",["Fable / حکایت","Epic / رزمیہ","Tragedy / المیہ","Memoir / یادداشت"],0],
+ ["What is dramatic irony?","ڈرامائی طنز یا ڈرامائی تضاد کیا ہے؟",["The audience knows something a character does not / ناظرین ایسی بات جانتے ہوں جو کردار نہ جانتا ہو","A character speaks in rhyme / کردار قافیے میں بولے","The ending is always comic / اختتام ہمیشہ مزاحیہ ہو","The narrator changes tense / راوی زمانہ بدل دے"],0],
+ ["What is a couplet?","شعر یا دو مصرعی بند کو کیا کہتے ہیں؟",["Two successive lines of poetry / شاعری کی دو مسلسل سطریں","A poem with twelve stanzas / بارہ بندوں کی نظم","A prose paragraph / نثری پیراگراف","A dramatic monologue / ڈرامائی خود کلامی"],0]
+ ],4);
+ add("personality","pn",[
+ ["A disagreement is becoming personal during a team meeting. What is the best way to refocus it?","ٹیم میٹنگ میں اختلاف ذاتی رخ اختیار کر رہا ہو تو توجہ واپس کیسے لائیں؟",["Return to shared goals and specific evidence / مشترکہ مقصد اور واضح شواہد کی طرف لوٹنا","List each person's weaknesses / ہر شخص کی کمزوریاں گنوانا","End all future discussion / آئندہ ہر گفتگو ختم کرنا","Choose the most popular opinion / مقبول ترین رائے چننا"],0],
+ ["You are given a responsibility you have never handled before. What is a sensible first move?","آپ کو ایسی ذمہ داری دی جائے جو پہلے نہیں نبھائی تو مناسب پہلا قدم کیا ہے؟",["Clarify expectations and identify what you need to learn / توقعات واضح کرکے سیکھنے کی ضرورت پہچاننا","Pretend to know everything / سب کچھ جاننے کا دکھاوا","Refuse without asking details / تفصیل پوچھے بغیر انکار","Delegate it secretly / چپکے سے کسی اور کو دینا"],0],
+ ["A friend asks for advice but seems unsure. What is a respectful approach?","دوست مشورہ مانگے مگر تذبذب میں ہو تو احترام والا طریقہ کیا ہے؟",["Ask whether they want advice or simply someone to listen / پوچھنا کہ مشورہ چاہیے یا صرف سننے والا","Make the decision for them / ان کی جگہ فیصلہ کرنا","Tell others about the issue / دوسروں کو مسئلہ بتانا","Dismiss their uncertainty / ان کے تذبذب کو بے اہمیت کہنا"],0],
+ ["You discover a team member's contribution was overlooked. What should you do?","آپ دیکھیں کہ ٹیم کے کسی رکن کی محنت نظر انداز ہوئی، کیا کرنا چاہیے؟",["Acknowledge their contribution accurately / ان کی محنت کا درست اعتراف کرنا","Take credit for it / اس کا کریڈٹ خود لینا","Ignore it to avoid discussion / بات سے بچنے کے لیے نظر انداز کرنا","Question their motives / ان کی نیت پر شک کرنا"],0],
+ ["When learning from a setback, which question is most useful?","کسی ناکامی سے سیکھتے وقت کون سا سوال زیادہ مفید ہے؟",["What can I change next time? / اگلی بار میں کیا بدل سکتا ہوں؟","Who can I blame? / میں کس پر الزام لگا سکتا ہوں؟","How can I hide it? / میں اسے کیسے چھپا سکتا ہوں؟","Why should I never try again? / دوبارہ کوشش کیوں نہ کروں؟"],0],
+ ["You are facilitating a group with different working styles. What helps collaboration?","مختلف اندازِ کار رکھنے والے گروہ میں تعاون کے لیے کیا مددگار ہے؟",["Agree on roles, communication, and deadlines / ذمہ داریاں، رابطے اور آخری تاریخ طے کرنا","Demand identical methods / سب سے ایک جیسا طریقہ منوانا","Avoid planning / منصوبہ بندی سے بچنا","Let only one person contribute / صرف ایک شخص کو کام کرنے دینا"],0],
+ ["Someone gives you a compliment. Which response is appropriate and confident?","کوئی آپ کی تعریف کرے تو مناسب اور پراعتماد جواب کیا ہے؟",["Thank them and acknowledge the effort / شکریہ ادا کرکے کوشش کا ذکر کرنا","Argue that you did nothing / اصرار کرنا کہ کچھ نہیں کیا","Insult their judgement / ان کی سمجھ پر تنقید کرنا","Immediately change the subject angrily / غصے سے فوراً موضوع بدلنا"],0],
+ ["You have made a decision with incomplete information. What should you do as new facts appear?","نامکمل معلومات پر فیصلہ کیا ہو اور نئی حقیقتیں سامنے آئیں تو کیا کریں؟",["Reassess the decision using the new evidence / نئے شواہد سے فیصلے کا دوبارہ جائزہ","Ignore all new facts / نئی معلومات نظر انداز","Defend the first choice automatically / پہلے فیصلے کا ہر حال میں دفاع","Blame the information source / معلومات دینے والے کو قصوروار کہنا"],0],
+ ["A quiet colleague has a useful suggestion. How can you support their participation?","خاموش ساتھی کے پاس مفید تجویز ہو تو اس کی شرکت کیسے بڑھائیں؟",["Give them time and invite them to share / وقت دے کر رائے پیش کرنے کی دعوت","Speak on their behalf without asking / پوچھے بغیر ان کی طرف سے بولنا","Move on before they speak / ان کے بولنے سے پہلے آگے بڑھنا","Ask someone else to dismiss it / کسی اور سے اسے رد کروانا"],0],
+ ["You are balancing several priorities. What is a realistic way to protect focus?","کئی ترجیحات سنبھالتے ہوئے توجہ برقرار رکھنے کا حقیقت پسندانہ طریقہ کیا ہے؟",["Set focused work periods and planned breaks / یکسوئی کے اوقات اور طے شدہ وقفے رکھنا","Switch tasks every minute / ہر منٹ کام بدلنا","Keep every notification on / تمام نوٹیفکیشن کھلے رکھنا","Avoid setting priorities / ترجیحات طے نہ کرنا"],0]
+ ],3);
+ add("islamic","in",[
+ ["Which prophet is associated in the Qur'an with building the Ka'bah together with his son Isma'il?","قرآن میں کس نبی کا ذکر ہے جنہوں نے اپنے بیٹے اسماعیلؑ کے ساتھ کعبہ کی بنیادیں بلند کیں؟",["Ibrahim / ابراہیمؑ","Musa / موسیٰؑ","Dawud / داؤدؑ","Yunus / یونسؑ"],0],
+ ["What is the name of the Islamic practice of circumambulating the Ka'bah?","کعبہ کے گرد چکر لگانے کی اسلامی عبادت کو کیا کہتے ہیں؟",["Tawaf / طواف","Sa'i / سعی","Wuquf / وقوف","I'tikaf / اعتکاف"],0],
+ ["Which surah is known as Umm al-Kitab?","کس سورت کو ام الکتاب کہا جاتا ہے؟",["Surah Al-Fatihah / سورۃ الفاتحہ","Surah Al-Ikhlas / سورۃ الاخلاص","Surah Al-Kawthar / سورۃ الکوثر","Surah Al-Falaq / سورۃ الفلق"],0],
+ ["What is the term for retreating to a mosque for worship, especially in Ramadan?","خصوصاً رمضان میں عبادت کے لیے مسجد میں اعتکاف کرنے کو کیا کہتے ہیں؟",["I'tikaf / اعتکاف","Ihram / احرام","Tawaf / طواف","Qasr / قصر"],0],
+ ["Which prophet is traditionally associated with the construction of the Ark?","روایتی اسلامی تعلیمات میں کشتی بنانے کا واقعہ کس نبی سے منسوب ہے؟",["Nuh / نوحؑ","Yusuf / یوسفؑ","Sulayman / سلیمانؑ","Ayyub / ایوبؑ"],0],
+ ["What is the term for shortening certain obligatory prayers while travelling under the relevant conditions?","سفر کے دوران مخصوص فرض نمازیں مختصر ادا کرنے کو کیا کہتے ہیں؟",["Qasr / قصر","Jam' / جمع","Sujud / سجود","Qunut / قنوت"],0],
+ ["Which month is associated with the annual Hajj pilgrimage?","سالانہ حج کس اسلامی مہینے میں ادا کیا جاتا ہے؟",["Dhul-Hijjah / ذوالحجہ","Ramadan / رمضان","Muharram / محرم","Rabi al-Awwal / ربیع الاول"],0],
+ ["What is the name of the special night prayer commonly performed in Ramadan after Isha?","رمضان میں عشاء کے بعد ادا کی جانے والی معروف خصوصی نماز کیا کہلاتی ہے؟",["Tarawih / تراویح","Duha / چاشت","Istisqa / استسقاء","Janazah / جنازہ"],0],
+ ["Which prophet is known in Islamic tradition for interpreting dreams in Egypt?","اسلامی روایت میں مصر میں خوابوں کی تعبیر کے لیے کون سے نبی معروف ہیں؟",["Yusuf / یوسفؑ","Idris / ادریسؑ","Hud / ہودؑ","Salih / صالحؑ"],0],
+ ["What is the Arabic term for the direction faced during salah?","نماز کے دوران رخ کرنے کی سمت کے لیے عربی اصطلاح کیا ہے؟",["Qiblah / قبلہ","Sunnah / سنت","Fitrah / فطرت","Mizan / میزان"],0]
+ ],3);
+})();
+ 
 function questionText(q){return game.language==="ur"?q.ur:q.en;}
 function answerText(a){
   if(game.language==="ur")return a.split(" / ").slice(-1)[0];
