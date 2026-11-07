@@ -1016,6 +1016,97 @@ const ACHIEVEMENTS=[
 })();
 
 
+/* Original question batch: 70 distinct bilingual MCQs, 10 per category. */
+(()=>{
+ const add=(cat,prefix,rows,tier)=>rows.forEach((x,i)=>{
+  const q=Q(prefix+(201+i),cat,x[0],x[1],x[2],x[3]);q.tier=tier;QUESTIONS.push(q);
+ });
+ add("knowledge","kn",[ 
+ ["Which instrument measures atmospheric pressure?","فضائی دباؤ ناپنے کا آلہ کون سا ہے؟",["Barometer / بیرومیٹر","Thermometer / تھرمامیٹر","Hygrometer / ہائیگرو میٹر","Anemometer / اینیومیٹر"],0],
+ ["What is the smallest prime number?","سب سے چھوٹا اول عدد کون سا ہے؟",["0 / صفر","1 / ایک","2 / دو","3 / تین"],2],
+ ["Which country has the city of Kyoto?","کیوٹو شہر کس ملک میں ہے؟",["China / چین","Japan / جاپان","Thailand / تھائی لینڈ","South Korea / جنوبی کوریا"],1],
+ ["What is the currency of Switzerland?","سوئٹزرلینڈ کی کرنسی کیا ہے؟",["Euro / یورو","Swiss franc / سوئس فرانک","Krone / کرونا","Pound / پاؤنڈ"],1],
+ ["Which language has the most native speakers worldwide?","دنیا میں مادری زبان کے طور پر سب سے زیادہ کون سی زبان بولی جاتی ہے؟",["English / انگریزی","Spanish / ہسپانوی","Mandarin Chinese / مینڈارن چینی","Arabic / عربی"],2],
+ ["What is the name of the line at 0 degrees longitude?","صفر درجے طول البلد کی لکیر کو کیا کہتے ہیں؟",["Equator / خطِ استوا","Prime Meridian / خطِ نصف النہارِ اوّل","Tropic of Cancer / مدارِ سرطان","Date Line / خطِ تاریخ"],1],
+ ["Which metal is liquid at ordinary room temperature?","عام کمرے کے درجۂ حرارت پر کون سی دھات مائع ہوتی ہے؟",["Iron / لوہا","Mercury / پارہ","Copper / تانبا","Aluminium / ایلومینیم"],1],
+ ["How many players are on court for one volleyball team?","والی بال کی ایک ٹیم کے کتنے کھلاڑی کورٹ میں ہوتے ہیں؟",["Five / پانچ","Six / چھ","Seven / سات","Eight / آٹھ"],1],
+ ["Which is the largest hot desert?","سب سے بڑا گرم صحرا کون سا ہے؟",["Gobi / گوبی","Sahara / صحارا","Kalahari / کالاہاری","Arabian / عربی صحرا"],1],
+ ["What does a cartographer make?","نقشہ نویس کیا بناتا ہے؟",["Maps / نقشے","Clocks / گھڑیاں","Bridges / پل","Musical instruments / موسیقی کے آلات"],0]
+ ],1);
+ add("science","sn",[
+ ["Which part of a plant absorbs most water from soil?","پودے کا کون سا حصہ مٹی سے زیادہ تر پانی جذب کرتا ہے؟",["Leaves / پتے","Root hairs / جڑ کے بال","Flowers / پھول","Stem bark / تنے کی چھال"],1],
+ ["What is the chemical symbol for potassium?","پوٹاشیم کی کیمیائی علامت کیا ہے؟",["P / پی","Po / پی او","K / کے","Pt / پی ٹی"],2],
+ ["Which blood cells help defend the body against infection?","خون کے کون سے خلیے جسم کو انفیکشن سے بچانے میں مدد دیتے ہیں؟",["Red cells / سرخ خلیے","White cells / سفید خلیے","Platelets / پلیٹ لیٹس","Plasma cells only / صرف پلازما خلیے"],1],
+ ["What is the SI unit of electric current?","برقی رو کی ایس آئی اکائی کیا ہے؟",["Volt / وولٹ","Ohm / اوہم","Ampere / ایمپیئر","Watt / واٹ"],2],
+ ["Which layer of Earth lies directly beneath the crust?","زمین کی پرت کے عین نیچے کون سی تہہ ہوتی ہے؟",["Inner core / اندرونی مرکزہ","Outer core / بیرونی مرکزہ","Mantle / مینٹل","Atmosphere / فضا"],2],
+ ["What type of energy is stored in a stretched spring?","کھینچے ہوئے اسپرنگ میں کس قسم کی توانائی ذخیرہ ہوتی ہے؟",["Chemical / کیمیائی","Elastic potential / لچکیلی مخفی توانائی","Nuclear / جوہری","Sound / صوتی"],1],
+ ["Which molecule carries genetic instructions in most living organisms?","زیادہ تر جانداروں میں جینیاتی ہدایات کون سا سالمہ رکھتا ہے؟",["DNA / ڈی این اے","Glucose / گلوکوز","Starch / نشاستہ","Chlorophyll / کلوروفل"],0],
+ ["What is the pH of a neutral solution at 25°C?","25 ڈگری سینٹی گریڈ پر غیر جانبدار محلول کا پی ایچ کیا ہوتا ہے؟",["0 / صفر","5 / پانچ","7 / سات","14 / چودہ"],2],
+ ["Which phenomenon splits white light into a spectrum?","سفید روشنی کو رنگوں کے طیف میں کون سا عمل تقسیم کرتا ہے؟",["Reflection / انعکاس","Dispersion / انتشارِ نور","Conduction / ترسیل","Diffusion / پھیلاؤ"],1],
+ ["Which organelle modifies and packages many proteins?","کون سا خلیاتی عضیہ بہت سے پروٹینز میں تبدیلی کرکے انہیں پیک کرتا ہے؟",["Golgi apparatus / گولجی اپریٹس","Ribosome / رائبوسوم","Nucleus / مرکزہ","Vacuole / ویکیول"],0]
+ ],2);
+ add("history","hn",[
+ ["Which ancient civilization developed cuneiform writing?","کس قدیم تہذیب نے میخی رسم الخط تیار کیا؟",["Sumerians / سومیری","Romans / رومی","Aztecs / ایزٹیک","Ming Chinese / منگ چینی"],0],
+ ["In which year did the Berlin Wall fall?","برلن کی دیوار کس سال گری؟",["1979 / 1979","1989 / 1989","1991 / 1991","2001 / 2001"],1],
+ ["Who was the first woman to fly solo across the Atlantic Ocean?","بحرِ اوقیانوس کے پار تنہا پرواز کرنے والی پہلی خاتون کون تھیں؟",["Amelia Earhart / امیلیا ایئرہارٹ","Bessie Coleman / بیسی کولمین","Valentina Tereshkova / ویلنٹینا تریشکووا","Harriet Quimby / ہیریئٹ کوئمبی"],0],
+ ["Which empire built the road network centered on Cuzco?","کس سلطنت نے کسکو مرکز رکھتے ہوئے سڑکوں کا جال بنایا؟",["Inca / انکا","Ottoman / عثمانی","Mali / مالی","Mongol / منگول"],0],
+ ["The Magna Carta was sealed in which year?","میگنا کارٹا پر کس سال مہر لگائی گئی؟",["1066 / 1066","1215 / 1215","1492 / 1492","1648 / 1648"],1],
+ ["Which city was divided by a wall during the Cold War?","سرد جنگ کے دوران کس شہر کو ایک دیوار نے تقسیم کیا تھا؟",["Vienna / ویانا","Berlin / برلن","Prague / پراگ","Warsaw / وارسا"],1],
+ ["Who led the Haitian Revolution and became its best-known leader?","ہیٹی کے انقلاب کی قیادت کس معروف رہنما نے کی؟",["Toussaint Louverture / توسین لوورتور","Simón Bolívar / سائمن بولیوار","José de San Martín / خوسے دے سان مارٹن","Francisco Pizarro / فرانسسکو پیزارو"],0],
+ ["Which civilization built the city of Petra?","پیٹرا شہر کس تہذیب نے تعمیر کیا؟",["Nabataeans / نبطی","Phoenicians / فونیقی","Etruscans / ایٹرسکن","Hittites / حِتّی"],0],
+ ["The Meiji Restoration began in which country?","میجی بحالیِ اقتدار کس ملک میں شروع ہوئی؟",["Japan / جاپان","Korea / کوریا","Vietnam / ویتنام","China / چین"],0],
+ ["Which document declared the independence of the United States in 1776?","1776 میں کس دستاویز نے امریکہ کی آزادی کا اعلان کیا؟",["Bill of Rights / بل آف رائٹس","Declaration of Independence / اعلانِ آزادی","Constitution / آئین","Federalist Papers / فیڈرلسٹ پیپرز"],1]
+ ],3);
+ add("fantasy","fn",[
+ ["In fantasy literature, what is a familiar commonly associated with?","فینٹسی ادب میں فیملیئر عموماً کس سے وابستہ ہوتا ہے؟",["A magical companion / جادوئی ساتھی","A royal crown / شاہی تاج","A mapmaker / نقشہ ساز","A battle flag / جنگی پرچم"],0],
+ ["What is a grimoire?","گریموائر کیا ہوتا ہے؟",["A spell book / جادوئی کتاب","A mythical horse / افسانوی گھوڑا","A castle tower / قلعے کا برج","A magic crystal / جادوئی قلم"],0],
+ ["Which creature is traditionally described as half human and half horse?","روایتی قصوں میں کون سی مخلوق آدھی انسان اور آدھی گھوڑا ہوتی ہے؟",["Centaur / سینٹور","Basilisk / باسیلسک","Griffin / گرفن","Golem / گولم"],0],
+ ["What is a portal in a fantasy story most often used for?","فینٹسی کہانی میں پورٹل عموماً کس کام آتا ہے؟",["Travel between places or worlds / جگہوں یا دنیاؤں کے درمیان سفر","Predicting weather / موسم کی پیش گوئی","Growing crops / فصل اگانا","Forging coins / سکے ڈھالنا"],0],
+ ["A phoenix is most famously associated with which theme?","فینکس کس تصور سے سب سے زیادہ وابستہ ہے؟",["Rebirth / دوبارہ جنم","Invisibility / غیر مرئیت","Stone turning / پتھر بنانا","Time stopping / وقت روکنا"],0],
+ ["What is an enchanted forest?","طلسماتی جنگل کسے کہتے ہیں؟",["A forest affected by magic / جادو سے متاثر جنگل","A forest made of glass / شیشے کا جنگل","A forest under the sea / سمندر کے نیچے جنگل","A forest without trees / درختوں کے بغیر جنگل"],0],
+ ["Which role traditionally studies and practices magic?","روایتی کہانیوں میں جادو کا مطالعہ اور استعمال کون کرتا ہے؟",["Wizard / جادوگر","Herald / منادی کرنے والا","Squire / معاون سپاہی","Bard only / صرف قصہ گو"],0],
+ ["What is a quest in fantasy storytelling?","فینٹسی کہانی میں کویسٹ سے کیا مراد ہے؟",["A purposeful journey or mission / مقصدی سفر یا مہم","A royal meal / شاہی کھانا","A type of currency / کرنسی کی قسم","A weather event / موسمی واقعہ"],0],
+ ["A griffin is commonly depicted with the body of a lion and the head and wings of which bird?","گرفن کو عموماً شیر کے جسم اور کس پرندے کے سر اور پروں کے ساتھ دکھایا جاتا ہے؟",["Eagle / عقاب","Owl / الو","Swan / ہنس","Raven / کوا"],0],
+ ["In folklore, a golem is traditionally formed from what?","لوک کہانیوں میں گولم روایتی طور پر کس چیز سے بنایا جاتا ہے؟",["Clay or earth / مٹی","Ice / برف","Cloud / بادل","Smoke / دھواں"],0]
+ ],2);
+ add("literature","ln",[
+ ["What is the term for a narrator who knows the thoughts of all characters?","اس راوی کو کیا کہتے ہیں جو تمام کرداروں کے خیالات جانتا ہو؟",["Omniscient narrator / ہمہ داں راوی","Unreliable narrator / ناقابلِ اعتماد راوی","First-person narrator / متکلم راوی","Observer narrator / مشاہد راوی"],0],
+ ["What is a sonnet traditionally known for?","سونٹ روایتی طور پر کس خصوصیت کے لیے مشہور ہے؟",["Fourteen lines / چودہ مصرعے","Three acts / تین ایکٹ","A prose introduction / نثری تمہید","No fixed structure / کوئی مقررہ ساخت نہیں"],0],
+ ["Which figure of speech gives human qualities to non-human things?","کون سی صنعت غیر انسانی چیزوں کو انسانی صفات دیتی ہے؟",["Personification / تجسیم","Hyperbole / مبالغہ","Irony / طنز","Alliteration / تکرارِ صوت"],0],
+ ["What is the central message of a literary work called?","ادبی تخلیق کے مرکزی پیغام کو کیا کہتے ہیں؟",["Theme / موضوع","Setting / ماحول","Plot twist / کہانی کا موڑ","Meter / وزن"],0],
+ ["A story that begins in the middle of events uses which technique?","جو کہانی واقعات کے درمیان سے شروع ہو، وہ کون سی تکنیک استعمال کرتی ہے؟",["In medias res / دورانِ واقعات آغاز","Flash-forward / مستقبل کی جھلک","Frame narrative / فریم بیانیہ","Epistolary form / خطوطی اسلوب"],0],
+ ["What is an elegy primarily written to express?","مرثیہ بنیادی طور پر کس اظہار کے لیے لکھا جاتا ہے؟",["Mourning or remembrance / سوگ یا یاد","Comic confusion / مزاحیہ الجھن","Travel excitement / سفر کا جوش","Political satire only / صرف سیاسی طنز"],0],
+ ["Which genre focuses on imagined future science and technology?","کون سی صنف مستقبل کی فرضی سائنس اور ٹیکنالوجی پر توجہ دیتی ہے؟",["Science fiction / سائنسی فکشن","Pastoral / دیہی ادب","Memoir / یادداشت","Realist biography / حقیقت پسند سوانح"],0],
+ ["What is a brief reference to another text, person, or event called?","کسی دوسری تحریر، شخصیت یا واقعے کے مختصر اشارے کو کیا کہتے ہیں؟",["Allusion / تلمیح","Refrain / ترجیع","Couplet / شعر","Soliloquy / خود کلامی"],0],
+ ["In drama, what is a soliloquy?","ڈرامے میں خود کلامی کیا ہوتی ہے؟",["A character speaks thoughts aloud alone / کردار تنہا اپنے خیالات بلند آواز سے کہے","Two characters exchange letters / دو کردار خطوط کا تبادلہ کریں","A narrator lists places / راوی مقامات گنوائے","A chorus sings together / گروہ مل کر گائے"],0],
+ ["What does a book's bibliography list?","کتاب کی کتابیات میں کیا درج ہوتا ہے؟",["Sources consulted or cited / استعمال یا حوالہ دیے گئے ماخذ","Character birthdays / کرداروں کی سالگرہیں","Chapter summaries only / صرف ابواب کے خلاصے","Printing costs / طباعت کے اخراجات"],0]
+ ],3);
+ add("personality","pn",[
+ ["During a group task, two members disagree. What is the most constructive first step?","گروہی کام میں دو افراد اختلاف کریں تو بہتر پہلا قدم کیا ہے؟",["Hear both viewpoints calmly / دونوں کی بات سکون سے سننا","Choose a side immediately / فوراً ایک طرف ہو جانا","Ignore the disagreement / اختلاف نظر انداز کرنا","End the task / کام ختم کر دینا"],0],
+ ["You receive feedback on your work. Which response shows a growth mindset?","اپنے کام پر رائے ملے تو کون سا ردعمل ترقی پسند سوچ دکھاتا ہے؟",["Identify one improvement to try / بہتری کا ایک پہلو چننا","Reject all comments / ہر رائے رد کرنا","Blame the reviewer / رائے دینے والے کو قصوروار کہنا","Avoid similar tasks / ایسے کام سے بچنا"],0],
+ ["A friend shares a private concern. What best demonstrates trustworthiness?","دوست ذاتی پریشانی بتائے تو اعتماد داری کیسے دکھائیں گے؟",["Respect their privacy / اس کی رازداری کا احترام","Tell the whole group / سب کو بتا دینا","Post it online / آن لائن ڈال دینا","Turn it into a joke / مذاق بنا دینا"],0],
+ ["You have several tasks due. What is a useful planning method?","کئی کام مقررہ وقت پر مکمل کرنے ہوں تو مفید طریقہ کیا ہے؟",["Prioritize by urgency and importance / اہمیت اور وقت کے مطابق ترجیح","Start randomly / بے ترتیب شروع کرنا","Wait until the last moment / آخری وقت تک انتظار","Do only the easiest task / صرف آسان کام کرنا"],0],
+ ["Someone is left out of a team discussion. What is an inclusive action?","ٹیم کی گفتگو میں کوئی شامل نہ ہو تو شمولیت والا عمل کیا ہے؟",["Invite their opinion / ان کی رائے مانگنا","Speak over them / ان کی بات کاٹنا","Assume they have nothing to add / سمجھنا کہ ان کے پاس کچھ نہیں","Exclude them from decisions / فیصلوں سے باہر رکھنا"],0],
+ ["You make a mistake that affects a shared project. What is the responsible response?","آپ کی غلطی مشترکہ منصوبے پر اثر ڈالے تو ذمہ دارانہ ردعمل کیا ہے؟",["Acknowledge it and help correct it / غلطی مان کر درست کرنے میں مدد","Hide it / چھپانا","Accuse a teammate / ساتھی پر الزام لگانا","Delete the project / منصوبہ مٹا دینا"],0],
+ ["When a conversation becomes tense, what can help keep it respectful?","گفتگو کشیدہ ہو جائے تو احترام برقرار رکھنے میں کیا مدد دیتا ہے؟",["Pause and use calm, specific language / وقفہ لے کر پُرسکون اور واضح الفاظ","Raise your voice / آواز بلند کرنا","Use personal insults / ذاتی توہین کرنا","Refuse to listen / سننے سے انکار"],0],
+ ["A new task seems difficult. Which approach is most practical?","نیا کام مشکل لگے تو زیادہ عملی طریقہ کون سا ہے؟",["Break it into smaller steps / اسے چھوٹے مراحل میں تقسیم کرنا","Give up before starting / شروع ہونے سے پہلے ہار ماننا","Avoid asking questions / سوال نہ کرنا","Pretend it is finished / مکمل ہونے کا دکھاوا"],0],
+ ["You promised to help but your schedule changes. What should you do?","آپ نے مدد کا وعدہ کیا مگر مصروفیت بدل گئی، کیا کریں؟",["Tell them early and discuss another plan / پہلے اطلاع دے کر متبادل طے کرنا","Disappear without notice / بغیر بتائے غائب ہونا","Make another promise you cannot keep / ایک اور ناممکن وعدہ کرنا","Blame them / انہیں قصوروار ٹھہرانا"],0],
+ ["A teammate suggests an idea different from yours. What shows open-mindedness?","ساتھی آپ سے مختلف خیال دے تو کشادہ ذہنی کیا ظاہر کرتی ہے؟",["Consider its merits before deciding / فیصلہ کرنے سے پہلے خوبیوں پر غور","Dismiss it immediately / فوراً رد کرنا","Mock the suggestion / تجویز کا مذاق اڑانا","Stop collaborating / تعاون ختم کرنا"],0]
+ ],1);
+ add("islamic","in",[
+ ["Which month follows Ramadan in the Islamic lunar calendar?","اسلامی قمری تقویم میں رمضان کے بعد کون سا مہینہ آتا ہے؟",["Shawwal / شوال","Rajab / رجب","Safar / صفر","Dhul-Qa'dah / ذوالقعدہ"],0],
+ ["What is the name of the direction Muslims face during prayer?","نماز میں مسلمان جس سمت رخ کرتے ہیں اسے کیا کہتے ہیں؟",["Qiblah / قبلہ","Mihrab / محراب","Minbar / منبر","Maqam / مقام"],0],
+ ["Which angel is traditionally associated with delivering revelation?","روایتی اسلامی تعلیمات میں وحی پہنچانے والے فرشتے کون ہیں؟",["Jibril / جبریل","Mikail / میکائیل","Israfil / اسرافیل","Malik / مالک"],0],
+ ["What is the voluntary charity given beyond obligatory zakat commonly called?","فرض زکوٰۃ کے علاوہ دی جانے والی نفلی خیرات کو عام طور پر کیا کہتے ہیں؟",["Sadaqah / صدقہ","Fidyah / فدیہ","Kaffarah / کفارہ","Nisab / نصاب"],0],
+ ["Which prayer is performed after sunset?","غروبِ آفتاب کے بعد کون سی نماز ادا کی جاتی ہے؟",["Maghrib / مغرب","Fajr / فجر","Dhuhr / ظہر","Asr / عصر"],0],
+ ["What is the term for the sermon delivered before the Friday prayer?","جمعہ کی نماز سے پہلے دیے جانے والے وعظ کو کیا کہتے ہیں؟",["Khutbah / خطبہ","Adhan / اذان","Iqamah / اقامت","Tasbih / تسبیح"],0],
+ ["Which Islamic calendar month comes immediately before Ramadan?","اسلامی تقویم میں رمضان سے فوراً پہلے کون سا مہینہ آتا ہے؟",["Sha'ban / شعبان","Shawwal / شوال","Muharram / محرم","Rabi al-Awwal / ربیع الاول"],0],
+ ["What is the pilgrimage to Makkah required once in a lifetime for those able called?","صاحبِ استطاعت پر زندگی میں ایک بار فرض حج کو کیا کہتے ہیں؟",["Hajj / حج","Umrah / عمرہ","Ziyarah / زیارت","Hijrah / ہجرت"],0],
+ ["Which day of the week is associated with the congregational Jumu'ah prayer?","اجتماعی نمازِ جمعہ ہفتے کے کس دن ادا کی جاتی ہے؟",["Friday / جمعہ","Monday / پیر","Wednesday / بدھ","Sunday / اتوار"],0],
+ ["What is the name of the meal taken before dawn during Ramadan?","رمضان میں صبح صادق سے پہلے کھائے جانے والے کھانے کو کیا کہتے ہیں؟",["Suhoor / سحری","Iftar / افطار","Walima / ولیمہ","Aqiqah / عقیقہ"],0]
+ ],2);
+})();
+ 
 function questionText(q){return game.language==="ur"?q.ur:q.en;}
 function answerText(a){
   if(game.language==="ur")return a.split(" / ").slice(-1)[0];
