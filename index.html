@@ -1681,24 +1681,54 @@ function animateBurst(kind){
 /* Custom share links. A link shares settings; each recipient plays locally on their own device. */
 let lastChallengeUrl="";
 function difficultyForLevel(n){return n<=20?"easy":n<=45?"medium":n<=70?"hard":"expert";}
-function shareChallenge(config){
+function showChallengeLink(url){
+  lastChallengeUrl=url;
+  const field=$("customLink");
+  if(field){field.value=url;field.style.display="block";field.focus();field.select();}
+}
+async function copyChallengeLink(url){
+  showChallengeLink(url);
+  try{
+    if(navigator.clipboard&&window.isSecureContext){
+      await navigator.clipboard.writeText(url);
+      toast("Challenge link copied! Ab WhatsApp ya kisi app mein paste karein.");
+      return true;
+    }
+  }catch(e){}
+  try{
+    const field=$("customLink");
+    if(field){field.focus();field.select();if(document.execCommand("copy")){toast("Challenge link copied!");return true;}}
+  }catch(e){}
+  toast("Link neeche box mein hai. Select karke Copy karein.");
+  return false;
+}
+async function shareChallenge(config){
   const clean={mode:config.mode||"knowledge",category:config.category||"knowledge",difficulty:config.difficulty||"medium",count:Math.max(5,Math.min(10,Number(config.count)||10)),title:safeText(config.title||"FictionQuiz Challenge",60)};
   const encoded=btoa(unescape(encodeURIComponent(JSON.stringify(clean)))).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/g,"");
-  lastChallengeUrl=location.origin+location.pathname+"#challenge="+encoded;
-  const field=$("customLink");if(field)field.value=lastChallengeUrl;
-  if(navigator.share){navigator.share({title:clean.title,text:"Play my FictionQuiz challenge!",url:lastChallengeUrl}).catch(()=>{});}
-  else if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(lastChallengeUrl).then(()=>toast("Challenge link copied. Share it on WhatsApp or any app." )).catch(()=>toast("Challenge link created below; copy it manually."));}
-  else toast("Challenge link created below; copy it manually.");
-  return lastChallengeUrl;
+  const url=location.origin+location.pathname+"#challenge="+encoded;
+  showChallengeLink(url);
+  if(navigator.share){
+    try{await navigator.share({title:clean.title,text:"Play my FictionQuiz challenge!",url});toast("Share menu opened.");return url;}
+    catch(e){if(e&&e.name==="AbortError")return url;}
+  }
+  await copyChallengeLink(url);
+  return url;
 }
 function createCustomChallenge(){
   const config={mode:$("customMode").value,category:$("customCategory").value,difficulty:$("customDifficulty").value,count:Number($("customCount").value),title:safeText($("customTitle").value||"FictionQuiz Challenge",60)};
-  const url=shareChallenge(config);$("customLink").value=url;
+  const url=shareChallenge(config);$("customLink").value=lastChallengeUrl||url;
   if(config.mode==="knowledge")startQuiz(config.category,Math.max(1,Number(game.categoryLevels[config.category])||1),config);
   else startFriendQuiz(config.mode,config);
 }
 function shareLastChallenge(){if(!lastChallengeUrl){createCustomChallenge();return;}shareChallengeFromUrl(lastChallengeUrl);}
-function shareChallengeFromUrl(url){if(navigator.share)navigator.share({title:"FictionQuiz Challenge",text:"Play my challenge!",url}).catch(()=>{});else if(navigator.clipboard)navigator.clipboard.writeText(url).then(()=>toast("Link copied!"));else toast("Copy the link from the box.");}
+async function shareChallengeFromUrl(url){
+  showChallengeLink(url);
+  if(navigator.share){
+    try{await navigator.share({title:"FictionQuiz Challenge",text:"Play my challenge!",url});toast("Share menu opened.");return;}
+    catch(e){if(e&&e.name==="AbortError")return;}
+  }
+  await copyChallengeLink(url);
+}
 function loadIncomingChallenge(){
   const m=location.hash.match(/challenge=([A-Za-z0-9_-]+)/);if(!m)return;
   try{let raw=m[1].replace(/-/g,"+").replace(/_/g,"/");raw+="===".slice((raw.length+3)%4);const config=JSON.parse(decodeURIComponent(escape(atob(raw))));
