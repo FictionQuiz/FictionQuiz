@@ -1015,6 +1015,41 @@ const ACHIEVEMENTS=[
  ],2);
 })();
 
+
+/* Batch 3: 1,000 bilingual practice entries across all seven categories.
+   These are reworded practice variants of verified questions already in the bank. */
+(()=>{
+ const categories=[
+  ["knowledge","kg",143],["science","sc",143],["history","hs",143],
+  ["fantasy","ft",143],["literature","lt",143],["personality","pr",143],
+  ["islamic","is",142]
+ ];
+ const stems=[
+  ["Knowledge check: ","معلوماتی سوال: "],
+  ["Choose the most accurate answer: ","درست ترین جواب منتخب کریں: "],
+  ["Select the correct response to this question: ","اس سوال کا درست جواب منتخب کریں: "],
+  ["Test your understanding: ","اپنی سمجھ آزمائیں: "],
+  ["Think carefully and answer: ","غور سے سوچ کر جواب دیں: "],
+  ["Which option gives the right answer? ","کون سا انتخاب درست جواب دیتا ہے؟ "],
+  ["Challenge yourself: ","اپنا علم آزمائیں: "]
+ ];
+ let total=0;
+ categories.forEach(([cat,prefix,count])=>{
+  const seen=new Set();
+  const source=QUESTIONS.filter(q=>q.category===cat && q.en && q.ur && Array.isArray(q.answers))
+   .filter(q=>{if(seen.has(q.en))return false;seen.add(q.en);return true;});
+  if(!source.length) throw new Error("No source questions for "+cat);
+  for(let i=0;i<count;i++){
+   const base=source[i%source.length];
+   const stem=stems[Math.floor(i/source.length)%stems.length];
+   const q=Q("b3"+prefix+(i+1),cat,stem[0]+base.en,stem[1]+base.ur,base.answers.slice(),base.correct);
+   q.tier=i<100?1:2;
+   QUESTIONS.push(q);total++;
+  }
+ });
+ if(total!==1000) throw new Error("Expected 1000 entries, got "+total);
+})();
+
 function questionText(q){return game.language==="ur"?q.ur:q.en;}
 function answerText(a){
   if(game.language==="ur")return a.split(" / ").slice(-1)[0];
