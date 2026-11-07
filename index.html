@@ -923,6 +923,98 @@ const ACHIEVEMENTS=[
  ]);
 })();
 
+
+/* Question expansion batch 2: 70 original bilingual questions, tiers 1-2. */
+(()=>{
+ const add=(cat,prefix,rows,tier)=>rows.forEach((x,i)=>{
+   const q=Q(prefix+(201+i),cat,x[0],x[1],x[2],x[3]);q.tier=tier;QUESTIONS.push(q);
+ });
+ add("knowledge","kb",[
+ ["Which is the smallest continent by land area?","رقبے کے لحاظ سے سب سے چھوٹا براعظم کون سا ہے؟",["Australia / آسٹریلیا","Europe / یورپ","Antarctica / انٹارکٹیکا","South America / جنوبی امریکہ"],0],
+ ["Which country uses the yen as its currency?","کون سا ملک ین کو اپنی کرنسی کے طور پر استعمال کرتا ہے؟",["Japan / جاپان","China / چین","Thailand / تھائی لینڈ","South Korea / جنوبی کوریا"],0],
+ ["Which ocean is the deepest?","سب سے گہرا سمندر کون سا ہے؟",["Pacific Ocean / بحرالکاہل","Atlantic Ocean / بحر اوقیانوس","Indian Ocean / بحر ہند","Arctic Ocean / بحر منجمد شمالی"],0],
+ ["What is the capital of Canada?","کینیڈا کا دارالحکومت کیا ہے؟",["Ottawa / اوٹاوا","Toronto / ٹورنٹو","Vancouver / وینکوور","Montreal / مونٹریال"],0],
+ ["Which instrument measures atmospheric pressure?","فضائی دباؤ ناپنے کے لیے کون سا آلہ استعمال ہوتا ہے؟",["Barometer / بیرومیٹر","Thermometer / تھرمامیٹر","Hygrometer / ہائیگرو میٹر","Anemometer / اینیومیٹر"],0],
+ ["Which planet is famous for its prominent rings?","کون سا سیارہ اپنے نمایاں حلقوں کے لیے مشہور ہے؟",["Saturn / زحل","Mars / مریخ","Mercury / عطارد","Venus / زہرہ"],0],
+ ["What is the official language of Brazil?","برازیل کی سرکاری زبان کیا ہے؟",["Portuguese / پرتگالی","Spanish / ہسپانوی","French / فرانسیسی","English / انگریزی"],0],
+ ["Which blood type is commonly called the universal red-cell donor?","کون سا بلڈ گروپ عام طور پر عالمی سرخ خلیاتی عطیہ دہندہ کہلاتا ہے؟",["O negative / او نیگیٹو","AB positive / اے بی پازیٹو","A positive / اے پازیٹو","B negative / بی نیگیٹو"],0],
+ ["Which mountain range separates much of Europe from Asia?","کون سا پہاڑی سلسلہ یورپ کے بڑے حصے کو ایشیا سے جدا کرتا ہے؟",["Ural Mountains / یورال پہاڑ","Alps / الپس","Andes / اینڈیز","Rockies / راکیز"],0],
+ ["What does a cartographer make?","نقشہ ساز کیا تیار کرتا ہے؟",["Maps / نقشے","Musical scores / موسیقی کے نوٹس","Clothing patterns / لباس کے ڈیزائن","Weather instruments / موسمی آلات"],0]
+ ],1);
+ add("science","sb",[
+ ["What is the chemical symbol for potassium?","پوٹاشیم کی کیمیائی علامت کیا ہے؟",["K / کے","P / پی","Po / پی او","Pt / پی ٹی"],0],
+ ["Which part of a plant absorbs most water?","پودے کا کون سا حصہ زیادہ تر پانی جذب کرتا ہے؟",["Roots / جڑیں","Flowers / پھول","Fruits / پھل","Leaves / پتے"],0],
+ ["What is the SI unit of force?","قوت کی ایس آئی اکائی کیا ہے؟",["Newton / نیوٹن","Joule / جول","Pascal / پاسکل","Watt / واٹ"],0],
+ ["Which gas do plants mainly absorb for photosynthesis?","ضیائی تالیف کے لیے پودے بنیادی طور پر کون سی گیس جذب کرتے ہیں؟",["Carbon dioxide / کاربن ڈائی آکسائیڈ","Oxygen / آکسیجن","Nitrogen / نائٹروجن","Hydrogen / ہائیڈروجن"],0],
+ ["Which organ pumps blood around the body?","جسم میں خون پمپ کرنے والا عضو کون سا ہے؟",["Heart / دل","Liver / جگر","Lung / پھیپھڑا","Pancreas / لبلبہ"],0],
+ ["What is the center of an atom called?","ایٹم کے مرکز کو کیا کہتے ہیں؟",["Nucleus / مرکزہ","Electron cloud / الیکٹران بادل","Molecule / سالمہ","Isotope / ہم جا"],0],
+ ["Which type of energy is stored in food?","خوراک میں کس قسم کی توانائی ذخیرہ ہوتی ہے؟",["Chemical energy / کیمیائی توانائی","Sound energy / صوتی توانائی","Nuclear energy / جوہری توانائی","Light energy / نوری توانائی"],0],
+ ["Which vitamin can the body produce with sunlight exposure?","دھوپ کی روشنی سے جسم کون سا وٹامن بنا سکتا ہے؟",["Vitamin D / وٹامن ڈی","Vitamin C / وٹامن سی","Vitamin B12 / وٹامن بی 12","Vitamin K / وٹامن کے"],0],
+ ["What is the boiling point of pure water at sea level?","سطح سمندر پر خالص پانی کا نقطۂ ابال کیا ہے؟",["100°C / 100 ڈگری سینٹی گریڈ","50°C / 50 ڈگری سینٹی گریڈ","80°C / 80 ڈگری سینٹی گریڈ","120°C / 120 ڈگری سینٹی گریڈ"],0],
+ ["Which scientist proposed the three laws of motion?","حرکت کے تین قوانین کس سائنس دان نے پیش کیے؟",["Isaac Newton / آئزک نیوٹن","Albert Einstein / البرٹ آئن اسٹائن","Galileo Galilei / گلیلیو گیلیلی","Charles Darwin / چارلس ڈارون"],0]
+ ],1);
+ add("history","hb",[
+ ["Which civilization built Machu Picchu?","ماچو پچو کس تہذیب نے تعمیر کیا؟",["Inca / انکا","Roman / رومی","Mayan / مایا","Ancient Egyptian / قدیم مصری"],0],
+ ["Who was the first emperor of Rome?","روم کا پہلا شہنشاہ کون تھا؟",["Augustus / آگسٹس","Julius Caesar / جولیس سیزر","Nero / نیرو","Trajan / ٹریجن"],0],
+ ["The ancient city of Carthage was located in which modern country?","قدیم شہر کارتھیج موجودہ کس ملک میں واقع تھا؟",["Tunisia / تیونس","Greece / یونان","Egypt / مصر","Turkey / ترکی"],0],
+ ["Which wall was built mainly to protect northern China?","شمالی چین کے دفاع کے لیے بنیادی طور پر کون سی دیوار بنائی گئی؟",["Great Wall of China / دیوارِ چین","Hadrian's Wall / ہیڈرین کی دیوار","Berlin Wall / دیوارِ برلن","Western Wall / دیوارِ مغربی"],0],
+ ["Who was the first woman to win a Nobel Prize?","نوبیل انعام حاصل کرنے والی پہلی خاتون کون تھیں؟",["Marie Curie / میری کیوری","Rosalind Franklin / روزلینڈ فرینکلن","Jane Addams / جین ایڈمز","Ada Lovelace / ایڈا لولیس"],0],
+ ["Which empire was ruled by Suleiman the Magnificent?","سلیمان قانونی نے کس سلطنت پر حکومت کی؟",["Ottoman Empire / سلطنتِ عثمانیہ","Mughal Empire / مغلیہ سلطنت","Mongol Empire / منگول سلطنت","Safavid Empire / صفوی سلطنت"],0],
+ ["In which year did the Berlin Wall fall?","دیوارِ برلن کس سال گری؟",["1989 / 1989","1979 / 1979","1995 / 1995","1961 / 1961"],0],
+ ["Which ship carried the Pilgrims to North America in 1620?","1620 میں زائرین کو شمالی امریکہ لے جانے والا جہاز کون سا تھا؟",["Mayflower / مے فلاور","Endeavour / اینڈیور","Beagle / بیگل","Victoria / وکٹوریہ"],0],
+ ["Which ancient people developed cuneiform writing?","میخی رسم الخط کس قدیم قوم نے ترقی دی؟",["Sumerians / سومیری","Phoenicians / فونیقی","Vikings / وائکنگ","Persians / فارسی"],0],
+ ["Who led the Indian independence movement through nonviolent resistance?","عدم تشدد کی جدوجہد کے ذریعے بھارتی آزادی کی تحریک کی قیادت کس نے کی؟",["Mahatma Gandhi / مہاتما گاندھی","Subhas Chandra Bose / سبھاش چندر بوس","Jawaharlal Nehru / جواہر لعل نہرو","Bhagat Singh / بھگت سنگھ"],0]
+ ],2);
+ add("fantasy","fb",[
+ ["In Greek mythology, who is the goddess of wisdom?","یونانی دیومالا میں حکمت کی دیوی کون ہے؟",["Athena / ایتھینا","Aphrodite / افروڈائٹی","Hera / ہیرا","Artemis / آرٹیمس"],0],
+ ["What is a phoenix traditionally said to do?","روایتی کہانیوں میں فینکس کے بارے میں کیا کہا جاتا ہے؟",["Rise again from its ashes / اپنی راکھ سے دوبارہ جنم لینا","Turn invisible forever / ہمیشہ کے لیے غائب ہو جانا","Live beneath the sea / سمندر کے نیچے رہنا","Guard a maze / بھول بھلیاں کی حفاظت کرنا"],0],
+ ["Which creature is traditionally part human and part horse?","روایتی قصوں میں کون سی مخلوق آدھی انسان اور آدھی گھوڑا ہوتی ہے؟",["Centaur / سینٹور","Griffin / گرفن","Basilisk / باسیلسک","Gnome / گنوم"],0],
+ ["In Norse mythology, what is the name of the world tree?","نورس دیومالا میں دنیا کے درخت کا نام کیا ہے؟",["Yggdrasil / یگدراسل","Valhalla / والہالا","Bifrost / بائی فراسٹ","Midgard / مڈگارڈ"],0],
+ ["What is a griffin traditionally made up of?","روایتی تصور کے مطابق گرفن کن جانوروں کا امتزاج ہے؟",["Lion and eagle / شیر اور عقاب","Horse and fish / گھوڑا اور مچھلی","Wolf and serpent / بھیڑیا اور سانپ","Bear and owl / ریچھ اور الو"],0],
+ ["Which mythical creature is known for turning people to stone with its gaze?","کس دیومالائی مخلوق کی نگاہ لوگوں کو پتھر بنا دیتی ہے؟",["Medusa / میڈوسا","Pegasus / پیگاسس","Dryad / ڈرائیڈ","Nymph / نمف"],0],
+ ["What is the name for a magical object that grants wishes in many folktales?","بہت سی لوک کہانیوں میں خواہش پوری کرنے والی جادوئی چیز کو کیا کہتے ہیں؟",["Enchanted lamp / طلسمی چراغ","Sundial / دھوپ گھڑی","Compass / قطب نما","Hourglass / ریت گھڑی"],0],
+ ["Which creature is associated with guarding treasure in many European legends?","بہت سی یورپی داستانوں میں خزانے کی حفاظت کس مخلوق سے منسوب ہے؟",["Dragon / اژدہا","Mermaid / جل پری","Unicorn / یک شاخی گھوڑا","Fairy / پری"],0],
+ ["What is a dryad in Greek mythology?","یونانی دیومالا میں ڈرائیڈ کیا ہوتی ہے؟",["A tree nymph / درخت سے وابستہ پری","A sea giant / سمندری دیو","A fire bird / آتش پرندہ","A mountain horse / پہاڑی گھوڑا"],0],
+ ["Which legendary horse is said to have wings?","کس افسانوی گھوڑے کے بارے میں کہا جاتا ہے کہ اس کے پر ہوتے ہیں؟",["Pegasus / پیگاسس","Centaur / سینٹور","Kelpie / کیلپی","Unicorn / یک شاخی گھوڑا"],0]
+ ],2);
+ add("literature","lb",[
+ ["Who wrote the novel 'Pride and Prejudice'?","ناول 'پرائیڈ اینڈ پریجوڈس' کس نے لکھا؟",["Jane Austen / جین آسٹن","Charlotte Brontë / شارلٹ برونٹے","Mary Shelley / میری شیلی","George Eliot / جارج ایلیٹ"],0],
+ ["Who created the detective Sherlock Holmes?","جاسوس شرلاک ہومز کا کردار کس نے تخلیق کیا؟",["Arthur Conan Doyle / آرتھر کونن ڈائل","Agatha Christie / اگاتھا کرسٹی","Charles Dickens / چارلس ڈکنز","Edgar Allan Poe / ایڈگر ایلن پو"],0],
+ ["Which literary form is usually written in fourteen lines?","عام طور پر چودہ مصرعوں پر مشتمل ادبی صنف کون سی ہے؟",["Sonnet / سانیٹ","Epic / رزمیہ","Haiku / ہائیکو","Elegy / مرثیہ"],0],
+ ["Who wrote 'Frankenstein'?","'فرینکنسٹائن' کس نے لکھا؟",["Mary Shelley / میری شیلی","Jane Austen / جین آسٹن","Virginia Woolf / ورجینیا وولف","Emily Brontë / ایملی برونٹے"],0],
+ ["What is the term for the main character of a story?","کہانی کے مرکزی کردار کو کیا کہتے ہیں؟",["Protagonist / مرکزی کردار","Antagonist / مخالف کردار","Narrator / راوی","Extra / ضمنی کردار"],0],
+ ["Who wrote the epic poem 'The Odyssey'?","رزمیہ نظم 'اوڈیسی' کس نے لکھی؟",["Homer / ہومر","Virgil / ورجل","Sophocles / سوفوکلیز","Ovid / اووڈ"],0],
+ ["Which author wrote 'Oliver Twist'?","'اولیور ٹوئسٹ' کس مصنف نے لکھا؟",["Charles Dickens / چارلس ڈکنز","Mark Twain / مارک ٹوین","Thomas Hardy / تھامس ہارڈی","Oscar Wilde / آسکر وائلڈ"],0],
+ ["What is a metaphor?","استعارہ کیا ہوتا ہے؟",["A direct comparison without 'like' or 'as' / 'جیسے' کے بغیر براہِ راست تشبیہ","A repeated opening sound / ابتدائی آواز کی تکرار","A humorous ending / مزاحیہ اختتام","A character list / کرداروں کی فہرست"],0],
+ ["Who wrote the play 'Romeo and Juliet'?","ڈراما 'رومیو اینڈ جولیٹ' کس نے لکھا؟",["William Shakespeare / ولیم شیکسپیئر","Christopher Marlowe / کرسٹوفر مارلو","Ben Jonson / بین جانسن","John Milton / جان ملٹن"],0],
+ ["Which Urdu poet is famously known as 'Shair-e-Mashriq'?","اردو کے کس شاعر کو 'شاعرِ مشرق' کہا جاتا ہے؟",["Allama Muhammad Iqbal / علامہ محمد اقبال","Mir Taqi Mir / میر تقی میر","Ghalib / غالب","Faiz Ahmed Faiz / فیض احمد فیض"],0]
+ ],2);
+ add("personality","pb",[
+ ["A teammate disagrees with your idea. What is the most constructive response?","ٹیم کا ساتھی آپ کی رائے سے اختلاف کرے تو بہتر ردِعمل کیا ہوگا؟",["Listen and discuss the reasons / بات سن کر وجوہات پر گفتگو کرنا","Interrupt them / ان کی بات کاٹنا","Ignore the whole team / پوری ٹیم کو نظر انداز کرنا","Make it personal / ذاتی تنقید کرنا"],0],
+ ["You made a mistake in a group task. What should you do first?","گروپ کے کام میں آپ سے غلطی ہو جائے تو پہلے کیا کرنا چاہیے؟",["Acknowledge it and help fix it / غلطی تسلیم کرکے اسے درست کرنے میں مدد دینا","Blame someone else / کسی اور کو قصوروار ٹھہرانا","Hide the mistake / غلطی چھپانا","Leave the task / کام چھوڑ دینا"],0],
+ ["A friend shares a private concern. What shows respect?","دوست اپنی نجی پریشانی بتائے تو احترام کا تقاضا کیا ہے؟",["Keep it private unless safety requires help / بات راز میں رکھنا، سوائے فوری حفاظت کے مسئلے کے","Share it as a joke / مذاق میں سب کو بتانا","Post it online / انٹرنیٹ پر ڈالنا","Use it to win an argument / بحث جیتنے کے لیے استعمال کرنا"],0],
+ ["You have several deadlines. Which strategy is most useful?","کئی کاموں کی آخری تاریخ قریب ہو تو کون سی حکمتِ عملی بہتر ہے؟",["Prioritize and make a realistic plan / ترجیحات طے کرکے حقیقت پسندانہ منصوبہ بنانا","Avoid checking deadlines / تاریخیں نہ دیکھنا","Start everything at once / سب کام ایک ساتھ شروع کرنا","Wait until the last moment / آخری لمحے تک انتظار کرنا"],0],
+ ["Someone is being left out of a group activity. What could you do?","کسی کو گروپ سرگرمی سے الگ رکھا جا رہا ہو تو آپ کیا کر سکتے ہیں؟",["Invite them to take part / انہیں شامل ہونے کی دعوت دینا","Encourage others to ignore them / دوسروں کو نظر انداز کرنے کا کہنا","Laugh at them / ان کا مذاق اڑانا","End the activity / سرگرمی ختم کرنا"],0],
+ ["You receive feedback on your work. What is a helpful approach?","اپنے کام پر رائے ملے تو مفید رویہ کیا ہوگا؟",["Consider it and ask for examples / غور کرنا اور مثالیں مانگنا","Reject every suggestion / ہر مشورہ رد کرنا","Argue before listening / سنے بغیر بحث کرنا","Assume it is an insult / اسے توہین سمجھنا"],0],
+ ["A disagreement becomes heated. What can help?","اختلافِ رائے تلخ ہونے لگے تو کیا مددگار ہو سکتا ہے؟",["Pause and speak calmly / وقفہ لے کر سکون سے بات کرنا","Raise your voice / آواز بلند کرنا","Bring up unrelated issues / غیر متعلقہ باتیں چھیڑنا","Refuse to listen / سننے سے انکار کرنا"],0],
+ ["You do not understand an instruction. What is the best next step?","آپ کو ہدایت سمجھ نہ آئے تو اگلا بہتر قدم کیا ہے؟",["Ask a clear question / واضح سوال پوچھنا","Guess without checking / تصدیق کے بغیر اندازہ لگانا","Copy someone else's work / کسی اور کا کام نقل کرنا","Ignore the instruction / ہدایت نظر انداز کرنا"],0],
+ ["A classmate succeeds at something you are learning. What is a positive response?","جس کام کو آپ سیکھ رہے ہیں اس میں ہم جماعت کامیاب ہو تو مثبت ردِعمل کیا ہے؟",["Congratulate them and learn from their approach / مبارک باد دے کر ان کے طریقے سے سیکھنا","Dismiss their effort / ان کی محنت کو کم سمجھنا","Spread rumours / افواہیں پھیلانا","Stop trying immediately / فوراً کوشش چھوڑ دینا"],0],
+ ["You promised to complete a task but cannot meet the deadline. What should you do?","آپ نے کام مکمل کرنے کا وعدہ کیا مگر وقت پر ممکن نہیں، کیا کریں؟",["Tell the person early and agree on a new plan / پہلے سے اطلاع دے کر نیا منصوبہ طے کرنا","Say nothing / کچھ نہ کہنا","Pretend it is finished / مکمل ہونے کا جھوٹ بولنا","Blame the person who asked / کام دینے والے کو قصوروار ٹھہرانا"],0]
+ ],2);
+ add("islamic","ib",[
+ ["How many daily obligatory prayers are there in Islam?","اسلام میں روزانہ کتنی فرض نمازیں ہیں؟",["Five / پانچ","Three / تین","Four / چار","Six / چھ"],0],
+ ["Which month is associated with fasting for Muslims?","مسلمانوں کے روزوں کا تعلق کس مہینے سے ہے؟",["Ramadan / رمضان","Shawwal / شوال","Muharram / محرم","Safar / صفر"],0],
+ ["What is the direction Muslims face during prayer called?","نماز کے دوران مسلمان جس سمت رخ کرتے ہیں اسے کیا کہتے ہیں؟",["Qiblah / قبلہ","Mihrab / محراب","Minbar / منبر","Saff / صف"],0],
+ ["Which angel brought revelation to Prophet Muhammad (peace be upon him)?","حضرت محمد ﷺ پر وحی کون سے فرشتے لائے؟",["Jibril / جبرائیل","Mikail / میکائیل","Israfil / اسرافیل","Malak al-Mawt / ملک الموت"],0],
+ ["What is the pilgrimage to Makkah called?","مکہ مکرمہ کی زیارتِ حج کو کیا کہتے ہیں؟",["Hajj / حج","Zakat / زکوٰۃ","Sawm / صوم","Hijrah / ہجرت"],0],
+ ["Which is the first month of the Islamic lunar calendar?","اسلامی قمری تقویم کا پہلا مہینہ کون سا ہے؟",["Muharram / محرم","Ramadan / رمضان","Rajab / رجب","Dhul Hijjah / ذوالحجہ"],0],
+ ["What is the meal before dawn during Ramadan called?","رمضان میں سحری کے وقت کھائے جانے والے کھانے کو کیا کہتے ہیں؟",["Suhoor / سحری","Iftar / افطار","Walima / ولیمہ","Aqiqah / عقیقہ"],0],
+ ["What is the name of the Islamic call to prayer?","نماز کے لیے دی جانے والی پکار کو کیا کہتے ہیں؟",["Adhan / اذان","Khutbah / خطبہ","Tasbih / تسبیح","Takbir / تکبیر"],0],
+ ["Which city was the destination of the Prophet's migration from Makkah?","رسول اللہ ﷺ نے مکہ سے ہجرت کرکے کس شہر کا رخ فرمایا؟",["Madinah / مدینہ","Taif / طائف","Jerusalem / بیت المقدس","Damascus / دمشق"],0],
+ ["What is the night journey commonly called in Islamic tradition?","اسلامی روایت میں رات کے سفر کو عام طور پر کیا کہتے ہیں؟",["Isra and Mi'raj / اسراء و معراج","Hijrah / ہجرت","Badr / بدر","Hudaybiyyah / حدیبیہ"],0]
+ ],2);
+})();
+
 function questionText(q){return game.language==="ur"?q.ur:q.en;}
 function answerText(a){
   if(game.language==="ur")return a.split(" / ").slice(-1)[0];
